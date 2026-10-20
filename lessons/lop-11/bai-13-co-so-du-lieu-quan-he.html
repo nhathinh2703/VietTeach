@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Môn Tin học 11 - Bài 13: Cơ sở dữ liệu quan hệ | VietTeach</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Phosphor Icons CDN -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <!-- Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; }
+    .section-completed {
+      border-color: #16a34a !important;
+      background-color: #f0fdf4 !important;
+    }
+    .match-selected {
+      border-color: #16a34a !important;
+      background-color: #dcfce7 !important;
+      color: #166534 !important;
+      box-shadow: 0 2px 8px rgba(22, 163, 74, 0.2);
+    }
+    .match-paired {
+      border-color: #22c55e !important;
+      background-color: #16a34a !important;
+      color: #ffffff !important;
+      cursor: default !important;
+      opacity: 0.9;
+    }
+    .blank-input {
+      border-bottom: 2px solid #16a34a;
+      background-color: #f0fdf4;
+      padding: 2px 8px;
+      font-weight: 700;
+      color: #166534;
+      border-radius: 4px;
+      outline: none;
+      text-align: center;
+      min-width: 110px;
+      display: inline-block;
+      margin: 0 4px;
+    }
+    .blank-input.blank-correct {
+      background-color: #dcfce7;
+      border-color: #16a34a;
+      color: #15803d;
+    }
+    .blank-input.blank-wrong {
+      background-color: #ffe4e6;
+      border-color: #e11d48;
+      color: #be123c;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed flex flex-col min-h-screen">
+
+  <!-- TOP HEADER (ĐỒNG BỘ HỆ SINH THÁI VIETAPPS) -->
+  <header style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%); border-bottom: 1px solid rgba(74, 222, 128, 0.25);" class="text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+      
+      <!-- Brand & Title -->
+      <div class="flex items-center gap-3">
+        <a href="../../index.html" class="flex items-center gap-2 group" title="Về Cổng học tập VietTeach">
+          <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-xl shadow-inner group-hover:scale-105 transition">
+            👨‍🏫
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-lg font-black tracking-tight text-white group-hover:text-emerald-200 transition">VietTeach</span>
+              <span class="bg-emerald-400/20 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase border border-emerald-400/30">Lớp 11</span>
+            </div>
+            <p class="text-[11px] text-emerald-200/80">Chủ đề 4: Ứng dụng tin học - Giới thiệu các hệ cơ sở dữ liệu • Tin học 11 (KNTT)</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Center: Lesson Header & Navigation -->
+      <div class="text-center flex-1 max-w-md hidden lg:block">
+        <h1 class="text-sm font-bold text-white uppercase tracking-tight truncate">BÀI 13: Cơ sở dữ liệu quan hệ</h1>
+        <div class="flex items-center justify-center gap-2 mt-1">
+          <div class="w-32 bg-white/20 rounded-full h-1.5 overflow-hidden">
+            <div id="progress-bar" class="bg-amber-400 h-1.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+          </div>
+          <span id="progress-text" class="text-[10px] font-bold text-amber-300">0%</span>
+        </div>
+      </div>
+
+      <!-- Right: Action Buttons & Navigation -->
+      <div class="flex items-center gap-2">
+        <a href="bai-12-he-quan-tri-co-so-du-lieu-va-he-co-so-du-lieu.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition"><i class="ph-bold ph-arrow-left"></i> <span class="hidden sm:inline">Bài trước</span></a>
+        <a href="../../index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition flex items-center gap-1" title="Xem danh mục bài học">
+          <i class="ph-bold ph-squares-four"></i> <span class="hidden sm:inline">Mục lục</span>
+        </a>
+        <a href="bai-14-sql-ngon-ngu-truy-van-co-cau-truc.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold transition shadow-sm"><span class="hidden sm:inline">Bài tiếp</span> <i class="ph-bold ph-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- Thanh Menu 7 mục sư phạm chuẩn GDPT 2018 -->
+    <nav class="bg-emerald-950/80 backdrop-blur-md border-t border-white/10 overflow-x-auto">
+      <div class="max-w-5xl mx-auto px-4 flex items-center gap-1 py-1.5 text-xs whitespace-nowrap">
+        <a href="#sec-muctieu" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">1. Mục tiêu</a>
+        <a href="#sec-khoidong" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">2. Khởi động</a>
+        <a href="#sec-kienthuc" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">3. Hình thành kiến thức</a>
+        <a href="#sec-luyentap" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">4. Luyện tập</a>
+        <a href="#sec-vandung" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">5. Vận dụng</a>
+        <a href="#sec-tomtat" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">6. Tóm tắt nội dung bài</a>
+        <a href="#sec-danhgia" class="px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 font-bold hover:bg-amber-300 transition">7. Bài tập</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="max-w-5xl mx-auto px-4 mt-8 space-y-10 flex-grow w-full">
+
+    <!-- 1. MỤC TIÊU -->
+    <section id="sec-muctieu" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300">
+      <div class="flex items-center justify-between mb-5 border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-target"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">1. Mục tiêu bài học (Yêu cầu cần đạt)</h2>
+            <p class="text-xs text-slate-500">Chuẩn Chương trình GDPT 2018 môn Tin học 11</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4 text-xs md:text-sm mb-6">
+        <div class="p-4 rounded-xl bg-emerald-50/70 border border-emerald-100 space-y-2">
+          <h3 class="font-bold text-emerald-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-book-open"></i> Kiến thức
+          </h3>
+          <ul class="list-disc list-inside space-y-1 text-slate-700">
+            
+          <li>Nêu được khái niệm <strong>Mô hình dữ liệu quan hệ</strong> do E.F. Codd đề xuất.</li>
+          <li>Hiểu các thuật ngữ cốt lõi: <strong>Bảng (Quan hệ), Cột (Thuộc tính / Trường), Hàng (Bản ghi)</strong>.</li>
+          <li>Nắm vững khái niệm và vai trò quan trọng của <strong>Khóa chính (Primary Key)</strong> và <strong>Khóa ngoài (Foreign Key)</strong>.</li>
+          <li>Hiểu được <strong>tính toàn vẹn tham chiếu (Referential Integrity)</strong> khi liên kết giữa các bảng.</li>
+        
+          </ul>
+        </div>
+        <div class="p-4 rounded-xl bg-teal-50/70 border border-teal-100 space-y-2">
+          <h3 class="font-bold text-teal-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-wrench"></i> Kĩ năng
+          </h3>
+          <ul class="list-disc list-inside space-y-1 text-slate-700">
+            
+          <li>Xác định được khóa chính phù hợp cho một bảng thực tế.</li>
+          <li>Thiết lập được mối liên kết giữa hai bảng thông qua khóa chính và khóa ngoài.</li>
+        
+          </ul>
+        </div>
+        <div class="p-4 rounded-xl bg-amber-50/70 border border-amber-100 space-y-2">
+          <h3 class="font-bold text-amber-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-lightbulb"></i> Phẩm chất & Năng lực
+          </h3>
+          <ul class="list-disc list-inside space-y-1 text-slate-700">
+            
+          <li>Tư duy logic, chặt chẽ trong việc mô hình hóa các mối quan hệ nghiệp vụ đời sống thực tế vào máy tính.</li>
+        
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-muctieu')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 2. KHỞI ĐỘNG -->
+    <section id="sec-khoidong" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300">
+      <div class="flex items-center justify-between mb-5 border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-rocket-launch"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">2. Khởi động</h2>
+            <p class="text-xs text-slate-500">Tình huống khám phá gợi mở đầu bài (Theo SGV Tin học 11)</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-5 mb-6 text-xs md:text-sm text-slate-700 space-y-3">
+        
+          <p><strong>Tình huống mở đầu:</strong> Trong một trường học có nhiều bạn cùng tên "Nguyễn Văn An" và lại trùng cả ngày sinh. Khi giáo viên nhập điểm số vào máy tính, làm thế nào để phần mềm phân biệt được chính xác điểm này là của bạn Nguyễn Văn An nào mà không bao giờ bị nhầm lẫn?</p>
+        
+      </div>
+
+      <div class="space-y-3 text-xs md:text-sm">
+        <p class="font-bold text-slate-800">🤔 Câu hỏi gợi mở suy nghĩ:</p>
+        <p class="text-slate-700 italic bg-slate-50 p-3 rounded-xl border border-slate-200">Khái niệm kỹ thuật nào trong Cơ sở dữ liệu quan hệ giúp phân biệt duy nhất từng học sinh?</p>
+        
+        <div class="pt-2">
+          <button onclick="toggleHint('kd-hint')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+            <i class="ph-bold ph-lightbulb"></i> Bấm để xem Gợi ý suy luận
+          </button>
+          <div id="kd-hint" class="hidden mt-3 p-4 rounded-xl bg-emerald-50 text-emerald-950 border border-emerald-200 text-xs md:text-sm space-y-2">
+            
+          <p><strong>Gợi ý:</strong> Mỗi học sinh được cấp một <strong>Mã định danh duy nhất (Mã học sinh)</strong> không bao giờ trùng lặp. Thuộc tính này đóng vai trò là <strong>Khóa chính (Primary Key)</strong> của bảng dữ liệu.</p>
+        
+          </div>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4 mt-6">
+        <button onclick="toggleSectionDone('sec-khoidong')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 3. HÌNH THÀNH KIẾN THỨC -->
+    <section id="sec-kienthuc" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-8 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-compass"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">3. Hình thành kiến thức</h2>
+            <p class="text-xs text-slate-500">Khám phá nội dung bài học kết hợp tương tác thực hành</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <!-- CÁC TIỂU MỤC KIẾN THỨC -->
+      
+        <div class="space-y-4 ">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 bg-emerald-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">3.1</span>
+            <h3 class="text-base md:text-lg font-bold text-slate-900">Mô hình dữ liệu quan hệ và Cấu trúc Bảng</h3>
+          </div>
+          
+            <div class="space-y-4 text-sm text-slate-700 leading-relaxed">
+              <p><strong>Cơ sở dữ liệu quan hệ (Relational Database)</strong> là CSDL được xây dựng dựa trên mô hình quan hệ do nhà khoa học Edgar F. Codd đề xuất năm 1970. Trong mô hình này, dữ liệu được tổ chức dưới dạng các <strong>Bảng (Tables / Relations)</strong> hai chiều:</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1 text-xs">
+                <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+                  <div class="font-bold text-emerald-900 flex items-center gap-1.5"><i class="ph-bold ph-columns text-emerald-600"></i> Cột: Thuộc tính (Attribute / Field)</div>
+                  <p class="text-slate-600">Mỗi cột biểu diễn một đặc điểm của đối tượng (ví dụ: MaHS, HoDem, Ten, NgaySinh, GioiTinh). Mỗi cột mang một tên duy nhất trong bảng và có kiểu dữ liệu xác định (Domain).</p>
+                </div>
+                <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+                  <div class="font-bold text-teal-900 flex items-center gap-1.5"><i class="ph-bold ph-rows text-teal-600"></i> Hàng: Bản ghi (Tuple / Record)</div>
+                  <p class="text-slate-600">Mỗi hàng biểu diễn toàn bộ thông tin về một đối tượng cụ thể duy nhất (ví dụ: một bạn học sinh với đầy đủ mã số, tên, ngày sinh và lớp học).</p>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+        
+
+        <div class="space-y-4 pt-6 border-t border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 bg-emerald-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">3.2</span>
+            <h3 class="text-base md:text-lg font-bold text-slate-900">Khóa chính (Primary Key) và Khóa ngoài (Foreign Key)</h3>
+          </div>
+          
+            <div class="space-y-4 text-sm text-slate-700 leading-relaxed">
+              <p>Khóa là linh hồn liên kết và đảm bảo tính duy nhất của CSDL quan hệ:</p>
+              <div class="space-y-2.5 pt-1">
+                <div class="p-3.5 bg-emerald-50/70 border border-emerald-300 rounded-xl space-y-1">
+                  <div class="font-bold text-xs text-emerald-950 flex items-center gap-1.5"><i class="ph-bold ph-key"></i> Khóa chính (Primary Key - PK)</div>
+                  <p class="text-xs text-slate-700">Là một thuộc tính (hoặc tập hợp thuộc tính) dùng để <strong>xác định duy nhất từng bản ghi (hàng)</strong> trong bảng. Hai nguyên tắc bất di bất dịch của Khóa chính:</p>
+                  <ul class="list-disc list-inside text-xs text-slate-600 pl-2 space-y-0.5">
+                    <li><strong>Không được trùng lặp:</strong> Mỗi giá trị khóa chính chỉ xuất hiện đúng 1 lần trong bảng.</li>
+                    <li><strong>Không được để rỗng (NOT NULL):</strong> Bắt buộc phải có giá trị, không được để trống.</li>
+                  </ul>
+                </div>
+                <div class="p-3.5 bg-teal-50/70 border border-teal-300 rounded-xl space-y-1">
+                  <div class="font-bold text-xs text-teal-950 flex items-center gap-1.5"><i class="ph-bold ph-link-simple-horizontal"></i> Khóa ngoài (Foreign Key - FK)</div>
+                  <p class="text-xs text-slate-700">Là một thuộc tính của một bảng đóng vai trò là <strong>Khóa chính ở một bảng khác</strong>, dùng để thiết lập mối liên kết logic giữa hai bảng.</p>
+                  <p class="text-xs text-slate-600"><em>Ví dụ:</em> Trong bảng <code>HocSinh</code> có cột <code>MaLop</code>. Cột <code>MaLop</code> này là khóa ngoài tham chiếu tới khóa chính <code>MaLop</code> của bảng <code>LopHoc</code>.</p>
+                </div>
+                <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900 space-y-1">
+                  <div class="font-bold">Tính toàn vẹn tham chiếu (Referential Integrity):</div>
+                  <p>Giá trị của khóa ngoài bắt buộc phải tồn tại trong bảng được tham chiếu, hoặc phải mang giá trị NULL. Hệ CSDL sẽ không cho phép nhập một học sinh vào một mã lớp không hề tồn tại trong bảng Lớp học!</p>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+        
+
+      <!-- HOẠT ĐỘNG TƯƠNG TÁC ĐIỀN KHUYẾT (NẾU CÓ) -->
+      
+        <!-- TƯƠNG TÁC ĐIỀN KHUYẾT NỘI DUNG -->
+        <div class="bg-gradient-to-r from-amber-50/70 to-orange-50/70 border border-amber-200 rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i class="ph-bold ph-textbox text-amber-700 text-lg"></i>
+              <h4 class="font-bold text-amber-950 text-sm">Hoạt động tương tác: Điền từ vào chỗ trống</h4>
+            </div>
+            <button onclick="checkFillBlanks()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold px-3.5 py-1.5 rounded-xl transition shadow-sm">
+              Kiểm tra điền từ
+            </button>
+          </div>
+          <p class="text-xs text-slate-600">Gõ các từ còn thiếu vào ô trống rồi kiểm tra:</p>
+          <div class="bg-white p-4 rounded-xl border border-amber-200/80 text-xs md:text-sm leading-loose text-slate-800 space-y-3">
+            
+          Trong mô hình CSDL quan hệ, mỗi hàng được gọi là một <input type="text" class="blank-input" data-ans="bản ghi">. 
+          Mỗi cột biểu diễn một <input type="text" class="blank-input" data-ans="thuộc tính">. 
+          Thuộc tính phân biệt duy nhất từng hàng gọi là <input type="text" class="blank-input" data-ans="khóa chính">. 
+          Thuộc tính dùng để liên kết giữa hai bảng gọi là <input type="text" class="blank-input" data-ans="khóa ngoài">. 
+          Quy tắc ràng buộc giá trị khóa ngoài phải tồn tại ở bảng gốc gọi là tính toàn vẹn <input type="text" class="blank-input" data-ans="tham chiếu">.
+        
+          </div>
+          <div class="flex items-center justify-between pt-1">
+            <div id="fill-feedback" class="hidden text-xs font-bold"></div>
+            <button onclick="toggleHint('fb-hint-box')" class="text-amber-700 hover:text-amber-900 font-bold text-xs flex items-center gap-1 ml-auto">
+              <i class="ph-bold ph-lightbulb"></i> Gợi ý từ khóa
+            </button>
+          </div>
+          <div id="fb-hint-box" class="hidden bg-white/90 p-3 rounded-xl border border-amber-200 text-xs text-slate-600">
+            Từ khóa gợi ý: <span class="font-bold text-amber-800">khóa chính, khóa ngoài, bản ghi, thuộc tính, tham chiếu</span>
+          </div>
+        </div>
+        
+
+      <!-- HOẠT ĐỘNG TƯƠNG TÁC NỐI CỘT (NẾU CÓ) -->
+      
+        <!-- TƯƠNG TÁC NỐI CỘT NỘI DUNG -->
+        <div class="bg-gradient-to-r from-emerald-50/70 to-teal-50/70 border border-emerald-200 rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i class="ph-bold ph-shuffle text-emerald-700 text-lg"></i>
+              <h4 class="font-bold text-emerald-950 text-sm">Hoạt động tương tác: Ghép nối Thuật ngữ Quan hệ với Định nghĩa chuẩn</h4>
+            </div>
+            <span id="match-score" class="text-xs font-bold text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">0/4 Cặp</span>
+          </div>
+          <p class="text-xs text-slate-600">Bấm chọn Thuật ngữ ở Cột A và ghép với Định nghĩa ở Cột B.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-2.5" id="match-col-a">
+              <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Cột A: Thuật ngữ CSDL quan hệ</div>
+              <div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="k1">1. Khóa chính (Primary Key) <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="k2">2. Khóa ngoài (Foreign Key) <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="k3">3. Bản ghi (Record / Tuple) <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="k4">4. Thuộc tính (Attribute) <i class="ph-bold ph-hand-pointing text-slate-400"></i></div>
+            </div>
+            <div class="space-y-2.5" id="match-col-b">
+              <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Cột B: Định nghĩa chuẩn</div>
+              <div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="k1">Thuộc tính phân biệt duy nhất từng hàng, không trùng, không rỗng <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="k2">Thuộc tính liên kết tham chiếu tới khóa chính của bảng khác <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="k3">Một hàng ngang chứa đầy đủ thông tin về một đối tượng cụ thể <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="k4">Một cột dọc biểu diễn một đặc điểm tính chất của đối tượng <i class="ph-bold ph-arrow-right text-slate-400"></i></div>
+            </div>
+          </div>
+          <div id="match-feedback" class="hidden p-3 rounded-xl text-xs font-bold"></div>
+        </div>
+        
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-kienthuc')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. LUYỆN TẬP -->
+    <section id="sec-luyentap" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-6 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-pencil-line"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">4. Luyện tập</h2>
+            <p class="text-xs text-slate-500">Bài tập củng cố kiến thức theo SGK và định hướng SGV</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <h3 class="font-bold text-slate-900">Bài 1: Xác định Khóa chính và Khóa ngoài cho CSDL Bán hàng</h3>
+          <p class="text-slate-700">Cho hai bảng dữ liệu: Bảng KHACH_HANG (MaKH, HoTen, SoDienThoai, DiaChi) và Bảng HOA_DON (SoHD, NgayLap, MaKH, TongTien). Hãy xác định: (1) Khóa chính của từng bảng, (2) Khóa ngoài của bảng HOA_DON liên kết với bảng nào.</p>
+          
+          <div class="pt-1">
+            <button onclick="toggleHint('lt-hint-1')" class="text-emerald-700 hover:text-emerald-900 font-bold flex items-center gap-1.5 text-xs bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-xl transition">
+              <i class="ph-bold ph-lightbulb"></i> Gợi ý & Đáp án tham khảo
+            </button>
+            <div id="lt-hint-1" class="hidden bg-white p-4 rounded-xl border border-emerald-200 text-slate-700 space-y-2 mt-2 shadow-sm">
+              
+              <p><strong>Xác định chính xác các khóa:</strong></p>
+              <ul class="list-disc list-inside space-y-1 text-xs">
+                <li><strong>Khóa chính của bảng KHACH_HANG:</strong> Cột <code>MaKH</code> (Mã khách hàng duy nhất cho mỗi người, số điện thoại có thể thay đổi hoặc dùng chung gia đình).</li>
+                <li><strong>Khóa chính của bảng HOA_DON:</strong> Cột <code>SoHD</code> (Số hóa đơn duy nhất của từng đơn mua hàng).</li>
+                <li><strong>Khóa ngoài của bảng HOA_DON:</strong> Cột <code>MaKH</code> là khóa ngoài tham chiếu tới khóa chính <code>MaKH</code> của bảng KHACH_HANG. Điều này giúp biết hóa đơn này do khách hàng nào thanh toán.</li>
+              </ul>
+            
+            </div>
+          </div>
+        </div>
+        
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-luyentap')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 5. VẬN DỤNG -->
+    <section id="sec-vandung" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-6 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-lightbulb-filament"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">5. Vận dụng</h2>
+            <p class="text-xs text-slate-500">Liên hệ ứng dụng thực tiễn trong cuộc sống</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="space-y-4">
+        
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <h3 class="font-bold text-slate-900">1. Thiết kế liên kết bảng cho hệ thống Quản lý Điểm thi</h3>
+          <p class="text-slate-700">Em hãy thiết kế 3 bảng dữ liệu cho hệ thống quản lý điểm thi gồm: Bảng HOC_SINH, Bảng MON_HOC, và Bảng BANG_DIEM. Chỉ rõ khóa chính của mỗi bảng và các khóa ngoài liên kết.</p>
+          <div class="pt-1">
+            <button onclick="toggleHint('vd-hint-1')" class="text-emerald-700 hover:text-emerald-900 font-bold flex items-center gap-1.5 text-xs bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-xl transition">
+              <i class="ph-bold ph-eye"></i> Gợi ý phân tích thực tế
+            </button>
+            <div id="vd-hint-1" class="hidden bg-white p-4 rounded-xl border border-emerald-200 text-slate-700 space-y-2 mt-2 shadow-sm">
+              
+              <p><strong>Thiết kế cấu trúc liên kết 3 bảng chuẩn:</strong></p>
+              <div class="space-y-1.5 text-xs">
+                <div class="p-2 bg-slate-50 rounded-lg border border-slate-200">
+                  <strong>1. Bảng HOC_SINH:</strong> (<u>MaHS</u> [PK], HoTen, NgaySinh, GioiTinh).
+                </div>
+                <div class="p-2 bg-slate-50 rounded-lg border border-slate-200">
+                  <strong>2. Bảng MON_HOC:</strong> (<u>MaMH</u> [PK], TenMH, SoTiet).
+                </div>
+                <div class="p-2 bg-slate-50 rounded-lg border border-slate-200">
+                  <strong>3. Bảng BANG_DIEM:</strong> (<u>MaHS</u> [FK], <u>MaMH</u> [FK], HocKy, DiemGK, DiemCK).
+                  <br><em>Giải thích:</em> Khóa chính của bảng BANG_DIEM là khóa phức hợp gồm cặp (<code>MaHS, MaMH, HocKy</code>). Trong đó <code>MaHS</code> là khóa ngoài tham chiếu tới bảng HOC_SINH, và <code>MaMH</code> là khóa ngoài tham chiếu tới bảng MON_HOC.
+                </div>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-vandung')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 6. TÓM TẮT NỘI DUNG BÀI -->
+    <section id="sec-tomtat" style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%);" class="study-card text-white rounded-2xl p-6 md:p-8 shadow-md transition-all duration-300">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-6">
+        <div class="flex items-center gap-2">
+          <i class="ph-bold ph-bookmarks text-amber-300 text-xl"></i>
+          <h2 class="text-lg md:text-xl font-bold text-emerald-100">6. Tóm tắt nội dung bài 13</h2>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-slate-950 bg-emerald-300 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4 text-xs md:text-sm mb-6">
+        
+          <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/20 space-y-1.5">
+            <h4 class="font-bold text-amber-300 text-sm">1. Mô hình quan hệ</h4>
+            <p class="text-xs text-emerald-100">Dữ liệu tổ chức thành các bảng (Table). Hàng là Bản ghi (Record), cột là Thuộc tính (Attribute).</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/20 space-y-1.5">
+            <h4 class="font-bold text-amber-300 text-sm">2. Khóa chính (PK)</h4>
+            <p class="text-xs text-emerald-100">Định danh duy nhất từng hàng trong bảng. Không trùng lặp và không bao giờ được mang giá trị rỗng (NOT NULL).</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/20 space-y-1.5">
+            <h4 class="font-bold text-amber-300 text-sm">3. Khóa ngoài (FK)</h4>
+            <p class="text-xs text-emerald-100">Thuộc tính liên kết giữa các bảng, bảo đảm tính toàn vẹn tham chiếu chặt chẽ.</p>
+          </div>
+        
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/10 pt-4">
+        <a href="../../mindmaps/lop-11/bai-13.md" class="text-xs text-amber-300 hover:underline flex items-center gap-1 font-semibold">
+          <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy chi tiết của bài học
+        </a>
+        <button onclick="toggleSectionDone('sec-tomtat')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-white/20 bg-white/10 hover:bg-emerald-500 text-white transition flex items-center gap-1.5 ml-auto sm:ml-0">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 7. BÀI TẬP -->
+    <section id="sec-danhgia" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-10 transition-all duration-300">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4">
+        <div>
+          <h2 class="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2">
+            <i class="ph-bold ph-exam text-emerald-600"></i> 7. Bài tập đánh giá
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">Trắc nghiệm nhiều lựa chọn • Đúng/Sai đa ý • Tự luận ngắn</p>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1 self-start sm:self-auto">
+          <i class="ph-bold ph-check"></i> Đã hoàn thành
+        </span>
+      </div>
+
+      <!-- DẠNG 1: TRẮC NGHIỆM -->
+      <div class="space-y-6">
+        <div class="flex items-center justify-between border-b pb-2">
+          <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-md">Phần 1</span>
+            Câu trắc nghiệm nhiều lựa chọn (3 câu)
+          </h3>
+          <span class="text-xs font-semibold text-slate-500">1.0 điểm/câu</span>
+        </div>
+
+        <form id="d1-form" class="space-y-5 text-xs md:text-sm">
+          
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 1: Trong một bảng CSDL quan hệ, điều kiện bắt buộc đối với một Khóa chính (Primary Key) là gì?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> Phải là số chẵn và lớn hơn 100.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> Giá trị không được trùng lặp và không được phép để rỗng (NOT NULL).</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> Phải luôn luôn là kiểu chữ tiếng Việt có dấu.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> Tự động biến mất sau 30 ngày.</span>
+            </label>
+            
+          </div>
+          <div id="d1_q1_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 2: Một thuộc tính của bảng A nhưng đóng vai trò là Khóa chính ở bảng B được gọi là gì?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> Khóa phụ</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> Khóa ngoài (Foreign Key)</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> Chỉ mục (Index)</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> Biến toàn cục</span>
+            </label>
+            
+          </div>
+          <div id="d1_q2_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 3: Trong bảng DANH_SACH_LOP (MaHS, HoTen, NgaySinh, QueQuan), thuộc tính nào sau đây thích hợp nhất để chọn làm Khóa chính?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> HoTen (vì ai cũng có họ tên)</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> QueQuan (vì ai cũng có quê quán)</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> MaHS (vì mỗi học sinh có một mã số định danh duy nhất)</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> NgaySinh (vì ngày sinh ai cũng nhớ)</span>
+            </label>
+            
+          </div>
+          <div id="d1_q3_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+          <div class="pt-2 flex items-center gap-3">
+            <button type="button" onclick="gradeD1()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl shadow transition">
+              Chấm điểm Phần 1
+            </button>
+            <span id="d1-score" class="font-bold text-sm text-emerald-700"></span>
+          </div>
+        </form>
+      </div>
+
+      <!-- DẠNG 2: ĐÚNG / SAI -->
+      <div class="space-y-6 pt-6 border-t">
+        <div class="flex items-center justify-between border-b pb-2">
+          <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="bg-teal-100 text-teal-800 text-xs px-2.5 py-1 rounded-md">Phần 2</span>
+            Câu hỏi trắc nghiệm Đúng/Sai đa ý
+          </h3>
+          <span class="text-xs font-semibold text-slate-500">Đúng 1 ý: 0.1đ • 2 ý: 0.25đ • 3 ý: 0.5đ • 4 ý: 1.0đ</span>
+        </div>
+
+        <form id="d2-form" class="space-y-6 text-xs md:text-sm">
+          
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <p class="font-bold text-slate-900">Câu 1: Xét tính Đúng/Sai của các câu sau về CSDL quan hệ:</p>
+          <div class="space-y-2">
+            
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>a) Một bảng có thể có nhiều khóa chính cùng tồn tại độc lập.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_a" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_a" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>b) Khóa chính có thể bao gồm sự kết hợp của nhiều thuộc tính (khóa phức hợp).</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_b" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_b" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>c) Tính toàn vẹn tham chiếu đảm bảo không có giá trị khóa ngoài "mồ côi" tham chiếu tới bản ghi không tồn tại.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_c" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_c" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>d) Tất cả các cột trong một bảng bắt buộc phải có cùng kiểu dữ liệu.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_d" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_d" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+          </div>
+          <div id="d2_q1_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+          <div class="pt-2 flex items-center gap-3">
+            <button type="button" onclick="gradeD2()" class="bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl shadow transition">
+              Chấm điểm Phần 2
+            </button>
+            <span id="d2-score" class="font-bold text-sm text-teal-700"></span>
+          </div>
+        </form>
+      </div>
+
+      <!-- DẠNG 3: TỰ LUẬN -->
+      <div class="space-y-6 pt-6 border-t">
+        <div class="flex items-center justify-between border-b pb-2">
+          <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="bg-purple-100 text-purple-800 text-xs px-2.5 py-1 rounded-md">Phần 3</span>
+            Câu hỏi tự luận tổng hợp
+          </h3>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <p class="font-bold text-slate-900">Em hãy giải thích vì sao trong Cơ sở dữ liệu quan hệ, việc phân tách dữ liệu thành nhiều bảng liên kết với nhau qua Khóa ngoài lại tốt hơn rất nhiều so với việc "nhét" toàn bộ thông tin của công ty vào một bảng tính khổng lồ duy nhất?</p>
+          <textarea id="d3-text" rows="3" placeholder="Nhập câu trả lời của em vào đây để rèn luyện kĩ năng diễn đạt..." class="w-full p-3 rounded-xl border border-slate-300 focus:outline-emerald-500"></textarea>
+          
+          <button type="button" onclick="toggleHint('d3-rubric')" class="bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs px-4 py-2 rounded-xl transition flex items-center gap-1.5">
+            <i class="ph-bold ph-check-square"></i> Bấm để xem Đáp án & Biểu điểm đối chiếu
+          </button>
+
+          <div id="d3-rubric" class="hidden bg-white p-4 rounded-xl border border-purple-200 text-slate-700 space-y-2 mt-2">
+            <h4 class="font-bold text-purple-900 text-sm">Biểu điểm đánh giá chuẩn (Thang 10 điểm):</h4>
+            <div class="space-y-1 text-xs">
+              <ul class="list-disc list-inside space-y-1">
+                <li><strong>Khắc phục dư thừa và lãng phí dung lượng (3.5 điểm):</strong> Nếu gộp chung một bảng, khi một khách hàng mua 100 đơn hàng, thông tin Tên, Địa chỉ, Số điện thoại của họ sẽ bị lặp lại 100 lần lãng phí dung lượng đĩa cứng.</li>
+                <li><strong>Tránh bất nhất dữ liệu khi cập nhật (3.5 điểm):</strong> Nếu khách hàng đổi địa chỉ nhà, với bảng đơn lẻ ta phải sửa ở 100 dòng (dễ sót dòng gây bất nhất). Với mô hình quan hệ tách bảng, ta chỉ cần sửa đúng 1 lần duy nhất ở bảng Khách Hàng, tất cả 100 hóa đơn tự động liên kết tới địa chỉ mới.</li>
+                <li><strong>Tránh dị thường khi xóa hoặc thêm mới (3.0 điểm):</strong> Nếu khách hàng chưa mua đơn hàng nào, ta vẫn lưu được hồ sơ khách hàng mà không bị để trống các cột hóa đơn. Ngược lại khi xóa một hóa đơn cũ, ta không bị xóa mất thông tin lý lịch khách hàng.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-danhgia')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu hoàn thành bài</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- BOTTOM NAVIGATION (CHUYỂN BÀI THUẬN TIỆN) -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 py-6 border-t border-slate-200">
+      <div>
+        <a href="bai-12-he-quan-tri-co-so-du-lieu-va-he-co-so-du-lieu.html" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold shadow-sm transition"><i class="ph-bold ph-arrow-left"></i> <span>Bài trước: Bài 12: Hệ quản trị cơ sở dữ liệu và hệ cơ sở dữ liệu</span></a>
+      </div>
+      <a href="../../index.html" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition">
+        <i class="ph-bold ph-squares-four"></i> Danh mục tất cả bài học Lớp 11
+      </a>
+      <div>
+        <a href="bai-14-sql-ngon-ngu-truy-van-co-cau-truc.html" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-sm transition"><span>Bài tiếp: Bài 14: SQL - Ngôn ngữ truy vấn có cấu trúc</span> <i class="ph-bold ph-arrow-right"></i></a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- NÚT 'LÊN ĐẦU' TRÔI NỔI (BACK TO TOP) -->
+  <button id="btn-back-to-top" onclick="scrollToTop()" title="Lên đầu trang" class="fixed bottom-6 right-6 z-50 w-11 h-11 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-xl flex items-center justify-center transition-all duration-300 transform translate-y-16 opacity-0 hover:scale-110">
+    <i class="ph-bold ph-arrow-up text-lg"></i>
+  </button>
+
+  <!-- FOOTER (ĐỒNG BỘ VIETAPPS) -->
+  <footer style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%);" class="text-white py-8 mt-12 border-t border-emerald-500/30">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-100">
+      <div class="flex items-center gap-2">
+        <span class="text-base">👨‍🏫</span>
+        <span class="font-bold text-white">VietTeach</span> • Hệ sinh thái giải pháp giáo dục VietApps (VietMix, VietTest, VietBook, VietTeach).
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="../../index.html" class="hover:text-amber-300 transition">Cổng bài học</a>
+        <span>•</span>
+        <a href="../../mindmaps/lop-11/bai-13.md" class="hover:text-amber-300 transition">Sơ đồ tư duy</a>
+        <span>•</span>
+        <span>Môn Tin học 11 (KNTT)</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT LOGIC TƯƠNG TÁC -->
+  <script>
+    // 1. Quản lí tiến độ học tập
+    const allSectionIds = ['sec-muctieu', 'sec-khoidong', 'sec-kienthuc', 'sec-luyentap', 'sec-vandung', 'sec-tomtat', 'sec-danhgia'];
+    let completedSections = new Set();
+
+    function updateProgressBar() {
+      const percent = Math.round((completedSections.size / allSectionIds.length) * 100);
+      document.getElementById('progress-bar').style.width = percent + '%';
+      document.getElementById('progress-text').textContent = percent + '%';
+    }
+
+    function toggleSectionDone(secId) {
+      const section = document.getElementById(secId);
+      const badge = section.querySelector('.status-badge');
+      const btn = section.querySelector('.btn-mark');
+
+      if (completedSections.has(secId)) {
+        completedSections.delete(secId);
+        section.classList.remove('section-completed');
+        if (badge) badge.classList.add('hidden');
+        if (btn) {
+          btn.innerHTML = '<i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>';
+          btn.className = "btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto";
+        }
+      } else {
+        completedSections.add(secId);
+        section.classList.add('section-completed');
+        if (badge) badge.classList.remove('hidden');
+        if (btn) {
+          btn.innerHTML = '<i class="ph-bold ph-arrow-counter-clockwise text-base"></i> <span>Hủy đánh dấu</span>';
+          btn.className = "btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-emerald-300 bg-emerald-100 text-emerald-800 hover:bg-slate-200 hover:text-slate-700 transition flex items-center gap-1.5 ml-auto";
+        }
+      }
+      updateProgressBar();
+    }
+
+    // 2. Nút Lên đầu trang (Back to top)
+    const backToTopBtn = document.getElementById('btn-back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('translate-y-16', 'opacity-0');
+        backToTopBtn.classList.add('translate-y-0', 'opacity-100');
+      } else {
+        backToTopBtn.classList.add('translate-y-16', 'opacity-0');
+        backToTopBtn.classList.remove('translate-y-0', 'opacity-100');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 3. Ẩn / hiện gợi ý
+    function toggleHint(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('hidden');
+    }
+
+    // 4. Chấm điểm Trắc nghiệm (Dạng 1)
+    const d1_answers = {"d1_q1": "B", "d1_q2": "B", "d1_q3": "C"};
+    const d1_exps = {"d1_q1": "Kh\u00f3a ch\u00ednh b\u1eaft bu\u1ed9c ph\u1ea3i duy nh\u1ea5t v\u00e0 kh\u00f4ng \u0111\u01b0\u1ee3c NULL \u0111\u1ec3 x\u00e1c \u0111\u1ecbnh ch\u00ednh x\u00e1c t\u1eebng b\u1ea3n ghi.", "d1_q2": "Kh\u00f3a ngo\u00e0i d\u00f9ng \u0111\u1ec3 li\u00ean k\u1ebft tham chi\u1ebfu t\u1edbi kh\u00f3a ch\u00ednh c\u1ee7a b\u1ea3ng kh\u00e1c.", "d1_q3": "H\u1ecd t\u00ean, ng\u00e0y sinh, qu\u00ea qu\u00e1n \u0111\u1ec1u c\u00f3 th\u1ec3 b\u1ecb tr\u00f9ng l\u1eb7p gi\u1eefa nhi\u1ec1u b\u1ea1n. Ch\u1ec9 c\u00f3 MaHS l\u00e0 duy nh\u1ea5t."};
+
+    function gradeD1() {
+      let score = 0;
+      for (const [q, correct] of Object.entries(d1_answers)) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        const fb = document.getElementById(`${q}_fb`);
+        if (fb) fb.classList.remove('hidden');
+
+        if (selected && selected.value === correct) {
+          score += 1;
+          if (fb) {
+            fb.className = "text-xs mt-2 font-medium text-emerald-700";
+            fb.innerHTML = `✅ Đúng! (${d1_exps[q] || 'Chính xác'}`;
+          }
+        } else {
+          if (fb) {
+            fb.className = "text-xs mt-2 font-medium text-rose-700";
+            fb.innerHTML = `❌ Chưa đúng. Đáp án đúng là <strong>${correct}</strong>. ${d1_exps[q] || ''}`;
+          }
+        }
+      }
+      document.getElementById('d1-score').textContent = `Kết quả: ${score}/${Object.keys(d1_answers).length} điểm`;
+    }
+
+    // 5. Chấm điểm Đúng/Sai (Dạng 2)
+    const d2_answers = {"d2_q1_a": "S", "d2_q1_b": "D", "d2_q1_c": "D", "d2_q1_d": "S"};
+
+    function gradeD2() {
+      let correctCount = 0;
+      for (const [sid, ans] of Object.entries(d2_answers)) {
+        const sel = document.querySelector(`input[name="${sid}"]:checked`);
+        if (sel && sel.value === ans) {
+          correctCount++;
+        }
+      }
+      const totalKeys = Object.keys(d2_answers).length;
+      let score = 0;
+      if (totalKeys === 4) {
+        if (correctCount === 1) score = 0.1;
+        else if (correctCount === 2) score = 0.25;
+        else if (correctCount === 3) score = 0.5;
+        else if (correctCount === 4) score = 1.0;
+      } else {
+        score = (correctCount / totalKeys).toFixed(2);
+      }
+      const fb = document.getElementById('d2_q1_fb');
+      if (fb) {
+        fb.classList.remove('hidden');
+        fb.className = "text-xs mt-2 font-medium text-emerald-800 bg-emerald-50 p-3 rounded-xl border border-emerald-200";
+        fb.innerHTML = `Bạn trả lời đúng <strong>${correctCount}/${totalKeys} ý</strong>. Điểm đạt được: <strong>${score} điểm</strong>.`;
+      }
+      document.getElementById('d2-score').textContent = `Điểm Phần 2: ${score} điểm`;
+    }
+
+    // 6. Tương tác Nối cột (Matching)
+    let selectedLeft = null;
+    let pairedCount = 0;
+    const totalPairs = 4;
+
+    document.querySelectorAll('.match-left').forEach(el => {
+      el.addEventListener('click', () => {
+        if (el.classList.contains('match-paired')) return;
+        document.querySelectorAll('.match-left').forEach(l => l.classList.remove('match-selected'));
+        el.classList.add('match-selected');
+        selectedLeft = el.getAttribute('data-id');
+      });
+    });
+
+    document.querySelectorAll('.match-right').forEach(el => {
+      el.addEventListener('click', () => {
+        if (el.classList.contains('match-paired') || !selectedLeft) return;
+        const rightId = el.getAttribute('data-id');
+        const leftEl = document.querySelector(`.match-left[data-id="${selectedLeft}"]`);
+        const fb = document.getElementById('match-feedback');
+
+        if (selectedLeft === rightId) {
+          // Ghép đúng
+          leftEl.classList.remove('match-selected');
+          leftEl.classList.add('match-paired');
+          leftEl.innerHTML += ' <i class="ph-bold ph-check text-white"></i>';
+          el.classList.add('match-paired');
+          el.innerHTML = '<i class="ph-bold ph-check text-white mr-1.5"></i> ' + el.innerHTML;
+          pairedCount++;
+          document.getElementById('match-score').textContent = `${pairedCount}/${totalPairs} Cặp`;
+          selectedLeft = null;
+
+          if (pairedCount === totalPairs) {
+            fb.classList.remove('hidden');
+            fb.className = "p-3 rounded-xl text-xs font-bold bg-emerald-100 text-emerald-900 border border-emerald-300";
+            fb.innerHTML = "🎉 Tuyệt vời! Bạn đã ghép nối chính xác 100% tất cả các cặp kiến thức!";
+          }
+        } else {
+          // Ghép sai
+          fb.classList.remove('hidden');
+          fb.className = "p-3 rounded-xl text-xs font-bold bg-rose-100 text-rose-900 border border-rose-300";
+          fb.innerHTML = "❌ Chưa chính xác, hãy đọc kĩ lại định nghĩa và thử lại nhé!";
+          setTimeout(() => fb.classList.add('hidden'), 2500);
+        }
+      });
+    });
+
+    // 7. Tương tác Điền khuyết (Fill in blanks)
+    function checkFillBlanks() {
+      const inputs = document.querySelectorAll('.blank-input');
+      let allCorrect = true;
+      inputs.forEach(inp => {
+        const userVal = inp.value.trim().toLowerCase();
+        const expected = inp.getAttribute('data-ans').trim().toLowerCase();
+        if (userVal === expected) {
+          inp.classList.remove('blank-wrong');
+          inp.classList.add('blank-correct');
+        } else {
+          inp.classList.remove('blank-correct');
+          inp.classList.add('blank-wrong');
+          allCorrect = false;
+        }
+      });
+      const fb = document.getElementById('fill-feedback');
+      fb.classList.remove('hidden');
+      if (allCorrect) {
+        fb.className = "text-xs font-bold text-emerald-700";
+        fb.textContent = "🎉 Hoan hô! Bạn đã điền chính xác tất cả các từ khóa!";
+      } else {
+        fb.className = "text-xs font-bold text-rose-600";
+        fb.textContent = "❌ Có từ chưa chính xác (ô viền đỏ). Bạn hãy xem gợi ý từ khóa nhé!";
+      }
+    }
+  </script>
+</body>
+</html>

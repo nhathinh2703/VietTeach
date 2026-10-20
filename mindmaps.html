@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VietTeach - Cổng Sơ Đồ Tư Duy Tin Học (GDPT 2018)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Phosphor Icons CDN -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <!-- Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .grade-btn.active {
+      background-color: #d97706 !important;
+      color: #ffffff !important;
+      border-color: #d97706 !important;
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+  <!-- TOP HEADER (VIETAPPS ECOSYSTEM) -->
+  <header style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%); border-bottom: 1px solid rgba(74, 222, 128, 0.25);" class="text-white shadow-xl sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3.5 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 bg-emerald-500/20 border border-emerald-400/30 rounded-2xl flex items-center justify-center text-2xl shadow-inner font-black group-hover:scale-105 transition">
+            👨‍🏫
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xl font-extrabold tracking-tight">VietTeach</span>
+              <span class="bg-amber-400 text-slate-950 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Mindmaps Hub</span>
+            </div>
+            <p class="text-xs text-emerald-200/80">Kho Sơ đồ Tư duy & Flashcards Trực quan hóa Môn Tin học</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- MAIN NAVIGATION: TÁCH BÀI GIẢNG VÀ SƠ ĐỒ TƯ DUY -->
+      <nav class="flex items-center gap-2 text-xs">
+        <a href="index.html" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium transition flex items-center gap-1.5" title="Chuyển sang bài giảng tương tác">
+          <i class="ph-bold ph-book-open"></i> Bài giảng tương tác
+        </a>
+        <a href="mindmaps.html" class="px-3.5 py-2 rounded-xl bg-amber-400 text-slate-950 font-bold shadow-sm transition flex items-center gap-1.5">
+          <i class="ph-bold ph-tree-structure"></i> Sơ đồ tư duy
+        </a>
+        <a href="https://github.com/nhathinh2703/VietTeach" target="_blank" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition flex items-center gap-1.5 font-medium">
+          <i class="ph-bold ph-github-logo"></i> GitHub
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section style="background: linear-gradient(180deg, #1c1917 0%, #0f172a 100%);" class="text-white py-10 px-4 border-b border-amber-900/40">
+    <div class="max-w-4xl mx-auto text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-300 text-xs font-semibold">
+        <i class="ph-bold ph-tree-structure"></i> 65 Sơ đồ tư duy Mermaid • 195+ Thẻ Flashcard • Ôn tập siêu nhanh
+      </div>
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">
+        Sơ Đồ Tư Duy <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-300">Tin Học 10 & 11</span>
+      </h1>
+      <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+        Trực quan hóa cấu trúc kiến thức theo chuẩn sơ đồ Mermaid dạng cây phân cấp, kèm thuật ngữ cốt lõi giúp học sinh ghi nhớ nhanh và nắm chắc bản chất bài học.
+      </p>
+
+      <!-- VIEW MODE SWITCHER -->
+      <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
+        <div class="inline-flex p-1 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md">
+          <a href="index.html" class="px-4 py-2 rounded-xl text-emerald-100 hover:text-white font-medium text-xs transition flex items-center gap-1.5">
+            <i class="ph-bold ph-chalkboard-teacher"></i> <span>Về Bài giảng tương tác</span>
+          </a>
+          <a href="mindmaps.html" class="px-4 py-2 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs shadow flex items-center gap-1.5">
+            <i class="ph-bold ph-tree-structure"></i> <span>Chế độ Sơ đồ tư duy</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
+
+    <!-- GRADE SELECTOR -->
+    <section id="danh-sach-mindmaps" class="space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+        <div>
+          <h2 class="text-xl md:text-2xl font-bold text-slate-900 flex items-center gap-2">
+            <i class="ph-bold ph-tree-structure text-amber-600"></i> Kho Sơ Đồ Tư Duy & Flashcards
+          </h2>
+          <p class="text-xs text-slate-500 mt-1">Chọn khối lớp để xem sơ đồ tư duy dạng cây Mermaid và các thẻ thuật ngữ ôn tập</p>
+        </div>
+
+        <!-- Grade filter buttons -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0">
+          <button onclick="filterGradeMM('all', this)" data-grade="all" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Tất cả</button>
+          <button onclick="filterGradeMM('10', this)" data-grade="10" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 10 (34 sơ đồ)</button>
+          <button onclick="filterGradeMM('11', this)" data-grade="11" class="grade-btn active px-3 py-1.5 rounded-xl border border-amber-600 bg-amber-600 text-white text-xs font-semibold hover:bg-amber-700 transition whitespace-nowrap">Lớp 11 (31 sơ đồ)</button>
+        </div>
+      </div>
+
+      <!-- CARDS GRID -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="mindmap-cards">
+
+        <!-- LỚP 10 - SƠ ĐỒ 1 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 1
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 1: Thông tin và xử lí thông tin
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-01.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 2 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 1
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 2: Vai trò của thiết bị thông minh và tin học đối với xã hội
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-02.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 3 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 1
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 3: Một số kiểu dữ liệu và dữ liệu văn bản
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-03.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 4 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 1
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 4: Hệ nhị phân và dữ liệu số nguyên
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-04.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 5 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 1
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 5: Dữ liệu lôgic
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-05.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 6 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 1
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 6: Dữ liệu âm thanh và hình ảnh
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-06.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 7 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 1
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 7: Thực hành sử dụng thiết bị số thông dụng
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-07.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 8 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 2
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 8: Mạng máy tính trong cuộc sống hiện đại
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-08.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 9 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 2
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 9: An toàn trên không gian mạng
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-09.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 10 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 2
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 10: Thực hành khai thác tài nguyên trên Internet
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-10.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 11 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 3
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 11: Ứng xử trên môi trường số. Nghĩa vụ tôn trọng bản quyền
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-11.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 12 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 4
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 12: Phần mềm thiết kế đồ hoạ
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-12.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 13 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 4
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 13: Bổ sung các đối tượng đồ hoạ
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-13.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 14 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 4
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 14: Làm việc với đối tượng đường và văn bản
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-14.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 15 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 4
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 15: Hoàn thiện hình ảnh đồ hoạ
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-15.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 16 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 5
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 16: Ngôn ngữ lập trình bậc cao và Python
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-16.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 17 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 5
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 17: Biến và lệnh gán
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-17.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 18 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 5
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 18: Các lệnh vào ra đơn giản
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-18.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 19 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 5
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 19: Câu lệnh rẽ nhánh if
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-19.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 20 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 5
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 20: Câu lệnh lặp for
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-20.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 21 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 5
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 21: Câu lệnh lặp while
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-21.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 22 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 5
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 22: Kiểu dữ liệu danh sách
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-22.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 23 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 5
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 23: Một số lệnh làm việc với dữ liệu danh sách
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-23.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 24 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 5
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 24: Xâu kí tự
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-24.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 25 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 5
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 25: Một số lệnh làm việc với xâu kí tự
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-25.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 26 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 5
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 26: Hàm trong Python
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-26.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 27 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 5
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 27: Tham số của hàm
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-27.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 28 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 5
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 28: Phạm vi của biến
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-28.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 29 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 5
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 29: Nhận biết lỗi chương trình
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-29.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 30 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 5
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 30: Kiểm thử và gỡ lỗi chương trình
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-30.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 31 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 5
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 31: Thực hành viết chương trình đơn giản
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-31.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 32 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 5
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 32: Ôn tập lập trình Python
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-32.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 33 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 6
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 33: Nghề thiết kế đồ hoạ máy tính
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-33.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 10 - SƠ ĐỒ 34 -->
+        <div class="mm-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-amber-100 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 6
+              </span>
+              <span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 leading-snug">
+              Bài 34: Nghề phát triển phần mềm
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy trực quan hóa cây kiến thức, bảng thuật ngữ cốt lõi và hướng dẫn tự học thông minh.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-10/bai-34.md" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 1 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 1
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 1: Hệ điều hành
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-01.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 2 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 1
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 2: Thực hành sử dụng hệ điều hành
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-02.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 3 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 1
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 3: Phần mềm nguồn mở và phần mềm chạy trên Internet
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-03.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 4 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 1
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 4: Bên trong máy tính
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-04.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 5 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 1
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 5: Kết nối máy tính với các thiết bị số
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-05.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 6 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 2
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 6: Lưu trữ và chia sẻ tệp tin trên Internet
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-06.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 7 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 2
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 7: Thực hành tìm kiếm thông tin trên Internet
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-07.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 8 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 2
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 8: Thực hành nâng cao sử dụng thư điện tử và mạng xã hội
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-08.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 9 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 3
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 9: Giao tiếp an toàn trên Internet
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-09.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 10 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 4
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 10: Lưu trữ dữ liệu và khai thác thông tin phục vụ quản lí
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-10.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 11 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 4
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 11: Cơ sở dữ liệu (Database)
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-11.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 12 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 4
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 12: Hệ quản trị cơ sở dữ liệu và hệ cơ sở dữ liệu
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-12.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 13 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 4
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 13: Cơ sở dữ liệu quan hệ
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-13.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 14 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 4
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 14: SQL - Ngôn ngữ truy vấn có cấu trúc
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-14.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 15 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 4
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 15: Bảo mật và an toàn hệ cơ sở dữ liệu
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-15.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 16 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 5
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 16: Công việc quản trị cơ sở dữ liệu
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-16.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 17 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 6
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 17: Quản trị cơ sở dữ liệu trên máy tính
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-17.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 18 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 6
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 18: Thực hành xác định cấu trúc bảng và các trường khoá
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-18.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 19 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 6
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 19: Thực hành tạo lập cơ sở dữ liệu và các bảng
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-19.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 20 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 6
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 20: Thực hành tạo lập các bảng có khoá ngoài
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-20.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 21 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 6
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 21: Thực hành cập nhật và truy xuất dữ liệu các bảng
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-21.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 22 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 6
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 22: Thực hành cập nhật bảng dữ liệu có tham chiếu
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-22.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 23 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 6
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 23: Thực hành truy xuất dữ liệu qua liên kết các bảng
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-23.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 24 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 6
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 24: Thực hành sao lưu dữ liệu
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-24.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 25 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 7
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 25: Phần mềm chỉnh sửa ảnh
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-25.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 26 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 7
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 26: Công cụ tinh chỉnh màu sắc và công cụ chọn
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-26.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 27 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 7
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 27: Công cụ vẽ và một số ứng dụng
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-27.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 28 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 7
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 28: Tạo ảnh động
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-28.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 29 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 7
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 29: Khám phá phần mềm làm phim
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-29.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 30 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 7
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 30: Biên tập phim
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-30.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+
+        <!-- LỚP 11 - SƠ ĐỒ 31 -->
+        <div class="mm-card grade-11 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-amber-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 11 • Chủ đề 7
+              </span>
+              <span class="text-emerald-700 text-xs font-bold flex items-center gap-1">
+                <i class="ph-bold ph-tree-structure"></i> Mermaid & Flashcards
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 31: Thực hành tạo phim hoạt hình
+            </h3>
+            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
+              Sơ đồ tư duy chuẩn bộ Kết nối tri thức - Định hướng Tin học ứng dụng. Tóm tắt thuật ngữ cốt lõi.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="mindmaps/lop-11/bai-31.md" class="flex-1 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold text-xs py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy
+            </a>
+          </div>
+        </div>
+    
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%); border-top: 1px solid rgba(74, 222, 128, 0.25);" class="text-white py-8 mt-12">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-100">
+      <div class="flex items-center gap-2">
+        <span class="text-base">👨‍🏫</span>
+        <span class="font-bold text-white">VietTeach</span> • Hệ sinh thái giải pháp giáo dục VietApps (VietMix, VietTest, VietBook, VietTeach).
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="hover:text-amber-300 transition">Bài giảng tương tác</a>
+        <span>•</span>
+        <a href="mindmaps.html" class="hover:text-amber-300 transition font-bold">Sơ đồ tư duy</a>
+        <span>•</span>
+        <span>GDPT 2018 Môn Tin học</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Filter Script -->
+  <script>
+    function filterGradeMM(grade, btnElement) {
+      document.querySelectorAll('.grade-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-amber-600', 'text-white', 'border-amber-600');
+        btn.classList.add('border-slate-300', 'text-slate-700');
+      });
+      const activeBtn = btnElement || (window.event && window.event.target) || document.querySelector(`.grade-btn[data-grade="${grade}"]`);
+      if (activeBtn) {
+        activeBtn.classList.add('active', 'bg-amber-600', 'text-white', 'border-amber-600');
+        activeBtn.classList.remove('border-slate-300', 'text-slate-700');
+      }
+
+      const cards = document.querySelectorAll('.mm-card');
+      cards.forEach(card => {
+        if (grade === 'all') {
+          card.style.display = 'flex';
+        } else if (card.classList.contains('grade-' + grade)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const g11Btn = document.querySelector('.grade-btn[data-grade="11"]');
+      filterGradeMM('11', g11Btn);
+    });
+  </script>
+</body>
+</html>
