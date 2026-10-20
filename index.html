@@ -15,22 +15,20 @@
   <style>
     body { font-family: 'Inter', sans-serif; }
     .grade-btn.active {
-      background-color: #2563eb !important;
+      background-color: #16a34a !important;
       color: #ffffff !important;
-      border-color: #2563eb !important;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+      border-color: #16a34a !important;
+      box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
     }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
   <!-- TOP HEADER -->
-  <header class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white shadow-xl sticky top-0 z-50">
+  <header style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%); border-bottom: 1px solid rgba(74, 222, 128, 0.25);">
     <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-3">
-        <div class="w-11 h-11 bg-blue-500 rounded-2xl flex items-center justify-center text-white text-2xl shadow-md font-black">
-          VT
-        </div>
+        <div class="w-11 h-11 bg-emerald-500/20 border border-emerald-400/30 rounded-2xl flex items-center justify-center text-2xl shadow-inner font-black">👨‍🏫</div>
         <div>
           <div class="flex items-center gap-2">
             <span class="text-xl font-extrabold tracking-tight">VietTeach</span>
@@ -56,7 +54,7 @@
   </header>
 
   <!-- HERO SECTION -->
-  <section class="bg-gradient-to-b from-blue-950 to-slate-900 text-white py-12 px-4 border-b border-slate-800">
+  <section style="background: linear-gradient(180deg, #052e16 0%, #0f172a 100%);">
     <div class="max-w-4xl mx-auto text-center space-y-4">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs font-semibold">
         <i class="ph-bold ph-sparkle"></i> Tương tác trực tuyến • Tự học dễ nhớ • Ôn tập theo chuẩn ma trận
@@ -104,15 +102,15 @@
         </div>
 
         <!-- Khối lớp buttons -->
-        <div class="flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0">
-          <button onclick="filterGrade('all')" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Tất cả</button>
-          <button onclick="filterGrade('6')" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 6</button>
-          <button onclick="filterGrade('7')" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 7</button>
-          <button onclick="filterGrade('8')" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 8</button>
-          <button onclick="filterGrade('9')" class="grade-btn active px-3 py-1.5 rounded-xl border border-blue-600 bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700 transition whitespace-nowrap">Lớp 9 (Có sẵn)</button>
-          <button onclick="filterGrade('10')" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 10</button>
-          <button onclick="filterGrade('11')" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 11</button>
-          <button onclick="filterGrade('12')" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 12</button>
+                <div class="flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0">
+          <button onclick="filterGrade('all', this)" data-grade="all" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Tất cả</button>
+          <button onclick="filterGrade('6', this)" data-grade="6" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 6</button>
+          <button onclick="filterGrade('7', this)" data-grade="7" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 7</button>
+          <button onclick="filterGrade('8', this)" data-grade="8" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 8</button>
+          <button onclick="filterGrade('9', this)" data-grade="9" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-slate-700 text-xs font-semibold hover:bg-emerald-50 hover:text-emerald-700 transition whitespace-nowrap">Lớp 9</button>
+          <button onclick="filterGrade('10', this)" data-grade="10" class="grade-btn active px-3 py-1.5 rounded-xl border border-emerald-600 bg-emerald-600 text-white text-xs font-semibold hover:bg-emerald-700 transition whitespace-nowrap">Lớp 10 (Sẵn sàng 7 bài)</button>
+          <button onclick="filterGrade('11', this)" data-grade="11" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 11</button>
+          <button onclick="filterGrade('12', this)" data-grade="12" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 12</button>
         </div>
       </div>
 
@@ -187,197 +185,245 @@
 
 
         <!-- LỚP 10 - BÀI 1 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-blue-400 transition-all duration-200 flex flex-col justify-between">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-emerald-400 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="bg-blue-100 text-blue-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+              <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
                 Lớp 10 • Chủ đề 1
               </span>
-              <span class="text-blue-600 text-xs font-bold flex items-center gap-1">
+              <span class="text-emerald-600 text-xs font-bold flex items-center gap-1">
                 <i class="ph-fill ph-check-circle"></i> Sẵn sàng
               </span>
             </div>
-            <h3 class="text-base font-bold text-slate-900 leading-snug">
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
               Bài 1: Thông tin và xử lí thông tin
             </h3>
             <p class="text-xs text-slate-600 mt-2 line-clamp-3">
-              Phân biệt thông tin và dữ liệu, bảng đơn vị đo lượng dữ liệu, công cụ quy đổi tương tác và sự ưu việt của thiết bị số.
+              Phân biệt thông tin và dữ liệu, bảng đơn vị đo lượng dữ liệu (Byte, KB, MB, GB...), công cụ tương tác nối cột và ưu việt thiết bị số.
             </p>
             <div class="flex flex-wrap gap-1.5 mt-3 text-[10px]">
               <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Tương tác 7 mục</span>
-              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Chấm điểm 3 dạng</span>
-              <span class="bg-blue-50 text-blue-700 font-bold px-2 py-0.5 rounded">KNTT</span>
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Điền khuyết & Nối cột</span>
+              <span class="bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded">KNTT</span>
             </div>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="lessons/lop-10/bai-01-thong-tin-va-xu-li-thong-tin.html" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+            <a href="lessons/lop-10/bai-01-thong-tin-va-xu-li-thong-tin.html" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-play"></i> Học ngay
             </a>
-            <a href="mindmaps/lop-10/bai-01.md" title="Xem sơ đồ tư duy" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold p-2.5 rounded-xl text-center transition">
+            <a href="mindmaps/lop-10/bai-01.md" title="Xem sơ đồ tư duy" class="bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold p-2.5 rounded-xl text-center transition">
               <i class="ph-bold ph-tree-structure text-sm"></i>
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 2 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-emerald-400 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+              <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
                 Lớp 10 • Chủ đề 1
               </span>
-              <span class="text-amber-600 text-xs font-semibold flex items-center gap-1">
-                <i class="ph-bold ph-tree-structure"></i> Sơ đồ sẵn sàng
+              <span class="text-emerald-600 text-xs font-bold flex items-center gap-1">
+                <i class="ph-fill ph-check-circle"></i> Sẵn sàng
               </span>
             </div>
-            <h3 class="text-base font-bold text-slate-900 leading-snug">
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
               Bài 2: Vai trò của thiết bị thông minh và tin học đối với xã hội
             </h3>
-            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
-              Nội dung chuẩn GDPT 2018 bộ Kết nối tri thức. Đã hoàn thiện sơ đồ tư duy Mermaid và Flashcard tóm tắt cốt lõi.
+            <p class="text-xs text-slate-600 mt-2 line-clamp-3">
+              Khái niệm thiết bị thông minh, các đặc trưng tự thích ứng và kết nối IoT, đóng góp của Tin học trong sản xuất, giáo dục và phòng tránh mặt trái.
             </p>
+            <div class="flex flex-wrap gap-1.5 mt-3 text-[10px]">
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Tương tác 7 mục</span>
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Điền khuyết & Nối cột</span>
+              <span class="bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded">KNTT</span>
+            </div>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-02.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
-              <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
+            <a href="lessons/lop-10/bai-02-vai-tro-cua-thiet-bi-thong-minh-va-tin-hoc-doi-voi-xa-hoi.html" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-play"></i> Học ngay
+            </a>
+            <a href="mindmaps/lop-10/bai-02.md" title="Xem sơ đồ tư duy" class="bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold p-2.5 rounded-xl text-center transition">
+              <i class="ph-bold ph-tree-structure text-sm"></i>
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 3 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-emerald-400 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+              <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
                 Lớp 10 • Chủ đề 1
               </span>
-              <span class="text-amber-600 text-xs font-semibold flex items-center gap-1">
-                <i class="ph-bold ph-tree-structure"></i> Sơ đồ sẵn sàng
+              <span class="text-emerald-600 text-xs font-bold flex items-center gap-1">
+                <i class="ph-fill ph-check-circle"></i> Sẵn sàng
               </span>
             </div>
-            <h3 class="text-base font-bold text-slate-900 leading-snug">
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
               Bài 3: Một số kiểu dữ liệu và dữ liệu văn bản
             </h3>
-            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
-              Nội dung chuẩn GDPT 2018 bộ Kết nối tri thức. Đã hoàn thiện sơ đồ tư duy Mermaid và Flashcard tóm tắt cốt lõi.
+            <p class="text-xs text-slate-600 mt-2 line-clamp-3">
+              Các kiểu dữ liệu cơ bản, nguyên lí mã hóa kí tự nhị phân, so sánh bảng mã ASCII và chuẩn quốc tế Unicode UTF-8, quy chuẩn gõ tiếng Việt.
             </p>
+            <div class="flex flex-wrap gap-1.5 mt-3 text-[10px]">
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Tương tác 7 mục</span>
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Điền khuyết & Nối cột</span>
+              <span class="bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded">KNTT</span>
+            </div>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-03.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
-              <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
+            <a href="lessons/lop-10/bai-03-mot-so-kieu-du-lieu-va-du-lieu-van-ban.html" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-play"></i> Học ngay
+            </a>
+            <a href="mindmaps/lop-10/bai-03.md" title="Xem sơ đồ tư duy" class="bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold p-2.5 rounded-xl text-center transition">
+              <i class="ph-bold ph-tree-structure text-sm"></i>
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 4 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-emerald-400 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+              <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
                 Lớp 10 • Chủ đề 1
               </span>
-              <span class="text-amber-600 text-xs font-semibold flex items-center gap-1">
-                <i class="ph-bold ph-tree-structure"></i> Sơ đồ sẵn sàng
+              <span class="text-emerald-600 text-xs font-bold flex items-center gap-1">
+                <i class="ph-fill ph-check-circle"></i> Sẵn sàng
               </span>
             </div>
-            <h3 class="text-base font-bold text-slate-900 leading-snug">
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
               Bài 4: Hệ nhị phân và dữ liệu số nguyên
             </h3>
-            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
-              Nội dung chuẩn GDPT 2018 bộ Kết nối tri thức. Đã hoàn thiện sơ đồ tư duy Mermaid và Flashcard tóm tắt cốt lõi.
+            <p class="text-xs text-slate-600 mt-2 line-clamp-3">
+              Hệ đếm cơ số 2 trong máy tính điện tử, thuật toán chuyển đổi giữa thập phân và nhị phân, biểu diễn số nguyên có dấu bằng mã bù 2.
             </p>
+            <div class="flex flex-wrap gap-1.5 mt-3 text-[10px]">
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Tương tác 7 mục</span>
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Điền khuyết & Nối cột</span>
+              <span class="bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded">KNTT</span>
+            </div>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-04.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
-              <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
+            <a href="lessons/lop-10/bai-04-he-nhi-phan-va-du-lieu-so-nguyen.html" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-play"></i> Học ngay
+            </a>
+            <a href="mindmaps/lop-10/bai-04.md" title="Xem sơ đồ tư duy" class="bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold p-2.5 rounded-xl text-center transition">
+              <i class="ph-bold ph-tree-structure text-sm"></i>
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 5 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-emerald-400 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+              <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
                 Lớp 10 • Chủ đề 1
               </span>
-              <span class="text-amber-600 text-xs font-semibold flex items-center gap-1">
-                <i class="ph-bold ph-tree-structure"></i> Sơ đồ sẵn sàng
+              <span class="text-emerald-600 text-xs font-bold flex items-center gap-1">
+                <i class="ph-fill ph-check-circle"></i> Sẵn sàng
               </span>
             </div>
-            <h3 class="text-base font-bold text-slate-900 leading-snug">
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
               Bài 5: Dữ liệu lôgic
             </h3>
-            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
-              Nội dung chuẩn GDPT 2018 bộ Kết nối tri thức. Đã hoàn thiện sơ đồ tư duy Mermaid và Flashcard tóm tắt cốt lõi.
+            <p class="text-xs text-slate-600 mt-2 line-clamp-3">
+              Giá trị chân lí Đúng (True / 1) và Sai (False / 0), bảng chân lí các phép toán cơ bản NOT, AND, OR, XOR và ứng dụng rẽ nhánh, tìm kiếm.
             </p>
+            <div class="flex flex-wrap gap-1.5 mt-3 text-[10px]">
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Tương tác 7 mục</span>
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Điền khuyết & Nối cột</span>
+              <span class="bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded">KNTT</span>
+            </div>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-05.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
-              <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
+            <a href="lessons/lop-10/bai-05-du-lieu-logic.html" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-play"></i> Học ngay
+            </a>
+            <a href="mindmaps/lop-10/bai-05.md" title="Xem sơ đồ tư duy" class="bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold p-2.5 rounded-xl text-center transition">
+              <i class="ph-bold ph-tree-structure text-sm"></i>
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 6 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-emerald-400 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+              <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
                 Lớp 10 • Chủ đề 1
               </span>
-              <span class="text-amber-600 text-xs font-semibold flex items-center gap-1">
-                <i class="ph-bold ph-tree-structure"></i> Sơ đồ sẵn sàng
+              <span class="text-emerald-600 text-xs font-bold flex items-center gap-1">
+                <i class="ph-fill ph-check-circle"></i> Sẵn sàng
               </span>
             </div>
-            <h3 class="text-base font-bold text-slate-900 leading-snug">
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
               Bài 6: Dữ liệu âm thanh và hình ảnh
             </h3>
-            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
-              Nội dung chuẩn GDPT 2018 bộ Kết nối tri thức. Đã hoàn thiện sơ đồ tư duy Mermaid và Flashcard tóm tắt cốt lõi.
+            <p class="text-xs text-slate-600 mt-2 line-clamp-3">
+              Số hóa hình ảnh (điểm ảnh Pixel, độ phân giải, hệ màu RGB 24-bit) và số hóa âm thanh (lấy mẫu, lượng tử hóa), định dạng nén JPEG, PNG, MP3.
             </p>
+            <div class="flex flex-wrap gap-1.5 mt-3 text-[10px]">
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Tương tác 7 mục</span>
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Điền khuyết & Nối cột</span>
+              <span class="bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded">KNTT</span>
+            </div>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-06.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
-              <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
+            <a href="lessons/lop-10/bai-06-du-lieu-am-thanh-va-hinh-anh.html" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-play"></i> Học ngay
+            </a>
+            <a href="mindmaps/lop-10/bai-06.md" title="Xem sơ đồ tư duy" class="bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold p-2.5 rounded-xl text-center transition">
+              <i class="ph-bold ph-tree-structure text-sm"></i>
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 7 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-emerald-400 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+              <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
                 Lớp 10 • Chủ đề 1
               </span>
-              <span class="text-amber-600 text-xs font-semibold flex items-center gap-1">
-                <i class="ph-bold ph-tree-structure"></i> Sơ đồ sẵn sàng
+              <span class="text-emerald-600 text-xs font-bold flex items-center gap-1">
+                <i class="ph-fill ph-check-circle"></i> Sẵn sàng
               </span>
             </div>
-            <h3 class="text-base font-bold text-slate-900 leading-snug">
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
               Bài 7: Thực hành sử dụng thiết bị số thông dụng
             </h3>
-            <p class="text-xs text-slate-500 mt-2 line-clamp-2">
-              Nội dung chuẩn GDPT 2018 bộ Kết nối tri thức. Đã hoàn thiện sơ đồ tư duy Mermaid và Flashcard tóm tắt cốt lõi.
+            <p class="text-xs text-slate-600 mt-2 line-clamp-3">
+              Thực hành kết nối cáp USB ở chế độ MTP, sao chép ảnh DCIM từ điện thoại sang máy tính, kết nối HDMI máy chiếu và quy tắc an toàn thiết bị.
             </p>
+            <div class="flex flex-wrap gap-1.5 mt-3 text-[10px]">
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Tương tác 7 mục</span>
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Điền khuyết & Nối cột</span>
+              <span class="bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded">KNTT</span>
+            </div>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-07.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
-              <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
+            <a href="lessons/lop-10/bai-07-thuc-hanh-su-dung-thiet-bi-so-thong-dung.html" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-play"></i> Học ngay
+            </a>
+            <a href="mindmaps/lop-10/bai-07.md" title="Xem sơ đồ tư duy" class="bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold p-2.5 rounded-xl text-center transition">
+              <i class="ph-bold ph-tree-structure text-sm"></i>
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 8 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -395,15 +441,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-08.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-08.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 9 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -421,15 +467,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-09.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-09.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 10 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -447,15 +493,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-10.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-10.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 11 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -473,15 +519,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-11.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-11.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 12 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -499,15 +545,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-12.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-12.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 13 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -525,15 +571,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-13.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-13.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 14 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -551,15 +597,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-14.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-14.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 15 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -577,15 +623,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-15.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-15.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 16 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -603,15 +649,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-16.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-16.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 17 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -629,15 +675,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-17.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-17.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 18 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -655,15 +701,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-18.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-18.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 19 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -681,15 +727,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-19.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-19.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 20 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -707,15 +753,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-20.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-20.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 21 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -733,15 +779,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-21.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-21.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 22 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -759,15 +805,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-22.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-22.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 23 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -785,15 +831,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-23.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-23.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 24 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -811,15 +857,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-24.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-24.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 25 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -837,15 +883,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-25.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-25.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 26 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -863,15 +909,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-26.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-26.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 27 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -889,15 +935,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-27.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-27.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 28 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -915,15 +961,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-28.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-28.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 29 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -941,15 +987,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-29.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-29.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 30 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -967,15 +1013,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-30.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-30.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 31 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -993,15 +1039,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-31.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-31.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 32 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -1019,15 +1065,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-32.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-32.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 33 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -1045,15 +1091,15 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-33.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-33.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
             </a>
           </div>
         </div>
-        
+    
 
         <!-- LỚP 10 - BÀI 34 -->
-        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between" style="display: none;">
+        <div class="lesson-card grade-10 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
               <span class="bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
@@ -1071,34 +1117,8 @@
             </p>
           </div>
           <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
-            <a href="mindmaps/lop-10/bai-34.md" class="flex-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
+            <a href="mindmaps/lop-10/bai-34.md" class="flex-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition flex items-center justify-center gap-1.5">
               <i class="ph-bold ph-tree-structure"></i> Xem sơ đồ tư duy
-            </a>
-          </div>
-        </div>
-        
-
-        <!-- LỚP 6-8 & 11-12 PLACEHOLDER -->
-        <div class="lesson-card grade-6 grade-7 grade-8 grade-11 grade-12 bg-slate-50/70 border border-dashed border-slate-300 rounded-2xl p-5 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="bg-slate-200 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
-                Khối 6, 7, 8, 11, 12
-              </span>
-              <span class="text-slate-500 text-xs font-semibold flex items-center gap-1">
-                <i class="ph-bold ph-folder-notch-open"></i> Khung thư mục sẵn sàng
-              </span>
-            </div>
-            <h3 class="text-base font-bold text-slate-700 leading-snug">
-              Cập nhật kế hoạch dạy học
-            </h3>
-            <p class="text-xs text-slate-500 mt-2">
-              Khung thư mục đã được phân loại theo khối lớp, sẵn sàng để bổ sung tài liệu SGK, SGV, SBT và phát hành các bài học tiếp theo.
-            </p>
-          </div>
-          <div class="pt-5 mt-4 border-t border-slate-200">
-            <a href="docs/HUONG_DAN_DONG_BOI.md" class="block w-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition">
-              Xem quy chuẩn biên soạn bài mới
             </a>
           </div>
         </div>
@@ -1174,15 +1194,19 @@
     </div>
   </footer>
 
-  <!-- Filter Script -->
+    <!-- Filter Script -->
   <script>
-    function filterGrade(grade) {
+    function filterGrade(grade, btnElement) {
       // Update active button
       document.querySelectorAll('.grade-btn').forEach(btn => {
-        btn.classList.remove('active', 'bg-blue-600', 'text-white', 'border-blue-600');
+        btn.classList.remove('active', 'bg-emerald-600', 'text-white', 'border-emerald-600');
         btn.classList.add('border-slate-300', 'text-slate-700');
       });
-      event.target.classList.add('active', 'bg-blue-600', 'text-white', 'border-blue-600');
+      const activeBtn = btnElement || (window.event && window.event.target) || document.querySelector(`.grade-btn[data-grade="${grade}"]`);
+      if (activeBtn) {
+        activeBtn.classList.add('active', 'bg-emerald-600', 'text-white', 'border-emerald-600');
+        activeBtn.classList.remove('border-slate-300', 'text-slate-700');
+      }
 
       // Filter cards
       const cards = document.querySelectorAll('.lesson-card');
@@ -1196,6 +1220,12 @@
         }
       });
     }
+
+    // Default filter to Grade 10 on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const g10Btn = document.querySelector('.grade-btn[data-grade="10"]');
+      filterGrade('10', g10Btn);
+    });
   </script>
 </body>
 </html>

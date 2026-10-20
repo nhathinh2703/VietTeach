@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Môn Tin học 10 - Bài 1: Thông tin và xử lí thông tin</title>
+  <title>Môn Tin học 10 - Bài 1: Thông tin và xử lí thông tin | VietTeach</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Phosphor Icons CDN -->
@@ -17,55 +17,112 @@
     body { font-family: 'Inter', sans-serif; }
     html { scroll-behavior: smooth; }
     .section-completed {
-      border-color: #2563eb !important;
-      background-color: #eff6ff !important;
+      border-color: #16a34a !important;
+      background-color: #f0fdf4 !important;
+    }
+    .match-selected {
+      border-color: #16a34a !important;
+      background-color: #dcfce7 !important;
+      color: #166534 !important;
+      box-shadow: 0 2px 8px rgba(22, 163, 74, 0.2);
+    }
+    .match-paired {
+      border-color: #22c55e !important;
+      background-color: #16a34a !important;
+      color: #ffffff !important;
+      cursor: default !important;
+      opacity: 0.9;
+    }
+    .blank-input {
+      border-bottom: 2px solid #16a34a;
+      background-color: #f0fdf4;
+      padding: 2px 8px;
+      font-weight: 700;
+      color: #166534;
+      border-radius: 4px;
+      outline: none;
+      text-align: center;
+      min-width: 110px;
+      display: inline-block;
+      margin: 0 4px;
+    }
+    .blank-input.blank-correct {
+      background-color: #dcfce7;
+      border-color: #16a34a;
+      color: #15803d;
+    }
+    .blank-input.blank-wrong {
+      background-color: #ffe4e6;
+      border-color: #e11d48;
+      color: #be123c;
     }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans leading-relaxed flex flex-col min-h-screen">
 
-  <!-- Header & Menu điều hướng -->
-  <header class="bg-gradient-to-r from-blue-900 via-indigo-800 to-sky-700 text-white shadow-lg sticky top-0 z-50">
-    <div class="max-w-5xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-2">
-      <div>
-        <div class="flex items-center gap-2">
-          <span class="bg-amber-400 text-slate-950 text-xs px-2.5 py-0.5 rounded-md uppercase tracking-wider font-extrabold shadow-sm">MÔN TIN HỌC 10</span>
-          <span class="bg-blue-950/70 text-blue-200 text-xs px-2.5 py-0.5 rounded-md uppercase tracking-wider font-semibold">Chủ đề 1 • KNTT</span>
-        </div>
-        <h1 class="text-lg md:text-xl font-bold mt-1 uppercase tracking-tight">BÀI 1: THÔNG TIN VÀ XỬ LÍ THÔNG TIN</h1>
+  <!-- TOP HEADER (ĐỒNG BỘ HỆ SINH THÁI VIETAPPS) -->
+  <header style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%); border-bottom: 1px solid rgba(74, 222, 128, 0.25);" class="text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+      
+      <!-- Brand & Title -->
+      <div class="flex items-center gap-3">
+        <a href="../../index.html" class="flex items-center gap-2 group" title="Về Cổng học tập VietTeach">
+          <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-xl shadow-inner group-hover:scale-105 transition">
+            👨‍🏫
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-lg font-black tracking-tight text-white group-hover:text-emerald-200 transition">VietTeach</span>
+              <span class="bg-emerald-400/20 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase border border-emerald-400/30">Lớp 10</span>
+            </div>
+            <p class="text-[11px] text-emerald-200/80">Chủ đề 1: Máy tính và xã hội tri thức • Tin học 10 (KNTT)</p>
+          </div>
+        </a>
       </div>
-      <!-- Thanh tiến độ học tập -->
-      <div class="flex items-center gap-3 bg-white/10 px-3.5 py-1.5 rounded-xl border border-white/20 text-xs">
-        <span class="font-medium text-slate-200">Tiến độ bài học:</span>
-        <div class="w-24 bg-white/30 rounded-full h-2.5 overflow-hidden">
-          <div id="progress-bar" class="bg-amber-400 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+
+      <!-- Center: Lesson Header & Navigation -->
+      <div class="text-center flex-1 max-w-md hidden lg:block">
+        <h1 class="text-sm font-bold text-white uppercase tracking-tight truncate">BÀI 1: Thông tin và xử lí thông tin</h1>
+        <div class="flex items-center justify-center gap-2 mt-1">
+          <div class="w-32 bg-white/20 rounded-full h-1.5 overflow-hidden">
+            <div id="progress-bar" class="bg-amber-400 h-1.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+          </div>
+          <span id="progress-text" class="text-[10px] font-bold text-amber-300">0%</span>
         </div>
-        <span id="progress-text" class="font-bold text-amber-300">0%</span>
+      </div>
+
+      <!-- Right: Action Buttons & Navigation -->
+      <div class="flex items-center gap-2">
+        <span class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 text-xs font-semibold text-white/40 cursor-not-allowed"><i class="ph-bold ph-arrow-left"></i> <span class="hidden sm:inline">Bài trước</span></span>
+        <a href="../../index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition flex items-center gap-1" title="Xem danh mục bài học">
+          <i class="ph-bold ph-squares-four"></i> <span class="hidden sm:inline">Mục lục</span>
+        </a>
+        <a href="bai-02-vai-tro-cua-thiet-bi-thong-minh-va-tin-hoc-doi-voi-xa-hoi.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold transition shadow-sm"><span class="hidden sm:inline">Bài tiếp</span> <i class="ph-bold ph-arrow-right"></i></a>
       </div>
     </div>
 
-    <!-- Thanh Menu 7 mục sư phạm -->
-    <nav class="bg-slate-950/85 backdrop-blur-md border-t border-white/10 overflow-x-auto">
+    <!-- Thanh Menu 7 mục sư phạm chuẩn GDPT 2018 -->
+    <nav class="bg-emerald-950/80 backdrop-blur-md border-t border-white/10 overflow-x-auto">
       <div class="max-w-5xl mx-auto px-4 flex items-center gap-1 py-1.5 text-xs whitespace-nowrap">
-        <a href="#sec-muctieu" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">1. Mục tiêu</a>
-        <a href="#sec-khoidong" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">2. Khởi động</a>
-        <a href="#sec-kienthuc" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">3. Khám phá kiến thức</a>
-        <a href="#sec-luyentap" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">4. Luyện tập</a>
-        <a href="#sec-vandung" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">5. Vận dụng</a>
-        <a href="#sec-tomtat" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">6. Tóm tắt cốt lõi</a>
-        <a href="#sec-danhgia" class="px-3 py-1.5 rounded-lg bg-amber-400/90 text-slate-950 font-bold hover:bg-amber-300 transition">7. Đánh giá 3 dạng</a>
+        <a href="#sec-muctieu" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">1. Mục tiêu</a>
+        <a href="#sec-khoidong" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">2. Khởi động</a>
+        <a href="#sec-kienthuc" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">3. Hình thành kiến thức</a>
+        <a href="#sec-luyentap" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">4. Luyện tập</a>
+        <a href="#sec-vandung" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">5. Vận dụng</a>
+        <a href="#sec-tomtat" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">6. Tóm tắt nội dung bài</a>
+        <a href="#sec-danhgia" class="px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 font-bold hover:bg-amber-300 transition">7. Bài tập</a>
       </div>
     </nav>
   </header>
 
-  <!-- NỘI DUNG CHÍNH -->
+  <!-- MAIN CONTENT CONTAINER -->
   <main class="max-w-5xl mx-auto px-4 mt-8 space-y-10 flex-grow w-full">
 
-    <!-- 1. MỤC TIÊU BÀI HỌC -->
+    <!-- 1. MỤC TIÊU -->
     <section id="sec-muctieu" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300">
       <div class="flex items-center justify-between mb-5 border-b pb-3">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xl">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xl">
             <i class="ph-bold ph-target"></i>
           </div>
           <div>
@@ -73,28 +130,33 @@
             <p class="text-xs text-slate-500">Chuẩn Chương trình GDPT 2018 môn Tin học 10</p>
           </div>
         </div>
-        <span class="status-badge hidden text-xs font-bold text-blue-700 bg-blue-100 px-3 py-1 rounded-full flex items-center gap-1">
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
           <i class="ph-bold ph-check"></i> Đã xem
         </span>
       </div>
 
       <div class="grid md:grid-cols-3 gap-4 text-xs md:text-sm mb-6">
-        <div class="p-4 rounded-xl bg-blue-50/70 border border-blue-100 space-y-2">
-          <h3 class="font-bold text-blue-900 flex items-center gap-1.5 text-sm">
+        <div class="p-4 rounded-xl bg-emerald-50/70 border border-emerald-100 space-y-2">
+          <h3 class="font-bold text-emerald-900 flex items-center gap-1.5 text-sm">
             <i class="ph-bold ph-book-open"></i> Kiến thức
           </h3>
           <ul class="list-disc list-inside space-y-1 text-slate-700">
-            <li>Phân biệt được rõ ràng giữa <strong>thông tin</strong> và <strong>dữ liệu</strong>.</li>
-            <li>Nêu được sự <strong>ưu việt</strong> của việc lưu trữ, xử lí và truyền thông tin bằng thiết bị số.</li>
+            
+          <li>Phân biệt được rõ ràng giữa <strong>thông tin</strong> và <strong>dữ liệu</strong>, mối quan hệ hữu cơ giữa chúng.</li>
+          <li>Nắm vững các <strong>đơn vị đo lượng dữ liệu</strong>: bit, Byte và các bội số (KB, MB, GB, TB...).</li>
+          <li>Hiểu được những <strong>ưu việt vượt trội</strong> của thiết bị số trong việc lưu trữ, xử lí, truyền tải thông tin và tự động hóa.</li>
+        
           </ul>
         </div>
-        <div class="p-4 rounded-xl bg-emerald-50/70 border border-emerald-100 space-y-2">
-          <h3 class="font-bold text-emerald-900 flex items-center gap-1.5 text-sm">
-            <i class="ph-bold ph-calculator"></i> Kĩ năng
+        <div class="p-4 rounded-xl bg-teal-50/70 border border-teal-100 space-y-2">
+          <h3 class="font-bold text-teal-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-wrench"></i> Kĩ năng
           </h3>
           <ul class="list-disc list-inside space-y-1 text-slate-700">
-            <li>Thành thạo quy đổi qua lại giữa các <strong>đơn vị lưu trữ dữ liệu</strong> (bit, Byte, KB, MB, GB, TB...).</li>
-            <li>Vận dụng ước tính dung lượng bộ nhớ cho các tệp đa phương tiện thực tế.</li>
+            
+          <li>Thực hiện thành thạo các phép <strong>quy đổi dung lượng</strong> qua lại giữa các đơn vị đo dữ liệu thông dụng.</li>
+          <li>Ước lượng được dung lượng lưu trữ cần thiết cho các tệp văn bản, hình ảnh, bài hát, video trong thực tế.</li>
+        
           </ul>
         </div>
         <div class="p-4 rounded-xl bg-amber-50/70 border border-amber-100 space-y-2">
@@ -102,20 +164,21 @@
             <i class="ph-bold ph-lightbulb"></i> Phẩm chất & Năng lực
           </h3>
           <ul class="list-disc list-inside space-y-1 text-slate-700">
-            <li>Nâng cao năng lực tự chủ, tự học trong thời đại số.</li>
-            <li>Ý thức rõ giá trị của dữ liệu số và trách nhiệm bảo vệ dữ liệu cá nhân.</li>
+            
+          <li>Hình thành năng lực tự chủ công nghệ, sử dụng thiết bị số một cách khoa học, hiệu quả và có ý thức bảo vệ an toàn dữ liệu.</li>
+        
           </ul>
         </div>
       </div>
 
       <div class="text-right border-t pt-4">
-        <button onclick="toggleSectionDone('sec-muctieu')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+        <button onclick="toggleSectionDone('sec-muctieu')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
           <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
         </button>
       </div>
     </section>
 
-    <!-- 2. KHỞI ĐỘNG BÀI HỌC -->
+    <!-- 2. KHỞI ĐỘNG -->
     <section id="sec-khoidong" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300">
       <div class="flex items-center justify-between mb-5 border-b pb-3">
         <div class="flex items-center gap-3">
@@ -123,230 +186,252 @@
             <i class="ph-bold ph-rocket-launch"></i>
           </div>
           <div>
-            <h2 class="text-lg md:text-xl font-bold text-slate-900">2. Khởi động: Đặt vấn đề tư duy</h2>
-            <p class="text-xs text-slate-500">Tình huống khám phá gợi mở (Theo SGV Tin học 10)</p>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">2. Khởi động</h2>
+            <p class="text-xs text-slate-500">Tình huống khám phá gợi mở đầu bài (Theo SGV Tin học 10)</p>
           </div>
         </div>
-        <span class="status-badge hidden text-xs font-bold text-blue-700 bg-blue-100 px-3 py-1 rounded-full flex items-center gap-1">
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
           <i class="ph-bold ph-check"></i> Đã xem
         </span>
       </div>
 
-      <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-5 mb-6 text-sm text-slate-700 space-y-3">
-        <p class="font-semibold text-amber-950">
-          🤔 <strong>Câu hỏi gợi mở:</strong> Năm 1964, Viện Hàn lâm Pháp định nghĩa: <em>"Tin học là khoa học nghiên cứu các phương pháp và quá trình xử lí thông tin tự động bằng các phương tiện kĩ thuật, chủ yếu bằng máy tính"</em>.
-        </p>
-        <p>
-          Tuy nhiên, khi tìm hiểu sâu hơn, chúng ta biết rằng máy tính chỉ có thể lưu trữ và tính toán các dãy bit <code class="bg-amber-200 text-slate-900 px-1.5 py-0.5 rounded font-mono font-bold">0</code> và <code class="bg-amber-200 text-slate-900 px-1.5 py-0.5 rounded font-mono font-bold">1</code> (dữ liệu). Vậy:
-        </p>
-        <blockquote class="border-l-4 border-amber-500 pl-3 italic text-amber-900 font-medium">
-          "Máy tính thực chất xử lí thông tin hay xử lí dữ liệu? Có thể đồng nhất hoàn toàn dữ liệu với thông tin được không?"
-        </blockquote>
+      <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-5 mb-6 text-xs md:text-sm text-slate-700 space-y-3">
+        
+          <p><strong>Tình huống mở đầu:</strong> Mỗi buổi sáng, trước khi ra khỏi nhà, bạn An thường nghe loa phát thanh dự báo thời tiết: <em>"Hôm nay trời có mưa rào rải rác, nhiệt độ từ 22°C đến 28°C"</em>. Nghe vậy, An liền mang theo áo mưa trong cặp sách.</p>
+          <p>Cùng lúc đó, trên con đường đến trường, An nhìn thấy biển báo giao thông hình tròn viền đỏ, nền trắng, bên trong có hình mũi tên rẽ trái bị gạch chéo.</p>
+        
       </div>
 
-      <!-- Tương tác chọn ý kiến -->
       <div class="space-y-3 text-xs md:text-sm">
-        <p class="font-bold text-slate-800">Em hãy chọn nhận định mà em cho là đúng nhất:</p>
-        <div class="grid sm:grid-cols-2 gap-3">
-          <button onclick="checkKhoidong(1)" id="kd-btn-1" class="text-left p-3.5 rounded-xl border border-slate-300 hover:border-blue-500 hover:bg-blue-50/50 transition">
-            <strong>A.</strong> Thông tin và dữ liệu là một, máy tính xử lí thông tin cũng chính là xử lí dữ liệu.
+        <p class="font-bold text-slate-800">🤔 Câu hỏi gợi mở suy nghĩ:</p>
+        <p class="text-slate-700 italic bg-slate-50 p-3 rounded-xl border border-slate-200">Theo em, đâu là "dữ liệu" mà An đã tiếp nhận, và đâu là "thông tin" mà An đã rút ra để hành động?</p>
+        
+        <div class="pt-2">
+          <button onclick="toggleHint('kd-hint')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+            <i class="ph-bold ph-lightbulb"></i> Bấm để xem Gợi ý suy luận
           </button>
-          <button onclick="checkKhoidong(2)" id="kd-btn-2" class="text-left p-3.5 rounded-xl border border-slate-300 hover:border-blue-500 hover:bg-blue-50/50 transition">
-            <strong>B.</strong> Máy tính chỉ xử lí dữ liệu, nhưng kết quả đem lại thông tin cho con người nên ta nói máy tính xử lí thông tin.
-          </button>
+          <div id="kd-hint" class="hidden mt-3 p-4 rounded-xl bg-emerald-50 text-emerald-950 border border-emerald-200 text-xs md:text-sm space-y-2">
+            
+          <p><strong>Gợi ý suy luận:</strong></p>
+          <ul class="list-disc list-inside space-y-1">
+            <li><strong>Dữ liệu:</strong> Là âm thanh phát ra từ loa phát thanh (sóng âm) và hình ảnh biển báo giao thông (hình vẽ, màu sắc) đập vào mắt An.</li>
+            <li><strong>Thông tin:</strong> Là ý nghĩa An hiểu được: "Hôm nay trời sẽ mưa nên phải mang áo mưa" và "Con đường này cấm rẽ trái nên mình phải đi thẳng hoặc rẽ phải".</li>
+            <li><em>Kết luận:</em> Dữ liệu là hình thức truyền tải, còn thông tin là ý nghĩa hiểu biết mà con người thu nhận được từ dữ liệu.</li>
+          </ul>
+        
+          </div>
         </div>
-        <div id="kd-feedback" class="hidden p-4 rounded-xl text-xs md:text-sm transition-all duration-300"></div>
       </div>
 
       <div class="text-right border-t pt-4 mt-6">
-        <button onclick="toggleSectionDone('sec-khoidong')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+        <button onclick="toggleSectionDone('sec-khoidong')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
           <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
         </button>
       </div>
     </section>
 
-    <!-- 3. KHÁM PHÁ KIẾN THỨC -->
+    <!-- 3. HÌNH THÀNH KIẾN THỨC -->
     <section id="sec-kienthuc" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-8 transition-all duration-300">
       <div class="flex items-center justify-between border-b pb-3">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-xl">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xl">
             <i class="ph-bold ph-compass"></i>
           </div>
           <div>
-            <h2 class="text-lg md:text-xl font-bold text-slate-900">3. Khám phá kiến thức trọng tâm</h2>
-            <p class="text-xs text-slate-500">Nội dung cốt lõi bám sát SGK và định hướng sư phạm SGV</p>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">3. Hình thành kiến thức</h2>
+            <p class="text-xs text-slate-500">Khám phá nội dung bài học kết hợp tương tác thực hành</p>
           </div>
         </div>
-        <span class="status-badge hidden text-xs font-bold text-blue-700 bg-blue-100 px-3 py-1 rounded-full flex items-center gap-1">
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
           <i class="ph-bold ph-check"></i> Đã xem
         </span>
       </div>
 
-      <!-- MỤC 1: THÔNG TIN VÀ DỮ LIỆU -->
-      <div class="space-y-4">
-        <div class="flex items-center gap-2">
-          <span class="w-7 h-7 bg-blue-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">3.1</span>
-          <h3 class="text-base md:text-lg font-bold text-slate-900">Thông tin và dữ liệu</h3>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-4 text-xs md:text-sm">
-          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-            <h4 class="font-bold text-blue-900 flex items-center gap-1">
-              <i class="ph-bold ph-cpu"></i> a) Quá trình xử lí thông tin trong máy tính
-            </h4>
-            <p class="text-slate-700">Máy tính là công cụ hỗ trợ con người xử lí thông tin qua 3 bước:</p>
-            <ol class="list-decimal list-inside space-y-1.5 text-slate-700 font-medium">
-              <li><strong class="text-blue-700">Tiếp nhận dữ liệu:</strong> Nhập từ bàn phím, camera, cảm biến, máy quét...</li>
-              <li><strong class="text-blue-700">Xử lí dữ liệu:</strong> Biến đổi dữ liệu trong bộ nhớ (CPU) để tạo ra dữ liệu mới.</li>
-              <li><strong class="text-blue-700">Đưa ra kết quả:</strong> Hiển thị màn hình, phát âm thanh, in ra giấy hoặc lưu lên vật mang tin.</li>
-            </ol>
-          </div>
-
-          <div class="p-4 rounded-xl bg-indigo-50/70 border border-indigo-100 space-y-2">
-            <h4 class="font-bold text-indigo-900 flex items-center gap-1">
-              <i class="ph-bold ph-arrows-split"></i> b) Phân biệt dữ liệu và thông tin
-            </h4>
-            <p class="text-slate-700"><strong>Thông tin</strong> là ý nghĩa mang lại hiểu biết cho con người. <strong>Dữ liệu</strong> là các yếu tố thể hiện thông tin được đưa vào máy tính.</p>
-            <div class="bg-white p-3 rounded-lg border border-indigo-200 text-xs space-y-1 text-slate-700">
-              <p>• <strong>Cùng 1 thông tin</strong> có thể thể hiện qua nhiều dạng dữ liệu: chữ viết trong vở, tệp Word bài soạn, video ghi hình tiết dạy.</p>
-              <p>• <strong>Cùng 1 dữ liệu "39°C"</strong> có thể mang thông tin: người bệnh bị sốt cao (trong bệnh án), hoặc một ngày hè oi bức (trong bản tin thời tiết).</p>
-              <p>• <strong>Tính toàn vẹn:</strong> Thông tin chỉ đúng đắn khi có đầy đủ dữ liệu. Thiếu dữ liệu làm thông tin sai lệch.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- MỤC 2: ĐƠN VỊ LƯU TRỮ DỮ LIỆU -->
-      <div class="space-y-4 pt-4 border-t border-slate-100">
-        <div class="flex items-center gap-2">
-          <span class="w-7 h-7 bg-emerald-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">3.2</span>
-          <h3 class="text-base md:text-lg font-bold text-slate-900">Đơn vị đo lượng lưu trữ dữ liệu</h3>
-        </div>
-
-        <p class="text-xs md:text-sm text-slate-700">
-          Đơn vị đo lượng dữ liệu nhỏ nhất là <strong>bit</strong> (0 hoặc 1). Đơn vị cơ bản trong máy tính là <strong>Byte (B) = 8 bit</strong>. Các bội số đo lường hơn kém nhau <strong>2<sup>10</sup> = 1024 lần</strong>:
-        </p>
-
-        <!-- Bảng đơn vị đo -->
-        <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs md:text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200">
-            <thead class="bg-slate-100 text-slate-700 font-bold uppercase text-[11px]">
-              <tr>
-                <th class="p-3 border-b">Đơn vị</th>
-                <th class="p-3 border-b">Kí hiệu</th>
-                <th class="p-3 border-b">Độ lớn quy đổi</th>
-                <th class="p-3 border-b">Ví dụ thực tế tương đương</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100 text-slate-600">
-              <tr>
-                <td class="p-3 font-semibold text-slate-800">Byte</td>
-                <td class="p-3 font-mono font-bold text-blue-600">B</td>
-                <td class="p-3">8 bit</td>
-                <td class="p-3">Lưu trữ khoảng 1 kí tự chữ cái tiếng Anh</td>
-              </tr>
-              <tr class="bg-slate-50/50">
-                <td class="p-3 font-semibold text-slate-800">Kilobyte</td>
-                <td class="p-3 font-mono font-bold text-blue-600">KB</td>
-                <td class="p-3">1024 B (2<sup>10</sup> B)</td>
-                <td class="p-3">Một trang văn bản thô (~2 KB)</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-semibold text-slate-800">Megabyte</td>
-                <td class="p-3 font-mono font-bold text-blue-600">MB</td>
-                <td class="p-3">1024 KB (2<sup>20</sup> B)</td>
-                <td class="p-3">Một bài hát MP3 (~4-5 MB), ảnh chụp smartphone (~3-10 MB)</td>
-              </tr>
-              <tr class="bg-slate-50/50">
-                <td class="p-3 font-semibold text-slate-800">Gigabyte</td>
-                <td class="p-3 font-mono font-bold text-blue-600">GB</td>
-                <td class="p-3">1024 MB (2<sup>30</sup> B)</td>
-                <td class="p-3">Một bộ phim chuẩn HD (~2-4 GB), RAM máy tính phổ thông (8-16 GB)</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-semibold text-slate-800">Terabyte</td>
-                <td class="p-3 font-mono font-bold text-blue-600">TB</td>
-                <td class="p-3">1024 GB (2<sup>40</sup> B)</td>
-                <td class="p-3">Dung lượng ổ cứng máy tính, chứa được cả thư viện sách lớn</td>
-              </tr>
-              <tr class="bg-slate-50/50">
-                <td class="p-3 font-semibold text-slate-800">Petabyte, Exabyte...</td>
-                <td class="p-3 font-mono font-bold text-blue-600">PB, EB, ZB, YB</td>
-                <td class="p-3">Hơn kém nhau 1024 lần</td>
-                <td class="p-3">Kho dữ liệu lớn của Google, Facebook, trung tâm siêu dữ liệu</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- CÔNG CỤ TƯƠNG TÁC QUY ĐỔI ĐƠN VỊ -->
-        <div class="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-2xl p-5 space-y-3">
+      <!-- CÁC TIỂU MỤC KIẾN THỨC -->
+      
+        <div class="space-y-4 ">
           <div class="flex items-center gap-2">
-            <i class="ph-bold ph-calculator text-emerald-700 text-lg"></i>
-            <h4 class="font-bold text-emerald-950 text-sm">Công cụ tương tác: Chuyển đổi đơn vị lưu trữ dữ liệu</h4>
+            <span class="w-7 h-7 bg-emerald-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">3.1</span>
+            <h3 class="text-base md:text-lg font-bold text-slate-900">Thông tin và dữ liệu</h3>
           </div>
-          <p class="text-xs text-slate-600">Học sinh nhập một con số để xem hệ thống tự động quy đổi ra các cấp độ đơn vị theo chuẩn tin học:</p>
-          <div class="flex flex-wrap items-center gap-3">
-            <input type="number" id="convert-input" value="1" min="0" step="any" oninput="convertUnits()" class="w-32 px-3 py-2 border border-slate-300 rounded-xl text-sm font-bold text-slate-800 focus:outline-blue-500">
-            <select id="convert-unit" onchange="convertUnits()" class="px-3 py-2 border border-slate-300 rounded-xl text-sm font-semibold text-slate-700 bg-white">
-              <option value="B">Byte (B)</option>
-              <option value="KB">Kilobyte (KB)</option>
-              <option value="MB" selected>Megabyte (MB)</option>
-              <option value="GB">Gigabyte (GB)</option>
-              <option value="TB">Terabyte (TB)</option>
-            </select>
-            <span class="text-xs font-bold text-slate-500">=</span>
-            <div id="convert-result" class="flex-1 bg-white px-4 py-2 rounded-xl border border-emerald-200 text-xs font-medium text-slate-800 shadow-inner flex flex-wrap gap-x-4 gap-y-1">
-              <!-- Render tự động qua JS -->
+          
+            <div class="grid md:grid-cols-2 gap-4 text-xs md:text-sm">
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                <h4 class="font-bold text-slate-900 flex items-center gap-1.5 text-emerald-700">
+                  <i class="ph-bold ph-database"></i> Dữ liệu (Data)
+                </h4>
+                <p class="text-slate-600">Là các con số, văn bản, hình ảnh, âm thanh... được đưa vào máy tính để lưu trữ và xử lí. Dữ liệu là hình thức thể hiện của thông tin trên vật mang tin.</p>
+                <div class="p-2 bg-white rounded-lg border text-slate-500 italic text-xs">
+                  Ví dụ: Tệp ảnh scan, file ghi âm giọng nói, bảng điểm số 9.5, 8.0...
+                </div>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                <h4 class="font-bold text-slate-900 flex items-center gap-1.5 text-blue-700">
+                  <i class="ph-bold ph-lightbulb"></i> Thông tin (Information)
+                </h4>
+                <p class="text-slate-600">Là ý nghĩa, hiểu biết của con người sau khi tiếp nhận và xử lí dữ liệu. Thông tin giúp con người đưa ra các quyết định hành động đúng đắn.</p>
+                <div class="p-2 bg-white rounded-lg border text-slate-500 italic text-xs">
+                  Ví dụ: Biết bạn đạt danh hiệu Học sinh xuất sắc sau khi xem bảng điểm.
+                </div>
+              </div>
             </div>
+
+            <!-- Sơ đồ quá trình xử lí thông tin -->
+            <div class="bg-emerald-50/60 p-4 rounded-xl border border-emerald-200 text-xs md:text-sm space-y-2">
+              <h4 class="font-bold text-emerald-950 flex items-center gap-1.5">
+                <i class="ph-bold ph-arrows-clockwise"></i> Chu trình xử lí thông tin trong máy tính:
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-2 text-center pt-1">
+                <div class="bg-white p-2.5 rounded-lg border border-emerald-300 font-medium">
+                  <div class="text-emerald-700 font-bold mb-0.5">1. Thu nhận dữ liệu</div>
+                  <span class="text-slate-500 text-[11px]">Bàn phím, chuột, camera, cảm biến</span>
+                </div>
+                <div class="bg-white p-2.5 rounded-lg border border-emerald-300 font-medium">
+                  <div class="text-emerald-700 font-bold mb-0.5">2. Xử lí dữ liệu</div>
+                  <span class="text-slate-500 text-[11px]">CPU biến đổi, tính toán, so sánh</span>
+                </div>
+                <div class="bg-white p-2.5 rounded-lg border border-emerald-300 font-medium">
+                  <div class="text-emerald-700 font-bold mb-0.5">3. Xuất kết quả</div>
+                  <span class="text-slate-500 text-[11px]">Màn hình, máy in, loa, ổ đĩa lưu trữ</span>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+        
+
+        <div class="space-y-4 pt-6 border-t border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 bg-emerald-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">3.2</span>
+            <h3 class="text-base md:text-lg font-bold text-slate-900">Các đơn vị đo lượng dữ liệu</h3>
+          </div>
+          
+            <div class="space-y-3 text-xs md:text-sm text-slate-700">
+              <p>Trong máy tính, đơn vị nhỏ nhất để đo lượng dữ liệu là <strong>bit</strong> (chỉ nhận giá trị 0 hoặc 1). Đơn vị cơ bản thông dụng là <strong>Byte</strong> (1 Byte = 8 bit).</p>
+              
+              <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse border border-slate-200 bg-white rounded-xl text-xs">
+                  <thead>
+                    <tr class="bg-slate-100 text-slate-700 font-bold">
+                      <th class="p-2.5 border border-slate-200">Đơn vị</th>
+                      <th class="p-2.5 border border-slate-200">Kí hiệu</th>
+                      <th class="p-2.5 border border-slate-200">Giá trị quy đổi</th>
+                      <th class="p-2.5 border border-slate-200">Quy đổi xấp xỉ</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="p-2 border border-slate-200 font-bold">Kilobyte</td><td class="p-2 border border-slate-200">KB</td><td class="p-2 border border-slate-200">2<sup>10</sup> Byte = 1024 Byte</td><td class="p-2 border border-slate-200">~ 1 nghìn Byte</td></tr>
+                    <tr class="bg-slate-50"><td class="p-2 border border-slate-200 font-bold">Megabyte</td><td class="p-2 border border-slate-200">MB</td><td class="p-2 border border-slate-200">2<sup>10</sup> KB = 1024 KB</td><td class="p-2 border border-slate-200">~ 1 triệu Byte</td></tr>
+                    <tr><td class="p-2 border border-slate-200 font-bold">Gigabyte</td><td class="p-2 border border-slate-200">GB</td><td class="p-2 border border-slate-200">2<sup>10</sup> MB = 1024 MB</td><td class="p-2 border border-slate-200">~ 1 tỉ Byte</td></tr>
+                    <tr class="bg-slate-50"><td class="p-2 border border-slate-200 font-bold">Terabyte</td><td class="p-2 border border-slate-200">TB</td><td class="p-2 border border-slate-200">2<sup>10</sup> GB = 1024 GB</td><td class="p-2 border border-slate-200">~ 1 nghìn tỉ Byte</td></tr>
+                    <tr><td class="p-2 border border-slate-200 font-bold">Petabyte</td><td class="p-2 border border-slate-200">PB</td><td class="p-2 border border-slate-200">2<sup>10</sup> TB = 1024 TB</td><td class="p-2 border border-slate-200">~ 1 triệu tỉ Byte</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+        </div>
+        
+
+        <div class="space-y-4 pt-6 border-t border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 bg-emerald-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">3.3</span>
+            <h3 class="text-base md:text-lg font-bold text-slate-900">Thiết bị số và những ưu việt vượt trội</h3>
+          </div>
+          
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs md:text-sm">
+              <div class="p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/50 space-y-1.5">
+                <div class="font-bold text-emerald-900 flex items-center gap-1.5">
+                  <i class="ph-bold ph-hard-drives text-emerald-600"></i> Lưu trữ khổng lồ
+                </div>
+                <p class="text-slate-600 text-xs">Một thẻ nhớ nhỏ bằng móng tay có thể chứa cả kho thư viện sách hoặc hàng vạn bài hát chất lượng cao.</p>
+              </div>
+              <div class="p-3.5 rounded-xl border border-blue-200 bg-blue-50/50 space-y-1.5">
+                <div class="font-bold text-blue-900 flex items-center gap-1.5">
+                  <i class="ph-bold ph-cpu text-blue-600"></i> Xử lí siêu tốc
+                </div>
+                <p class="text-slate-600 text-xs">Thực hiện hàng tỉ phép tính mỗi giây với độ chuẩn xác tuyệt đối, hoạt động bền bỉ không mệt mỏi.</p>
+              </div>
+              <div class="p-3.5 rounded-xl border border-purple-200 bg-purple-50/50 space-y-1.5">
+                <div class="font-bold text-purple-900 flex items-center gap-1.5">
+                  <i class="ph-bold ph-globe text-purple-600"></i> Truyền tải tức thời
+                </div>
+                <p class="text-slate-600 text-xs">Mạng Internet và cáp quang giúp truyền dữ liệu vòng quanh Trái Đất chỉ trong chớp mắt (tính bằng mili giây).</p>
+              </div>
+              <div class="p-3.5 rounded-xl border border-amber-200 bg-amber-50/50 space-y-1.5">
+                <div class="font-bold text-amber-900 flex items-center gap-1.5">
+                  <i class="ph-bold ph-robot text-amber-600"></i> Tự động hóa cao
+                </div>
+                <p class="text-slate-600 text-xs">Tự động thực hiện các chu trình công việc phức tạp theo chương trình cài sẵn mà không cần con người can thiệp liên tục.</p>
+              </div>
+            </div>
+            
+        </div>
+        
+
+      <!-- HOẠT ĐỘNG TƯƠNG TÁC ĐIỀN KHUYẾT (NẾU CÓ) -->
+      
+        <!-- TƯƠNG TÁC ĐIỀN KHUYẾT NỘI DUNG -->
+        <div class="bg-gradient-to-r from-amber-50/70 to-orange-50/70 border border-amber-200 rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i class="ph-bold ph-textbox text-amber-700 text-lg"></i>
+              <h4 class="font-bold text-amber-950 text-sm">Hoạt động tương tác: Điền từ vào chỗ trống</h4>
+            </div>
+            <button onclick="checkFillBlanks()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold px-3.5 py-1.5 rounded-xl transition shadow-sm">
+              Kiểm tra điền từ
+            </button>
+          </div>
+          <p class="text-xs text-slate-600">Gõ từ khóa chính xác vào các ô trống bên dưới, sau đó bấm "Kiểm tra điền từ".</p>
+          <div class="bg-white p-4 rounded-xl border border-amber-200/80 text-xs md:text-sm leading-loose text-slate-800 space-y-3">
+            
+          Trong tin học, <input type="text" class="blank-input" data-ans="thông tin"> là ý nghĩa mang lại hiểu biết cho con người, 
+          còn <input type="text" class="blank-input" data-ans="dữ liệu"> là các yếu tố được đưa vào máy tính để lưu trữ và biến đổi.
+          Đơn vị nhỏ nhất để đo lượng dữ liệu trong máy tính là <input type="text" class="blank-input" data-ans="bit">. 
+          Một <input type="text" class="blank-input" data-ans="Byte"> bằng 8 bit. 
+          Cứ 1 Kilobyte (KB) sẽ bằng đúng <input type="text" class="blank-input" data-ans="1024"> Byte.
+        
+          </div>
+          <div class="flex items-center justify-between pt-1">
+            <div id="fill-feedback" class="hidden text-xs font-bold"></div>
+            <button onclick="toggleHint('fb-hint-box')" class="text-amber-700 hover:text-amber-900 font-bold text-xs flex items-center gap-1 ml-auto">
+              <i class="ph-bold ph-lightbulb"></i> Gợi ý từ khóa
+            </button>
+          </div>
+          <div id="fb-hint-box" class="hidden bg-white/90 p-3 rounded-xl border border-amber-200 text-xs text-slate-600">
+            Từ khóa gợi ý: <span class="font-bold text-amber-800">thông tin, dữ liệu, bit, 1024, Byte</span>
           </div>
         </div>
-      </div>
+        
 
-      <!-- MỤC 3: ƯU VIỆT CỦA THIẾT BỊ SỐ -->
-      <div class="space-y-4 pt-4 border-t border-slate-100">
-        <div class="flex items-center gap-2">
-          <span class="w-7 h-7 bg-amber-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">3.3</span>
-          <h3 class="text-base md:text-lg font-bold text-slate-900">Sự ưu việt của việc lưu trữ, xử lí và truyền thông tin bằng thiết bị số</h3>
+      <!-- HOẠT ĐỘNG TƯƠNG TÁC NỐI CỘT (NẾU CÓ) -->
+      
+        <!-- TƯƠNG TÁC NỐI CỘT NỘI DUNG -->
+        <div class="bg-gradient-to-r from-emerald-50/70 to-teal-50/70 border border-emerald-200 rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i class="ph-bold ph-shuffle text-emerald-700 text-lg"></i>
+              <h4 class="font-bold text-emerald-950 text-sm">Hoạt động tương tác: Ghép nối Thuật ngữ và Khái niệm tương ứng</h4>
+            </div>
+            <span id="match-score" class="text-xs font-bold text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">0/5 Cặp</span>
+          </div>
+          <p class="text-xs text-slate-600">Bấm chọn một ô ở Cột A, sau đó bấm vào ô tương ứng ở Cột B để tạo thành cặp ghép chính xác.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-2.5" id="match-col-a">
+              <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Cột A: Thuật ngữ cốt lõi</div>
+              <div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="p1">1. Dữ liệu (Data) <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="p2">2. Thông tin (Information) <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="p3">3. Bit (Binary digit) <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="p4">4. Byte <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="p5">5. Thiết bị số <i class="ph-bold ph-hand-pointing text-slate-400"></i></div>
+            </div>
+            <div class="space-y-2.5" id="match-col-b">
+              <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Cột B: Bản chất ý nghĩa</div>
+              <div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="p3">Đơn vị nhỏ nhất đo lượng dữ liệu, chỉ nhận 0 hoặc 1 <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="p1">Các chữ viết, con số, hình ảnh... được lưu trong máy <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="p5">Công cụ xử lí, lưu trữ và truyền thông tin tự động <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="p2">Ý nghĩa, sự hiểu biết mà con người thu nhận được <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="p4">Đơn vị đo lượng dữ liệu cơ bản, gồm 8 bit <i class="ph-bold ph-arrow-right text-slate-400"></i></div>
+            </div>
+          </div>
+          <div id="match-feedback" class="hidden p-3 rounded-xl text-xs font-bold"></div>
         </div>
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
-          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-1.5 hover:border-blue-400 transition">
-            <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-base mb-2">
-              <i class="ph-bold ph-hard-drive"></i>
-            </div>
-            <h4 class="font-bold text-slate-900">Lưu trữ khổng lồ</h4>
-            <p class="text-slate-600">Dung lượng cực lớn trong thiết bị nhỏ gọn (thẻ nhớ, SSD) với chi phí thấp; tìm kiếm dữ liệu tức thì.</p>
-          </div>
-
-          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-1.5 hover:border-emerald-400 transition">
-            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-base mb-2">
-              <i class="ph-bold ph-lightning"></i>
-            </div>
-            <h4 class="font-bold text-slate-900">Xử lí siêu tốc độ</h4>
-            <p class="text-slate-600">Thực hiện hàng tỉ đến hàng triệu tỉ phép tính/giây, độ chính xác tuyệt đối, làm việc liên tục 24/7 không mệt mỏi.</p>
-          </div>
-
-          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-1.5 hover:border-indigo-400 transition">
-            <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-base mb-2">
-              <i class="ph-bold ph-broadcast"></i>
-            </div>
-            <h4 class="font-bold text-slate-900">Truyền tin tức thời</h4>
-            <p class="text-slate-600">Kết nối mạng Internet, cáp quang, 5G giúp truyền lượng tin khổng lồ vòng quanh thế giới trong chớp mắt.</p>
-          </div>
-
-          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-1.5 hover:border-purple-400 transition">
-            <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-base mb-2">
-              <i class="ph-bold ph-robot"></i>
-            </div>
-            <h4 class="font-bold text-slate-900">Tự động hóa cao</h4>
-            <p class="text-slate-600">Thiết bị số có thể lập trình điều khiển tự động dây chuyền sản xuất, dự báo thời tiết, giao thông thông minh.</p>
-          </div>
-        </div>
-      </div>
+        
 
       <div class="text-right border-t pt-4">
-        <button onclick="toggleSectionDone('sec-kienthuc')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+        <button onclick="toggleSectionDone('sec-kienthuc')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
           <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
         </button>
       </div>
@@ -356,52 +441,65 @@
     <section id="sec-luyentap" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-6 transition-all duration-300">
       <div class="flex items-center justify-between border-b pb-3">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xl">
+          <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold text-xl">
             <i class="ph-bold ph-pencil-line"></i>
           </div>
           <div>
-            <h2 class="text-lg md:text-xl font-bold text-slate-900">4. Luyện tập thực hành</h2>
-            <p class="text-xs text-slate-500">Củng cố kiến thức theo bài tập SGK trang 10</p>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">4. Luyện tập</h2>
+            <p class="text-xs text-slate-500">Bài tập củng cố kiến thức theo SGK và định hướng SGV</p>
           </div>
         </div>
-        <span class="status-badge hidden text-xs font-bold text-blue-700 bg-blue-100 px-3 py-1 rounded-full flex items-center gap-1">
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
           <i class="ph-bold ph-check"></i> Đã xem
         </span>
       </div>
 
-      <!-- Bài tập 1 -->
-      <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
-        <h3 class="font-bold text-slate-900">Bài 1: Rút ra thông tin từ dữ liệu điểm số</h3>
-        <p class="text-slate-700">
-          Từ bảng dữ liệu điểm tổng kết các môn học của các học sinh trong một lớp, người ta có thể rút ra những thông tin gì và bằng cách xử lí nào?
-        </p>
-        <button onclick="toggleHint('hint-1')" class="text-blue-600 font-bold hover:underline flex items-center gap-1 text-xs">
-          <i class="ph-bold ph-eye"></i> Xem gợi ý phân tích
-        </button>
-        <div id="hint-1" class="hidden bg-white p-4 rounded-xl border border-blue-200 text-slate-700 space-y-2 mt-2">
-          <p>• <strong>Dữ liệu:</strong> Các con số điểm của từng học sinh (Toán: 8.5, Văn: 7.0, Tin: 9.0...).</p>
-          <p>• <strong>Xử lí:</strong> Tính trung bình môn, đếm số học sinh đạt trên 8.0, xếp thứ hạng từ cao xuống thấp.</p>
-          <p>• <strong>Thông tin rút ra:</strong> Học sinh nào đạt danh hiệu Học sinh Giỏi; môn nào lớp học tốt nhất; em nào cần được phụ đạo thêm.</p>
+      
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <h3 class="font-bold text-slate-900">Bài 1: Quy đổi đơn vị lưu trữ dữ liệu</h3>
+          <p class="text-slate-700">Một chiếc thẻ nhớ điện thoại có dung lượng ghi trên vỏ là 16 GB. Hỏi chiếc thẻ nhớ đó tương đương với bao nhiêu Megabyte (MB)? Nếu mỗi bức ảnh chụp có dung lượng trung bình khoảng 4 MB thì thẻ nhớ này có thể chứa tối đa bao nhiêu bức ảnh?</p>
+          
+          <div class="pt-1">
+            <button onclick="toggleHint('lt-hint-1')" class="text-emerald-700 hover:text-emerald-900 font-bold flex items-center gap-1.5 text-xs bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-xl transition">
+              <i class="ph-bold ph-lightbulb"></i> Gợi ý & Đáp án tham khảo
+            </button>
+            <div id="lt-hint-1" class="hidden bg-white p-4 rounded-xl border border-emerald-200 text-slate-700 space-y-2 mt-2 shadow-sm">
+              
+              <p><strong>Lời giải chi tiết:</strong></p>
+              <ul class="list-disc list-inside space-y-1">
+                <li>Quy đổi từ GB sang MB: <code>16 GB = 16 × 1024 MB = 16,384 MB</code>.</li>
+                <li>Số lượng bức ảnh tối đa có thể chứa: <code>16,384 MB / 4 MB ≈ 4,096 bức ảnh</code>.</li>
+                <li><em>Ghi chú thực tế:</em> Do nhà sản xuất thẻ nhớ thường tính theo hệ số 1000 thay vì 1024 và một phần dung lượng dành cho hệ thống tệp, dung lượng thực tế nhận diện trên máy tính sẽ khoảng 14.9 GB (chứa khoảng 3,800 bức ảnh).</li>
+              </ul>
+            
+            </div>
+          </div>
         </div>
-      </div>
+        
 
-      <!-- Bài tập 2: Tính toán tương tác -->
-      <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
-        <h3 class="font-bold text-slate-900">Bài 2: Tính dung lượng chứa ảnh của thẻ nhớ</h3>
-        <p class="text-slate-700">
-          Một máy ảnh số chụp các bức ảnh có kích thước trung bình khoảng <code class="bg-slate-200 px-1 py-0.5 rounded font-mono font-bold">10 MB</code> mỗi ảnh. Hỏi một thẻ nhớ dung lượng <code class="bg-slate-200 px-1 py-0.5 rounded font-mono font-bold">16 GB</code> có thể lưu trữ được tối đa khoảng bao nhiêu bức ảnh như vậy?
-        </p>
-        <div class="flex items-center gap-3 pt-2">
-          <input type="number" id="calc-ans" placeholder="Nhập số ảnh tính được..." class="w-48 px-3.5 py-2 border border-slate-300 rounded-xl text-xs md:text-sm font-semibold focus:outline-blue-500">
-          <button onclick="checkCalc()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition shadow-sm">
-            Kiểm tra
-          </button>
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <h3 class="font-bold text-slate-900">Bài 2: Phân tích Dữ liệu và Thông tin trong học bạ</h3>
+          <p class="text-slate-700">Bảng kết quả học tập cuối kì của bạn Lan ghi: "Toán: 9.0; Tin học: 9.5; Ngữ văn: 8.5; Điểm trung bình: 9.0; Xếp loại học lực: Xuất sắc". Hãy chỉ rõ đâu là dữ liệu và đâu là thông tin.</p>
+          
+          <div class="pt-1">
+            <button onclick="toggleHint('lt-hint-2')" class="text-emerald-700 hover:text-emerald-900 font-bold flex items-center gap-1.5 text-xs bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-xl transition">
+              <i class="ph-bold ph-lightbulb"></i> Gợi ý & Đáp án tham khảo
+            </button>
+            <div id="lt-hint-2" class="hidden bg-white p-4 rounded-xl border border-emerald-200 text-slate-700 space-y-2 mt-2 shadow-sm">
+              
+              <p><strong>Phân tích:</strong></p>
+              <ul class="list-disc list-inside space-y-1">
+                <li><strong>Dữ liệu:</strong> Dãy các kí tự và con số được in trên giấy hoặc lưu trong phần mềm quản lí điểm (các số 9.0, 9.5, 8.5, chữ "Toán", "Tin học"...).</li>
+                <li><strong>Thông tin:</strong> Ý nghĩa hiểu biết rút ra được từ bảng điểm: Bạn Lan học rất giỏi, đặc biệt xuất sắc ở các môn khoa học tự nhiên và công nghệ (Toán và Tin học), đạt thành tích rèn luyện và học tập xuất sắc toàn diện trong học kì vừa qua.</li>
+              </ul>
+            
+            </div>
+          </div>
         </div>
-        <div id="calc-feedback" class="hidden p-3.5 rounded-xl text-xs mt-2"></div>
-      </div>
+        
 
       <div class="text-right border-t pt-4">
-        <button onclick="toggleSectionDone('sec-luyentap')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+        <button onclick="toggleSectionDone('sec-luyentap')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
           <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
         </button>
       </div>
@@ -415,337 +513,432 @@
             <i class="ph-bold ph-lightbulb-filament"></i>
           </div>
           <div>
-            <h2 class="text-lg md:text-xl font-bold text-slate-900">5. Vận dụng thực tiễn</h2>
-            <p class="text-xs text-slate-500">Liên hệ ứng dụng công nghệ số vào cuộc sống</p>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">5. Vận dụng</h2>
+            <p class="text-xs text-slate-500">Liên hệ ứng dụng thực tiễn trong cuộc sống</p>
           </div>
         </div>
-        <span class="status-badge hidden text-xs font-bold text-blue-700 bg-blue-100 px-3 py-1 rounded-full flex items-center gap-1">
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
           <i class="ph-bold ph-check"></i> Đã xem
         </span>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-4 text-xs md:text-sm">
-        <div class="p-5 rounded-2xl bg-purple-50/60 border border-purple-100 space-y-3">
-          <h3 class="font-bold text-purple-950 flex items-center gap-1.5 text-sm">
-            <i class="ph-bold ph-identification-card"></i> 1. Thẻ Căn cước công dân gắn chip
-          </h3>
-          <p class="text-slate-700">
-            Thẻ CCCD hiện nay có in thông tin chữ viết, đồng thời có <strong>Mã QR</strong> và <strong>Chip điện tử</strong>. Điều này có lợi thế gì so với CMND giấy truyền thống?
-          </p>
-          <div class="bg-white p-3.5 rounded-xl border border-purple-200 space-y-1.5 text-slate-600">
-            <p>• <strong>Bảo mật cao:</strong> Dữ liệu trên chip được mã hóa chứng thư số, chống làm giả tuyệt đối.</p>
-            <p>• <strong>Tích hợp đa năng:</strong> Tích hợp cả thông tin bảo hiểm y tế, bằng lái xe, mã số thuế.</p>
-            <p>• <strong>Đọc dữ liệu siêu nhanh:</strong> Máy quét chuyên dụng hoặc điện thoại có NFC có thể đọc dữ liệu trong 1 giây mà không cần gõ thủ công.</p>
+      <div class="space-y-4">
+        
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <h3 class="font-bold text-slate-900">1. Ước lượng dung lượng lưu trữ gia đình</h3>
+          <p class="text-slate-700">Gia đình em dự định mua một ổ cứng di động để lưu trữ toàn bộ ảnh kỉ niệm và video quay lại các chuyến du lịch gia đình trong 10 năm qua. Hiện tại gia đình có khoảng 12,000 bức ảnh (mỗi ảnh khoảng 5 MB) và 40 đoạn video độ phân giải cao (mỗi đoạn trung bình khoảng 2.5 GB). Em hãy tính toán và tư vấn cho bố mẹ nên mua ổ cứng dung lượng bao nhiêu (500 GB, 1 TB hay 2 TB) để vừa đáp ứng đủ hiện tại vừa dùng thoải mái trong 5 năm tới.</p>
+          <div class="pt-1">
+            <button onclick="toggleHint('vd-hint-1')" class="text-emerald-700 hover:text-emerald-900 font-bold flex items-center gap-1.5 text-xs bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-xl transition">
+              <i class="ph-bold ph-eye"></i> Gợi ý phân tích thực tế
+            </button>
+            <div id="vd-hint-1" class="hidden bg-white p-4 rounded-xl border border-emerald-200 text-slate-700 space-y-2 mt-2 shadow-sm">
+              
+              <p><strong>Tư vấn tính toán cụ thể:</strong></p>
+              <ol class="list-decimal list-inside space-y-1">
+                <li><strong>Dung lượng cho ảnh hiện tại:</strong> <code>12,000 × 5 MB = 60,000 MB ≈ 58.6 GB</code>.</li>
+                <li><strong>Dung lượng cho video hiện tại:</strong> <code>40 × 2.5 GB = 100 GB</code>.</li>
+                <li><strong>Tổng dung lượng cần ngay lúc này:</strong> <code>58.6 GB + 100 GB ≈ 158.6 GB</code>.</li>
+                <li><strong>Dự phòng cho 5 năm tới:</strong> Mỗi năm dữ liệu tăng thêm khoảng 30 GB → 5 năm tăng thêm ~150 GB. Tổng nhu cầu khoảng ~310 GB.</li>
+                <li><strong>Khuyến nghị lựa chọn:</strong> Bố mẹ nên chọn mua ổ cứng dung lượng <strong>1 TB (1024 GB)</strong>. Ổ 500 GB tuy chứa đủ nhưng giá chênh lệch không nhiều so với 1 TB, trong khi ổ 1 TB cho phép lưu thêm các bản sao lưu hệ điều hành của máy tính gia đình và dùng thoải mái trên 5 năm tới.</li>
+              </ol>
+            
+            </div>
           </div>
         </div>
-
-        <div class="p-5 rounded-2xl bg-sky-50/60 border border-sky-100 space-y-3">
-          <h3 class="font-bold text-sky-950 flex items-center gap-1.5 text-sm">
-            <i class="ph-bold ph-camera"></i> 2. Cuộc cách mạng máy ảnh số & Smartphone
-          </h3>
-          <p class="text-slate-700">
-            Hãy so sánh việc chụp ảnh bằng máy ảnh phim trước đây và máy ảnh số/điện thoại thông minh hiện nay:
-          </p>
-          <div class="bg-white p-3.5 rounded-xl border border-sky-200 space-y-1.5 text-slate-600">
-            <p>• <strong>Số lượng chụp:</strong> Một cuộn phim chỉ chụp được 36 kiểu; thẻ nhớ số chụp được hàng chục nghìn bức ảnh.</p>
-            <p>• <strong>Xem ngay lập tức:</strong> Máy ảnh số cho phép xem lại ngay, xóa ảnh lỗi tức thì, không tốn chi phí tráng rửa phim đắt đỏ.</p>
-            <p>• <strong>Chia sẻ tức thời:</strong> Dễ dàng gửi ảnh qua mạng xã hội, sao lưu lên đám mây Google Photos, iCloud.</p>
-          </div>
-        </div>
+        
       </div>
 
       <div class="text-right border-t pt-4">
-        <button onclick="toggleSectionDone('sec-vandung')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+        <button onclick="toggleSectionDone('sec-vandung')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
           <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
         </button>
       </div>
     </section>
 
-    <!-- 6. TÓM TẮT CỐT LÕI (MINDMAP FLASHCARD) -->
-    <section id="sec-tomtat" class="study-card bg-gradient-to-br from-blue-950 to-indigo-900 text-white rounded-2xl p-6 md:p-8 shadow-md transition-all duration-300">
+    <!-- 6. TÓM TẮT NỘI DUNG BÀI -->
+    <section id="sec-tomtat" style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%);" class="study-card text-white rounded-2xl p-6 md:p-8 shadow-md transition-all duration-300">
       <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-6">
         <div class="flex items-center gap-2">
           <i class="ph-bold ph-bookmarks text-amber-300 text-xl"></i>
-          <h2 class="text-lg md:text-xl font-bold text-blue-100">6. Tóm tắt kiến thức cốt lõi Bài 1</h2>
+          <h2 class="text-lg md:text-xl font-bold text-emerald-100">6. Tóm tắt nội dung bài 1</h2>
         </div>
-        <span class="status-badge hidden text-xs font-bold text-blue-950 bg-blue-300 px-3 py-1 rounded-full flex items-center gap-1">
+        <span class="status-badge hidden text-xs font-bold text-slate-950 bg-emerald-300 px-3 py-1 rounded-full flex items-center gap-1">
           <i class="ph-bold ph-check"></i> Đã xem
         </span>
       </div>
 
       <div class="grid md:grid-cols-3 gap-4 text-xs md:text-sm mb-6">
-        <div class="bg-white/10 p-4 rounded-xl border border-white/10 space-y-1.5">
-          <h3 class="font-bold text-amber-300 text-sm">Thông tin & Dữ liệu</h3>
-          <p class="text-slate-200">• Dữ liệu là hình thức thể hiện thông tin.</p>
-          <p class="text-slate-200">• Thông tin là ý nghĩa mang lại hiểu biết cho con người.</p>
-          <p class="text-slate-200">• Xử lí dữ liệu nhằm mục đích đem lại thông tin.</p>
-        </div>
-        <div class="bg-white/10 p-4 rounded-xl border border-white/10 space-y-1.5">
-          <h3 class="font-bold text-amber-300 text-sm">Đơn vị đo lượng dữ liệu</h3>
-          <p class="text-slate-200">• Đơn vị nhỏ nhất: bit (0 hoặc 1).</p>
-          <p class="text-slate-200">• 1 Byte (B) = 8 bit.</p>
-          <p class="text-slate-200">• Mỗi cấp độ kế tiếp gấp nhau 2<sup>10</sup> = 1024 lần (KB, MB, GB, TB, PB...).</p>
-        </div>
-        <div class="bg-white/10 p-4 rounded-xl border border-white/10 space-y-1.5">
-          <h3 class="font-bold text-amber-300 text-sm">Ưu thế của Thiết bị số</h3>
-          <p class="text-slate-200">• Lưu trữ cực lớn, gọn nhẹ, giá rẻ.</p>
-          <p class="text-slate-200">• Tốc độ xử lí siêu nhanh và chính xác.</p>
-          <p class="text-slate-200">• Truyền tin tức thời, kết nối toàn cầu.</p>
-          <p class="text-slate-200">• Tự động hóa nhiều hoạt động đời sống.</p>
-        </div>
+        
+          <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/20 space-y-1.5">
+            <h4 class="font-bold text-amber-300 text-sm">1. Dữ liệu & Thông tin</h4>
+            <p class="text-xs text-emerald-100">Dữ liệu là hình thức thể hiện (chữ, số, âm thanh, hình ảnh...). Thông tin là ý nghĩa, hiểu biết của con người rút ra từ dữ liệu để hành động.</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/20 space-y-1.5">
+            <h4 class="font-bold text-amber-300 text-sm">2. Đơn vị đo dữ liệu</h4>
+            <p class="text-xs text-emerald-100">Bit là đơn vị nhỏ nhất (0 hoặc 1). 1 Byte = 8 bit. Bội số quy đổi theo hệ số 1024: 1 KB = 1024 B, 1 MB = 1024 KB, 1 GB = 1024 MB, 1 TB = 1024 GB.</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/20 space-y-1.5">
+            <h4 class="font-bold text-amber-300 text-sm">3. Ưu thế thiết bị số</h4>
+            <p class="text-xs text-emerald-100">Khả năng lưu trữ dung lượng khổng lồ, tốc độ xử lí siêu nhanh và chuẩn xác, truyền thông tin tức thời và mức độ tự động hóa rất cao.</p>
+          </div>
+        
       </div>
 
-      <div class="flex items-center justify-between border-t border-white/10 pt-4">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/10 pt-4">
         <a href="../../mindmaps/lop-10/bai-01.md" class="text-xs text-amber-300 hover:underline flex items-center gap-1 font-semibold">
-          <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy dạng chi tiết
+          <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy chi tiết của bài học
         </a>
-        <button onclick="toggleSectionDone('sec-tomtat')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-white/20 bg-white/10 hover:bg-blue-500 text-white transition flex items-center gap-1.5">
+        <button onclick="toggleSectionDone('sec-tomtat')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-white/20 bg-white/10 hover:bg-emerald-500 text-white transition flex items-center gap-1.5 ml-auto sm:ml-0">
           <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
         </button>
       </div>
     </section>
 
-    <!-- 7. HỆ THỐNG CÂU HỎI ĐÁNH GIÁ 3 DẠNG -->
+    <!-- 7. BÀI TẬP -->
     <section id="sec-danhgia" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-10 transition-all duration-300">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4">
         <div>
           <h2 class="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2">
-            <i class="ph-bold ph-exam text-blue-600"></i> 7. Hệ thống đánh giá theo ma trận (3 Dạng)
+            <i class="ph-bold ph-exam text-emerald-600"></i> 7. Bài tập đánh giá
           </h2>
-          <p class="text-xs text-slate-500 mt-0.5">Trắc nghiệm 4 lựa chọn • Đúng/Sai đa ý • Tự luận ngắn</p>
+          <p class="text-xs text-slate-500 mt-0.5">Trắc nghiệm nhiều lựa chọn • Đúng/Sai đa ý • Tự luận ngắn</p>
         </div>
-        <span class="status-badge hidden text-xs font-bold text-blue-700 bg-blue-100 px-3 py-1 rounded-full flex items-center gap-1 self-start sm:self-auto">
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1 self-start sm:self-auto">
           <i class="ph-bold ph-check"></i> Đã hoàn thành
         </span>
       </div>
 
-      <!-- DẠNG 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN -->
+      <!-- DẠNG 1: TRẮC NGHIỆM -->
       <div class="space-y-6">
         <div class="flex items-center justify-between border-b pb-2">
           <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-2">
-            <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-md">Dạng 1</span>
+            <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-md">Phần 1</span>
             Câu trắc nghiệm nhiều lựa chọn (4 câu)
           </h3>
           <span class="text-xs font-semibold text-slate-500">1.0 điểm/câu</span>
         </div>
 
         <form id="d1-form" class="space-y-5 text-xs md:text-sm">
-          <!-- Câu 1 -->
-          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-            <p class="font-bold text-slate-800">Câu 1: Phát biểu nào sau đây phân biệt đúng nhất giữa thông tin và dữ liệu?</p>
-            <div class="space-y-1.5 pl-2">
-              <label class="flex items-center gap-2 cursor-pointer hover:text-blue-700">
-                <input type="radio" name="d1_q1" value="A" class="accent-blue-600">
-                <span>A. Thông tin là các con số, dữ liệu là chữ viết.</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer hover:text-blue-700">
-                <input type="radio" name="d1_q1" value="B" class="accent-blue-600">
-                <span>B. Dữ liệu là hình thức thể hiện thông tin, thông tin là ý nghĩa mà dữ liệu mang lại.</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer hover:text-blue-700">
-                <input type="radio" name="d1_q1" value="C" class="accent-blue-600">
-                <span>C. Thông tin và dữ liệu hoàn toàn giống nhau, chỉ khác tên gọi.</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer hover:text-blue-700">
-                <input type="radio" name="d1_q1" value="D" class="accent-blue-600">
-                <span>D. Dữ liệu chỉ có trong máy tính, thông tin chỉ có ngoài đời thực.</span>
-              </label>
-            </div>
-            <div id="d1_q1_fb" class="hidden text-xs mt-2 font-medium"></div>
-          </div>
+          
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 1: Phát biểu nào sau đây thể hiện đúng nhất mối quan hệ giữa thông tin và dữ liệu?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> Dữ liệu và thông tin là hai khái niệm hoàn toàn đồng nghĩa và có thể thay thế cho nhau.</span>
+            </label>
+            
 
-          <!-- Câu 2 -->
-          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-            <p class="font-bold text-slate-800">Câu 2: Đơn vị đo Byte (B) bằng bao nhiêu bit?</p>
-            <div class="space-y-1.5 pl-2">
-              <label class="flex items-center gap-2 cursor-pointer hover:text-blue-700">
-                <input type="radio" name="d1_q2" value="A" class="accent-blue-600">
-                <span>A. 2 bit</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer hover:text-blue-700">
-                <input type="radio" name="d1_q2" value="B" class="accent-blue-600">
-                <span>B. 4 bit</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer hover:text-blue-700">
-                <input type="radio" name="d1_q2" value="C" class="accent-blue-600">
-                <span>C. 8 bit</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer hover:text-blue-700">
-                <input type="radio" name="d1_q2" value="D" class="accent-blue-600">
-                <span>D. 16 bit</span>
-              </label>
-            </div>
-            <div id="d1_q2_fb" class="hidden text-xs mt-2 font-medium"></div>
-          </div>
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> Thông tin là ý nghĩa hiểu biết của dữ liệu; dữ liệu là hình thức thể hiện của thông tin.</span>
+            </label>
+            
 
-          <!-- Câu 3 -->
-          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-            <p class="font-bold text-slate-800">Câu 3: Quy đổi 2 GB ra đơn vị Megabyte (MB) có kết quả là:</p>
-            <div class="space-y-1.5 pl-2">
-              <label class="flex items-center gap-2 cursor-pointer hover:text-blue-700">
-                <input type="radio" name="d1_q3" value="A" class="accent-blue-600">
-                <span>A. 2000 MB</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer hover:text-blue-700">
-                <input type="radio" name="d1_q3" value="B" class="accent-blue-600">
-                <span>B. 2048 MB</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer hover:text-blue-700">
-                <input type="radio" name="d1_q3" value="C" class="accent-blue-600">
-                <span>C. 1024 MB</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer hover:text-blue-700">
-                <input type="radio" name="d1_q3" value="D" class="accent-blue-600">
-                <span>D. 4096 MB</span>
-              </label>
-            </div>
-            <div id="d1_q3_fb" class="hidden text-xs mt-2 font-medium"></div>
-          </div>
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> Thông tin luôn có trước dữ liệu và máy tính chỉ có thể lưu trữ thông tin trực tiếp.</span>
+            </label>
+            
 
-          <!-- Câu 4 -->
-          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-            <p class="font-bold text-slate-800">Câu 4: Thiết bị nào sau đây KHÔNG PHẢI là thiết bị số?</p>
-            <div class="space-y-1.5 pl-2">
-              <label class="flex items-center gap-2 cursor-pointer hover:text-blue-700">
-                <input type="radio" name="d1_q4" value="A" class="accent-blue-600">
-                <span>A. Đồng hồ quả lắc lên dây cót cơ học</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer hover:text-blue-700">
-                <input type="radio" name="d1_q4" value="B" class="accent-blue-600">
-                <span>B. Thẻ nhớ MicroSD</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer hover:text-blue-700">
-                <input type="radio" name="d1_q4" value="C" class="accent-blue-600">
-                <span>C. Bộ định tuyến không dây (Wi-Fi Router)</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer hover:text-blue-700">
-                <input type="radio" name="d1_q4" value="D" class="accent-blue-600">
-                <span>D. Máy tính xách tay (Laptop)</span>
-              </label>
-            </div>
-            <div id="d1_q4_fb" class="hidden text-xs mt-2 font-medium"></div>
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> Dữ liệu chỉ bao gồm các con số toán học, không thể ở dạng chữ viết hay hình ảnh.</span>
+            </label>
+            
           </div>
+          <div id="d1_q1_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
 
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 2: 1 Terabyte (TB) bằng bao nhiêu Gigabyte (GB)?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> 1000 GB</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> 1024 GB</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> 1048576 GB</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> 8192 GB</span>
+            </label>
+            
+          </div>
+          <div id="d1_q2_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 3: Đơn vị đo lượng dữ liệu nhỏ nhất trong máy tính là gì?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> Byte</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> Kilobyte</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> Bit</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> Megabyte</span>
+            </label>
+            
+          </div>
+          <div id="d1_q3_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 4: Đặc điểm nào sau đây KHÔNG PHẢI là ưu việt vượt trội của thiết bị số so với thiết bị truyền thống?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q4" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> Dung lượng lưu trữ cực kì lớn trong một kích thước vật lí nhỏ gọn.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q4" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> Tốc độ tính toán và xử lí thông tin cực nhanh với độ chính xác cao.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q4" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> Có cảm xúc và khả năng đồng cảm tâm lí tự nhiên giống hệt con người.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q4" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> Khả năng truyền thông tin qua mạng viễn thông tức thời với băng thông rộng.</span>
+            </label>
+            
+          </div>
+          <div id="d1_q4_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
           <div class="pt-2 flex items-center gap-3">
-            <button type="button" onclick="gradeD1()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl shadow transition">
-              Chấm điểm Dạng 1
+            <button type="button" onclick="gradeD1()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl shadow transition">
+              Chấm điểm Phần 1
             </button>
-            <span id="d1-score" class="font-bold text-sm text-blue-700"></span>
+            <span id="d1-score" class="font-bold text-sm text-emerald-700"></span>
           </div>
         </form>
       </div>
 
-      <!-- DẠNG 2: ĐÚNG / SAI ĐA Ý -->
+      <!-- DẠNG 2: ĐÚNG / SAI -->
       <div class="space-y-6 pt-6 border-t">
         <div class="flex items-center justify-between border-b pb-2">
           <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-2">
-            <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-md">Dạng 2</span>
-            Câu trắc nghiệm Đúng/Sai (Theo cấu trúc thi mới của Bộ GD&ĐT)
+            <span class="bg-teal-100 text-teal-800 text-xs px-2.5 py-1 rounded-md">Phần 2</span>
+            Câu hỏi trắc nghiệm Đúng/Sai đa ý
           </h3>
           <span class="text-xs font-semibold text-slate-500">Đúng 1 ý: 0.1đ • 2 ý: 0.25đ • 3 ý: 0.5đ • 4 ý: 1.0đ</span>
         </div>
 
         <form id="d2-form" class="space-y-6 text-xs md:text-sm">
-          <!-- Câu 1 Dạng 2 -->
-          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-            <p class="font-bold text-slate-900">
-              Câu 1: Khi xét về mối quan hệ giữa thông tin và dữ liệu trong môn Tin học:
-            </p>
-            <div class="space-y-2">
-              <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
-                <span>a) Cùng một thông tin có thể được thể hiện bằng nhiều dạng dữ liệu khác nhau.</span>
-                <div class="flex items-center gap-3 whitespace-nowrap">
-                  <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_a" value="D" class="accent-emerald-600"> Đ</label>
-                  <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_a" value="S" class="accent-rose-600"> S</label>
-                </div>
-              </div>
-              <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
-                <span>b) Máy tính điện tử có khả năng tự nhận thức và diễn giải ý nghĩa của thông tin như con người.</span>
-                <div class="flex items-center gap-3 whitespace-nowrap">
-                  <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_b" value="D" class="accent-emerald-600"> Đ</label>
-                  <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_b" value="S" class="accent-rose-600"> S</label>
-                </div>
-              </div>
-              <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
-                <span>c) Nếu dữ liệu không đầy đủ, thông tin thu được có thể bị hiểu sai lệch hoặc không xác định được.</span>
-                <div class="flex items-center gap-3 whitespace-nowrap">
-                  <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_c" value="D" class="accent-emerald-600"> Đ</label>
-                  <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_c" value="S" class="accent-rose-600"> S</label>
-                </div>
-              </div>
-              <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
-                <span>d) Xử lí dữ liệu trong máy tính chính là việc biến đổi dữ liệu nhị phân nhằm mục đích phục vụ nhu cầu thông tin của con người.</span>
-                <div class="flex items-center gap-3 whitespace-nowrap">
-                  <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_d" value="D" class="accent-emerald-600"> Đ</label>
-                  <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_d" value="S" class="accent-rose-600"> S</label>
-                </div>
+          
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <p class="font-bold text-slate-900">Câu 1: Xét tính Đúng/Sai của các nhận định sau về các đơn vị đo lượng dữ liệu:</p>
+          <div class="space-y-2">
+            
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>a) Một Byte luôn luôn tương đương với 8 bit.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_a" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_a" value="S" class="accent-rose-600"> S</label>
               </div>
             </div>
-            <div id="d2_q1_fb" class="hidden text-xs mt-2 font-medium"></div>
-          </div>
+            
 
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>b) 1 Megabyte (MB) bằng chính xác 1000 Kilobyte (KB).</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_b" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_b" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>c) Một thẻ nhớ 32 GB có dung lượng lớn hơn một ổ cứng 1 TB.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_c" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_c" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>d) Đơn vị đo dữ liệu Gigabyte (GB) lớn hơn Megabyte (MB) nhưng nhỏ hơn Terabyte (TB).</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_d" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_d" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+          </div>
+          <div id="d2_q1_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <p class="font-bold text-slate-900">Câu 2: Xét tính Đúng/Sai của các mệnh đề sau về quá trình xử lí thông tin trong máy tính:</p>
+          <div class="space-y-2">
+            
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>a) Bàn phím, chuột và camera đóng vai trò thu nhận dữ liệu đưa vào máy tính.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_a" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_a" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>b) Nếu dữ liệu ban đầu bị thiếu hụt hoặc sai lệch thì thông tin kết luận vẫn luôn đảm bảo chuẩn xác.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_b" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_b" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>c) Một thông tin duy nhất có thể được thể hiện bằng nhiều dạng dữ liệu khác nhau (chữ viết, âm thanh, hình ảnh).</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_c" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_c" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>d) Máy tính chỉ có thể xử lí được dữ liệu số, không thể xử lí được văn bản hay âm thanh.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_d" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_d" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+          </div>
+          <div id="d2_q2_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
           <div class="pt-2 flex items-center gap-3">
-            <button type="button" onclick="gradeD2()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl shadow transition">
-              Chấm điểm Dạng 2
+            <button type="button" onclick="gradeD2()" class="bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl shadow transition">
+              Chấm điểm Phần 2
             </button>
-            <span id="d2-score" class="font-bold text-sm text-emerald-700"></span>
+            <span id="d2-score" class="font-bold text-sm text-teal-700"></span>
           </div>
         </form>
       </div>
 
-      <!-- DẠNG 3: TỰ LUẬN NGẮN -->
+      <!-- DẠNG 3: TỰ LUẬN -->
       <div class="space-y-6 pt-6 border-t">
         <div class="flex items-center justify-between border-b pb-2">
           <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-2">
-            <span class="bg-purple-100 text-purple-800 text-xs px-2.5 py-1 rounded-md">Dạng 3</span>
-            Câu hỏi tự luận vận dụng (Có gợi ý & Thang điểm)
+            <span class="bg-purple-100 text-purple-800 text-xs px-2.5 py-1 rounded-md">Phần 3</span>
+            Câu hỏi tự luận tổng hợp
           </h3>
         </div>
 
         <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
-          <p class="font-bold text-slate-900">
-            Câu hỏi: Em hãy phân tích 3 lí do vì sao việc lưu trữ dữ liệu trên thiết bị số lại ưu việt vượt trội hơn so với lưu trữ bằng sách vở truyền thống trên giấy?
-          </p>
-          <textarea id="d3-text" rows="3" placeholder="Nhập câu trả lời tự luận của em vào đây để rèn luyện..." class="w-full p-3 rounded-xl border border-slate-300 focus:outline-blue-500"></textarea>
+          <p class="font-bold text-slate-900">Em hãy phân tích vì sao trong thời đại ngày nay, việc chuyển đổi từ dữ liệu truyền thống (giấy tờ, sổ sách in ấn) sang dữ liệu số (số hóa dữ liệu) lại là xu thế tất yếu của các cơ quan, trường học và doanh nghiệp?</p>
+          <textarea id="d3-text" rows="3" placeholder="Nhập câu trả lời của em vào đây để rèn luyện kĩ năng diễn đạt..." class="w-full p-3 rounded-xl border border-slate-300 focus:outline-emerald-500"></textarea>
+          
           <button type="button" onclick="toggleHint('d3-rubric')" class="bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs px-4 py-2 rounded-xl transition flex items-center gap-1.5">
-            <i class="ph-bold ph-check-square"></i> Xem đáp án chuẩn và Biểu điểm
+            <i class="ph-bold ph-check-square"></i> Bấm để xem Đáp án & Biểu điểm đối chiếu
           </button>
 
           <div id="d3-rubric" class="hidden bg-white p-4 rounded-xl border border-purple-200 text-slate-700 space-y-2 mt-2">
             <h4 class="font-bold text-purple-900 text-sm">Biểu điểm đánh giá chuẩn (Thang 10 điểm):</h4>
-            <ul class="list-disc list-inside space-y-1 text-xs">
-              <li><strong>Ý 1 (3.5đ) - Dung lượng & Không gian:</strong> Thiết bị số nhỏ gọn (như thẻ nhớ, ổ cứng) có thể chứa khối lượng dữ liệu khổng lồ bằng cả một thư viện lớn mà không tốn diện tích vật lí.</li>
-              <li><strong>Ý 2 (3.5đ) - Tốc độ tìm kiếm & Nhân bản:</strong> Có công cụ tìm kiếm tức thì theo từ khóa; dễ dàng sao chép, nhân bản vô hạn bản sao mà không sợ hao mòn chất lượng.</li>
-              <li><strong>Ý 3 (3.0đ) - Khả năng chia sẻ & Bảo mật:</strong> Dễ dàng truyền tải qua mạng toàn cầu trong vài giây; có thể mã hóa bảo mật để chống thất lạc và rách hỏng do thời tiết.</li>
-            </ul>
+            <div class="space-y-1 text-xs">
+              <ul class="list-disc list-inside space-y-1">
+                <li><strong>Tiêu chí 1 (3.0 điểm): Tiết kiệm không gian & chi phí lưu trữ:</strong> Không tốn diện tích kho bãi chứa tài liệu giấy, tránh nguy cơ mục nát, cháy nổ, ẩm mốc.</li>
+                <li><strong>Tiêu chí 2 (3.5 điểm): Tốc độ tìm kiếm & xử lí vượt trội:</strong> Dữ liệu số cho phép tra cứu trong tích tắc chỉ bằng từ khóa, thống kê báo cáo tự động ngay lập tức thay vì lục tìm từng tập tài liệu.</li>
+                <li><strong>Tiêu chí 3 (3.5 điểm): Chia sẻ & Kết nối không giới hạn:</strong> Hàng nghìn người có thể cùng truy cập, học tập, làm việc từ xa cùng một lúc qua mạng Internet, thúc đẩy chuyển đổi số quốc gia.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="text-right border-t pt-4">
-        <button onclick="toggleSectionDone('sec-danhgia')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+        <button onclick="toggleSectionDone('sec-danhgia')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
           <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu hoàn thành bài</span>
         </button>
       </div>
     </section>
 
+    <!-- BOTTOM NAVIGATION (CHUYỂN BÀI THUẬN TIỆN) -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 py-6 border-t border-slate-200">
+      <div>
+        <span class="text-xs text-slate-400">Đây là bài đầu tiên của chương trình</span>
+      </div>
+      <a href="../../index.html" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition">
+        <i class="ph-bold ph-squares-four"></i> Danh mục tất cả bài học Lớp 10
+      </a>
+      <div>
+        <a href="bai-02-vai-tro-cua-thiet-bi-thong-minh-va-tin-hoc-doi-voi-xa-hoi.html" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-sm transition"><span>Bài tiếp: Bài 2: Vai trò của thiết bị thông minh và tin học đối với xã hội</span> <i class="ph-bold ph-arrow-right"></i></a>
+      </div>
+    </div>
+
   </main>
 
-  <!-- FOOTER -->
-  <footer class="bg-white border-t border-slate-200 py-6 mt-12">
-    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
-      <div>
-        <span class="font-bold text-slate-700">VietTeach</span> • Môn Tin học 10 (Kết nối tri thức với cuộc sống).
+  <!-- NÚT 'LÊN ĐẦU' TRÔI NỔI (BACK TO TOP) -->
+  <button id="btn-back-to-top" onclick="scrollToTop()" title="Lên đầu trang" class="fixed bottom-6 right-6 z-50 w-11 h-11 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-xl flex items-center justify-center transition-all duration-300 transform translate-y-16 opacity-0 hover:scale-110">
+    <i class="ph-bold ph-arrow-up text-lg"></i>
+  </button>
+
+  <!-- FOOTER (ĐỒNG BỘ VIETAPPS) -->
+  <footer style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%);" class="text-white py-8 mt-12 border-t border-emerald-500/30">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-100">
+      <div class="flex items-center gap-2">
+        <span class="text-base">👨‍🏫</span>
+        <span class="font-bold text-white">VietTeach</span> • Hệ sinh thái giải pháp giáo dục VietApps (VietMix, VietTest, VietBook, VietTeach).
       </div>
-      <div class="flex items-center gap-3">
-        <a href="../../index.html" class="text-blue-600 hover:underline">Về Cổng học tập</a>
+      <div class="flex items-center gap-4">
+        <a href="../../index.html" class="hover:text-amber-300 transition">Cổng bài học</a>
         <span>•</span>
-        <a href="../../mindmaps/lop-10/bai-01.md" class="text-blue-600 hover:underline">Sơ đồ tư duy Bài 1</a>
+        <a href="../../mindmaps/lop-10/bai-01.md" class="hover:text-amber-300 transition">Sơ đồ tư duy</a>
+        <span>•</span>
+        <span>Môn Tin học 10 (KNTT)</span>
       </div>
     </div>
   </footer>
 
-  <!-- SCRIPT TƯƠNG TÁC -->
+  <!-- SCRIPT LOGIC TƯƠNG TÁC -->
   <script>
     // 1. Quản lí tiến độ học tập
     const allSectionIds = ['sec-muctieu', 'sec-khoidong', 'sec-kienthuc', 'sec-luyentap', 'sec-vandung', 'sec-tomtat', 'sec-danhgia'];
@@ -768,7 +961,7 @@
         if (badge) badge.classList.add('hidden');
         if (btn) {
           btn.innerHTML = '<i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>';
-          btn.className = "btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5 ml-auto";
+          btn.className = "btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto";
         }
       } else {
         completedSections.add(secId);
@@ -776,127 +969,163 @@
         if (badge) badge.classList.remove('hidden');
         if (btn) {
           btn.innerHTML = '<i class="ph-bold ph-arrow-counter-clockwise text-base"></i> <span>Hủy đánh dấu</span>';
-          btn.className = "btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-blue-300 bg-blue-100 text-blue-800 hover:bg-slate-200 hover:text-slate-700 transition flex items-center gap-1.5 ml-auto";
+          btn.className = "btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-emerald-300 bg-emerald-100 text-emerald-800 hover:bg-slate-200 hover:text-slate-700 transition flex items-center gap-1.5 ml-auto";
         }
       }
       updateProgressBar();
     }
 
-    // 2. Khởi động
-    function checkKhoidong(choice) {
-      const fb = document.getElementById('kd-feedback');
-      fb.classList.remove('hidden');
-      if (choice === 2) {
-        fb.className = "p-4 rounded-xl text-xs md:text-sm bg-emerald-100 text-emerald-900 border border-emerald-300";
-        fb.innerHTML = "🎉 <strong>Chính xác!</strong> Máy tính là thiết bị điện tử chỉ thao tác trên các tín hiệu nhị phân (dữ liệu). Tuy nhiên dữ liệu đó được con người mã hóa từ thông tin thực tế và khi máy tính đưa ra kết quả, con người hiểu được ý nghĩa của nó (thông tin). Vì vậy ta quen gọi là 'xử lí thông tin'.";
+    // 2. Nút Lên đầu trang (Back to top)
+    const backToTopBtn = document.getElementById('btn-back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('translate-y-16', 'opacity-0');
+        backToTopBtn.classList.add('translate-y-0', 'opacity-100');
       } else {
-        fb.className = "p-4 rounded-xl text-xs md:text-sm bg-amber-100 text-amber-900 border border-amber-300";
-        fb.innerHTML = "💡 <strong>Gợi mở thêm:</strong> Dữ liệu chỉ là các yếu tố mang tính biểu diễn (chữ, số, bit), còn thông tin là ý nghĩa mà con người tiếp nhận. Máy tính không tự hiểu được ý nghĩa nếu không có sự tham gia của con người!";
+        backToTopBtn.classList.add('translate-y-16', 'opacity-0');
+        backToTopBtn.classList.remove('translate-y-0', 'opacity-100');
       }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // 3. Công cụ chuyển đổi đơn vị
-    function convertUnits() {
-      const val = parseFloat(document.getElementById('convert-input').value) || 0;
-      const unit = document.getElementById('convert-unit').value;
-      const res = document.getElementById('convert-result');
-
-      // Quy về Byte
-      let bytes = 0;
-      if (unit === 'B') bytes = val;
-      else if (unit === 'KB') bytes = val * 1024;
-      else if (unit === 'MB') bytes = val * Math.pow(1024, 2);
-      else if (unit === 'GB') bytes = val * Math.pow(1024, 3);
-      else if (unit === 'TB') bytes = val * Math.pow(1024, 4);
-
-      const kb = bytes / 1024;
-      const mb = kb / 1024;
-      const gb = mb / 1024;
-      const tb = gb / 1024;
-
-      res.innerHTML = `
-        <span><strong>${bytes.toLocaleString()}</strong> B</span>
-        <span><strong>${kb >= 1 ? kb.toLocaleString(undefined, {maximumFractionDigits: 2}) : kb.toFixed(4)}</strong> KB</span>
-        <span><strong>${mb >= 1 ? mb.toLocaleString(undefined, {maximumFractionDigits: 2}) : mb.toFixed(4)}</strong> MB</span>
-        <span><strong>${gb >= 1 ? gb.toLocaleString(undefined, {maximumFractionDigits: 2}) : gb.toFixed(4)}</strong> GB</span>
-        <span><strong>${tb >= 1 ? tb.toLocaleString(undefined, {maximumFractionDigits: 2}) : tb.toFixed(6)}</strong> TB</span>
-      `;
-    }
-    convertUnits();
-
-    // 4. Luyện tập tính toán
-    function checkCalc() {
-      const val = parseInt(document.getElementById('calc-ans').value);
-      const fb = document.getElementById('calc-feedback');
-      fb.classList.remove('hidden');
-
-      // 16 GB = 16 * 1024 MB = 16384 MB. 16384 / 10 = 1638 bức ảnh. (Nếu theo hệ thập phân 16000 / 10 = 1600).
-      if (val >= 1600 && val <= 1638) {
-        fb.className = "p-3.5 rounded-xl text-xs bg-emerald-100 text-emerald-900 border border-emerald-300";
-        fb.innerHTML = `✅ <strong>Chính xác!</strong> 16 GB = 16 × 1024 MB = 16.384 MB. Với mỗi bức ảnh khoảng 10 MB, thẻ nhớ có thể chứa tối đa: <strong>16.384 / 10 ≈ 1.638 bức ảnh</strong> (hoặc khoảng 1.600 ảnh nếu tính theo hệ số 1000).`;
-      } else {
-        fb.className = "p-3.5 rounded-xl text-xs bg-rose-100 text-rose-900 border border-rose-300";
-        fb.innerHTML = `❌ Chưa chính xác. Gợi ý: Hãy đổi 16 GB ra MB trước (nhân với 1024), sau đó lấy kết quả chia cho 10 MB.`;
-      }
-    }
-
+    // 3. Ẩn / hiện gợi ý
     function toggleHint(id) {
       const el = document.getElementById(id);
-      el.classList.toggle('hidden');
+      if (el) el.classList.toggle('hidden');
     }
 
-    // 5. Chấm điểm Dạng 1
-    function gradeD1() {
-      const answers = { d1_q1: 'B', d1_q2: 'C', d1_q3: 'B', d1_q4: 'A' };
-      const explanations = {
-        d1_q1: 'Dữ liệu là các yếu tố thể hiện thông tin được đưa vào máy tính; thông tin là ý nghĩa của dữ liệu.',
-        d1_q2: '1 Byte (B) được quy ước chính xác bằng 8 bit.',
-        d1_q3: '1 GB = 1024 MB, do đó 2 GB = 2 × 1024 = 2048 MB.',
-        d1_q4: 'Đồng hồ quả lắc chạy bằng dây cót cơ học, không xử lí hay lưu trữ dữ liệu nhị phân nên không phải thiết bị số.'
-      };
+    // 4. Chấm điểm Trắc nghiệm (Dạng 1)
+    const d1_answers = {"d1_q1": "B", "d1_q2": "B", "d1_q3": "C", "d1_q4": "C"};
+    const d1_exps = {"d1_q1": "Th\u00f4ng tin l\u00e0 n\u1ed9i dung \u00fd ngh\u0129a \u0111\u01b0\u1ee3c r\u00fat ra t\u1eeb d\u1eef li\u1ec7u; d\u1eef li\u1ec7u l\u00e0 h\u00ecnh th\u1ee9c ghi nh\u1eadn tr\u00ean v\u1eadt mang tin.", "d1_q2": "Theo chu\u1ea9n tin h\u1ecdc, c\u00e1c b\u1ed9i s\u1ed1 c\u1ee7a Byte d\u00f9ng h\u1ec7 s\u1ed1 2^10 = 1024. Do \u0111\u00f3 1 TB = 1024 GB.", "d1_q3": "Bit (vi\u1ebft t\u1eaft c\u1ee7a Binary Digit) l\u00e0 \u0111\u01a1n v\u1ecb \u0111o l\u01b0\u1ee3ng d\u1eef li\u1ec7u nh\u1ecf nh\u1ea5t, ch\u1ec9 mang gi\u00e1 tr\u1ecb 0 ho\u1eb7c 1.", "d1_q4": "Thi\u1ebft b\u1ecb s\u1ed1 l\u00e0 m\u00e1y m\u00f3c x\u1eed l\u00ed logic, kh\u00f4ng c\u00f3 c\u1ea3m x\u00fac hay t\u00e2m l\u00ed t\u1ef1 nhi\u00ean nh\u01b0 con ng\u01b0\u1eddi."};
 
+    function gradeD1() {
       let score = 0;
-      for (const [q, correct] of Object.entries(answers)) {
+      for (const [q, correct] of Object.entries(d1_answers)) {
         const selected = document.querySelector(`input[name="${q}"]:checked`);
         const fb = document.getElementById(`${q}_fb`);
-        fb.classList.remove('hidden');
+        if (fb) fb.classList.remove('hidden');
 
         if (selected && selected.value === correct) {
           score += 1;
-          fb.className = "text-xs mt-2 font-medium text-emerald-700";
-          fb.innerHTML = `✅ Đúng! (${explanations[q]})`;
+          if (fb) {
+            fb.className = "text-xs mt-2 font-medium text-emerald-700";
+            fb.innerHTML = `✅ Đúng! (${d1_exps[q] || 'Chính xác'}`;
+          }
         } else {
-          fb.className = "text-xs mt-2 font-medium text-rose-700";
-          fb.innerHTML = `❌ Chưa đúng. Đáp án đúng là <strong>${correct}</strong>. ${explanations[q]}`;
+          if (fb) {
+            fb.className = "text-xs mt-2 font-medium text-rose-700";
+            fb.innerHTML = `❌ Chưa đúng. Đáp án đúng là <strong>${correct}</strong>. ${d1_exps[q] || ''}`;
+          }
         }
       }
-      document.getElementById('d1-score').textContent = `Kết quả: ${score}/4 điểm`;
+      document.getElementById('d1-score').textContent = `Kết quả: ${score}/${Object.keys(d1_answers).length} điểm`;
     }
 
-    // 6. Chấm điểm Dạng 2
-    function gradeD2() {
-      const keys = { d2_q1_a: 'D', d2_q1_b: 'S', d2_q1_c: 'D', d2_q1_d: 'D' };
-      let correctCount = 0;
+    // 5. Chấm điểm Đúng/Sai (Dạng 2)
+    const d2_answers = {"d2_q1_a": "D", "d2_q1_b": "S", "d2_q1_c": "S", "d2_q1_d": "D", "d2_q2_a": "D", "d2_q2_b": "S", "d2_q2_c": "D", "d2_q2_d": "S"};
 
-      for (const [sub, ans] of Object.entries(keys)) {
-        const sel = document.querySelector(`input[name="${sub}"]:checked`);
+    function gradeD2() {
+      let correctCount = 0;
+      for (const [sid, ans] of Object.entries(d2_answers)) {
+        const sel = document.querySelector(`input[name="${sid}"]:checked`);
         if (sel && sel.value === ans) {
           correctCount++;
         }
       }
-
-      // Quy đổi điểm theo chuẩn Bộ GD&ĐT
+      const totalKeys = Object.keys(d2_answers).length;
       let score = 0;
-      if (correctCount === 1) score = 0.1;
-      else if (correctCount === 2) score = 0.25;
-      else if (correctCount === 3) score = 0.5;
-      else if (correctCount === 4) score = 1.0;
-
+      if (totalKeys === 4) {
+        if (correctCount === 1) score = 0.1;
+        else if (correctCount === 2) score = 0.25;
+        else if (correctCount === 3) score = 0.5;
+        else if (correctCount === 4) score = 1.0;
+      } else {
+        score = (correctCount / totalKeys).toFixed(2);
+      }
       const fb = document.getElementById('d2_q1_fb');
+      if (fb) {
+        fb.classList.remove('hidden');
+        fb.className = "text-xs mt-2 font-medium text-emerald-800 bg-emerald-50 p-3 rounded-xl border border-emerald-200";
+        fb.innerHTML = `Bạn trả lời đúng <strong>${correctCount}/${totalKeys} ý</strong>. Điểm đạt được: <strong>${score} điểm</strong>.`;
+      }
+      document.getElementById('d2-score').textContent = `Điểm Phần 2: ${score} điểm`;
+    }
+
+    // 6. Tương tác Nối cột (Matching)
+    let selectedLeft = null;
+    let pairedCount = 0;
+    const totalPairs = 5;
+
+    document.querySelectorAll('.match-left').forEach(el => {
+      el.addEventListener('click', () => {
+        if (el.classList.contains('match-paired')) return;
+        document.querySelectorAll('.match-left').forEach(l => l.classList.remove('match-selected'));
+        el.classList.add('match-selected');
+        selectedLeft = el.getAttribute('data-id');
+      });
+    });
+
+    document.querySelectorAll('.match-right').forEach(el => {
+      el.addEventListener('click', () => {
+        if (el.classList.contains('match-paired') || !selectedLeft) return;
+        const rightId = el.getAttribute('data-id');
+        const leftEl = document.querySelector(`.match-left[data-id="${selectedLeft}"]`);
+        const fb = document.getElementById('match-feedback');
+
+        if (selectedLeft === rightId) {
+          // Ghép đúng
+          leftEl.classList.remove('match-selected');
+          leftEl.classList.add('match-paired');
+          leftEl.innerHTML += ' <i class="ph-bold ph-check text-white"></i>';
+          el.classList.add('match-paired');
+          el.innerHTML = '<i class="ph-bold ph-check text-white mr-1.5"></i> ' + el.innerHTML;
+          pairedCount++;
+          document.getElementById('match-score').textContent = `${pairedCount}/${totalPairs} Cặp`;
+          selectedLeft = null;
+
+          if (pairedCount === totalPairs) {
+            fb.classList.remove('hidden');
+            fb.className = "p-3 rounded-xl text-xs font-bold bg-emerald-100 text-emerald-900 border border-emerald-300";
+            fb.innerHTML = "🎉 Tuyệt vời! Bạn đã ghép nối chính xác 100% tất cả các cặp kiến thức!";
+          }
+        } else {
+          // Ghép sai
+          fb.classList.remove('hidden');
+          fb.className = "p-3 rounded-xl text-xs font-bold bg-rose-100 text-rose-900 border border-rose-300";
+          fb.innerHTML = "❌ Chưa chính xác, hãy đọc kĩ lại định nghĩa và thử lại nhé!";
+          setTimeout(() => fb.classList.add('hidden'), 2500);
+        }
+      });
+    });
+
+    // 7. Tương tác Điền khuyết (Fill in blanks)
+    function checkFillBlanks() {
+      const inputs = document.querySelectorAll('.blank-input');
+      let allCorrect = true;
+      inputs.forEach(inp => {
+        const userVal = inp.value.trim().toLowerCase();
+        const expected = inp.getAttribute('data-ans').trim().toLowerCase();
+        if (userVal === expected) {
+          inp.classList.remove('blank-wrong');
+          inp.classList.add('blank-correct');
+        } else {
+          inp.classList.remove('blank-correct');
+          inp.classList.add('blank-wrong');
+          allCorrect = false;
+        }
+      });
+      const fb = document.getElementById('fill-feedback');
       fb.classList.remove('hidden');
-      fb.className = "text-xs mt-2 font-medium text-emerald-800 bg-emerald-50 p-3 rounded-xl border border-emerald-200";
-      fb.innerHTML = `Bạn trả lời đúng <strong>${correctCount}/4 ý</strong>. Đáp án chuẩn: a-Đúng, b-Sai (máy tính không tự nhận thức được), c-Đúng, d-Đúng. Điểm đạt được: <strong>${score} điểm</strong>.`;
-      document.getElementById('d2-score').textContent = `Điểm Dạng 2: ${score}/1.0 điểm`;
+      if (allCorrect) {
+        fb.className = "text-xs font-bold text-emerald-700";
+        fb.textContent = "🎉 Hoan hô! Bạn đã điền chính xác tất cả các từ khóa!";
+      } else {
+        fb.className = "text-xs font-bold text-rose-600";
+        fb.textContent = "❌ Có từ chưa chính xác (ô viền đỏ). Bạn hãy xem gợi ý từ khóa nhé!";
+      }
     }
   </script>
 </body>

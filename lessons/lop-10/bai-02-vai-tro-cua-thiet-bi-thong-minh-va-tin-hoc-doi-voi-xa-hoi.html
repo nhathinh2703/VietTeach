@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Môn Tin học 10 - Bài 2: Vai trò của thiết bị thông minh và tin học đối với xã hội | VietTeach</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Phosphor Icons CDN -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <!-- Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; }
+    .section-completed {
+      border-color: #16a34a !important;
+      background-color: #f0fdf4 !important;
+    }
+    .match-selected {
+      border-color: #16a34a !important;
+      background-color: #dcfce7 !important;
+      color: #166534 !important;
+      box-shadow: 0 2px 8px rgba(22, 163, 74, 0.2);
+    }
+    .match-paired {
+      border-color: #22c55e !important;
+      background-color: #16a34a !important;
+      color: #ffffff !important;
+      cursor: default !important;
+      opacity: 0.9;
+    }
+    .blank-input {
+      border-bottom: 2px solid #16a34a;
+      background-color: #f0fdf4;
+      padding: 2px 8px;
+      font-weight: 700;
+      color: #166534;
+      border-radius: 4px;
+      outline: none;
+      text-align: center;
+      min-width: 110px;
+      display: inline-block;
+      margin: 0 4px;
+    }
+    .blank-input.blank-correct {
+      background-color: #dcfce7;
+      border-color: #16a34a;
+      color: #15803d;
+    }
+    .blank-input.blank-wrong {
+      background-color: #ffe4e6;
+      border-color: #e11d48;
+      color: #be123c;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed flex flex-col min-h-screen">
+
+  <!-- TOP HEADER (ĐỒNG BỘ HỆ SINH THÁI VIETAPPS) -->
+  <header style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%); border-bottom: 1px solid rgba(74, 222, 128, 0.25);" class="text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+      
+      <!-- Brand & Title -->
+      <div class="flex items-center gap-3">
+        <a href="../../index.html" class="flex items-center gap-2 group" title="Về Cổng học tập VietTeach">
+          <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-xl shadow-inner group-hover:scale-105 transition">
+            👨‍🏫
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-lg font-black tracking-tight text-white group-hover:text-emerald-200 transition">VietTeach</span>
+              <span class="bg-emerald-400/20 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase border border-emerald-400/30">Lớp 10</span>
+            </div>
+            <p class="text-[11px] text-emerald-200/80">Chủ đề 1: Máy tính và xã hội tri thức • Tin học 10 (KNTT)</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Center: Lesson Header & Navigation -->
+      <div class="text-center flex-1 max-w-md hidden lg:block">
+        <h1 class="text-sm font-bold text-white uppercase tracking-tight truncate">BÀI 2: Vai trò của thiết bị thông minh và tin học đối với xã hội</h1>
+        <div class="flex items-center justify-center gap-2 mt-1">
+          <div class="w-32 bg-white/20 rounded-full h-1.5 overflow-hidden">
+            <div id="progress-bar" class="bg-amber-400 h-1.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+          </div>
+          <span id="progress-text" class="text-[10px] font-bold text-amber-300">0%</span>
+        </div>
+      </div>
+
+      <!-- Right: Action Buttons & Navigation -->
+      <div class="flex items-center gap-2">
+        <a href="bai-01-thong-tin-va-xu-li-thong-tin.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition"><i class="ph-bold ph-arrow-left"></i> <span class="hidden sm:inline">Bài trước</span></a>
+        <a href="../../index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition flex items-center gap-1" title="Xem danh mục bài học">
+          <i class="ph-bold ph-squares-four"></i> <span class="hidden sm:inline">Mục lục</span>
+        </a>
+        <a href="bai-03-mot-so-kieu-du-lieu-va-du-lieu-van-ban.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold transition shadow-sm"><span class="hidden sm:inline">Bài tiếp</span> <i class="ph-bold ph-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- Thanh Menu 7 mục sư phạm chuẩn GDPT 2018 -->
+    <nav class="bg-emerald-950/80 backdrop-blur-md border-t border-white/10 overflow-x-auto">
+      <div class="max-w-5xl mx-auto px-4 flex items-center gap-1 py-1.5 text-xs whitespace-nowrap">
+        <a href="#sec-muctieu" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">1. Mục tiêu</a>
+        <a href="#sec-khoidong" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">2. Khởi động</a>
+        <a href="#sec-kienthuc" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">3. Hình thành kiến thức</a>
+        <a href="#sec-luyentap" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">4. Luyện tập</a>
+        <a href="#sec-vandung" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">5. Vận dụng</a>
+        <a href="#sec-tomtat" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">6. Tóm tắt nội dung bài</a>
+        <a href="#sec-danhgia" class="px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 font-bold hover:bg-amber-300 transition">7. Bài tập</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="max-w-5xl mx-auto px-4 mt-8 space-y-10 flex-grow w-full">
+
+    <!-- 1. MỤC TIÊU -->
+    <section id="sec-muctieu" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300">
+      <div class="flex items-center justify-between mb-5 border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-target"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">1. Mục tiêu bài học (Yêu cầu cần đạt)</h2>
+            <p class="text-xs text-slate-500">Chuẩn Chương trình GDPT 2018 môn Tin học 10</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4 text-xs md:text-sm mb-6">
+        <div class="p-4 rounded-xl bg-emerald-50/70 border border-emerald-100 space-y-2">
+          <h3 class="font-bold text-emerald-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-book-open"></i> Kiến thức
+          </h3>
+          <ul class="list-disc list-inside space-y-1 text-slate-700">
+            
+          <li>Nêu được khái niệm và các đặc trưng cơ bản của <strong>thiết bị thông minh</strong> (Smart Devices).</li>
+          <li>Trình bày được <strong>vai trò của thiết bị thông minh</strong> trong đời sống sinh hoạt, học tập và sản xuất.</li>
+          <li>Hiểu được những <strong>đóng góp to lớn của Tin học</strong> đối với sự phát triển của xã hội hiện đại và các tác động tiêu cực cần phòng tránh.</li>
+        
+          </ul>
+        </div>
+        <div class="p-4 rounded-xl bg-teal-50/70 border border-teal-100 space-y-2">
+          <h3 class="font-bold text-teal-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-wrench"></i> Kĩ năng
+          </h3>
+          <ul class="list-disc list-inside space-y-1 text-slate-700">
+            
+          <li>Nhận biết và phân loại được các thiết bị thông minh xung quanh đời sống (smartphone, smartwatch, robot hút bụi, camera AI...).</li>
+          <li>Biết cách khai thác các tính năng thông minh để phục vụ việc học tập cá nhân hiệu quả và an toàn.</li>
+        
+          </ul>
+        </div>
+        <div class="p-4 rounded-xl bg-amber-50/70 border border-amber-100 space-y-2">
+          <h3 class="font-bold text-amber-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-lightbulb"></i> Phẩm chất & Năng lực
+          </h3>
+          <ul class="list-disc list-inside space-y-1 text-slate-700">
+            
+          <li>Hình thành ý thức làm chủ công nghệ, sử dụng thiết bị số có trách nhiệm, không lạm dụng gây ảnh hưởng đến sức khỏe và giao tiếp xã hội.</li>
+        
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-muctieu')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 2. KHỞI ĐỘNG -->
+    <section id="sec-khoidong" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300">
+      <div class="flex items-center justify-between mb-5 border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-rocket-launch"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">2. Khởi động</h2>
+            <p class="text-xs text-slate-500">Tình huống khám phá gợi mở đầu bài (Theo SGV Tin học 10)</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-5 mb-6 text-xs md:text-sm text-slate-700 space-y-3">
+        
+          <p><strong>Tình huống mở đầu:</strong> Bạn Minh có một chiếc đồng hồ đeo tay cơ truyền thống dùng kim chỉ giờ. Trong khi đó, anh trai của Minh vừa mua một chiếc đồng hồ thông minh (Smartwatch). Chiếc đồng hồ của anh trai không chỉ xem giờ mà còn đo được nhịp tim liên tục, đếm số bước chân khi chạy thể dục, nhận thông báo tin nhắn và tự động gửi cảnh báo khẩn cấp khi người đeo bị ngã mạnh.</p>
+        
+      </div>
+
+      <div class="space-y-3 text-xs md:text-sm">
+        <p class="font-bold text-slate-800">🤔 Câu hỏi gợi mở suy nghĩ:</p>
+        <p class="text-slate-700 italic bg-slate-50 p-3 rounded-xl border border-slate-200">Theo em, điều gì làm cho chiếc đồng hồ của anh trai Minh được gọi là "thông minh"? Thiết bị thông minh khác với thiết bị thông thường ở những điểm mấu chốt nào?</p>
+        
+        <div class="pt-2">
+          <button onclick="toggleHint('kd-hint')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+            <i class="ph-bold ph-lightbulb"></i> Bấm để xem Gợi ý suy luận
+          </button>
+          <div id="kd-hint" class="hidden mt-3 p-4 rounded-xl bg-emerald-50 text-emerald-950 border border-emerald-200 text-xs md:text-sm space-y-2">
+            
+          <p><strong>Gợi ý suy luận:</strong></p>
+          <ul class="list-disc list-inside space-y-1">
+            <li><strong>Khả năng cảm nhận:</strong> Đồng hồ có các cảm biến đo nhịp tim, gia tốc, bước chân từ môi trường cơ thể người.</li>
+            <li><strong>Khả năng xử lí độc lập:</strong> Tích hợp vi xử lí để tính toán lượng calo tiêu thụ, phân tích dữ liệu sức khỏe.</li>
+            <li><strong>Khả năng kết nối & thích ứng:</strong> Kết nối Bluetooth/Wi-Fi với điện thoại, tự động gửi cảnh báo cấp cứu khi phát hiện va chạm bất thường mà không cần con người bấm nút.</li>
+          </ul>
+        
+          </div>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4 mt-6">
+        <button onclick="toggleSectionDone('sec-khoidong')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 3. HÌNH THÀNH KIẾN THỨC -->
+    <section id="sec-kienthuc" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-8 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-compass"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">3. Hình thành kiến thức</h2>
+            <p class="text-xs text-slate-500">Khám phá nội dung bài học kết hợp tương tác thực hành</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <!-- CÁC TIỂU MỤC KIẾN THỨC -->
+      
+        <div class="space-y-4 ">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 bg-emerald-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">3.1</span>
+            <h3 class="text-base md:text-lg font-bold text-slate-900">Thiết bị thông minh là gì?</h3>
+          </div>
+          
+            <div class="space-y-3 text-xs md:text-sm text-slate-700">
+              <p><strong>Thiết bị thông minh (Smart Device):</strong> Là thiết bị số có khả năng xử lí thông tin một cách độc lập, có thể kết nối mạng truyền thông với các thiết bị khác và có khả năng tự động thích ứng với hoàn cảnh, môi trường xung quanh.</p>
+              
+              <div class="grid sm:grid-cols-3 gap-3 pt-2">
+                <div class="p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/60 space-y-1">
+                  <div class="font-bold text-emerald-900 flex items-center gap-1 text-xs">
+                    <i class="ph-bold ph-cpu"></i> 1. Xử lí độc lập
+                  </div>
+                  <p class="text-slate-600 text-[11px]">Tích hợp vi xử lí (chip), chạy hệ điều hành/phần mềm để tự tính toán ra quyết định.</p>
+                </div>
+                <div class="p-3.5 rounded-xl border border-teal-200 bg-teal-50/60 space-y-1">
+                  <div class="font-bold text-teal-900 flex items-center gap-1 text-xs">
+                    <i class="ph-bold ph-wifi-high"></i> 2. Kết nối đa dạng
+                  </div>
+                  <p class="text-slate-600 text-[11px]">Giao tiếp qua Wi-Fi, Bluetooth, 4G/5G, liên kết mạng vạn vật (IoT).</p>
+                </div>
+                <div class="p-3.5 rounded-xl border border-blue-200 bg-blue-50/60 space-y-1">
+                  <div class="font-bold text-blue-900 flex items-center gap-1 text-xs">
+                    <i class="ph-bold ph-magic-wand"></i> 3. Tự thích ứng
+                  </div>
+                  <p class="text-slate-600 text-[11px]">Dùng cảm biến thu nhận dữ liệu môi trường để tự điều chỉnh hành vi phù hợp.</p>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+        
+
+        <div class="space-y-4 pt-6 border-t border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 bg-emerald-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">3.2</span>
+            <h3 class="text-base md:text-lg font-bold text-slate-900">Vai trò của thiết bị thông minh đối với đời sống</h3>
+          </div>
+          
+            <div class="grid md:grid-cols-2 gap-4 text-xs md:text-sm">
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                <h4 class="font-bold text-slate-900 flex items-center gap-1.5 text-emerald-700">
+                  <i class="ph-bold ph-house-line"></i> Trong đời sống sinh hoạt gia đình
+                </h4>
+                <ul class="list-disc list-inside space-y-1 text-slate-600 text-xs">
+                  <li><strong>Nhà thông minh (Smart Home):</strong> Đèn tự bật khi có người, rèm cửa mở theo ánh sáng mặt trời, điều hòa tự chỉnh nhiệt độ.</li>
+                  <li><strong>Robot dọn dẹp:</strong> Tự quét bản đồ căn phòng, hút bụi, lau nhà và tự tìm về trạm sạc điện.</li>
+                  <li><strong>Trợ lí ảo:</strong> Điều khiển các thiết bị trong nhà bằng giọng nói (Siri, Google Assistant...).</li>
+                </ul>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                <h4 class="font-bold text-slate-900 flex items-center gap-1.5 text-blue-700">
+                  <i class="ph-bold ph-graduation-cap"></i> Trong học tập & Chăm sóc sức khỏe
+                </h4>
+                <ul class="list-disc list-inside space-y-1 text-slate-600 text-xs">
+                  <li><strong>Học tập trực tuyến:</strong> Smartphone và máy tính bảng giúp tra cứu tài liệu học thuật toàn cầu mọi lúc mọi nơi.</li>
+                  <li><strong>Theo dõi thể trạng:</strong> Vòng đeo tay thông minh theo dõi giấc ngủ, nhịp tim, nồng độ oxy trong máu (SpO2).</li>
+                  <li><strong>Hệ thống y tế từ xa:</strong> Bác sĩ có thể chẩn đoán bệnh cho bệnh nhân ở vùng sâu vùng xa qua thiết bị chuyên dụng.</li>
+                </ul>
+              </div>
+            </div>
+            
+        </div>
+        
+
+        <div class="space-y-4 pt-6 border-t border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 bg-emerald-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">3.3</span>
+            <h3 class="text-base md:text-lg font-bold text-slate-900">Đóng góp của Tin học và các mặt trái cần lưu ý</h3>
+          </div>
+          
+            <div class="space-y-4 text-xs md:text-sm">
+              <div class="p-4 rounded-xl bg-emerald-50/70 border border-emerald-200 space-y-2">
+                <h4 class="font-bold text-emerald-950 flex items-center gap-1.5 text-sm">
+                  <i class="ph-bold ph-trend-up"></i> Đóng góp to lớn của Tin học đối với xã hội:
+                </h4>
+                <div class="grid sm:grid-cols-3 gap-2 text-xs">
+                  <div class="bg-white p-2.5 rounded-lg border border-emerald-100">
+                    <span class="font-bold text-emerald-800">Kinh tế & Sản xuất:</span> Tự động hóa dây chuyền, thương mại điện tử, thanh toán không tiền mặt.
+                  </div>
+                  <div class="bg-white p-2.5 rounded-lg border border-emerald-100">
+                    <span class="font-bold text-emerald-800">Quản lí xã hội:</span> Chính phủ điện tử, dịch vụ công trực tuyến, căn cước công dân gắn chip (VNeID).
+                  </div>
+                  <div class="bg-white p-2.5 rounded-lg border border-emerald-100">
+                    <span class="font-bold text-emerald-800">Khoa học & Kĩ thuật:</span> Mô phỏng dự báo thời tiết, giải mã bản đồ gen người, khám phá vũ trụ.
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-rose-50/70 border border-rose-200 space-y-2">
+                <h4 class="font-bold text-rose-950 flex items-center gap-1.5 text-sm">
+                  <i class="ph-bold ph-warning"></i> Những mặt trái & Thách thức cần phòng tránh:
+                </h4>
+                <div class="grid sm:grid-cols-3 gap-2 text-xs">
+                  <div class="bg-white p-2.5 rounded-lg border border-rose-100">
+                    <span class="font-bold text-rose-800">Lệ thuộc công nghệ:</span> Giảm giao tiếp thực tế, lối sống thụ động lười vận động, bệnh cận thị.
+                  </div>
+                  <div class="bg-white p-2.5 rounded-lg border border-rose-100">
+                    <span class="font-bold text-rose-800">Mất an toàn dữ liệu:</span> Nguy cơ rò rỉ thông tin cá nhân, bị lừa đảo trực tuyến qua mạng xã hội.
+                  </div>
+                  <div class="bg-white p-2.5 rounded-lg border border-rose-100">
+                    <span class="font-bold text-rose-800">Ô nhiễm rác thải số:</span> Các linh kiện điện tử cũ thải ra môi trường nếu không được xử lí chuẩn.
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+        
+
+      <!-- HOẠT ĐỘNG TƯƠNG TÁC ĐIỀN KHUYẾT (NẾU CÓ) -->
+      
+        <!-- TƯƠNG TÁC ĐIỀN KHUYẾT NỘI DUNG -->
+        <div class="bg-gradient-to-r from-amber-50/70 to-orange-50/70 border border-amber-200 rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i class="ph-bold ph-textbox text-amber-700 text-lg"></i>
+              <h4 class="font-bold text-amber-950 text-sm">Hoạt động tương tác: Điền từ vào chỗ trống</h4>
+            </div>
+            <button onclick="checkFillBlanks()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold px-3.5 py-1.5 rounded-xl transition shadow-sm">
+              Kiểm tra điền từ
+            </button>
+          </div>
+          <p class="text-xs text-slate-600">Gõ các từ còn thiếu vào các ô bên dưới rồi bấm "Kiểm tra điền từ".</p>
+          <div class="bg-white p-4 rounded-xl border border-amber-200/80 text-xs md:text-sm leading-loose text-slate-800 space-y-3">
+            
+          Thiết bị <input type="text" class="blank-input" data-ans="thông minh"> là thiết bị số có khả năng xử lí thông tin một cách 
+          <input type="text" class="blank-input" data-ans="độc lập">. Nó có thể <input type="text" class="blank-input" data-ans="kết nối"> 
+          với các thiết bị khác qua mạng và tự động <input type="text" class="blank-input" data-ans="thích ứng"> với môi trường xung quanh 
+          thông qua các bộ <input type="text" class="blank-input" data-ans="cảm biến"> hiện đại.
+        
+          </div>
+          <div class="flex items-center justify-between pt-1">
+            <div id="fill-feedback" class="hidden text-xs font-bold"></div>
+            <button onclick="toggleHint('fb-hint-box')" class="text-amber-700 hover:text-amber-900 font-bold text-xs flex items-center gap-1 ml-auto">
+              <i class="ph-bold ph-lightbulb"></i> Gợi ý từ khóa
+            </button>
+          </div>
+          <div id="fb-hint-box" class="hidden bg-white/90 p-3 rounded-xl border border-amber-200 text-xs text-slate-600">
+            Từ khóa gợi ý: <span class="font-bold text-amber-800">độc lập, thông minh, kết nối, thích ứng, cảm biến</span>
+          </div>
+        </div>
+        
+
+      <!-- HOẠT ĐỘNG TƯƠNG TÁC NỐI CỘT (NẾU CÓ) -->
+      
+        <!-- TƯƠNG TÁC NỐI CỘT NỘI DUNG -->
+        <div class="bg-gradient-to-r from-emerald-50/70 to-teal-50/70 border border-emerald-200 rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i class="ph-bold ph-shuffle text-emerald-700 text-lg"></i>
+              <h4 class="font-bold text-emerald-950 text-sm">Hoạt động tương tác: Ghép nối Thiết bị thông minh với Ứng dụng thực tiễn</h4>
+            </div>
+            <span id="match-score" class="text-xs font-bold text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">0/5 Cặp</span>
+          </div>
+          <p class="text-xs text-slate-600">Bấm chọn thiết bị ở Cột A, sau đó bấm chọn công dụng tương ứng ở Cột B.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-2.5" id="match-col-a">
+              <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Cột A: Thiết bị thông minh</div>
+              <div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="m1">1. Robot hút bụi thông minh <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="m2">2. Đồng hồ thông minh (Smartwatch) <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="m3">3. Camera giám sát AI <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="m4">4. Hệ thống tưới tiêu IoT <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="m5">5. Điện thoại thông minh (Smartphone) <i class="ph-bold ph-hand-pointing text-slate-400"></i></div>
+            </div>
+            <div class="space-y-2.5" id="match-col-b">
+              <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Cột B: Khả năng thích ứng & Công dụng</div>
+              <div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="m3">Tự động nhận diện khuôn mặt người lạ và cảnh báo trộm <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="m1">Tự quét sơ đồ phòng, tránh vật cản và tự về trạm sạc <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="m5">Thiết bị đa năng kết nối Internet, điều khiển thiết bị khác <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="m2">Đo nhịp tim, đếm bước chân và cảnh báo khi người đeo ngã <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="m4">Đo độ ẩm của đất và tự động phun nước khi đất bị khô <i class="ph-bold ph-arrow-right text-slate-400"></i></div>
+            </div>
+          </div>
+          <div id="match-feedback" class="hidden p-3 rounded-xl text-xs font-bold"></div>
+        </div>
+        
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-kienthuc')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. LUYỆN TẬP -->
+    <section id="sec-luyentap" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-6 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-pencil-line"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">4. Luyện tập</h2>
+            <p class="text-xs text-slate-500">Bài tập củng cố kiến thức theo SGK và định hướng SGV</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <h3 class="font-bold text-slate-900">Bài 1: Phân biệt thiết bị thông minh và thiết bị thông thường</h3>
+          <p class="text-slate-700">Trong các thiết bị sau đây, thiết bị nào được coi là thiết bị thông minh? Vì sao?
+1. Nồi cơm điện cơ nấc gạt.
+2. Nồi cơm điện cao tần có kết nối Wi-Fi, hẹn giờ và chọn chế độ nấu qua app điện thoại.
+3. Đồng hồ báo thức để bàn quả lắc.
+4. Camera an ninh tích hợp trí tuệ nhân tạo nhận diện biển số xe.</p>
+          
+          <div class="pt-1">
+            <button onclick="toggleHint('lt-hint-1')" class="text-emerald-700 hover:text-emerald-900 font-bold flex items-center gap-1.5 text-xs bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-xl transition">
+              <i class="ph-bold ph-lightbulb"></i> Gợi ý & Đáp án tham khảo
+            </button>
+            <div id="lt-hint-1" class="hidden bg-white p-4 rounded-xl border border-emerald-200 text-slate-700 space-y-2 mt-2 shadow-sm">
+              
+              <p><strong>Phân tích chi tiết:</strong></p>
+              <ul class="list-disc list-inside space-y-1">
+                <li><strong>Thiết bị thông thường:</strong> (1) Nồi cơm điện cơ nấc gạt và (3) Đồng hồ quả lắc. Vì chúng hoạt động thuần túy bằng cơ khí/rơ-le nhiệt đơn giản, không có bộ vi xử lí độc lập, không kết nối mạng và không tự thay đổi linh hoạt theo điều kiện môi trường.</li>
+                <li><strong>Thiết bị thông minh:</strong> (2) Nồi cơm điện cao tần thông minh và (4) Camera AI. Vì chúng có chip vi xử lí, có khả năng kết nối mạng (Wi-Fi), có phần mềm nhận diện/điều khiển thông minh và tự động thích ứng với yêu cầu của người dùng.</li>
+              </ul>
+            
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <h3 class="font-bold text-slate-900">Bài 2: Phân tích vai trò của Tin học trong đại dịch</h3>
+          <p class="text-slate-700">Trong giai đoạn phòng chống dịch bệnh hoặc thiên tai, ngành Tin học đã hỗ trợ xã hội như thế nào để đảm bảo học sinh không bị gián đoạn việc học và người dân vẫn có thể mua sắm, khai báo y tế?</p>
+          
+          <div class="pt-1">
+            <button onclick="toggleHint('lt-hint-2')" class="text-emerald-700 hover:text-emerald-900 font-bold flex items-center gap-1.5 text-xs bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-xl transition">
+              <i class="ph-bold ph-lightbulb"></i> Gợi ý & Đáp án tham khảo
+            </button>
+            <div id="lt-hint-2" class="hidden bg-white p-4 rounded-xl border border-emerald-200 text-slate-700 space-y-2 mt-2 shadow-sm">
+              
+              <p><strong>Đóng góp nổi bật của Tin học:</strong></p>
+              <ul class="list-disc list-inside space-y-1">
+                <li><strong>Dạy và học trực tuyến:</strong> Sử dụng các phần mềm hội thảo truyền hình (Zoom, Google Meet, MS Teams) và hệ thống quản lí học tập LMS giúp trường học duy trì giảng dạy liên tục.</li>
+                <li><strong>Quản lí y tế & Dịch vụ công:</strong> Ứng dụng khai báo y tế điện tử, mã QR cá nhân để kiểm soát lịch trình di chuyển và chứng nhận tiêm chủng vắc-xin nhanh chóng.</li>
+                <li><strong>Thương mại điện tử & Vận chuyển:</strong> Đặt đồ ăn, nhu yếu phẩm trực tuyến qua sàn thương mại và thanh toán qua ví điện tử/mã QR không dùng tiền mặt, giảm thiểu nguy cơ tiếp xúc trực tiếp.</li>
+              </ul>
+            
+            </div>
+          </div>
+        </div>
+        
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-luyentap')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 5. VẬN DỤNG -->
+    <section id="sec-vandung" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-6 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-lightbulb-filament"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">5. Vận dụng</h2>
+            <p class="text-xs text-slate-500">Liên hệ ứng dụng thực tiễn trong cuộc sống</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="space-y-4">
+        
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <h3 class="font-bold text-slate-900">1. Thiết kế kịch bản Ngôi nhà thông minh (Smart Home)</h3>
+          <p class="text-slate-700">Giả sử em được giao nhiệm vụ lên ý tưởng thiết kế một phòng ngủ thông minh cho bản thân. Em sẽ trang bị những thiết bị thông minh nào và lập trình cho chúng phối hợp tự động với nhau như thế nào trong một ngày học tập (từ lúc thức dậy buổi sáng đến khi đi ngủ ban đêm)?</p>
+          <div class="pt-1">
+            <button onclick="toggleHint('vd-hint-1')" class="text-emerald-700 hover:text-emerald-900 font-bold flex items-center gap-1.5 text-xs bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-xl transition">
+              <i class="ph-bold ph-eye"></i> Gợi ý phân tích thực tế
+            </button>
+            <div id="vd-hint-1" class="hidden bg-white p-4 rounded-xl border border-emerald-200 text-slate-700 space-y-2 mt-2 shadow-sm">
+              
+              <p><strong>Gợi ý kịch bản phòng ngủ thông minh:</strong></p>
+              <ol class="list-decimal list-inside space-y-1">
+                <li><strong>Buổi sáng (6h00):</strong> Rèm cửa tự động kéo mở để ánh nắng sớm chiếu vào; loa thông minh nhẹ nhàng phát một bản nhạc không lời du dương và đọc dự báo thời tiết trong ngày cùng thời khóa biểu các môn học hôm nay.</li>
+                <li><strong>Khi ngồi vào bàn học (19h30):</strong> Đèn bàn thông minh tự động bật, cảm biến phát hiện tư thế ngồi sai (quá gần mặt bàn) sẽ phát tiếng nhắc nhở để bảo vệ thị lực và cột sống; đồng thời tự chuyển điện thoại sang chế độ "Tập trung học" (chặn thông báo mạng xã hội).</li>
+                <li><strong>Ban đêm khi đi ngủ (22h30):</strong> Điều hòa tự động điều chỉnh nhiệt độ theo thân nhiệt giảm dần trong đêm (27°C lúc đầu, 28°C lúc nửa đêm) để không bị cảm lạnh và tiết kiệm điện; đèn phòng tự tắt khi cảm biến phát hiện người đã nằm ngủ.</li>
+              </ol>
+            
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-vandung')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 6. TÓM TẮT NỘI DUNG BÀI -->
+    <section id="sec-tomtat" style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%);" class="study-card text-white rounded-2xl p-6 md:p-8 shadow-md transition-all duration-300">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-6">
+        <div class="flex items-center gap-2">
+          <i class="ph-bold ph-bookmarks text-amber-300 text-xl"></i>
+          <h2 class="text-lg md:text-xl font-bold text-emerald-100">6. Tóm tắt nội dung bài 2</h2>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-slate-950 bg-emerald-300 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4 text-xs md:text-sm mb-6">
+        
+          <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/20 space-y-1.5">
+            <h4 class="font-bold text-amber-300 text-sm">1. Thiết bị thông minh</h4>
+            <p class="text-xs text-emerald-100">Thiết bị số có chip vi xử lí độc lập, kết nối mạng truyền thông và có khả năng cảm nhận để tự thích ứng linh hoạt với môi trường xung quanh.</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/20 space-y-1.5">
+            <h4 class="font-bold text-amber-300 text-sm">2. Đóng góp của Tin học</h4>
+            <p class="text-xs text-emerald-100">Thúc đẩy kinh tế tri thức, tự động hóa công nghiệp, cách mạng hóa giáo dục & y tế số, xây dựng chính phủ điện tử phục vụ người dân.</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/20 space-y-1.5">
+            <h4 class="font-bold text-amber-300 text-sm">3. Sử dụng có trách nhiệm</h4>
+            <p class="text-xs text-emerald-100">Chủ động phòng tránh lệ thuộc thiết bị số, bảo vệ thông tin bí mật cá nhân và luôn giữ cân bằng giữa thế giới ảo với đời sống thực tế.</p>
+          </div>
+        
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/10 pt-4">
+        <a href="../../mindmaps/lop-10/bai-02.md" class="text-xs text-amber-300 hover:underline flex items-center gap-1 font-semibold">
+          <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy chi tiết của bài học
+        </a>
+        <button onclick="toggleSectionDone('sec-tomtat')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-white/20 bg-white/10 hover:bg-emerald-500 text-white transition flex items-center gap-1.5 ml-auto sm:ml-0">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 7. BÀI TẬP -->
+    <section id="sec-danhgia" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-10 transition-all duration-300">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4">
+        <div>
+          <h2 class="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2">
+            <i class="ph-bold ph-exam text-emerald-600"></i> 7. Bài tập đánh giá
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">Trắc nghiệm nhiều lựa chọn • Đúng/Sai đa ý • Tự luận ngắn</p>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1 self-start sm:self-auto">
+          <i class="ph-bold ph-check"></i> Đã hoàn thành
+        </span>
+      </div>
+
+      <!-- DẠNG 1: TRẮC NGHIỆM -->
+      <div class="space-y-6">
+        <div class="flex items-center justify-between border-b pb-2">
+          <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-md">Phần 1</span>
+            Câu trắc nghiệm nhiều lựa chọn (4 câu)
+          </h3>
+          <span class="text-xs font-semibold text-slate-500">1.0 điểm/câu</span>
+        </div>
+
+        <form id="d1-form" class="space-y-5 text-xs md:text-sm">
+          
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 1: Đặc trưng cốt lõi nào sau đây phân biệt rõ nhất giữa thiết bị thông minh và thiết bị số thông thường?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> Thiết bị thông minh có giá thành đắt đỏ hơn các thiết bị khác.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> Khả năng xử lí độc lập, kết nối mạng và tự thích ứng với môi trường xung quanh.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> Thiết bị thông minh luôn luôn phải có màn hình cảm ứng kích thước lớn.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> Thiết bị thông minh không bao giờ xảy ra hỏng hóc hay lỗi phần mềm.</span>
+            </label>
+            
+          </div>
+          <div id="d1_q1_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 2: Thiết bị nào sau đây là một ví dụ điển hình về thiết bị thông minh trong gia đình?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> Bàn ủi quần áo cơ truyền thống dùng dây may-so phát nhiệt.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> Đèn pin bóng dây tóc dùng pin con thỏ.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> Robot hút bụi tự quét bản đồ phòng và tự quay về đế sạc khi pin yếu.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> Quạt trần điều khiển bật/tắt bằng công tắc dây kéo.</span>
+            </label>
+            
+          </div>
+          <div id="d1_q2_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 3: Ứng dụng nào sau đây KHÔNG PHẢI là một thành tựu của Tin học trong quản lí xã hội và chính phủ điện tử?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> Cổng dịch vụ công quốc gia giải quyết thủ tục hành chính trực tuyến.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> Căn cước công dân gắn chip điện tử và ứng dụng định danh điện tử VNeID.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> Hệ thống hồ sơ bệnh án điện tử liên thông giữa các bệnh viện.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> Sổ tay ghi chép bằng bút mực lưu trữ trong kho lưu trữ truyền thống.</span>
+            </label>
+            
+          </div>
+          <div id="d1_q3_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 4: Hành vi nào sau đây là biểu hiện tiêu cực của việc lạm dụng thiết bị thông minh?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q4" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> Dùng smartphone tra cứu từ điển tiếng Anh khi đọc tài liệu học tập.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q4" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> Cài đặt chế độ theo dõi thời gian sử dụng màn hình để kiểm soát thói quen giải trí.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q4" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> Dán mắt vào điện thoại liên tục nhiều giờ liền, bỏ bê học tập và ngại giao tiếp với gia đình.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q4" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> Sao lưu các bức ảnh chụp gia đình lên kho lưu trữ đám mây an toàn.</span>
+            </label>
+            
+          </div>
+          <div id="d1_q4_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+          <div class="pt-2 flex items-center gap-3">
+            <button type="button" onclick="gradeD1()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl shadow transition">
+              Chấm điểm Phần 1
+            </button>
+            <span id="d1-score" class="font-bold text-sm text-emerald-700"></span>
+          </div>
+        </form>
+      </div>
+
+      <!-- DẠNG 2: ĐÚNG / SAI -->
+      <div class="space-y-6 pt-6 border-t">
+        <div class="flex items-center justify-between border-b pb-2">
+          <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="bg-teal-100 text-teal-800 text-xs px-2.5 py-1 rounded-md">Phần 2</span>
+            Câu hỏi trắc nghiệm Đúng/Sai đa ý
+          </h3>
+          <span class="text-xs font-semibold text-slate-500">Đúng 1 ý: 0.1đ • 2 ý: 0.25đ • 3 ý: 0.5đ • 4 ý: 1.0đ</span>
+        </div>
+
+        <form id="d2-form" class="space-y-6 text-xs md:text-sm">
+          
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <p class="font-bold text-slate-900">Câu 1: Xét tính Đúng/Sai của các khẳng định sau về thiết bị thông minh:</p>
+          <div class="space-y-2">
+            
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>a) Một thiết bị chỉ cần dùng nguồn điện là tự động trở thành thiết bị thông minh.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_a" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_a" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>b) Điện thoại thông minh (Smartphone) có thể đóng vai trò trung tâm điều khiển các thiết bị trong nhà thông minh.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_b" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_b" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>c) Hệ thống tưới tiêu thông minh trong nông nghiệp có thể tự đo độ ẩm đất để bơm nước vừa đủ.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_c" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_c" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>d) Thiết bị thông minh không cần người dùng bảo mật mật khẩu vì nó có thể tự chống lại mọi loại virus.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_d" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_d" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+          </div>
+          <div id="d2_q1_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <p class="font-bold text-slate-900">Câu 2: Xét tính Đúng/Sai của các phát biểu về tác động của Tin học đối với xã hội:</p>
+          <div class="space-y-2">
+            
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>a) Tin học giúp tối ưu hóa chi phí sản xuất và nâng cao năng suất lao động xã hội.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_a" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_a" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>b) Nhờ có Tin học, toàn bộ mọi ngành nghề trong xã hội đều sẽ bị biến mất hoàn toàn.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_b" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_b" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>c) Việc học tập trực tuyến giúp học sinh mọi miền đất nước có cơ hội tiếp cận tri thức bình đẳng hơn.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_c" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_c" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>d) Lộ lọt thông tin cá nhân trên môi trường mạng không gây ra bất kì rủi ro nào cho đời sống thực.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_d" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_d" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+          </div>
+          <div id="d2_q2_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+          <div class="pt-2 flex items-center gap-3">
+            <button type="button" onclick="gradeD2()" class="bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl shadow transition">
+              Chấm điểm Phần 2
+            </button>
+            <span id="d2-score" class="font-bold text-sm text-teal-700"></span>
+          </div>
+        </form>
+      </div>
+
+      <!-- DẠNG 3: TỰ LUẬN -->
+      <div class="space-y-6 pt-6 border-t">
+        <div class="flex items-center justify-between border-b pb-2">
+          <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="bg-purple-100 text-purple-800 text-xs px-2.5 py-1 rounded-md">Phần 3</span>
+            Câu hỏi tự luận tổng hợp
+          </h3>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <p class="font-bold text-slate-900">Là một học sinh lớp 10 đang sống trong thời đại kỉ nguyên số, em hãy nêu 3 biện pháp cụ thể mà bản thân đang thực hiện để khai thác tối đa lợi ích của thiết bị thông minh phục vụ học tập, đồng thời tránh bị sa đà vào các tác hại tiêu cực của mạng xã hội?</p>
+          <textarea id="d3-text" rows="3" placeholder="Nhập câu trả lời của em vào đây để rèn luyện kĩ năng diễn đạt..." class="w-full p-3 rounded-xl border border-slate-300 focus:outline-emerald-500"></textarea>
+          
+          <button type="button" onclick="toggleHint('d3-rubric')" class="bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs px-4 py-2 rounded-xl transition flex items-center gap-1.5">
+            <i class="ph-bold ph-check-square"></i> Bấm để xem Đáp án & Biểu điểm đối chiếu
+          </button>
+
+          <div id="d3-rubric" class="hidden bg-white p-4 rounded-xl border border-purple-200 text-slate-700 space-y-2 mt-2">
+            <h4 class="font-bold text-purple-900 text-sm">Biểu điểm đánh giá chuẩn (Thang 10 điểm):</h4>
+            <div class="space-y-1 text-xs">
+              <ul class="list-disc list-inside space-y-1">
+                <li><strong>Biện pháp 1 (3.5 điểm): Quản lí thời gian khoa học:</strong> Đặt giới hạn thời gian sử dụng màn hình (Screen Time), bật chế độ Không làm phiền khi ngồi học bài, tuyệt đối không mang điện thoại lên giường ngủ sau 22h.</li>
+                <li><strong>Biện pháp 2 (3.5 điểm): Khai thác học tập có chủ đích:</strong> Sử dụng thiết bị để học ngoại ngữ (Duolingo, Quizlet), xem bài giảng khoa học, tra cứu bài giảng tương tác VietTeach thay vì chỉ lướt video ngắn TikTok/Reels thụ động.</li>
+                <li><strong>Biện pháp 3 (3.0 điểm): Cân bằng thể chất và đời sống thực:</strong> Tham gia thể thao ngoài trời ít nhất 45 phút mỗi ngày, duy trì trò chuyện trực tiếp với cha mẹ và bạn bè để giữ gìn các mối quan hệ xã hội lành mạnh.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-danhgia')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu hoàn thành bài</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- BOTTOM NAVIGATION (CHUYỂN BÀI THUẬN TIỆN) -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 py-6 border-t border-slate-200">
+      <div>
+        <a href="bai-01-thong-tin-va-xu-li-thong-tin.html" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold shadow-sm transition"><i class="ph-bold ph-arrow-left"></i> <span>Bài trước: Bài 1: Thông tin và xử lí thông tin</span></a>
+      </div>
+      <a href="../../index.html" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition">
+        <i class="ph-bold ph-squares-four"></i> Danh mục tất cả bài học Lớp 10
+      </a>
+      <div>
+        <a href="bai-03-mot-so-kieu-du-lieu-va-du-lieu-van-ban.html" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-sm transition"><span>Bài tiếp: Bài 3: Một số kiểu dữ liệu và dữ liệu văn bản</span> <i class="ph-bold ph-arrow-right"></i></a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- NÚT 'LÊN ĐẦU' TRÔI NỔI (BACK TO TOP) -->
+  <button id="btn-back-to-top" onclick="scrollToTop()" title="Lên đầu trang" class="fixed bottom-6 right-6 z-50 w-11 h-11 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-xl flex items-center justify-center transition-all duration-300 transform translate-y-16 opacity-0 hover:scale-110">
+    <i class="ph-bold ph-arrow-up text-lg"></i>
+  </button>
+
+  <!-- FOOTER (ĐỒNG BỘ VIETAPPS) -->
+  <footer style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%);" class="text-white py-8 mt-12 border-t border-emerald-500/30">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-100">
+      <div class="flex items-center gap-2">
+        <span class="text-base">👨‍🏫</span>
+        <span class="font-bold text-white">VietTeach</span> • Hệ sinh thái giải pháp giáo dục VietApps (VietMix, VietTest, VietBook, VietTeach).
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="../../index.html" class="hover:text-amber-300 transition">Cổng bài học</a>
+        <span>•</span>
+        <a href="../../mindmaps/lop-10/bai-02.md" class="hover:text-amber-300 transition">Sơ đồ tư duy</a>
+        <span>•</span>
+        <span>Môn Tin học 10 (KNTT)</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT LOGIC TƯƠNG TÁC -->
+  <script>
+    // 1. Quản lí tiến độ học tập
+    const allSectionIds = ['sec-muctieu', 'sec-khoidong', 'sec-kienthuc', 'sec-luyentap', 'sec-vandung', 'sec-tomtat', 'sec-danhgia'];
+    let completedSections = new Set();
+
+    function updateProgressBar() {
+      const percent = Math.round((completedSections.size / allSectionIds.length) * 100);
+      document.getElementById('progress-bar').style.width = percent + '%';
+      document.getElementById('progress-text').textContent = percent + '%';
+    }
+
+    function toggleSectionDone(secId) {
+      const section = document.getElementById(secId);
+      const badge = section.querySelector('.status-badge');
+      const btn = section.querySelector('.btn-mark');
+
+      if (completedSections.has(secId)) {
+        completedSections.delete(secId);
+        section.classList.remove('section-completed');
+        if (badge) badge.classList.add('hidden');
+        if (btn) {
+          btn.innerHTML = '<i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>';
+          btn.className = "btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto";
+        }
+      } else {
+        completedSections.add(secId);
+        section.classList.add('section-completed');
+        if (badge) badge.classList.remove('hidden');
+        if (btn) {
+          btn.innerHTML = '<i class="ph-bold ph-arrow-counter-clockwise text-base"></i> <span>Hủy đánh dấu</span>';
+          btn.className = "btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-emerald-300 bg-emerald-100 text-emerald-800 hover:bg-slate-200 hover:text-slate-700 transition flex items-center gap-1.5 ml-auto";
+        }
+      }
+      updateProgressBar();
+    }
+
+    // 2. Nút Lên đầu trang (Back to top)
+    const backToTopBtn = document.getElementById('btn-back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('translate-y-16', 'opacity-0');
+        backToTopBtn.classList.add('translate-y-0', 'opacity-100');
+      } else {
+        backToTopBtn.classList.add('translate-y-16', 'opacity-0');
+        backToTopBtn.classList.remove('translate-y-0', 'opacity-100');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 3. Ẩn / hiện gợi ý
+    function toggleHint(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('hidden');
+    }
+
+    // 4. Chấm điểm Trắc nghiệm (Dạng 1)
+    const d1_answers = {"d1_q1": "B", "d1_q2": "C", "d1_q3": "D", "d1_q4": "C"};
+    const d1_exps = {"d1_q1": "\u0110\u1eb7c tr\u01b0ng m\u1ea5u ch\u1ed1t c\u1ee7a thi\u1ebft b\u1ecb th\u00f4ng minh l\u00e0 x\u1eed l\u00ed th\u00f4ng tin \u0111\u1ed9c l\u1eadp, k\u1ebft n\u1ed1i m\u1ea1ng v\u00e0 t\u1ef1 th\u00edch \u1ee9ng m\u00f4i tr\u01b0\u1eddng.", "d1_q2": "Robot h\u00fat b\u1ee5i c\u00f3 vi x\u1eed l\u00ed, c\u1ea3m bi\u1ebfn laser/camera \u0111\u1ecbnh v\u1ecb b\u1ea3n \u0111\u1ed3 v\u00e0 t\u1ef1 ra quy\u1ebft \u0111\u1ecbnh h\u00e0nh \u0111\u1ed9ng.", "d1_q3": "S\u1ed5 tay gi\u1ea5y l\u00e0 ph\u01b0\u01a1ng th\u1ee9c truy\u1ec1n th\u1ed1ng th\u1ee7 c\u00f4ng, kh\u00f4ng ph\u1ea3i \u1ee9ng d\u1ee5ng tin h\u1ecdc.", "d1_q4": "S\u1eed d\u1ee5ng li\u00ean t\u1ee5c nhi\u1ec1u gi\u1edd g\u00e2y h\u1ea1i cho m\u1eaft, s\u1ee9c kh\u1ecfe v\u00e0 l\u00e0m suy gi\u1ea3m k\u0129 n\u0103ng giao ti\u1ebfp tr\u1ef1c ti\u1ebfp."};
+
+    function gradeD1() {
+      let score = 0;
+      for (const [q, correct] of Object.entries(d1_answers)) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        const fb = document.getElementById(`${q}_fb`);
+        if (fb) fb.classList.remove('hidden');
+
+        if (selected && selected.value === correct) {
+          score += 1;
+          if (fb) {
+            fb.className = "text-xs mt-2 font-medium text-emerald-700";
+            fb.innerHTML = `✅ Đúng! (${d1_exps[q] || 'Chính xác'}`;
+          }
+        } else {
+          if (fb) {
+            fb.className = "text-xs mt-2 font-medium text-rose-700";
+            fb.innerHTML = `❌ Chưa đúng. Đáp án đúng là <strong>${correct}</strong>. ${d1_exps[q] || ''}`;
+          }
+        }
+      }
+      document.getElementById('d1-score').textContent = `Kết quả: ${score}/${Object.keys(d1_answers).length} điểm`;
+    }
+
+    // 5. Chấm điểm Đúng/Sai (Dạng 2)
+    const d2_answers = {"d2_q1_a": "S", "d2_q1_b": "D", "d2_q1_c": "D", "d2_q1_d": "S", "d2_q2_a": "D", "d2_q2_b": "S", "d2_q2_c": "D", "d2_q2_d": "S"};
+
+    function gradeD2() {
+      let correctCount = 0;
+      for (const [sid, ans] of Object.entries(d2_answers)) {
+        const sel = document.querySelector(`input[name="${sid}"]:checked`);
+        if (sel && sel.value === ans) {
+          correctCount++;
+        }
+      }
+      const totalKeys = Object.keys(d2_answers).length;
+      let score = 0;
+      if (totalKeys === 4) {
+        if (correctCount === 1) score = 0.1;
+        else if (correctCount === 2) score = 0.25;
+        else if (correctCount === 3) score = 0.5;
+        else if (correctCount === 4) score = 1.0;
+      } else {
+        score = (correctCount / totalKeys).toFixed(2);
+      }
+      const fb = document.getElementById('d2_q1_fb');
+      if (fb) {
+        fb.classList.remove('hidden');
+        fb.className = "text-xs mt-2 font-medium text-emerald-800 bg-emerald-50 p-3 rounded-xl border border-emerald-200";
+        fb.innerHTML = `Bạn trả lời đúng <strong>${correctCount}/${totalKeys} ý</strong>. Điểm đạt được: <strong>${score} điểm</strong>.`;
+      }
+      document.getElementById('d2-score').textContent = `Điểm Phần 2: ${score} điểm`;
+    }
+
+    // 6. Tương tác Nối cột (Matching)
+    let selectedLeft = null;
+    let pairedCount = 0;
+    const totalPairs = 5;
+
+    document.querySelectorAll('.match-left').forEach(el => {
+      el.addEventListener('click', () => {
+        if (el.classList.contains('match-paired')) return;
+        document.querySelectorAll('.match-left').forEach(l => l.classList.remove('match-selected'));
+        el.classList.add('match-selected');
+        selectedLeft = el.getAttribute('data-id');
+      });
+    });
+
+    document.querySelectorAll('.match-right').forEach(el => {
+      el.addEventListener('click', () => {
+        if (el.classList.contains('match-paired') || !selectedLeft) return;
+        const rightId = el.getAttribute('data-id');
+        const leftEl = document.querySelector(`.match-left[data-id="${selectedLeft}"]`);
+        const fb = document.getElementById('match-feedback');
+
+        if (selectedLeft === rightId) {
+          // Ghép đúng
+          leftEl.classList.remove('match-selected');
+          leftEl.classList.add('match-paired');
+          leftEl.innerHTML += ' <i class="ph-bold ph-check text-white"></i>';
+          el.classList.add('match-paired');
+          el.innerHTML = '<i class="ph-bold ph-check text-white mr-1.5"></i> ' + el.innerHTML;
+          pairedCount++;
+          document.getElementById('match-score').textContent = `${pairedCount}/${totalPairs} Cặp`;
+          selectedLeft = null;
+
+          if (pairedCount === totalPairs) {
+            fb.classList.remove('hidden');
+            fb.className = "p-3 rounded-xl text-xs font-bold bg-emerald-100 text-emerald-900 border border-emerald-300";
+            fb.innerHTML = "🎉 Tuyệt vời! Bạn đã ghép nối chính xác 100% tất cả các cặp kiến thức!";
+          }
+        } else {
+          // Ghép sai
+          fb.classList.remove('hidden');
+          fb.className = "p-3 rounded-xl text-xs font-bold bg-rose-100 text-rose-900 border border-rose-300";
+          fb.innerHTML = "❌ Chưa chính xác, hãy đọc kĩ lại định nghĩa và thử lại nhé!";
+          setTimeout(() => fb.classList.add('hidden'), 2500);
+        }
+      });
+    });
+
+    // 7. Tương tác Điền khuyết (Fill in blanks)
+    function checkFillBlanks() {
+      const inputs = document.querySelectorAll('.blank-input');
+      let allCorrect = true;
+      inputs.forEach(inp => {
+        const userVal = inp.value.trim().toLowerCase();
+        const expected = inp.getAttribute('data-ans').trim().toLowerCase();
+        if (userVal === expected) {
+          inp.classList.remove('blank-wrong');
+          inp.classList.add('blank-correct');
+        } else {
+          inp.classList.remove('blank-correct');
+          inp.classList.add('blank-wrong');
+          allCorrect = false;
+        }
+      });
+      const fb = document.getElementById('fill-feedback');
+      fb.classList.remove('hidden');
+      if (allCorrect) {
+        fb.className = "text-xs font-bold text-emerald-700";
+        fb.textContent = "🎉 Hoan hô! Bạn đã điền chính xác tất cả các từ khóa!";
+      } else {
+        fb.className = "text-xs font-bold text-rose-600";
+        fb.textContent = "❌ Có từ chưa chính xác (ô viền đỏ). Bạn hãy xem gợi ý từ khóa nhé!";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Môn Tin học 10 - Bài 6: Dữ liệu âm thanh và hình ảnh | VietTeach</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Phosphor Icons CDN -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <!-- Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; }
+    .section-completed {
+      border-color: #16a34a !important;
+      background-color: #f0fdf4 !important;
+    }
+    .match-selected {
+      border-color: #16a34a !important;
+      background-color: #dcfce7 !important;
+      color: #166534 !important;
+      box-shadow: 0 2px 8px rgba(22, 163, 74, 0.2);
+    }
+    .match-paired {
+      border-color: #22c55e !important;
+      background-color: #16a34a !important;
+      color: #ffffff !important;
+      cursor: default !important;
+      opacity: 0.9;
+    }
+    .blank-input {
+      border-bottom: 2px solid #16a34a;
+      background-color: #f0fdf4;
+      padding: 2px 8px;
+      font-weight: 700;
+      color: #166534;
+      border-radius: 4px;
+      outline: none;
+      text-align: center;
+      min-width: 110px;
+      display: inline-block;
+      margin: 0 4px;
+    }
+    .blank-input.blank-correct {
+      background-color: #dcfce7;
+      border-color: #16a34a;
+      color: #15803d;
+    }
+    .blank-input.blank-wrong {
+      background-color: #ffe4e6;
+      border-color: #e11d48;
+      color: #be123c;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed flex flex-col min-h-screen">
+
+  <!-- TOP HEADER (ĐỒNG BỘ HỆ SINH THÁI VIETAPPS) -->
+  <header style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%); border-bottom: 1px solid rgba(74, 222, 128, 0.25);" class="text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+      
+      <!-- Brand & Title -->
+      <div class="flex items-center gap-3">
+        <a href="../../index.html" class="flex items-center gap-2 group" title="Về Cổng học tập VietTeach">
+          <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-xl shadow-inner group-hover:scale-105 transition">
+            👨‍🏫
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-lg font-black tracking-tight text-white group-hover:text-emerald-200 transition">VietTeach</span>
+              <span class="bg-emerald-400/20 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase border border-emerald-400/30">Lớp 10</span>
+            </div>
+            <p class="text-[11px] text-emerald-200/80">Chủ đề 1: Máy tính và xã hội tri thức • Tin học 10 (KNTT)</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Center: Lesson Header & Navigation -->
+      <div class="text-center flex-1 max-w-md hidden lg:block">
+        <h1 class="text-sm font-bold text-white uppercase tracking-tight truncate">BÀI 6: Dữ liệu âm thanh và hình ảnh</h1>
+        <div class="flex items-center justify-center gap-2 mt-1">
+          <div class="w-32 bg-white/20 rounded-full h-1.5 overflow-hidden">
+            <div id="progress-bar" class="bg-amber-400 h-1.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+          </div>
+          <span id="progress-text" class="text-[10px] font-bold text-amber-300">0%</span>
+        </div>
+      </div>
+
+      <!-- Right: Action Buttons & Navigation -->
+      <div class="flex items-center gap-2">
+        <a href="bai-05-du-lieu-logic.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition"><i class="ph-bold ph-arrow-left"></i> <span class="hidden sm:inline">Bài trước</span></a>
+        <a href="../../index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition flex items-center gap-1" title="Xem danh mục bài học">
+          <i class="ph-bold ph-squares-four"></i> <span class="hidden sm:inline">Mục lục</span>
+        </a>
+        <a href="bai-07-thuc-hanh-su-dung-thiet-bi-so-thong-dung.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold transition shadow-sm"><span class="hidden sm:inline">Bài tiếp</span> <i class="ph-bold ph-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- Thanh Menu 7 mục sư phạm chuẩn GDPT 2018 -->
+    <nav class="bg-emerald-950/80 backdrop-blur-md border-t border-white/10 overflow-x-auto">
+      <div class="max-w-5xl mx-auto px-4 flex items-center gap-1 py-1.5 text-xs whitespace-nowrap">
+        <a href="#sec-muctieu" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">1. Mục tiêu</a>
+        <a href="#sec-khoidong" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">2. Khởi động</a>
+        <a href="#sec-kienthuc" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">3. Hình thành kiến thức</a>
+        <a href="#sec-luyentap" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">4. Luyện tập</a>
+        <a href="#sec-vandung" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">5. Vận dụng</a>
+        <a href="#sec-tomtat" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">6. Tóm tắt nội dung bài</a>
+        <a href="#sec-danhgia" class="px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 font-bold hover:bg-amber-300 transition">7. Bài tập</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="max-w-5xl mx-auto px-4 mt-8 space-y-10 flex-grow w-full">
+
+    <!-- 1. MỤC TIÊU -->
+    <section id="sec-muctieu" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300">
+      <div class="flex items-center justify-between mb-5 border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-target"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">1. Mục tiêu bài học (Yêu cầu cần đạt)</h2>
+            <p class="text-xs text-slate-500">Chuẩn Chương trình GDPT 2018 môn Tin học 10</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4 text-xs md:text-sm mb-6">
+        <div class="p-4 rounded-xl bg-emerald-50/70 border border-emerald-100 space-y-2">
+          <h3 class="font-bold text-emerald-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-book-open"></i> Kiến thức
+          </h3>
+          <ul class="list-disc list-inside space-y-1 text-slate-700">
+            
+          <li>Hiểu được <strong>nguyên lí số hóa hình ảnh</strong>: Khái niệm điểm ảnh (Pixel), độ phân giải và hệ màu RGB.</li>
+          <li>Hiểu được <strong>nguyên lí số hóa âm thanh</strong>: Quá trình lấy mẫu (Sampling) và lượng tử hóa (Quantization).</li>
+          <li>Phân biệt được các <strong>định dạng tệp đa phương tiện</strong> thông dụng: JPEG, PNG, GIF, MP3, WAV, FLAC và khái niệm nén dữ liệu.</li>
+        
+          </ul>
+        </div>
+        <div class="p-4 rounded-xl bg-teal-50/70 border border-teal-100 space-y-2">
+          <h3 class="font-bold text-teal-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-wrench"></i> Kĩ năng
+          </h3>
+          <ul class="list-disc list-inside space-y-1 text-slate-700">
+            
+          <li>Tính toán được dung lượng thô của một tệp ảnh và một đoạn âm thanh số hóa chưa nén.</li>
+          <li>Lựa chọn định dạng tệp phù hợp khi lưu trữ, xuất bản ảnh và âm thanh lên Internet.</li>
+        
+          </ul>
+        </div>
+        <div class="p-4 rounded-xl bg-amber-50/70 border border-amber-100 space-y-2">
+          <h3 class="font-bold text-amber-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-lightbulb"></i> Phẩm chất & Năng lực
+          </h3>
+          <ul class="list-disc list-inside space-y-1 text-slate-700">
+            
+          <li>Có ý thức tối ưu hóa dung lượng tài nguyên đa phương tiện, bảo vệ bản quyền tác phẩm hình ảnh và âm nhạc số.</li>
+        
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-muctieu')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 2. KHỞI ĐỘNG -->
+    <section id="sec-khoidong" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300">
+      <div class="flex items-center justify-between mb-5 border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-rocket-launch"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">2. Khởi động</h2>
+            <p class="text-xs text-slate-500">Tình huống khám phá gợi mở đầu bài (Theo SGV Tin học 10)</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-5 mb-6 text-xs md:text-sm text-slate-700 space-y-3">
+        
+          <p><strong>Tình huống mở đầu:</strong> Bức tranh Mona Lisa ngoài đời thực là những vệt màu sơn dầu liên tục trên vải gỗ. Giọng hát của ca sĩ biểu diễn trên sân khấu là những đợt sóng âm thanh lan truyền liên tục trong không khí. Cả hai đều là tín hiệu tương tự (Analog) biến đổi liên tục theo thời gian và không gian.</p>
+        
+      </div>
+
+      <div class="space-y-3 text-xs md:text-sm">
+        <p class="font-bold text-slate-800">🤔 Câu hỏi gợi mở suy nghĩ:</p>
+        <p class="text-slate-700 italic bg-slate-50 p-3 rounded-xl border border-slate-200">Làm thế nào mà chiếc máy ảnh kĩ thuật số và micro thu âm lại có thể "bắt" những hình ảnh và âm thanh liên tục đó rồi biến chúng thành dãy các con số 0 và 1 để lưu vào thẻ nhớ điện thoại?</p>
+        
+        <div class="pt-2">
+          <button onclick="toggleHint('kd-hint')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+            <i class="ph-bold ph-lightbulb"></i> Bấm để xem Gợi ý suy luận
+          </button>
+          <div id="kd-hint" class="hidden mt-3 p-4 rounded-xl bg-emerald-50 text-emerald-950 border border-emerald-200 text-xs md:text-sm space-y-2">
+            
+          <p><strong>Gợi ý suy luận:</strong></p>
+          <ul class="list-disc list-inside space-y-1">
+            <li><strong>Rời rạc hóa (Số hóa):</strong> Máy tính không thể lưu được giá trị vô hạn liên tục, do đó nó phải "chia nhỏ" bức tranh thành hàng triệu ô vuông nhỏ li ti gọi là <strong>điểm ảnh (Pixel)</strong>.</li>
+            <li>Với âm thanh, máy tính thực hiện "chụp ảnh nhanh" sóng âm hàng chục nghìn lần mỗi giây (gọi là <strong>lấy mẫu</strong>) rồi đo độ lớn của sóng âm tại từng thời điểm đó để đổi thành số nhị phân.</li>
+          </ul>
+        
+          </div>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4 mt-6">
+        <button onclick="toggleSectionDone('sec-khoidong')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 3. HÌNH THÀNH KIẾN THỨC -->
+    <section id="sec-kienthuc" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-8 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-compass"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">3. Hình thành kiến thức</h2>
+            <p class="text-xs text-slate-500">Khám phá nội dung bài học kết hợp tương tác thực hành</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <!-- CÁC TIỂU MỤC KIẾN THỨC -->
+      
+        <div class="space-y-4 ">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 bg-emerald-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">3.1</span>
+            <h3 class="text-base md:text-lg font-bold text-slate-900">Số hóa hình ảnh (Điểm ảnh Pixel & Hệ màu RGB)</h3>
+          </div>
+          
+            <div class="space-y-3 text-xs md:text-sm text-slate-700">
+              <div class="grid md:grid-cols-2 gap-4">
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                  <h4 class="font-bold text-slate-900 flex items-center gap-1.5 text-xs text-emerald-700">
+                    <i class="ph-bold ph-grid-four"></i> Điểm ảnh (Pixel) & Độ phân giải
+                  </h4>
+                  <p class="text-slate-600 text-xs">Mỗi bức ảnh số là một ma trận gồm các ô vuông màu rất nhỏ gọi là <strong>Pixel</strong> (Picture Element). Độ phân giải biểu thị số lượng điểm ảnh theo chiều rộng và chiều cao (ví dụ: Full HD là $1920 	imes 1080 pprox 2$ triệu pixel).</p>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                  <h4 class="font-bold text-slate-900 flex items-center gap-1.5 text-xs text-blue-700">
+                    <i class="ph-bold ph-palette"></i> Hệ màu RGB (Red - Green - Blue)
+                  </h4>
+                  <p class="text-slate-600 text-xs">Màu sắc của mỗi điểm ảnh được pha trộn từ 3 màu cơ bản: Đỏ (R), Xanh lục (G), Xanh lam (B). Trong hệ màu 24-bit TrueColor, mỗi kênh màu dùng 1 Byte (8 bit, giá trị từ 0 đến 255). Tổng số màu tạo ra là $256 	imes 256 	imes 256 pprox 16.7$ triệu màu.</p>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+        
+
+        <div class="space-y-4 pt-6 border-t border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 bg-emerald-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">3.2</span>
+            <h3 class="text-base md:text-lg font-bold text-slate-900">Số hóa âm thanh (Lấy mẫu & Lượng tử hóa)</h3>
+          </div>
+          
+            <div class="space-y-3 text-xs md:text-sm text-slate-700">
+              <p>Âm thanh thực tế là sóng dao động cơ học liên tục. Quá trình chuyển đổi sóng âm thành dữ liệu số nhị phân gồm hai giai đoạn chính:</p>
+              
+              <div class="grid sm:grid-cols-2 gap-3 pt-1">
+                <div class="p-3.5 rounded-xl border border-teal-200 bg-teal-50/60 space-y-1">
+                  <div class="font-bold text-teal-900 flex items-center gap-1 text-xs">
+                    <i class="ph-bold ph-wave-sine"></i> 1. Lấy mẫu (Sampling)
+                  </div>
+                  <p class="text-slate-600 text-xs">Đo giá trị sóng âm tại các khoảng thời gian đều đặn. <strong>Tần số lấy mẫu:</strong> Số lần đo trong 1 giây (ví dụ chuẩn CD Audio là 44,100 Hz = 44.1 kHz, nghĩa là đo 44,100 lần mỗi giây).</p>
+                </div>
+                <div class="p-3.5 rounded-xl border border-purple-200 bg-purple-50/60 space-y-1">
+                  <div class="font-bold text-purple-900 flex items-center gap-1 text-xs">
+                    <i class="ph-bold ph-chart-bar"></i> 2. Lượng tử hóa (Quantization)
+                  </div>
+                  <p class="text-slate-600 text-xs">Chuyển đổi giá trị biên độ đo được thành một số nhị phân có độ chính xác cố định (ví dụ 16 bit cho phép chia độ lớn thành 65,536 mức khác nhau).</p>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+        
+
+        <div class="space-y-4 pt-6 border-t border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 bg-emerald-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">3.3</span>
+            <h3 class="text-base md:text-lg font-bold text-slate-900">Nén dữ liệu và Các định dạng tệp đa phương tiện</h3>
+          </div>
+          
+            <div class="space-y-3 text-xs md:text-sm text-slate-700">
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div class="p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/70 space-y-1.5">
+                  <h4 class="font-bold text-emerald-900 text-xs flex items-center gap-1">
+                    <i class="ph-bold ph-file-image"></i> Định dạng tệp hình ảnh
+                  </h4>
+                  <ul class="text-xs space-y-1 text-slate-700">
+                    <li><strong>JPEG (.jpg):</strong> Nén có mất dữ liệu (Lossy), dung lượng rất nhẹ, chuẩn phổ biến cho ảnh chụp máy ảnh, smartphone.</li>
+                    <li><strong>PNG (.png):</strong> Nén không mất dữ liệu (Lossless), hỗ trợ nền trong suốt (Transparency), chuẩn cho đồ họa web, logo.</li>
+                    <li><strong>GIF (.gif):</strong> Hỗ trợ ảnh động ngắn, giới hạn tối đa 256 màu.</li>
+                  </ul>
+                </div>
+
+                <div class="p-3.5 rounded-xl border border-blue-200 bg-blue-50/70 space-y-1.5">
+                  <h4 class="font-bold text-blue-900 text-xs flex items-center gap-1">
+                    <i class="ph-bold ph-file-audio"></i> Định dạng tệp âm thanh
+                  </h4>
+                  <ul class="text-xs space-y-1 text-slate-700">
+                    <li><strong>WAV (.wav):</strong> Âm thanh gốc chưa nén, chất lượng hoàn hảo tuyệt đối nhưng dung lượng rất lớn.</li>
+                    <li><strong>MP3 (.mp3):</strong> Nén có mất dữ liệu thông minh (loại bỏ các tần số tai người không nghe thấy), giảm dung lượng tới 10 lần.</li>
+                    <li><strong>FLAC (.flac):</strong> Nén âm thanh không mất dữ liệu cho người đam mê âm thanh chất lượng cao (Audiophile).</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+        
+
+      <!-- HOẠT ĐỘNG TƯƠNG TÁC ĐIỀN KHUYẾT (NẾU CÓ) -->
+      
+        <!-- TƯƠNG TÁC ĐIỀN KHUYẾT NỘI DUNG -->
+        <div class="bg-gradient-to-r from-amber-50/70 to-orange-50/70 border border-amber-200 rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i class="ph-bold ph-textbox text-amber-700 text-lg"></i>
+              <h4 class="font-bold text-amber-950 text-sm">Hoạt động tương tác: Điền từ vào chỗ trống</h4>
+            </div>
+            <button onclick="checkFillBlanks()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold px-3.5 py-1.5 rounded-xl transition shadow-sm">
+              Kiểm tra điền từ
+            </button>
+          </div>
+          <p class="text-xs text-slate-600">Gõ các từ còn thiếu vào các ô bên dưới rồi bấm "Kiểm tra điền từ".</p>
+          <div class="bg-white p-4 rounded-xl border border-amber-200/80 text-xs md:text-sm leading-loose text-slate-800 space-y-3">
+            
+          Phần tử nhỏ nhất để tạo nên một bức ảnh số được gọi là <input type="text" class="blank-input" data-ans="Pixel">. 
+          Hệ màu thông dụng nhất để hiển thị màu sắc trên màn hình kĩ thuật số là <input type="text" class="blank-input" data-ans="RGB">. 
+          Tổng số điểm ảnh theo chiều rộng và chiều cao của bức ảnh gọi là <input type="text" class="blank-input" data-ans="độ phân giải">. 
+          Để số hóa âm thanh, thiết bị phải thực hiện quá trình <input type="text" class="blank-input" data-ans="lấy mẫu"> biên độ sóng âm theo thời gian.
+        
+          </div>
+          <div class="flex items-center justify-between pt-1">
+            <div id="fill-feedback" class="hidden text-xs font-bold"></div>
+            <button onclick="toggleHint('fb-hint-box')" class="text-amber-700 hover:text-amber-900 font-bold text-xs flex items-center gap-1 ml-auto">
+              <i class="ph-bold ph-lightbulb"></i> Gợi ý từ khóa
+            </button>
+          </div>
+          <div id="fb-hint-box" class="hidden bg-white/90 p-3 rounded-xl border border-amber-200 text-xs text-slate-600">
+            Từ khóa gợi ý: <span class="font-bold text-amber-800">Pixel, RGB, lấy mẫu, JPEG, độ phân giải</span>
+          </div>
+        </div>
+        
+
+      <!-- HOẠT ĐỘNG TƯƠNG TÁC NỐI CỘT (NẾU CÓ) -->
+      
+        <!-- TƯƠNG TÁC NỐI CỘT NỘI DUNG -->
+        <div class="bg-gradient-to-r from-emerald-50/70 to-teal-50/70 border border-emerald-200 rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i class="ph-bold ph-shuffle text-emerald-700 text-lg"></i>
+              <h4 class="font-bold text-emerald-950 text-sm">Hoạt động tương tác: Ghép nối Định dạng tệp với Đặc điểm kĩ thuật</h4>
+            </div>
+            <span id="match-score" class="text-xs font-bold text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">0/5 Cặp</span>
+          </div>
+          <p class="text-xs text-slate-600">Bấm chọn định dạng tệp ở Cột A và ghép với đặc điểm tương ứng ở Cột B.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-2.5" id="match-col-a">
+              <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Cột A: Định dạng tệp đa phương tiện</div>
+              <div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="f1">1. Định dạng ảnh JPEG (.jpg) <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="f2">2. Định dạng ảnh PNG (.png) <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="f3">3. Định dạng âm thanh MP3 <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="f4">4. Định dạng âm thanh WAV <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="f5">5. Điểm ảnh (Pixel) <i class="ph-bold ph-hand-pointing text-slate-400"></i></div>
+            </div>
+            <div class="space-y-2.5" id="match-col-b">
+              <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Cột B: Đặc tính kĩ thuật cốt lõi</div>
+              <div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="f3">Âm thanh nén dung lượng nhẹ, phổ biến nhất trên Internet <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="f1">Nén có mất dữ liệu, tối ưu dung lượng cho ảnh chụp phong cảnh <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="f5">Phần tử nhỏ nhất cấu thành nên một bức ảnh số <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="f4">Âm thanh nguyên bản không nén, chất lượng phòng thu <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="f2">Nén không mất dữ liệu, hỗ trợ làm nền ảnh trong suốt <i class="ph-bold ph-arrow-right text-slate-400"></i></div>
+            </div>
+          </div>
+          <div id="match-feedback" class="hidden p-3 rounded-xl text-xs font-bold"></div>
+        </div>
+        
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-kienthuc')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. LUYỆN TẬP -->
+    <section id="sec-luyentap" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-6 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-pencil-line"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">4. Luyện tập</h2>
+            <p class="text-xs text-slate-500">Bài tập củng cố kiến thức theo SGK và định hướng SGV</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <h3 class="font-bold text-slate-900">Bài 1: Tính dung lượng thô của tệp ảnh</h3>
+          <p class="text-slate-700">Một bức ảnh kĩ thuật số có kích thước 1280 × 720 pixel (độ phân giải HD 720p). Ảnh sử dụng hệ màu 24-bit TrueColor (mỗi điểm ảnh chiếm 3 Byte bộ nhớ: 1 Byte cho Red, 1 Byte cho Green, 1 Byte cho Blue).
+Hãy tính dung lượng thô chưa nén của bức ảnh này theo đơn vị Megabyte (MB).</p>
+          
+          <div class="pt-1">
+            <button onclick="toggleHint('lt-hint-1')" class="text-emerald-700 hover:text-emerald-900 font-bold flex items-center gap-1.5 text-xs bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-xl transition">
+              <i class="ph-bold ph-lightbulb"></i> Gợi ý & Đáp án tham khảo
+            </button>
+            <div id="lt-hint-1" class="hidden bg-white p-4 rounded-xl border border-emerald-200 text-slate-700 space-y-2 mt-2 shadow-sm">
+              
+              <p><strong>Các bước tính toán chi tiết:</strong></p>
+              <ol class="list-decimal list-inside space-y-1">
+                <li><strong>Tổng số điểm ảnh (Pixel):</strong> <code>1280 × 720 = 921,600 pixel</code>.</li>
+                <li><strong>Dung lượng theo Byte:</strong> Mỗi pixel tốn 3 Byte → <code>921,600 × 3 Byte = 2,764,800 Byte</code>.</li>
+                <li><strong>Quy đổi sang Kilobyte (KB):</strong> <code>2,764,800 / 1024 = 2,700 KB</code>.</li>
+                <li><strong>Quy đổi sang Megabyte (MB):</strong> <code>2,700 / 1024 ≈ 2.64 MB</code>.</li>
+                <li><em>Nhận xét:</em> Một bức ảnh HD thô chiếm khoảng 2.64 MB. Khi được nén bằng chuẩn JPEG chất lượng tốt, dung lượng tệp có thể giảm xuống chỉ còn khoảng 200 - 400 KB mà mắt thường hầu như không nhận ra sự khác biệt.</li>
+              </ol>
+            
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <h3 class="font-bold text-slate-900">Bài 2: Lựa chọn định dạng lưu trữ phù hợp</h3>
+          <p class="text-slate-700">Bạn Lan vừa thiết kế xong một logo thương hiệu cho câu lạc bộ Tin học của trường. Logo này cần được đưa lên trang web để chèn đè lên các hình nền khác nhau mà không bị viền trắng bao quanh. Lan nên xuất file dưới định dạng nào: JPEG hay PNG? Vì sao?</p>
+          
+          <div class="pt-1">
+            <button onclick="toggleHint('lt-hint-2')" class="text-emerald-700 hover:text-emerald-900 font-bold flex items-center gap-1.5 text-xs bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-xl transition">
+              <i class="ph-bold ph-lightbulb"></i> Gợi ý & Đáp án tham khảo
+            </button>
+            <div id="lt-hint-2" class="hidden bg-white p-4 rounded-xl border border-emerald-200 text-slate-700 space-y-2 mt-2 shadow-sm">
+              
+              <p><strong>Khuyến nghị & Phân tích:</strong></p>
+              <ul class="list-disc list-inside space-y-1">
+                <li>Lan bắt buộc phải chọn định dạng <strong>PNG</strong>.</li>
+                <li><strong>Lí do kĩ thuật:</strong> Định dạng PNG hỗ trợ kênh màu Alpha (Transparency - độ trong suốt). Nhờ đó, phần nền xung quanh logo sẽ hoàn toàn trong suốt, khi đặt logo lên bất kì màu nền nào (nền xanh, nền ảnh, nền tối) thì logo sẽ hòa nhập đẹp mắt.</li>
+                <li>Trong khi đó, định dạng JPEG không hỗ trợ độ trong suốt; nếu lưu bằng JPEG, các vùng trống xung quanh logo sẽ tự động bị lấp đầy bằng màu trắng đục.</li>
+              </ul>
+            
+            </div>
+          </div>
+        </div>
+        
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-luyentap')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 5. VẬN DỤNG -->
+    <section id="sec-vandung" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-6 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-lightbulb-filament"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">5. Vận dụng</h2>
+            <p class="text-xs text-slate-500">Liên hệ ứng dụng thực tiễn trong cuộc sống</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="space-y-4">
+        
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <h3 class="font-bold text-slate-900">1. Tối ưu hóa website và tiết kiệm băng thông mạng</h3>
+          <p class="text-slate-700">Khi xây dựng một trang web tin tức cho trường học, các thầy cô phụ trách ban biên tập thường nhắc nhở học sinh: "Không được tải trực tiếp ảnh chụp gốc từ điện thoại (dung lượng 10 MB - 15 MB mỗi ảnh) lên bài viết, mà phải nén và giảm kích thước ảnh trước khi đăng". Em hãy giải thích lí do tại sao cần làm như vậy.</p>
+          <div class="pt-1">
+            <button onclick="toggleHint('vd-hint-1')" class="text-emerald-700 hover:text-emerald-900 font-bold flex items-center gap-1.5 text-xs bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-xl transition">
+              <i class="ph-bold ph-eye"></i> Gợi ý phân tích thực tế
+            </button>
+            <div id="vd-hint-1" class="hidden bg-white p-4 rounded-xl border border-emerald-200 text-slate-700 space-y-2 mt-2 shadow-sm">
+              
+              <p><strong>Các lí do quan trọng:</strong></p>
+              <ul class="list-disc list-inside space-y-1">
+                <li><strong>Tốc độ tải trang (Page Load Speed):</strong> Nếu một trang tin có 10 bức ảnh gốc (mỗi ảnh 12 MB), dung lượng cả trang lên tới 120 MB. Người đọc truy cập bằng điện thoại qua mạng 3G/4G sẽ phải đợi rất lâu (có thể mất 15-30 giây) mới mở được bài viết, gây ức chế trải nghiệm.</li>
+                <li><strong>Tiết kiệm băng thông & Dung lượng máy chủ:</strong> Máy chủ (Server) lưu trữ của trường học có giới hạn dung lượng ổ đĩa và băng thông hàng tháng. Giảm kích thước ảnh giúp tiết kiệm tài nguyên máy chủ.</li>
+                <li><strong>Kích thước màn hình hiển thị:</strong> Màn hình điện thoại hoặc máy tính thông thường chỉ cần hiển thị ảnh rộng khoảng 800 - 1200 pixel. Việc để ảnh gốc 4000x3000 pixel là hoàn toàn dư thừa vì mắt người không thể thấy được chi tiết vượt quá độ phân giải màn hình.</li>
+              </ul>
+            
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-vandung')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 6. TÓM TẮT NỘI DUNG BÀI -->
+    <section id="sec-tomtat" style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%);" class="study-card text-white rounded-2xl p-6 md:p-8 shadow-md transition-all duration-300">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-6">
+        <div class="flex items-center gap-2">
+          <i class="ph-bold ph-bookmarks text-amber-300 text-xl"></i>
+          <h2 class="text-lg md:text-xl font-bold text-emerald-100">6. Tóm tắt nội dung bài 6</h2>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-slate-950 bg-emerald-300 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4 text-xs md:text-sm mb-6">
+        
+          <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/20 space-y-1.5">
+            <h4 class="font-bold text-amber-300 text-sm">1. Số hóa hình ảnh</h4>
+            <p class="text-xs text-emerald-100">Ma trận các điểm ảnh Pixel. Hệ màu RGB 24-bit tạo ra 16.7 triệu màu sắc chân thực.</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/20 space-y-1.5">
+            <h4 class="font-bold text-amber-300 text-sm">2. Số hóa âm thanh</h4>
+            <p class="text-xs text-emerald-100">Lấy mẫu sóng âm liên tục theo tần số (Hz) và lượng tử hóa biên độ thành các số nhị phân.</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/20 space-y-1.5">
+            <h4 class="font-bold text-amber-300 text-sm">3. Nén dữ liệu</h4>
+            <p class="text-xs text-emerald-100">Nén mất dữ liệu (JPEG, MP3) giảm dung lượng vượt trội. Nén không mất dữ liệu (PNG, FLAC) giữ nguyên chất lượng.</p>
+          </div>
+        
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/10 pt-4">
+        <a href="../../mindmaps/lop-10/bai-06.md" class="text-xs text-amber-300 hover:underline flex items-center gap-1 font-semibold">
+          <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy chi tiết của bài học
+        </a>
+        <button onclick="toggleSectionDone('sec-tomtat')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-white/20 bg-white/10 hover:bg-emerald-500 text-white transition flex items-center gap-1.5 ml-auto sm:ml-0">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 7. BÀI TẬP -->
+    <section id="sec-danhgia" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-10 transition-all duration-300">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4">
+        <div>
+          <h2 class="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2">
+            <i class="ph-bold ph-exam text-emerald-600"></i> 7. Bài tập đánh giá
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">Trắc nghiệm nhiều lựa chọn • Đúng/Sai đa ý • Tự luận ngắn</p>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1 self-start sm:self-auto">
+          <i class="ph-bold ph-check"></i> Đã hoàn thành
+        </span>
+      </div>
+
+      <!-- DẠNG 1: TRẮC NGHIỆM -->
+      <div class="space-y-6">
+        <div class="flex items-center justify-between border-b pb-2">
+          <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-md">Phần 1</span>
+            Câu trắc nghiệm nhiều lựa chọn (4 câu)
+          </h3>
+          <span class="text-xs font-semibold text-slate-500">1.0 điểm/câu</span>
+        </div>
+
+        <form id="d1-form" class="space-y-5 text-xs md:text-sm">
+          
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 1: Phần tử nhỏ nhất cấu thành nên một bức ảnh số hiển thị trên màn hình máy tính được gọi là gì?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> Bit</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> Pixel (Điểm ảnh)</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> Byte</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> Voxel</span>
+            </label>
+            
+          </div>
+          <div id="d1_q1_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 2: Trong hệ màu RGB 24-bit TrueColor, mỗi điểm ảnh được cấu tạo từ 3 kênh màu là những màu nào?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> Đỏ (Red) - Vàng (Yellow) - Xanh lam (Blue)</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> Đỏ (Red) - Xanh lục (Green) - Xanh lam (Blue)</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> Lục (Green) - Lam (Blue) - Trắng (White)</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> Đen (Black) - Trắng (White) - Xám (Gray)</span>
+            </label>
+            
+          </div>
+          <div id="d1_q2_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 3: Định dạng tệp hình ảnh nào sau đây hỗ trợ hiển thị vùng nền trong suốt (Transparency)?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> JPEG (.jpg)</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> BMP (.bmp)</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> PNG (.png)</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> PDF</span>
+            </label>
+            
+          </div>
+          <div id="d1_q3_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 4: Quá trình đo độ lớn biên độ của sóng âm thanh tại các thời điểm đều đặn trong 1 giây để chuyển thành dữ liệu số được gọi là gì?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q4" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> Lấy mẫu (Sampling)</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q4" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> Lượng tử hóa</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q4" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> Mã hóa Huffman</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q4" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> Nén Lossy</span>
+            </label>
+            
+          </div>
+          <div id="d1_q4_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+          <div class="pt-2 flex items-center gap-3">
+            <button type="button" onclick="gradeD1()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl shadow transition">
+              Chấm điểm Phần 1
+            </button>
+            <span id="d1-score" class="font-bold text-sm text-emerald-700"></span>
+          </div>
+        </form>
+      </div>
+
+      <!-- DẠNG 2: ĐÚNG / SAI -->
+      <div class="space-y-6 pt-6 border-t">
+        <div class="flex items-center justify-between border-b pb-2">
+          <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="bg-teal-100 text-teal-800 text-xs px-2.5 py-1 rounded-md">Phần 2</span>
+            Câu hỏi trắc nghiệm Đúng/Sai đa ý
+          </h3>
+          <span class="text-xs font-semibold text-slate-500">Đúng 1 ý: 0.1đ • 2 ý: 0.25đ • 3 ý: 0.5đ • 4 ý: 1.0đ</span>
+        </div>
+
+        <form id="d2-form" class="space-y-6 text-xs md:text-sm">
+          
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <p class="font-bold text-slate-900">Câu 1: Xét tính Đúng/Sai của các nhận định sau về dữ liệu hình ảnh và âm thanh:</p>
+          <div class="space-y-2">
+            
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>a) Độ phân giải của một bức ảnh càng cao thì bức ảnh đó càng sắc nét và chi tiết.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_a" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_a" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>b) Định dạng tệp âm thanh MP3 là dạng nén không mất dữ liệu giống hệt tệp WAV.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_b" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_b" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>c) Mỗi kênh màu trong hệ màu RGB 24-bit nhận giá trị từ 0 đến 255.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_c" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_c" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>d) Ảnh có đuôi .gif chỉ hiển thị được ảnh tĩnh, không thể hiển thị ảnh chuyển động.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_d" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_d" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+          </div>
+          <div id="d2_q1_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <p class="font-bold text-slate-900">Câu 2: Xét tính Đúng/Sai của các phát biểu về kĩ thuật nén dữ liệu đa phương tiện:</p>
+          <div class="space-y-2">
+            
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>a) Nén có mất dữ liệu (Lossy) loại bỏ bớt những thông tin chi tiết mà giác quan con người khó nhận biết.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_a" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_a" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>b) Sau khi nén bằng định dạng JPEG, bức ảnh có thể giải nén để phục hồi lại 100% dữ liệu gốc ban đầu.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_b" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_b" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>c) Tệp âm thanh chuẩn CD có tần số lấy mẫu phổ biến là 44.1 kHz.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_c" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_c" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>d) Dung lượng của một bức ảnh số chỉ phụ thuộc vào màu sắc, không phụ thuộc vào kích thước điểm ảnh.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_d" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_d" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+          </div>
+          <div id="d2_q2_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+          <div class="pt-2 flex items-center gap-3">
+            <button type="button" onclick="gradeD2()" class="bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl shadow transition">
+              Chấm điểm Phần 2
+            </button>
+            <span id="d2-score" class="font-bold text-sm text-teal-700"></span>
+          </div>
+        </form>
+      </div>
+
+      <!-- DẠNG 3: TỰ LUẬN -->
+      <div class="space-y-6 pt-6 border-t">
+        <div class="flex items-center justify-between border-b pb-2">
+          <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="bg-purple-100 text-purple-800 text-xs px-2.5 py-1 rounded-md">Phần 3</span>
+            Câu hỏi tự luận tổng hợp
+          </h3>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <p class="font-bold text-slate-900">Em hãy phân biệt sự khác nhau cơ bản giữa hai phương pháp: "Nén có mất dữ liệu (Lossy Compression)" và "Nén không mất dữ liệu (Lossless Compression)". Trong trường hợp nào chúng ta nên sử dụng phương pháp Lossy và trong trường hợp nào bắt buộc phải dùng phương pháp Lossless?</p>
+          <textarea id="d3-text" rows="3" placeholder="Nhập câu trả lời của em vào đây để rèn luyện kĩ năng diễn đạt..." class="w-full p-3 rounded-xl border border-slate-300 focus:outline-emerald-500"></textarea>
+          
+          <button type="button" onclick="toggleHint('d3-rubric')" class="bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs px-4 py-2 rounded-xl transition flex items-center gap-1.5">
+            <i class="ph-bold ph-check-square"></i> Bấm để xem Đáp án & Biểu điểm đối chiếu
+          </button>
+
+          <div id="d3-rubric" class="hidden bg-white p-4 rounded-xl border border-purple-200 text-slate-700 space-y-2 mt-2">
+            <h4 class="font-bold text-purple-900 text-sm">Biểu điểm đánh giá chuẩn (Thang 10 điểm):</h4>
+            <div class="space-y-1 text-xs">
+              <ul class="list-disc list-inside space-y-1">
+                <li><strong>Tiêu chí 1 (4.0 điểm): Bản chất sự khác biệt:</strong>
+                  <ul class="list-circle list-inside pl-4">
+                    <li><strong>Nén Lossy:</strong> Chấp nhận loại bỏ vĩnh viễn một phần dữ liệu chi tiết ít quan trọng để đạt được tỉ lệ nén rất cao (giảm dung lượng 5-10 lần). Không thể khôi phục lại dữ liệu gốc ban đầu.</li>
+                    <li><strong>Nén Lossless:</strong> Tối ưu hóa cách biểu diễn dữ liệu lặp lại mà không làm mất đi bất kì một bit thông tin nào. Khi giải nén sẽ thu được dữ liệu gốc chính xác 100%.</li>
+                  </ul>
+                </li>
+                <li><strong>Tiêu chí 2 (3.0 điểm): Ứng dụng của nén Lossy:</strong> Dùng cho các tệp đa phương tiện phục vụ giải trí, duyệt web, mạng xã hội (ảnh JPEG, video MP4, nhạc MP3, phát trực tuyến YouTube/Spotify), nơi kích thước tệp nhỏ là ưu tiên hàng đầu và sự suy giảm chất lượng nhẹ không bị mắt/tai người phát hiện.</li>
+                <li><strong>Tiêu chí 3 (3.0 điểm): Trường hợp bắt buộc dùng Lossless:</strong> Dùng cho dữ liệu văn bản tài liệu pháp lí, chương trình phần mềm máy tính (tệp .zip, .rar), ảnh chụp y tế X-quang/MRI (sai một điểm ảnh có thể dẫn đến chẩn đoán sai bệnh), hoặc bản ghi âm/ảnh chụp lưu trữ bảo tồn di sản nghệ thuật.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-danhgia')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu hoàn thành bài</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- BOTTOM NAVIGATION (CHUYỂN BÀI THUẬN TIỆN) -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 py-6 border-t border-slate-200">
+      <div>
+        <a href="bai-05-du-lieu-logic.html" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold shadow-sm transition"><i class="ph-bold ph-arrow-left"></i> <span>Bài trước: Bài 5: Dữ liệu lôgic</span></a>
+      </div>
+      <a href="../../index.html" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition">
+        <i class="ph-bold ph-squares-four"></i> Danh mục tất cả bài học Lớp 10
+      </a>
+      <div>
+        <a href="bai-07-thuc-hanh-su-dung-thiet-bi-so-thong-dung.html" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-sm transition"><span>Bài tiếp: Bài 7: Thực hành sử dụng thiết bị số thông dụng</span> <i class="ph-bold ph-arrow-right"></i></a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- NÚT 'LÊN ĐẦU' TRÔI NỔI (BACK TO TOP) -->
+  <button id="btn-back-to-top" onclick="scrollToTop()" title="Lên đầu trang" class="fixed bottom-6 right-6 z-50 w-11 h-11 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-xl flex items-center justify-center transition-all duration-300 transform translate-y-16 opacity-0 hover:scale-110">
+    <i class="ph-bold ph-arrow-up text-lg"></i>
+  </button>
+
+  <!-- FOOTER (ĐỒNG BỘ VIETAPPS) -->
+  <footer style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%);" class="text-white py-8 mt-12 border-t border-emerald-500/30">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-100">
+      <div class="flex items-center gap-2">
+        <span class="text-base">👨‍🏫</span>
+        <span class="font-bold text-white">VietTeach</span> • Hệ sinh thái giải pháp giáo dục VietApps (VietMix, VietTest, VietBook, VietTeach).
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="../../index.html" class="hover:text-amber-300 transition">Cổng bài học</a>
+        <span>•</span>
+        <a href="../../mindmaps/lop-10/bai-06.md" class="hover:text-amber-300 transition">Sơ đồ tư duy</a>
+        <span>•</span>
+        <span>Môn Tin học 10 (KNTT)</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT LOGIC TƯƠNG TÁC -->
+  <script>
+    // 1. Quản lí tiến độ học tập
+    const allSectionIds = ['sec-muctieu', 'sec-khoidong', 'sec-kienthuc', 'sec-luyentap', 'sec-vandung', 'sec-tomtat', 'sec-danhgia'];
+    let completedSections = new Set();
+
+    function updateProgressBar() {
+      const percent = Math.round((completedSections.size / allSectionIds.length) * 100);
+      document.getElementById('progress-bar').style.width = percent + '%';
+      document.getElementById('progress-text').textContent = percent + '%';
+    }
+
+    function toggleSectionDone(secId) {
+      const section = document.getElementById(secId);
+      const badge = section.querySelector('.status-badge');
+      const btn = section.querySelector('.btn-mark');
+
+      if (completedSections.has(secId)) {
+        completedSections.delete(secId);
+        section.classList.remove('section-completed');
+        if (badge) badge.classList.add('hidden');
+        if (btn) {
+          btn.innerHTML = '<i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>';
+          btn.className = "btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto";
+        }
+      } else {
+        completedSections.add(secId);
+        section.classList.add('section-completed');
+        if (badge) badge.classList.remove('hidden');
+        if (btn) {
+          btn.innerHTML = '<i class="ph-bold ph-arrow-counter-clockwise text-base"></i> <span>Hủy đánh dấu</span>';
+          btn.className = "btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-emerald-300 bg-emerald-100 text-emerald-800 hover:bg-slate-200 hover:text-slate-700 transition flex items-center gap-1.5 ml-auto";
+        }
+      }
+      updateProgressBar();
+    }
+
+    // 2. Nút Lên đầu trang (Back to top)
+    const backToTopBtn = document.getElementById('btn-back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('translate-y-16', 'opacity-0');
+        backToTopBtn.classList.add('translate-y-0', 'opacity-100');
+      } else {
+        backToTopBtn.classList.add('translate-y-16', 'opacity-0');
+        backToTopBtn.classList.remove('translate-y-0', 'opacity-100');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 3. Ẩn / hiện gợi ý
+    function toggleHint(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('hidden');
+    }
+
+    // 4. Chấm điểm Trắc nghiệm (Dạng 1)
+    const d1_answers = {"d1_q1": "B", "d1_q2": "B", "d1_q3": "C", "d1_q4": "A"};
+    const d1_exps = {"d1_q1": "Pixel (vi\u1ebft t\u1eaft c\u1ee7a Picture Element) l\u00e0 ph\u1ea7n t\u1eed nh\u1ecf nh\u1ea5t mang th\u00f4ng tin m\u00e0u s\u1eafc c\u1ee7a \u1ea3nh s\u1ed1.", "d1_q2": "RGB l\u00e0 vi\u1ebft t\u1eaft c\u1ee7a Red (\u0110\u1ecf), Green (Xanh l\u1ee5c) v\u00e0 Blue (Xanh lam).", "d1_q3": "\u0110\u1ecbnh d\u1ea1ng PNG c\u00f3 k\u00eanh Alpha h\u1ed7 tr\u1ee3 \u0111\u1ed9 trong su\u1ed1t cho h\u00ecnh \u1ea3nh \u0111\u1ed3 h\u1ecda.", "d1_q4": "L\u1ea5y m\u1eabu (Sampling) l\u00e0 vi\u1ec7c \u0111o s\u00f3ng \u00e2m thanh theo c\u00e1c m\u1ed1c th\u1eddi gian \u0111\u1ec1u \u0111\u1eb7n v\u1edbi t\u1ea7n s\u1ed1 nh\u1ea5t \u0111\u1ecbnh (Hz)."};
+
+    function gradeD1() {
+      let score = 0;
+      for (const [q, correct] of Object.entries(d1_answers)) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        const fb = document.getElementById(`${q}_fb`);
+        if (fb) fb.classList.remove('hidden');
+
+        if (selected && selected.value === correct) {
+          score += 1;
+          if (fb) {
+            fb.className = "text-xs mt-2 font-medium text-emerald-700";
+            fb.innerHTML = `✅ Đúng! (${d1_exps[q] || 'Chính xác'}`;
+          }
+        } else {
+          if (fb) {
+            fb.className = "text-xs mt-2 font-medium text-rose-700";
+            fb.innerHTML = `❌ Chưa đúng. Đáp án đúng là <strong>${correct}</strong>. ${d1_exps[q] || ''}`;
+          }
+        }
+      }
+      document.getElementById('d1-score').textContent = `Kết quả: ${score}/${Object.keys(d1_answers).length} điểm`;
+    }
+
+    // 5. Chấm điểm Đúng/Sai (Dạng 2)
+    const d2_answers = {"d2_q1_a": "D", "d2_q1_b": "S", "d2_q1_c": "D", "d2_q1_d": "S", "d2_q2_a": "D", "d2_q2_b": "S", "d2_q2_c": "D", "d2_q2_d": "S"};
+
+    function gradeD2() {
+      let correctCount = 0;
+      for (const [sid, ans] of Object.entries(d2_answers)) {
+        const sel = document.querySelector(`input[name="${sid}"]:checked`);
+        if (sel && sel.value === ans) {
+          correctCount++;
+        }
+      }
+      const totalKeys = Object.keys(d2_answers).length;
+      let score = 0;
+      if (totalKeys === 4) {
+        if (correctCount === 1) score = 0.1;
+        else if (correctCount === 2) score = 0.25;
+        else if (correctCount === 3) score = 0.5;
+        else if (correctCount === 4) score = 1.0;
+      } else {
+        score = (correctCount / totalKeys).toFixed(2);
+      }
+      const fb = document.getElementById('d2_q1_fb');
+      if (fb) {
+        fb.classList.remove('hidden');
+        fb.className = "text-xs mt-2 font-medium text-emerald-800 bg-emerald-50 p-3 rounded-xl border border-emerald-200";
+        fb.innerHTML = `Bạn trả lời đúng <strong>${correctCount}/${totalKeys} ý</strong>. Điểm đạt được: <strong>${score} điểm</strong>.`;
+      }
+      document.getElementById('d2-score').textContent = `Điểm Phần 2: ${score} điểm`;
+    }
+
+    // 6. Tương tác Nối cột (Matching)
+    let selectedLeft = null;
+    let pairedCount = 0;
+    const totalPairs = 5;
+
+    document.querySelectorAll('.match-left').forEach(el => {
+      el.addEventListener('click', () => {
+        if (el.classList.contains('match-paired')) return;
+        document.querySelectorAll('.match-left').forEach(l => l.classList.remove('match-selected'));
+        el.classList.add('match-selected');
+        selectedLeft = el.getAttribute('data-id');
+      });
+    });
+
+    document.querySelectorAll('.match-right').forEach(el => {
+      el.addEventListener('click', () => {
+        if (el.classList.contains('match-paired') || !selectedLeft) return;
+        const rightId = el.getAttribute('data-id');
+        const leftEl = document.querySelector(`.match-left[data-id="${selectedLeft}"]`);
+        const fb = document.getElementById('match-feedback');
+
+        if (selectedLeft === rightId) {
+          // Ghép đúng
+          leftEl.classList.remove('match-selected');
+          leftEl.classList.add('match-paired');
+          leftEl.innerHTML += ' <i class="ph-bold ph-check text-white"></i>';
+          el.classList.add('match-paired');
+          el.innerHTML = '<i class="ph-bold ph-check text-white mr-1.5"></i> ' + el.innerHTML;
+          pairedCount++;
+          document.getElementById('match-score').textContent = `${pairedCount}/${totalPairs} Cặp`;
+          selectedLeft = null;
+
+          if (pairedCount === totalPairs) {
+            fb.classList.remove('hidden');
+            fb.className = "p-3 rounded-xl text-xs font-bold bg-emerald-100 text-emerald-900 border border-emerald-300";
+            fb.innerHTML = "🎉 Tuyệt vời! Bạn đã ghép nối chính xác 100% tất cả các cặp kiến thức!";
+          }
+        } else {
+          // Ghép sai
+          fb.classList.remove('hidden');
+          fb.className = "p-3 rounded-xl text-xs font-bold bg-rose-100 text-rose-900 border border-rose-300";
+          fb.innerHTML = "❌ Chưa chính xác, hãy đọc kĩ lại định nghĩa và thử lại nhé!";
+          setTimeout(() => fb.classList.add('hidden'), 2500);
+        }
+      });
+    });
+
+    // 7. Tương tác Điền khuyết (Fill in blanks)
+    function checkFillBlanks() {
+      const inputs = document.querySelectorAll('.blank-input');
+      let allCorrect = true;
+      inputs.forEach(inp => {
+        const userVal = inp.value.trim().toLowerCase();
+        const expected = inp.getAttribute('data-ans').trim().toLowerCase();
+        if (userVal === expected) {
+          inp.classList.remove('blank-wrong');
+          inp.classList.add('blank-correct');
+        } else {
+          inp.classList.remove('blank-correct');
+          inp.classList.add('blank-wrong');
+          allCorrect = false;
+        }
+      });
+      const fb = document.getElementById('fill-feedback');
+      fb.classList.remove('hidden');
+      if (allCorrect) {
+        fb.className = "text-xs font-bold text-emerald-700";
+        fb.textContent = "🎉 Hoan hô! Bạn đã điền chính xác tất cả các từ khóa!";
+      } else {
+        fb.className = "text-xs font-bold text-rose-600";
+        fb.textContent = "❌ Có từ chưa chính xác (ô viền đỏ). Bạn hãy xem gợi ý từ khóa nhé!";
+      }
+    }
+  </script>
+</body>
+</html>

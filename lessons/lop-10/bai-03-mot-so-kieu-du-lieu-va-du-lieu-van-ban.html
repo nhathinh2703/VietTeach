@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Môn Tin học 10 - Bài 3: Một số kiểu dữ liệu và dữ liệu văn bản | VietTeach</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Phosphor Icons CDN -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <!-- Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; }
+    .section-completed {
+      border-color: #16a34a !important;
+      background-color: #f0fdf4 !important;
+    }
+    .match-selected {
+      border-color: #16a34a !important;
+      background-color: #dcfce7 !important;
+      color: #166534 !important;
+      box-shadow: 0 2px 8px rgba(22, 163, 74, 0.2);
+    }
+    .match-paired {
+      border-color: #22c55e !important;
+      background-color: #16a34a !important;
+      color: #ffffff !important;
+      cursor: default !important;
+      opacity: 0.9;
+    }
+    .blank-input {
+      border-bottom: 2px solid #16a34a;
+      background-color: #f0fdf4;
+      padding: 2px 8px;
+      font-weight: 700;
+      color: #166534;
+      border-radius: 4px;
+      outline: none;
+      text-align: center;
+      min-width: 110px;
+      display: inline-block;
+      margin: 0 4px;
+    }
+    .blank-input.blank-correct {
+      background-color: #dcfce7;
+      border-color: #16a34a;
+      color: #15803d;
+    }
+    .blank-input.blank-wrong {
+      background-color: #ffe4e6;
+      border-color: #e11d48;
+      color: #be123c;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed flex flex-col min-h-screen">
+
+  <!-- TOP HEADER (ĐỒNG BỘ HỆ SINH THÁI VIETAPPS) -->
+  <header style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%); border-bottom: 1px solid rgba(74, 222, 128, 0.25);" class="text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+      
+      <!-- Brand & Title -->
+      <div class="flex items-center gap-3">
+        <a href="../../index.html" class="flex items-center gap-2 group" title="Về Cổng học tập VietTeach">
+          <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-xl shadow-inner group-hover:scale-105 transition">
+            👨‍🏫
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-lg font-black tracking-tight text-white group-hover:text-emerald-200 transition">VietTeach</span>
+              <span class="bg-emerald-400/20 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase border border-emerald-400/30">Lớp 10</span>
+            </div>
+            <p class="text-[11px] text-emerald-200/80">Chủ đề 1: Máy tính và xã hội tri thức • Tin học 10 (KNTT)</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Center: Lesson Header & Navigation -->
+      <div class="text-center flex-1 max-w-md hidden lg:block">
+        <h1 class="text-sm font-bold text-white uppercase tracking-tight truncate">BÀI 3: Một số kiểu dữ liệu và dữ liệu văn bản</h1>
+        <div class="flex items-center justify-center gap-2 mt-1">
+          <div class="w-32 bg-white/20 rounded-full h-1.5 overflow-hidden">
+            <div id="progress-bar" class="bg-amber-400 h-1.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+          </div>
+          <span id="progress-text" class="text-[10px] font-bold text-amber-300">0%</span>
+        </div>
+      </div>
+
+      <!-- Right: Action Buttons & Navigation -->
+      <div class="flex items-center gap-2">
+        <a href="bai-02-vai-tro-cua-thiet-bi-thong-minh-va-tin-hoc-doi-voi-xa-hoi.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition"><i class="ph-bold ph-arrow-left"></i> <span class="hidden sm:inline">Bài trước</span></a>
+        <a href="../../index.html" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition flex items-center gap-1" title="Xem danh mục bài học">
+          <i class="ph-bold ph-squares-four"></i> <span class="hidden sm:inline">Mục lục</span>
+        </a>
+        <a href="bai-04-he-nhi-phan-va-du-lieu-so-nguyen.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold transition shadow-sm"><span class="hidden sm:inline">Bài tiếp</span> <i class="ph-bold ph-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- Thanh Menu 7 mục sư phạm chuẩn GDPT 2018 -->
+    <nav class="bg-emerald-950/80 backdrop-blur-md border-t border-white/10 overflow-x-auto">
+      <div class="max-w-5xl mx-auto px-4 flex items-center gap-1 py-1.5 text-xs whitespace-nowrap">
+        <a href="#sec-muctieu" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">1. Mục tiêu</a>
+        <a href="#sec-khoidong" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">2. Khởi động</a>
+        <a href="#sec-kienthuc" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">3. Hình thành kiến thức</a>
+        <a href="#sec-luyentap" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">4. Luyện tập</a>
+        <a href="#sec-vandung" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">5. Vận dụng</a>
+        <a href="#sec-tomtat" class="px-3 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 hover:text-white transition">6. Tóm tắt nội dung bài</a>
+        <a href="#sec-danhgia" class="px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 font-bold hover:bg-amber-300 transition">7. Bài tập</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="max-w-5xl mx-auto px-4 mt-8 space-y-10 flex-grow w-full">
+
+    <!-- 1. MỤC TIÊU -->
+    <section id="sec-muctieu" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300">
+      <div class="flex items-center justify-between mb-5 border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-target"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">1. Mục tiêu bài học (Yêu cầu cần đạt)</h2>
+            <p class="text-xs text-slate-500">Chuẩn Chương trình GDPT 2018 môn Tin học 10</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4 text-xs md:text-sm mb-6">
+        <div class="p-4 rounded-xl bg-emerald-50/70 border border-emerald-100 space-y-2">
+          <h3 class="font-bold text-emerald-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-book-open"></i> Kiến thức
+          </h3>
+          <ul class="list-disc list-inside space-y-1 text-slate-700">
+            
+          <li>Biết được một số kiểu dữ liệu cơ bản trong tin học: <strong>văn bản, số, hình ảnh, âm thanh, lôgic</strong>.</li>
+          <li>Hiểu được <strong>nguyên lí mã hóa văn bản</strong> trong máy tính thành dãy bit nhị phân.</li>
+          <li>Nắm vững đặc điểm của các bảng mã thông dụng: <strong>ASCII, Unicode</strong> (chuẩn UTF-8) và cách gõ tiếng Việt chuẩn.</li>
+        
+          </ul>
+        </div>
+        <div class="p-4 rounded-xl bg-teal-50/70 border border-teal-100 space-y-2">
+          <h3 class="font-bold text-teal-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-wrench"></i> Kĩ năng
+          </h3>
+          <ul class="list-disc list-inside space-y-1 text-slate-700">
+            
+          <li>Tra cứu được mã nhị phân và mã thập phân của kí tự trong bảng mã ASCII.</li>
+          <li>Lựa chọn đúng bảng mã Unicode (UTF-8) và kiểu gõ (Telex/VNI) khi soạn thảo văn bản tiếng Việt trên máy tính.</li>
+        
+          </ul>
+        </div>
+        <div class="p-4 rounded-xl bg-amber-50/70 border border-amber-100 space-y-2">
+          <h3 class="font-bold text-amber-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-lightbulb"></i> Phẩm chất & Năng lực
+          </h3>
+          <ul class="list-disc list-inside space-y-1 text-slate-700">
+            
+          <li>Có ý thức sử dụng chuẩn mã hóa quốc tế Unicode, tôn trọng tính chuẩn mực của tiếng Việt trên môi trường mạng.</li>
+        
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-muctieu')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 2. KHỞI ĐỘNG -->
+    <section id="sec-khoidong" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300">
+      <div class="flex items-center justify-between mb-5 border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-rocket-launch"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">2. Khởi động</h2>
+            <p class="text-xs text-slate-500">Tình huống khám phá gợi mở đầu bài (Theo SGV Tin học 10)</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-5 mb-6 text-xs md:text-sm text-slate-700 space-y-3">
+        
+          <p><strong>Tình huống mở đầu:</strong> Khi em gõ phím chữ "A" trên bàn phím máy tính, kí tự "A" ngay lập tức hiện lên màn hình soạn thảo Word. Tuy nhiên, ở cấp độ phần cứng điện tử bên trong vi xử lí (CPU) và bộ nhớ RAM, máy tính chỉ có thể hiểu và làm việc với các xung điện tương ứng với hai số 0 và 1.</p>
+        
+      </div>
+
+      <div class="space-y-3 text-xs md:text-sm">
+        <p class="font-bold text-slate-800">🤔 Câu hỏi gợi mở suy nghĩ:</p>
+        <p class="text-slate-700 italic bg-slate-50 p-3 rounded-xl border border-slate-200">Làm thế nào mà máy tính có thể hiểu được phím bấm của em là chữ "A" chứ không phải là chữ "B" hay số "9"? Cần có cơ chế gì để cầu nối giữa ngôn ngữ con người và ngôn ngữ máy tính?</p>
+        
+        <div class="pt-2">
+          <button onclick="toggleHint('kd-hint')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+            <i class="ph-bold ph-lightbulb"></i> Bấm để xem Gợi ý suy luận
+          </button>
+          <div id="kd-hint" class="hidden mt-3 p-4 rounded-xl bg-emerald-50 text-emerald-950 border border-emerald-200 text-xs md:text-sm space-y-2">
+            
+          <p><strong>Gợi ý suy luận:</strong></p>
+          <ul class="list-disc list-inside space-y-1">
+            <li><strong>Quy ước thống nhất:</strong> Các nhà khoa học máy tính đã lập ra một "cuốn từ điển" quy ước chung: Mỗi kí tự sẽ được gán cho một con số duy nhất.</li>
+            <li><strong>Bảng mã kí tự (Character Encoding):</strong> Ví dụ trong bảng mã chuẩn ASCII, chữ cái 'A' được gán cho số 65. Khi chuyển sang hệ nhị phân (dãy bit 0 và 1), số 65 là <code>01000001</code>.</li>
+            <li>Khi em gõ phím 'A', mạch bàn phím gửi dãy tín hiệu <code>01000001</code> vào máy tính, máy tính nhận diện và vẽ hình chữ 'A' lên màn hình.</li>
+          </ul>
+        
+          </div>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4 mt-6">
+        <button onclick="toggleSectionDone('sec-khoidong')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 3. HÌNH THÀNH KIẾN THỨC -->
+    <section id="sec-kienthuc" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-8 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-compass"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">3. Hình thành kiến thức</h2>
+            <p class="text-xs text-slate-500">Khám phá nội dung bài học kết hợp tương tác thực hành</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <!-- CÁC TIỂU MỤC KIẾN THỨC -->
+      
+        <div class="space-y-4 ">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 bg-emerald-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">3.1</span>
+            <h3 class="text-base md:text-lg font-bold text-slate-900">Một số kiểu dữ liệu cơ bản trong tin học</h3>
+          </div>
+          
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs md:text-sm">
+              <div class="p-3.5 rounded-xl border border-blue-200 bg-blue-50/60 space-y-1">
+                <div class="font-bold text-blue-900 flex items-center gap-1.5 text-xs">
+                  <i class="ph-bold ph-text-t"></i> 1. Dữ liệu văn bản
+                </div>
+                <p class="text-slate-600 text-xs">Gồm các kí tự chữ cái (a-z, A-Z), chữ số (0-9), dấu câu, dấu cách và kí hiệu đặc biệt.</p>
+              </div>
+              <div class="p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/60 space-y-1">
+                <div class="font-bold text-emerald-900 flex items-center gap-1.5 text-xs">
+                  <i class="ph-bold ph-hash"></i> 2. Dữ liệu số
+                </div>
+                <p class="text-slate-600 text-xs">Gồm số nguyên (Integer: 5, -12, 100) và số thực (Float: 3.14, -0.5) phục vụ các phép tính toán số học.</p>
+              </div>
+              <div class="p-3.5 rounded-xl border border-purple-200 bg-purple-50/60 space-y-1">
+                <div class="font-bold text-purple-900 flex items-center gap-1.5 text-xs">
+                  <i class="ph-bold ph-toggle-left"></i> 3. Dữ liệu lôgic
+                </div>
+                <p class="text-slate-600 text-xs">Chỉ nhận một trong hai giá trị chân lí: Đúng (True / 1) hoặc Sai (False / 0).</p>
+              </div>
+              <div class="p-3.5 rounded-xl border border-amber-200 bg-amber-50/60 space-y-1">
+                <div class="font-bold text-amber-900 flex items-center gap-1.5 text-xs">
+                  <i class="ph-bold ph-image"></i> 4. Dữ liệu hình ảnh
+                </div>
+                <p class="text-slate-600 text-xs">Ảnh chụp, đồ họa được cấu tạo từ ma trận các điểm ảnh (Pixel) với thông tin màu sắc.</p>
+              </div>
+              <div class="p-3.5 rounded-xl border border-rose-200 bg-rose-50/60 space-y-1">
+                <div class="font-bold text-rose-900 flex items-center gap-1.5 text-xs">
+                  <i class="ph-bold ph-speaker-high"></i> 5. Dữ liệu âm thanh
+                </div>
+                <p class="text-slate-600 text-xs">Sóng âm thanh được lấy mẫu theo thời gian và lượng tử hóa thành dãy số nhị phân.</p>
+              </div>
+              <div class="p-3.5 rounded-xl border border-teal-200 bg-teal-50/60 space-y-1">
+                <div class="font-bold text-teal-900 flex items-center gap-1.5 text-xs">
+                  <i class="ph-bold ph-film-strip"></i> 6. Dữ liệu đa phương tiện
+                </div>
+                <p class="text-slate-600 text-xs">Dữ liệu video kết hợp chuỗi hình ảnh động chuyển động liên tục cùng với âm thanh đồng bộ.</p>
+              </div>
+            </div>
+            
+        </div>
+        
+
+        <div class="space-y-4 pt-6 border-t border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 bg-emerald-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">3.2</span>
+            <h3 class="text-base md:text-lg font-bold text-slate-900">Mã hóa văn bản và Bảng mã ASCII</h3>
+          </div>
+          
+            <div class="space-y-3 text-xs md:text-sm text-slate-700">
+              <p><strong>Mã hóa văn bản:</strong> Là việc gán cho mỗi kí tự một dãy bit nhị phân cố định (gọi là mã nhị phân của kí tự đó) để lưu vào bộ nhớ máy tính.</p>
+              
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                <h4 class="font-bold text-slate-900 text-xs md:text-sm flex items-center gap-1.5">
+                  <i class="ph-bold ph-identification-card text-emerald-600"></i> Bảng mã chuẩn ASCII (American Standard Code for Information Interchange)
+                </h4>
+                <p class="text-slate-600 text-xs">Được công bố năm 1963, sử dụng <strong>7 bit</strong> (sau mở rộng lên <strong>8 bit = 1 Byte</strong>) để mã hóa từ 128 đến 256 kí tự (từ mã 0 đến 255).</p>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 font-mono text-[11px]">
+                  <div class="bg-white p-2 rounded border">Kí tự 'A': 65 (01000001)</div>
+                  <div class="bg-white p-2 rounded border">Kí tự 'B': 66 (01000010)</div>
+                  <div class="bg-white p-2 rounded border">Kí tự 'a': 97 (01100001)</div>
+                  <div class="bg-white p-2 rounded border">Kí tự '0': 48 (00110000)</div>
+                </div>
+                <p class="text-slate-500 italic text-[11px]">Hạn chế: ASCII chỉ mã hóa được tiếng Anh và một số ngôn ngữ Tây Âu, không thể mã hóa được các ngôn ngữ có dấu thanh như tiếng Việt, chữ tượng hình Hán, Nhật, Hàn.</p>
+              </div>
+            </div>
+            
+        </div>
+        
+
+        <div class="space-y-4 pt-6 border-t border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 bg-emerald-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">3.3</span>
+            <h3 class="text-base md:text-lg font-bold text-slate-900">Bảng mã quốc tế Unicode và tiếng Việt</h3>
+          </div>
+          
+            <div class="space-y-3 text-xs md:text-sm text-slate-700">
+              <div class="p-4 rounded-xl bg-emerald-50/70 border border-emerald-200 space-y-2">
+                <h4 class="font-bold text-emerald-950 text-xs md:text-sm flex items-center gap-1.5">
+                  <i class="ph-bold ph-globe text-emerald-700"></i> Bảng mã Unicode - Chuẩn toàn cầu cho mọi ngôn ngữ
+                </h4>
+                <p class="text-slate-700 text-xs">Unicode được thiết kế để mã hóa tất cả các ngôn ngữ trên thế giới, bao gồm cả các chữ tượng hình cổ và các biểu tượng cảm xúc (Emoji). Unicode có thể biểu diễn hàng triệu kí tự khác nhau.</p>
+                <div class="bg-white p-3 rounded-lg border border-emerald-100 text-xs space-y-1">
+                  <div><strong>UTF-8 (8-bit Unicode Transformation Format):</strong> Là cách mã hóa phổ biến nhất hiện nay trên Internet. Sử dụng độ dài bit biến thiên (từ 1 đến 4 byte cho mỗi kí tự). Kí tự tiếng Anh cơ bản chỉ tốn 1 byte (hoàn toàn tương thích ASCII), trong khi kí tự tiếng Việt có dấu tốn 2 đến 3 byte.</div>
+                </div>
+              </div>
+
+              <!-- Lịch sử gõ tiếng Việt -->
+              <div class="p-3.5 rounded-xl bg-amber-50/60 border border-amber-200 text-xs space-y-1 text-slate-700">
+                <div class="font-bold text-amber-900 flex items-center gap-1">
+                  <i class="ph-bold ph-info"></i> Lưu ý khi gõ tiếng Việt trong tin học:
+                </div>
+                <p>Trước khi Unicode phổ biến, Việt Nam từng dùng các bảng mã cục bộ như <strong>TCVN3 (ABC)</strong> (dùng font bắt đầu bằng dấu chấm như <code>.VnTime</code>) hoặc <strong>VNI-Windows</strong> (dùng font bắt đầu bằng <code>VNI-</code>). Ngày nay, theo quy định quốc gia, toàn bộ văn bản phải soạn thảo bằng <strong>Bảng mã Unicode</strong> (font Times New Roman, Arial, Calibri...).</p>
+              </div>
+            </div>
+            
+        </div>
+        
+
+      <!-- HOẠT ĐỘNG TƯƠNG TÁC ĐIỀN KHUYẾT (NẾU CÓ) -->
+      
+        <!-- TƯƠNG TÁC ĐIỀN KHUYẾT NỘI DUNG -->
+        <div class="bg-gradient-to-r from-amber-50/70 to-orange-50/70 border border-amber-200 rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i class="ph-bold ph-textbox text-amber-700 text-lg"></i>
+              <h4 class="font-bold text-amber-950 text-sm">Hoạt động tương tác: Điền từ vào chỗ trống</h4>
+            </div>
+            <button onclick="checkFillBlanks()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold px-3.5 py-1.5 rounded-xl transition shadow-sm">
+              Kiểm tra điền từ
+            </button>
+          </div>
+          <p class="text-xs text-slate-600">Gõ từ khóa thích hợp vào các ô trống bên dưới rồi bấm "Kiểm tra điền từ".</p>
+          <div class="bg-white p-4 rounded-xl border border-amber-200/80 text-xs md:text-sm leading-loose text-slate-800 space-y-3">
+            
+          Bảng mã <input type="text" class="blank-input" data-ans="ASCII"> chỉ dùng 8 bit nên chỉ mã hóa được 256 
+          <input type="text" class="blank-input" data-ans="kí tự">. Để thể hiện được tất cả các ngôn ngữ trên thế giới, bao gồm tiếng Việt, 
+          người ta dùng bảng mã quốc tế <input type="text" class="blank-input" data-ans="Unicode">. 
+          Hiện nay, định dạng <input type="text" class="blank-input" data-ans="UTF-8"> là chuẩn mã hóa phổ biến nhất trên mạng Internet toàn cầu.
+        
+          </div>
+          <div class="flex items-center justify-between pt-1">
+            <div id="fill-feedback" class="hidden text-xs font-bold"></div>
+            <button onclick="toggleHint('fb-hint-box')" class="text-amber-700 hover:text-amber-900 font-bold text-xs flex items-center gap-1 ml-auto">
+              <i class="ph-bold ph-lightbulb"></i> Gợi ý từ khóa
+            </button>
+          </div>
+          <div id="fb-hint-box" class="hidden bg-white/90 p-3 rounded-xl border border-amber-200 text-xs text-slate-600">
+            Từ khóa gợi ý: <span class="font-bold text-amber-800">Unicode, ASCII, UTF-8, bit, kí tự</span>
+          </div>
+        </div>
+        
+
+      <!-- HOẠT ĐỘNG TƯƠNG TÁC NỐI CỘT (NẾU CÓ) -->
+      
+        <!-- TƯƠNG TÁC NỐI CỘT NỘI DUNG -->
+        <div class="bg-gradient-to-r from-emerald-50/70 to-teal-50/70 border border-emerald-200 rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i class="ph-bold ph-shuffle text-emerald-700 text-lg"></i>
+              <h4 class="font-bold text-emerald-950 text-sm">Hoạt động tương tác: Ghép nối Bảng mã với Đặc điểm kĩ thuật</h4>
+            </div>
+            <span id="match-score" class="text-xs font-bold text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">0/5 Cặp</span>
+          </div>
+          <p class="text-xs text-slate-600">Bấm chọn bảng mã ở Cột A và ghép với đặc điểm tương ứng ở Cột B.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-2.5" id="match-col-a">
+              <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Cột A: Bảng mã / Khái niệm</div>
+              <div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="b1">1. Bảng mã ASCII tiêu chuẩn <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="b2">2. Bảng mã Unicode UTF-8 <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="b3">3. Bảng mã TCVN3 (ABC cũ) <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="b4">4. Mã hóa văn bản <i class="ph-bold ph-hand-pointing text-slate-400"></i></div><div class="match-item match-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="b5">5. Kiểu gõ Telex / VNI <i class="ph-bold ph-hand-pointing text-slate-400"></i></div>
+            </div>
+            <div class="space-y-2.5" id="match-col-b">
+              <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">Cột B: Đặc điểm & Ứng dụng</div>
+              <div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="b4">Quy trình gán mỗi kí tự cho một dãy bit nhị phân <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="b1">Dùng 7-8 bit, chỉ mã hóa được tiếng Anh và kí hiệu cơ bản <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="b5">Quy tắc bấm tổ hợp phím để tạo dấu tiếng Việt <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="b2">Chuẩn quốc tế mã hóa mọi ngôn ngữ, tương thích toàn cầu <i class="ph-bold ph-arrow-right text-slate-400"></i></div><div class="match-item match-right p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-400 cursor-pointer font-medium text-xs md:text-sm transition flex items-center justify-between" data-id="b3">Bảng mã cũ 1 byte của miền Bắc, dùng font có tên .VnTime <i class="ph-bold ph-arrow-right text-slate-400"></i></div>
+            </div>
+          </div>
+          <div id="match-feedback" class="hidden p-3 rounded-xl text-xs font-bold"></div>
+        </div>
+        
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-kienthuc')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. LUYỆN TẬP -->
+    <section id="sec-luyentap" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-6 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-pencil-line"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">4. Luyện tập</h2>
+            <p class="text-xs text-slate-500">Bài tập củng cố kiến thức theo SGK và định hướng SGV</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <h3 class="font-bold text-slate-900">Bài 1: Tra cứu và tính toán mã kí tự ASCII</h3>
+          <p class="text-slate-700">Trong bảng mã chuẩn ASCII, kí tự chữ hoa "A" có mã thập phân là 65, tương đương mã nhị phân là 01000001.
+a) Hãy cho biết mã thập phân và mã nhị phân của các chữ hoa "B", "C" và "D".
+b) Kí tự số "0" có mã thập phân là 48. Hãy tìm mã thập phân của kí tự số "5".</p>
+          
+          <div class="pt-1">
+            <button onclick="toggleHint('lt-hint-1')" class="text-emerald-700 hover:text-emerald-900 font-bold flex items-center gap-1.5 text-xs bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-xl transition">
+              <i class="ph-bold ph-lightbulb"></i> Gợi ý & Đáp án tham khảo
+            </button>
+            <div id="lt-hint-1" class="hidden bg-white p-4 rounded-xl border border-emerald-200 text-slate-700 space-y-2 mt-2 shadow-sm">
+              
+              <p><strong>Lời giải chi tiết:</strong></p>
+              <ul class="list-disc list-inside space-y-1">
+                <li><strong>Câu a:</strong> Vì các chữ cái la-tinh được xếp liên tiếp nhau trong bảng mã ASCII:
+                  <ul class="list-circle list-inside pl-4 space-y-0.5">
+                    <li>Chữ 'B' = 65 + 1 = <strong>66</strong> (Nhị phân: <code>01000010</code>).</li>
+                    <li>Chữ 'C' = 65 + 2 = <strong>67</strong> (Nhị phân: <code>01000011</code>).</li>
+                    <li>Chữ 'D' = 65 + 3 = <strong>68</strong> (Nhị phân: <code>01000100</code>).</li>
+                  </ul>
+                </li>
+                <li><strong>Câu b:</strong> Kí tự số '0' là 48. Kí tự số '5' nằm sau '0' 5 vị trí: <code>48 + 5 = 53</code>. (Nhị phân: <code>00110101</code>).</li>
+              </ul>
+            
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <h3 class="font-bold text-slate-900">Bài 2: Khắc phục lỗi font chữ khi mở văn bản</h3>
+          <p class="text-slate-700">Bạn Nam nhận được một tệp văn bản từ một người bạn gửi qua email. Khi mở tệp trên Microsoft Word, toàn bộ các chữ tiếng Việt có dấu đều bị biến dạng thành các kí tự ngoằn ngoèo lạ lùng như "Tr??ng h?c" hay "ViÖt Nam". Em hãy giải thích nguyên nhân và hướng dẫn Nam cách sửa lỗi này.</p>
+          
+          <div class="pt-1">
+            <button onclick="toggleHint('lt-hint-2')" class="text-emerald-700 hover:text-emerald-900 font-bold flex items-center gap-1.5 text-xs bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-xl transition">
+              <i class="ph-bold ph-lightbulb"></i> Gợi ý & Đáp án tham khảo
+            </button>
+            <div id="lt-hint-2" class="hidden bg-white p-4 rounded-xl border border-emerald-200 text-slate-700 space-y-2 mt-2 shadow-sm">
+              
+              <p><strong>Nguyên nhân & Cách khắc phục:</strong></p>
+              <ul class="list-disc list-inside space-y-1">
+                <li><strong>Nguyên nhân:</strong> Tệp tài liệu ban đầu được người bạn soạn thảo bằng bảng mã cũ TCVN3 (ABC) hoặc VNI, nhưng máy tính của Nam đang dùng font Unicode (như Times New Roman) hoặc máy Nam chưa cài đặt các bộ font cũ (.VnTime hoặc VNI-Times). Sự không tương thích giữa bảng mã và phông chữ dẫn đến hiện tượng vỡ font (lỗi hiển thị).</li>
+                <li><strong>Cách khắc phục chuẩn nhất:</strong> Sử dụng công cụ chuyển đổi mã của phần mềm Unikey (Bấm phím tắt <code>Ctrl + Shift + F6</code>).
+                  <ol class="list-decimal list-inside pl-4 space-y-0.5">
+                    <li>Copy đoạn văn bản bị lỗi.</li>
+                    <li>Mở Unikey Toolkit: Chọn mã Nguồn là "TCVN3 (ABC)", mã Đích là "Unicode".</li>
+                    <li>Bấm "Chuyển mã" rồi dán đè lại vào văn bản Word. Định dạng lại font chữ sang Times New Roman.</li>
+                  </ol>
+                </li>
+              </ul>
+            
+            </div>
+          </div>
+        </div>
+        
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-luyentap')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 5. VẬN DỤNG -->
+    <section id="sec-vandung" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-6 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-lightbulb-filament"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">5. Vận dụng</h2>
+            <p class="text-xs text-slate-500">Liên hệ ứng dụng thực tiễn trong cuộc sống</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="space-y-4">
+        
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <h3 class="font-bold text-slate-900">1. Ứng dụng Unicode trong xây dựng website trường học</h3>
+          <p class="text-slate-700">Khi tạo một trang web bằng HTML (như trang bài giảng VietTeach này), tại sao trong thẻ &lt;head&gt; luôn luôn bắt buộc phải có dòng khai báo: &lt;meta charset="UTF-8"&gt;? Nếu em xóa dòng này đi thì điều gì sẽ xảy ra khi học sinh mở trang web trên các trình duyệt khác nhau?</p>
+          <div class="pt-1">
+            <button onclick="toggleHint('vd-hint-1')" class="text-emerald-700 hover:text-emerald-900 font-bold flex items-center gap-1.5 text-xs bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-xl transition">
+              <i class="ph-bold ph-eye"></i> Gợi ý phân tích thực tế
+            </button>
+            <div id="vd-hint-1" class="hidden bg-white p-4 rounded-xl border border-emerald-200 text-slate-700 space-y-2 mt-2 shadow-sm">
+              
+              <p><strong>Ý nghĩa của thẻ meta charset="UTF-8":</strong></p>
+              <ul class="list-disc list-inside space-y-1">
+                <li>Dòng thẻ này chỉ dẫn cho trình duyệt web (Google Chrome, MS Edge, Safari) biết rằng tệp HTML này được mã hóa bằng chuẩn kí tự <strong>Unicode UTF-8</strong>.</li>
+                <li>Nhờ có khai báo này, trình duyệt sẽ giải mã chính xác 100% tất cả các nguyên âm có dấu tiếng Việt (như <em>ă, â, đ, ê, ô, ơ, ư</em> cùng các dấu thanh sắc, huyền, hỏi, ngã, nặng) cũng như các kí tự toán học, biểu tượng cảm xúc.</li>
+                <li>Nếu xóa dòng này đi, một số trình duyệt có thể tự suy đoán sai bảng mã mặc định (ví dụ đoán nhầm sang Windows-1252), khiến trang web bị lỗi font toàn bộ, biến chữ tiếng Việt thành chuỗi kí tự hỏng (mojibake).</li>
+              </ul>
+            
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-vandung')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 6. TÓM TẮT NỘI DUNG BÀI -->
+    <section id="sec-tomtat" style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%);" class="study-card text-white rounded-2xl p-6 md:p-8 shadow-md transition-all duration-300">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-6">
+        <div class="flex items-center gap-2">
+          <i class="ph-bold ph-bookmarks text-amber-300 text-xl"></i>
+          <h2 class="text-lg md:text-xl font-bold text-emerald-100">6. Tóm tắt nội dung bài 3</h2>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-slate-950 bg-emerald-300 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4 text-xs md:text-sm mb-6">
+        
+          <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/20 space-y-1.5">
+            <h4 class="font-bold text-amber-300 text-sm">1. Các kiểu dữ liệu</h4>
+            <p class="text-xs text-emerald-100">Bao gồm văn bản, số (nguyên/thực), hình ảnh, âm thanh và dữ liệu lôgic (True/False).</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/20 space-y-1.5">
+            <h4 class="font-bold text-amber-300 text-sm">2. Bảng mã ASCII</h4>
+            <p class="text-xs text-emerald-100">Bảng mã 8 bit truyền thống (256 kí tự), chỉ mã hóa được tiếng Anh và kí hiệu phương Tây cơ bản.</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur p-4 rounded-xl border border-white/20 space-y-1.5">
+            <h4 class="font-bold text-amber-300 text-sm">3. Chuẩn quốc tế Unicode</h4>
+            <p class="text-xs text-emerald-100">Mã hóa mọi ngôn ngữ toàn cầu. Định dạng UTF-8 là chuẩn mực bắt buộc cho văn bản và web hiện đại.</p>
+          </div>
+        
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/10 pt-4">
+        <a href="../../mindmaps/lop-10/bai-03.md" class="text-xs text-amber-300 hover:underline flex items-center gap-1 font-semibold">
+          <i class="ph-bold ph-tree-structure"></i> Mở sơ đồ tư duy chi tiết của bài học
+        </a>
+        <button onclick="toggleSectionDone('sec-tomtat')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-white/20 bg-white/10 hover:bg-emerald-500 text-white transition flex items-center gap-1.5 ml-auto sm:ml-0">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 7. BÀI TẬP -->
+    <section id="sec-danhgia" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-10 transition-all duration-300">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4">
+        <div>
+          <h2 class="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2">
+            <i class="ph-bold ph-exam text-emerald-600"></i> 7. Bài tập đánh giá
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">Trắc nghiệm nhiều lựa chọn • Đúng/Sai đa ý • Tự luận ngắn</p>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1 self-start sm:self-auto">
+          <i class="ph-bold ph-check"></i> Đã hoàn thành
+        </span>
+      </div>
+
+      <!-- DẠNG 1: TRẮC NGHIỆM -->
+      <div class="space-y-6">
+        <div class="flex items-center justify-between border-b pb-2">
+          <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-md">Phần 1</span>
+            Câu trắc nghiệm nhiều lựa chọn (4 câu)
+          </h3>
+          <span class="text-xs font-semibold text-slate-500">1.0 điểm/câu</span>
+        </div>
+
+        <form id="d1-form" class="space-y-5 text-xs md:text-sm">
+          
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 1: Kiểu dữ liệu nào sau đây chỉ có thể nhận một trong hai giá trị là Đúng (True) hoặc Sai (False)?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> Dữ liệu số nguyên</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> Dữ liệu văn bản</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> Dữ liệu lôgic (Boolean)</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q1" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> Dữ liệu đa phương tiện</span>
+            </label>
+            
+          </div>
+          <div id="d1_q1_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 2: Bảng mã chuẩn ASCII sử dụng bao nhiêu bit để biểu diễn mỗi kí tự?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> 8 bit (hoặc 7 bit)</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> 16 bit</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> 32 bit</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q2" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> 64 bit</span>
+            </label>
+            
+          </div>
+          <div id="d1_q2_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 3: Lí do quan trọng nhất khiến bảng mã Unicode thay thế hoàn toàn bảng mã ASCII trong hệ thống máy tính hiện đại là gì?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> ASCII làm máy tính chạy chậm hơn Unicode.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> ASCII chỉ mã hóa được 256 kí tự (chủ yếu tiếng Anh), không thể mã hóa được các ngôn ngữ có dấu thanh như tiếng Việt và chữ tượng hình.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> Unicode miễn phí còn ASCII phải trả phí bản quyền hàng năm.</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q3" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> ASCII không thể lưu trữ được các con số từ 0 đến 9.</span>
+            </label>
+            
+          </div>
+          <div id="d1_q3_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+          <p class="font-bold text-slate-800">Câu 4: Khi soạn thảo văn bản tiếng Việt trên máy tính theo chuẩn quốc gia, chúng ta phải chọn Bảng mã nào trong phần mềm Unikey?</p>
+          <div class="space-y-1.5 pl-2">
+            
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q4" value="A" class="accent-emerald-600">
+              <span><strong>A.</strong> TCVN3 (ABC)</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q4" value="B" class="accent-emerald-600">
+              <span><strong>B.</strong> VNI Windows</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q4" value="C" class="accent-emerald-600">
+              <span><strong>C.</strong> Unicode</span>
+            </label>
+            
+
+            <label class="flex items-center gap-2 cursor-pointer hover:text-emerald-700">
+              <input type="radio" name="d1_q4" value="D" class="accent-emerald-600">
+              <span><strong>D.</strong> BK HCM 1</span>
+            </label>
+            
+          </div>
+          <div id="d1_q4_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+          <div class="pt-2 flex items-center gap-3">
+            <button type="button" onclick="gradeD1()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl shadow transition">
+              Chấm điểm Phần 1
+            </button>
+            <span id="d1-score" class="font-bold text-sm text-emerald-700"></span>
+          </div>
+        </form>
+      </div>
+
+      <!-- DẠNG 2: ĐÚNG / SAI -->
+      <div class="space-y-6 pt-6 border-t">
+        <div class="flex items-center justify-between border-b pb-2">
+          <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="bg-teal-100 text-teal-800 text-xs px-2.5 py-1 rounded-md">Phần 2</span>
+            Câu hỏi trắc nghiệm Đúng/Sai đa ý
+          </h3>
+          <span class="text-xs font-semibold text-slate-500">Đúng 1 ý: 0.1đ • 2 ý: 0.25đ • 3 ý: 0.5đ • 4 ý: 1.0đ</span>
+        </div>
+
+        <form id="d2-form" class="space-y-6 text-xs md:text-sm">
+          
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <p class="font-bold text-slate-900">Câu 1: Xét tính Đúng/Sai của các nhận định sau về mã hóa văn bản trong máy tính:</p>
+          <div class="space-y-2">
+            
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>a) Trong máy tính, văn bản được lưu trữ dưới dạng các dãy bit nhị phân gồm các số 0 và 1.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_a" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_a" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>b) Bảng mã ASCII có thể mã hóa đầy đủ và chính xác tất cả các chữ cái tiếng Việt có dấu.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_b" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_b" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>c) UTF-8 là một chuẩn mã hóa thuộc hệ thống Unicode được dùng phổ biến nhất trên Internet.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_c" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_c" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>d) Một kí tự chữ cái tiếng Anh cơ bản trong chuẩn UTF-8 chiếm đúng 1 Byte bộ nhớ.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_d" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q1_d" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+          </div>
+          <div id="d2_q1_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <p class="font-bold text-slate-900">Câu 2: Xét tính Đúng/Sai của các phát biểu về kiểu dữ liệu trong tin học:</p>
+          <div class="space-y-2">
+            
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>a) Dữ liệu hình ảnh được cấu tạo từ ma trận các điểm ảnh gọi là pixel.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_a" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_a" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>b) Các phép toán số học như cộng, trừ, nhân, chia chỉ thực hiện được trên dữ liệu số nguyên và số thực.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_b" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_b" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>c) Dữ liệu văn bản có thể thực hiện được phép nhân toán học giống hệt như số nguyên.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_c" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_c" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+
+            <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 gap-2">
+              <span>d) Các kiểu dữ liệu khác nhau khi lưu trữ trong bộ nhớ máy tính đều được quy về các dãy bit nhị phân.</span>
+              <div class="flex items-center gap-3 whitespace-nowrap">
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_d" value="D" class="accent-emerald-600"> Đ</label>
+                <label class="flex items-center gap-1 cursor-pointer"><input type="radio" name="d2_q2_d" value="S" class="accent-rose-600"> S</label>
+              </div>
+            </div>
+            
+          </div>
+          <div id="d2_q2_fb" class="hidden text-xs mt-2 font-medium"></div>
+        </div>
+        
+          <div class="pt-2 flex items-center gap-3">
+            <button type="button" onclick="gradeD2()" class="bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl shadow transition">
+              Chấm điểm Phần 2
+            </button>
+            <span id="d2-score" class="font-bold text-sm text-teal-700"></span>
+          </div>
+        </form>
+      </div>
+
+      <!-- DẠNG 3: TỰ LUẬN -->
+      <div class="space-y-6 pt-6 border-t">
+        <div class="flex items-center justify-between border-b pb-2">
+          <h3 class="text-sm md:text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="bg-purple-100 text-purple-800 text-xs px-2.5 py-1 rounded-md">Phần 3</span>
+            Câu hỏi tự luận tổng hợp
+          </h3>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs md:text-sm">
+          <p class="font-bold text-slate-900">Em hãy giải thích vì sao việc chuyển đổi toàn bộ hệ thống lưu trữ văn bản từ các bảng mã cũ (TCVN3, VNI) sang chuẩn quốc tế Unicode là điều kiện tiên quyết để Việt Nam hội nhập kinh tế số và phát triển Chính phủ điện tử?</p>
+          <textarea id="d3-text" rows="3" placeholder="Nhập câu trả lời của em vào đây để rèn luyện kĩ năng diễn đạt..." class="w-full p-3 rounded-xl border border-slate-300 focus:outline-emerald-500"></textarea>
+          
+          <button type="button" onclick="toggleHint('d3-rubric')" class="bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs px-4 py-2 rounded-xl transition flex items-center gap-1.5">
+            <i class="ph-bold ph-check-square"></i> Bấm để xem Đáp án & Biểu điểm đối chiếu
+          </button>
+
+          <div id="d3-rubric" class="hidden bg-white p-4 rounded-xl border border-purple-200 text-slate-700 space-y-2 mt-2">
+            <h4 class="font-bold text-purple-900 text-sm">Biểu điểm đánh giá chuẩn (Thang 10 điểm):</h4>
+            <div class="space-y-1 text-xs">
+              <ul class="list-disc list-inside space-y-1">
+                <li><strong>Tiêu chí 1 (3.5 điểm): Tính liên thông & trao đổi dữ liệu toàn cầu:</strong> Unicode là chuẩn chung của toàn cầu. Khi dùng Unicode, văn bản tiếng Việt gửi đi bất kì quốc gia nào, mở trên bất kì hệ điều hành nào (Windows, MacOS, Linux, Android, iOS) cũng đọc được hoàn hảo mà không bị lỗi font.</li>
+                <li><strong>Tiêu chí 2 (3.5 điểm): Cơ sở dữ liệu quốc gia & Dịch vụ công:</strong> Các hệ thống định danh VNeID, bảo hiểm xã hội, cổng dịch vụ công đòi hỏi dữ liệu dân cư phải đồng nhất. Nếu dùng nhiều bảng mã cũ sẽ gây xung đột dữ liệu, tìm kiếm sai sót danh tính công dân.</li>
+                <li><strong>Tiêu chí 3 (3.0 điểm): Trí tuệ nhân tạo & Tìm kiếm thông minh:</strong> Các mô hình xử lí ngôn ngữ tự nhiên (NLP) và máy tìm kiếm (Google) chỉ có thể hiểu và lập chỉ mục nội dung tiếng Việt một cách chuẩn xác khi văn bản được mã hóa bằng chuẩn Unicode.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-danhgia')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu hoàn thành bài</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- BOTTOM NAVIGATION (CHUYỂN BÀI THUẬN TIỆN) -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 py-6 border-t border-slate-200">
+      <div>
+        <a href="bai-02-vai-tro-cua-thiet-bi-thong-minh-va-tin-hoc-doi-voi-xa-hoi.html" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold shadow-sm transition"><i class="ph-bold ph-arrow-left"></i> <span>Bài trước: Bài 2: Vai trò của thiết bị thông minh và tin học đối với xã hội</span></a>
+      </div>
+      <a href="../../index.html" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition">
+        <i class="ph-bold ph-squares-four"></i> Danh mục tất cả bài học Lớp 10
+      </a>
+      <div>
+        <a href="bai-04-he-nhi-phan-va-du-lieu-so-nguyen.html" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-sm transition"><span>Bài tiếp: Bài 4: Hệ nhị phân và dữ liệu số nguyên</span> <i class="ph-bold ph-arrow-right"></i></a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- NÚT 'LÊN ĐẦU' TRÔI NỔI (BACK TO TOP) -->
+  <button id="btn-back-to-top" onclick="scrollToTop()" title="Lên đầu trang" class="fixed bottom-6 right-6 z-50 w-11 h-11 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-xl flex items-center justify-center transition-all duration-300 transform translate-y-16 opacity-0 hover:scale-110">
+    <i class="ph-bold ph-arrow-up text-lg"></i>
+  </button>
+
+  <!-- FOOTER (ĐỒNG BỘ VIETAPPS) -->
+  <footer style="background: linear-gradient(135deg, #15803d 0%, #166534 50%, #052e16 100%);" class="text-white py-8 mt-12 border-t border-emerald-500/30">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-100">
+      <div class="flex items-center gap-2">
+        <span class="text-base">👨‍🏫</span>
+        <span class="font-bold text-white">VietTeach</span> • Hệ sinh thái giải pháp giáo dục VietApps (VietMix, VietTest, VietBook, VietTeach).
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="../../index.html" class="hover:text-amber-300 transition">Cổng bài học</a>
+        <span>•</span>
+        <a href="../../mindmaps/lop-10/bai-03.md" class="hover:text-amber-300 transition">Sơ đồ tư duy</a>
+        <span>•</span>
+        <span>Môn Tin học 10 (KNTT)</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT LOGIC TƯƠNG TÁC -->
+  <script>
+    // 1. Quản lí tiến độ học tập
+    const allSectionIds = ['sec-muctieu', 'sec-khoidong', 'sec-kienthuc', 'sec-luyentap', 'sec-vandung', 'sec-tomtat', 'sec-danhgia'];
+    let completedSections = new Set();
+
+    function updateProgressBar() {
+      const percent = Math.round((completedSections.size / allSectionIds.length) * 100);
+      document.getElementById('progress-bar').style.width = percent + '%';
+      document.getElementById('progress-text').textContent = percent + '%';
+    }
+
+    function toggleSectionDone(secId) {
+      const section = document.getElementById(secId);
+      const badge = section.querySelector('.status-badge');
+      const btn = section.querySelector('.btn-mark');
+
+      if (completedSections.has(secId)) {
+        completedSections.delete(secId);
+        section.classList.remove('section-completed');
+        if (badge) badge.classList.add('hidden');
+        if (btn) {
+          btn.innerHTML = '<i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>';
+          btn.className = "btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto";
+        }
+      } else {
+        completedSections.add(secId);
+        section.classList.add('section-completed');
+        if (badge) badge.classList.remove('hidden');
+        if (btn) {
+          btn.innerHTML = '<i class="ph-bold ph-arrow-counter-clockwise text-base"></i> <span>Hủy đánh dấu</span>';
+          btn.className = "btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-emerald-300 bg-emerald-100 text-emerald-800 hover:bg-slate-200 hover:text-slate-700 transition flex items-center gap-1.5 ml-auto";
+        }
+      }
+      updateProgressBar();
+    }
+
+    // 2. Nút Lên đầu trang (Back to top)
+    const backToTopBtn = document.getElementById('btn-back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('translate-y-16', 'opacity-0');
+        backToTopBtn.classList.add('translate-y-0', 'opacity-100');
+      } else {
+        backToTopBtn.classList.add('translate-y-16', 'opacity-0');
+        backToTopBtn.classList.remove('translate-y-0', 'opacity-100');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 3. Ẩn / hiện gợi ý
+    function toggleHint(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('hidden');
+    }
+
+    // 4. Chấm điểm Trắc nghiệm (Dạng 1)
+    const d1_answers = {"d1_q1": "C", "d1_q2": "A", "d1_q3": "B", "d1_q4": "C"};
+    const d1_exps = {"d1_q1": "D\u1eef li\u1ec7u l\u00f4gic (Boolean) l\u00e0 ki\u1ec3u d\u1eef li\u1ec7u ch\u1ec9 nh\u1eadn 2 gi\u00e1 tr\u1ecb ch\u00e2n l\u00ed: True (1) ho\u1eb7c False (0).", "d1_q2": "ASCII ban \u0111\u1ea7u d\u00f9ng 7 bit v\u00e0 sau \u0111\u00f3 \u0111\u01b0\u1ee3c chu\u1ea9n h\u00f3a th\u00e0nh 8 bit (1 Byte) \u0111\u1ec3 bi\u1ec3u di\u1ec5n 256 k\u00ed t\u1ef1.", "d1_q3": "Dung l\u01b0\u1ee3ng 8 bit c\u1ee7a ASCII kh\u00f4ng \u0111\u1ee7 \u0111\u1ec3 ch\u1ee9a h\u00e0ng ch\u1ee5c ngh\u00ecn k\u00ed t\u1ef1 c\u1ee7a c\u00e1c ng\u00f4n ng\u1eef tr\u00ean th\u1ebf gi\u1edbi.", "d1_q4": "Chu\u1ea9n v\u0103n b\u1ea3n qu\u1ea3n l\u00ed nh\u00e0 n\u01b0\u1edbc v\u00e0 qu\u1ed1c t\u1ebf b\u1eaft bu\u1ed9c d\u00f9ng B\u1ea3ng m\u00e3 Unicode d\u1ef1ng s\u1eb5n."};
+
+    function gradeD1() {
+      let score = 0;
+      for (const [q, correct] of Object.entries(d1_answers)) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        const fb = document.getElementById(`${q}_fb`);
+        if (fb) fb.classList.remove('hidden');
+
+        if (selected && selected.value === correct) {
+          score += 1;
+          if (fb) {
+            fb.className = "text-xs mt-2 font-medium text-emerald-700";
+            fb.innerHTML = `✅ Đúng! (${d1_exps[q] || 'Chính xác'}`;
+          }
+        } else {
+          if (fb) {
+            fb.className = "text-xs mt-2 font-medium text-rose-700";
+            fb.innerHTML = `❌ Chưa đúng. Đáp án đúng là <strong>${correct}</strong>. ${d1_exps[q] || ''}`;
+          }
+        }
+      }
+      document.getElementById('d1-score').textContent = `Kết quả: ${score}/${Object.keys(d1_answers).length} điểm`;
+    }
+
+    // 5. Chấm điểm Đúng/Sai (Dạng 2)
+    const d2_answers = {"d2_q1_a": "D", "d2_q1_b": "S", "d2_q1_c": "D", "d2_q1_d": "D", "d2_q2_a": "D", "d2_q2_b": "D", "d2_q2_c": "S", "d2_q2_d": "D"};
+
+    function gradeD2() {
+      let correctCount = 0;
+      for (const [sid, ans] of Object.entries(d2_answers)) {
+        const sel = document.querySelector(`input[name="${sid}"]:checked`);
+        if (sel && sel.value === ans) {
+          correctCount++;
+        }
+      }
+      const totalKeys = Object.keys(d2_answers).length;
+      let score = 0;
+      if (totalKeys === 4) {
+        if (correctCount === 1) score = 0.1;
+        else if (correctCount === 2) score = 0.25;
+        else if (correctCount === 3) score = 0.5;
+        else if (correctCount === 4) score = 1.0;
+      } else {
+        score = (correctCount / totalKeys).toFixed(2);
+      }
+      const fb = document.getElementById('d2_q1_fb');
+      if (fb) {
+        fb.classList.remove('hidden');
+        fb.className = "text-xs mt-2 font-medium text-emerald-800 bg-emerald-50 p-3 rounded-xl border border-emerald-200";
+        fb.innerHTML = `Bạn trả lời đúng <strong>${correctCount}/${totalKeys} ý</strong>. Điểm đạt được: <strong>${score} điểm</strong>.`;
+      }
+      document.getElementById('d2-score').textContent = `Điểm Phần 2: ${score} điểm`;
+    }
+
+    // 6. Tương tác Nối cột (Matching)
+    let selectedLeft = null;
+    let pairedCount = 0;
+    const totalPairs = 5;
+
+    document.querySelectorAll('.match-left').forEach(el => {
+      el.addEventListener('click', () => {
+        if (el.classList.contains('match-paired')) return;
+        document.querySelectorAll('.match-left').forEach(l => l.classList.remove('match-selected'));
+        el.classList.add('match-selected');
+        selectedLeft = el.getAttribute('data-id');
+      });
+    });
+
+    document.querySelectorAll('.match-right').forEach(el => {
+      el.addEventListener('click', () => {
+        if (el.classList.contains('match-paired') || !selectedLeft) return;
+        const rightId = el.getAttribute('data-id');
+        const leftEl = document.querySelector(`.match-left[data-id="${selectedLeft}"]`);
+        const fb = document.getElementById('match-feedback');
+
+        if (selectedLeft === rightId) {
+          // Ghép đúng
+          leftEl.classList.remove('match-selected');
+          leftEl.classList.add('match-paired');
+          leftEl.innerHTML += ' <i class="ph-bold ph-check text-white"></i>';
+          el.classList.add('match-paired');
+          el.innerHTML = '<i class="ph-bold ph-check text-white mr-1.5"></i> ' + el.innerHTML;
+          pairedCount++;
+          document.getElementById('match-score').textContent = `${pairedCount}/${totalPairs} Cặp`;
+          selectedLeft = null;
+
+          if (pairedCount === totalPairs) {
+            fb.classList.remove('hidden');
+            fb.className = "p-3 rounded-xl text-xs font-bold bg-emerald-100 text-emerald-900 border border-emerald-300";
+            fb.innerHTML = "🎉 Tuyệt vời! Bạn đã ghép nối chính xác 100% tất cả các cặp kiến thức!";
+          }
+        } else {
+          // Ghép sai
+          fb.classList.remove('hidden');
+          fb.className = "p-3 rounded-xl text-xs font-bold bg-rose-100 text-rose-900 border border-rose-300";
+          fb.innerHTML = "❌ Chưa chính xác, hãy đọc kĩ lại định nghĩa và thử lại nhé!";
+          setTimeout(() => fb.classList.add('hidden'), 2500);
+        }
+      });
+    });
+
+    // 7. Tương tác Điền khuyết (Fill in blanks)
+    function checkFillBlanks() {
+      const inputs = document.querySelectorAll('.blank-input');
+      let allCorrect = true;
+      inputs.forEach(inp => {
+        const userVal = inp.value.trim().toLowerCase();
+        const expected = inp.getAttribute('data-ans').trim().toLowerCase();
+        if (userVal === expected) {
+          inp.classList.remove('blank-wrong');
+          inp.classList.add('blank-correct');
+        } else {
+          inp.classList.remove('blank-correct');
+          inp.classList.add('blank-wrong');
+          allCorrect = false;
+        }
+      });
+      const fb = document.getElementById('fill-feedback');
+      fb.classList.remove('hidden');
+      if (allCorrect) {
+        fb.className = "text-xs font-bold text-emerald-700";
+        fb.textContent = "🎉 Hoan hô! Bạn đã điền chính xác tất cả các từ khóa!";
+      } else {
+        fb.className = "text-xs font-bold text-rose-600";
+        fb.textContent = "❌ Có từ chưa chính xác (ô viền đỏ). Bạn hãy xem gợi ý từ khóa nhé!";
+      }
+    }
+  </script>
+</body>
+</html>
