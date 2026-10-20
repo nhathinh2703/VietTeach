@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Môn Tin học 9 - Bài 2: Thông tin trong giải quyết vấn đề</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Phosphor Icons CDN -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .section-completed {
+      border-color: #10b981 !important;
+      background-color: #f0fdf4 !important;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed flex flex-col min-h-screen">
+
+  <!-- Header & Menu điều hướng -->
+  <header class="bg-gradient-to-r from-emerald-700 via-teal-600 to-cyan-600 text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-2">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="bg-amber-400 text-slate-950 text-xs px-2.5 py-0.5 rounded-md uppercase tracking-wider font-extrabold shadow-sm">MÔN TIN HỌC 9</span>
+          <span class="bg-emerald-900/60 text-emerald-200 text-xs px-2.5 py-0.5 rounded-md uppercase tracking-wider font-semibold">Chủ đề 2 • KNTT</span>
+        </div>
+        <h1 class="text-lg md:text-xl font-bold mt-1">BÀI 2: THÔNG TIN TRONG GIẢI QUYẾT VẤN ĐỀ</h1>
+      </div>
+      <!-- Thanh tiến độ học tập -->
+      <div class="flex items-center gap-3 bg-white/10 px-3.5 py-1.5 rounded-xl border border-white/20 text-xs">
+        <span class="font-medium">Tiến độ bài học:</span>
+        <div class="w-24 bg-white/30 rounded-full h-2.5 overflow-hidden">
+          <div id="progress-bar" class="bg-amber-400 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+        <span id="progress-text" class="font-bold text-amber-300">0%</span>
+      </div>
+    </div>
+
+    <!-- Thanh Menu 7 mục -->
+    <nav class="bg-slate-900/80 backdrop-blur-md border-t border-white/10 overflow-x-auto">
+      <div class="max-w-5xl mx-auto px-4 flex items-center gap-1 py-1.5 text-xs whitespace-nowrap">
+        <a href="#sec-muctieu" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">1. Mục tiêu</a>
+        <a href="#sec-khoidong" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">2. Khởi động</a>
+        <a href="#sec-kienthuc" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">3. Khám phá kiến thức</a>
+        <a href="#sec-luyentap" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">4. Luyện tập</a>
+        <a href="#sec-vandung" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">5. Vận dụng</a>
+        <a href="#sec-tomtat" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">6. Tóm tắt cốt lõi</a>
+        <a href="#sec-danhgia" class="px-3 py-1.5 rounded-lg bg-amber-400/90 text-slate-950 font-bold hover:bg-amber-300 transition">7. Đánh giá 3 dạng</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 mt-8 space-y-10 flex-grow w-full">
+
+    <!-- 1. MỤC TIÊU BÀI HỌC -->
+    <section id="sec-muctieu" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300">
+      <div class="flex items-center justify-between mb-5 border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-target"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">1. Mục tiêu bài học (Yêu cầu cần đạt)</h2>
+            <p class="text-xs text-slate-500">Chuẩn Chương trình GDPT 2018 môn Tin học 9</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 text-xs md:text-sm mb-6">
+        <div class="p-4 rounded-xl bg-emerald-50/70 border border-emerald-100 space-y-2">
+          <h3 class="font-bold text-emerald-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-info"></i> 1. Vai trò của chất lượng thông tin
+          </h3>
+          <p class="text-slate-700">Giải thích được sự cần thiết phải quan tâm đến chất lượng thông tin khi tìm kiếm, tiếp nhận và trao đổi thông tin[cite: 6]. Nêu được ví dụ minh họa thực tế[cite: 6].</p>
+        </div>
+        <div class="p-4 rounded-xl bg-teal-50/70 border border-teal-100 space-y-2">
+          <h3 class="font-bold text-teal-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-check-square-offset"></i> 2. 4 tiêu chí đánh giá cốt lõi
+          </h3>
+          <p class="text-slate-700">Giải thích và phân tích được 4 tiêu chí đánh giá chất lượng thông tin: <strong>Tính mới</strong> (cập nhật), <strong>Tính chính xác</strong>, <strong>Tính đầy đủ</strong>, và <strong>Tính sử dụng được</strong>[cite: 6]. Nêu được ví dụ minh họa[cite: 6].</p>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-muctieu')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 2. KHỞI ĐỘNG -->
+    <section id="sec-khoidong" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300">
+      <div class="flex items-center justify-between mb-5 border-b pb-3">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 font-bold flex items-center justify-center text-xl">
+            <i class="ph-bold ph-chats-circle"></i>
+          </span>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">2. Khởi động: Tình huống chọn trường THPT (SGK Trang 9)</h2>
+            <p class="text-xs text-slate-500">Tình huống hội thoại dẫn dắt vấn đề thực tế[cite: 6]</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 items-center mb-6">
+        <div class="md:col-span-2 bg-amber-50/60 p-5 rounded-2xl border border-amber-200 space-y-4">
+          <p class="text-xs md:text-sm text-slate-700 leading-relaxed">
+            <strong>Tình huống:</strong> An và Minh phân vân chọn trường THPT sau tốt nghiệp THCS[cite: 6]. Minh tìm được bài viết giới thiệu một trường THPT dân lập có cơ sở vật chất rất đẹp[cite: 6]. An xem bài viết thấy ấn tượng nên vội vàng quyết định chọn trường đó làm nguyện vọng duy nhất mà không tìm hiểu thêm[cite: 6].
+          </p>
+          <div class="p-3 bg-white/80 rounded-xl border border-amber-300 text-xs md:text-sm text-amber-950">
+            ❓ <strong>Câu hỏi gợi mở:</strong> Nếu em là An, việc vội vàng tin tưởng bài viết quảng cáo trên mạng mà không kiểm tra lại thông tin có thể dẫn đến hậu quả gì[cite: 6]?
+          </div>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100">
+          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=700&q=80" alt="Học sinh tìm hiểu thông tin trường học" class="w-full h-44 object-cover">
+          <p class="p-2 text-[11px] text-center text-slate-500 italic bg-white">Tìm hiểu thông tin chọn trường lớp 10</p>
+        </div>
+      </div>
+
+      <!-- Tách Gợi ý và Đáp án Khởi động -->
+      <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-3 mb-6">
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="toggleVisibility('khoidong-hint')" class="px-3 py-1.5 rounded-lg bg-teal-50 border border-teal-300 text-teal-800 text-xs font-semibold hover:bg-teal-100 transition flex items-center gap-1">
+            <i class="ph-bold ph-lightbulb"></i> 💡 Xem Gợi ý suy nghĩ
+          </button>
+          <button onclick="toggleVisibility('khoidong-ans')" class="px-3 py-1.5 rounded-lg bg-indigo-50 border border-indigo-300 text-indigo-800 text-xs font-semibold hover:bg-indigo-100 transition flex items-center gap-1">
+            <i class="ph-bold ph-key"></i> 🔑 Xem Hướng dẫn GV / SGV
+          </button>
+        </div>
+
+        <div id="khoidong-hint" class="hidden p-3 bg-teal-50 border border-teal-200 rounded-lg text-xs md:text-sm text-teal-900">
+          💡 <strong>Gợi ý:</strong> Bài viết quảng cáo thường chỉ nêu điểm tích cực, liệu có nói rõ mức học phí, điểm chuẩn xét tuyển hay khoảng cách địa lý không?
+        </div>
+
+        <div id="khoidong-ans" class="hidden p-3 bg-indigo-50 border border-indigo-200 rounded-lg text-xs md:text-sm text-indigo-900">
+          🔑 <strong>Hướng dẫn GV/SGV:</strong> GV dẫn dắt HS nhận ra rằng bài viết quảng cáo có thể chứa thông tin thiếu tính khách quan, lỗi thời hoặc không đầy đủ (thiếu học phí, điểm tuyển sinh)[cite: 6]. Việc đưa ra quyết định dựa trên thông tin kém chất lượng dễ dẫn đến lựa chọn sai lầm[cite: 6].
+        </div>
+      </div>
+
+      <!-- Củng cố nhanh Khởi động -->
+      <div class="p-4 bg-amber-50/70 border border-amber-200 rounded-xl space-y-3">
+        <p class="font-bold text-xs md:text-sm text-amber-950 flex items-center gap-1.5">
+          <i class="ph-bold ph-lightning"></i> ⚡ CỦNG CỐ NHANH HOẠT ĐỘNG KHỞI ĐỘNG (Mức độ: Hiểu)[cite: 6]
+        </p>
+        <p class="text-xs md:text-sm text-slate-800">Tại sao lượng thông tin lớn trên Internet chưa đảm bảo rằng ta sẽ đưa ra quyết định đúng đắn[cite: 6]?</p>
+        <div class="space-y-1.5 text-xs md:text-sm">
+          <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-amber-50 cursor-pointer">
+            <input type="radio" name="cp-kd" value="A"> A. Vì Internet không có thông tin chính xác.[cite: 6]
+          </label>
+          <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-amber-50 cursor-pointer">
+            <input type="radio" name="cp-kd" value="B"> B. Vì thông tin trên Internet rất đắt đỏ.[cite: 6]
+          </label>
+          <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-amber-50 cursor-pointer">
+            <input type="radio" name="cp-kd" value="C"> C. Vì quan trọng không phải số lượng bản tin mà là CHẤT LƯỢNG của thông tin.[cite: 6]
+          </label>
+          <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-amber-50 cursor-pointer">
+            <input type="radio" name="cp-kd" value="D"> D. Vì máy tính không thể lưu trữ hết thông tin.[cite: 6]
+          </label>
+        </div>
+        <button onclick="checkCPKD()" class="px-3 py-1.5 bg-amber-600 text-white rounded-lg text-xs font-semibold hover:bg-amber-700 transition">
+          Kiểm tra câu trả lời
+        </button>
+        <div id="cp-kd-fb" class="text-xs font-medium hidden"></div>
+      </div>
+
+      <div class="text-right border-t pt-4 mt-6">
+        <button onclick="toggleSectionDone('sec-khoidong')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 3. KHÁM PHÁ KIẾN THỨC -->
+    <section id="sec-kienthuc" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-8 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 font-bold flex items-center justify-center text-xl">
+            <i class="ph-bold ph-book-open-text"></i>
+          </span>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">3. Khám phá kiến thức (Bắt buộc đọc SGK)</h2>
+            <p class="text-xs text-slate-500">Đọc SGK Tin học 9 Trang 9 - 11 để hoàn thành các nội dung khuyết[cite: 6]</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <!-- Mục 3.1 -->
+      <div class="space-y-4">
+        <div class="border-l-4 border-emerald-600 pl-3">
+          <h3 class="text-base font-bold text-slate-900">3.1. Vai trò của chất lượng thông tin trong giải quyết vấn đề (SGK Trang 9 - 10)</h3>
+          <p class="text-xs text-slate-500">Nhiệm vụ đọc SGK: Chọn từ còn thiếu vào ô trống[cite: 6]</p>
+        </div>
+
+        <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-4">
+          <div class="space-y-3 text-xs md:text-sm text-slate-800 leading-loose">
+            <p>
+              1. Thông tin là cơ sở để đưa ra các (1) 
+              <select id="sel-cloze1-1" class="border border-slate-300 rounded-lg px-2 py-1 bg-white font-semibold text-emerald-800 outline-none">
+                <option value="">-- Chọn từ --</option>
+                <option value="quyetdinh">quyết định</option>
+                <option value="kienthuc">kiến thức</option>
+                <option value="du-doan">dự đoán</option>
+              </select>.[cite: 6]
+            </p>
+            <p>
+              2. Cần phải quan tâm đến (2) 
+              <select id="sel-cloze1-2" class="border border-slate-300 rounded-lg px-2 py-1 bg-white font-semibold text-emerald-800 outline-none">
+                <option value="">-- Chọn từ --</option>
+                <option value="soluong">số lượng</option>
+                <option value="chatluong">chất lượng</option>
+                <option value="hinhthuc">hình thức</option>
+              </select> 
+              của thông tin khi tìm kiếm, tiếp nhận, trao đổi và sử dụng thông tin.[cite: 6]
+            </p>
+            <p>
+              3. Nếu sử dụng thông tin không được (3) 
+              <select id="sel-cloze1-3" class="border border-slate-300 rounded-lg px-2 py-1 bg-white font-semibold text-emerald-800 outline-none">
+                <option value="">-- Chọn từ --</option>
+                <option value="kiemchung">kiểm chứng</option>
+                <option value="saochep">sao chép</option>
+                <option value="congkhai">công khai</option>
+              </select>, 
+              quyết định đưa ra có thể bị (4) 
+              <select id="sel-cloze1-4" class="border border-slate-300 rounded-lg px-2 py-1 bg-white font-semibold text-emerald-800 outline-none">
+                <option value="">-- Chọn từ --</option>
+                <option value="sailam">sai lầm</option>
+                <option value="chamtre">chậm trễ</option>
+                <option value="thieu-sot">thiếu sót nhỏ</option>
+              </select>.[cite: 6]
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3 pt-2">
+            <button onclick="checkDropdownCloze1()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition">
+              Kiểm tra đáp án Mục 3.1
+            </button>
+            <span id="dropdown-cloze1-msg" class="text-xs font-semibold"></span>
+          </div>
+        </div>
+
+        <!-- ACCORDION: Góc giáo viên Mục 1 -->
+        <details class="group border border-amber-300 rounded-xl bg-amber-50/50 p-3.5 transition-all">
+          <summary class="flex items-center justify-between font-bold text-xs md:text-sm text-amber-900 cursor-pointer select-none">
+            <span class="flex items-center gap-2">
+              <i class="ph-bold ph-chalkboard-teacher text-base"></i> 📌 Góc giáo viên & Hướng dẫn SGV (Mục 1)[cite: 6]
+            </span>
+            <i class="ph-bold ph-caret-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="mt-3 text-xs md:text-sm text-slate-700 space-y-1.5 pl-2 border-t border-amber-200/80 pt-2">
+            <p>• <strong>GV nhấn mạnh:</strong> Thông tin trong bài đăng quảng cáo năm 2001-2002 trong SGK là thông tin đã lỗi thời (vi phạm tính mới)[cite: 6]. Lấy thông tin này để đăng ký cho năm học hiện tại chắc chắn dẫn đến sai lầm[cite: 6].</p>
+            <p>• <strong>Dẫn dắt pháp lý/thực tế:</strong> GV có thể giới thiệu thêm <em>Thông tư 36/2017/TT-BGDĐT</em> quy định về công khai chất lượng giáo dục của các trường để học sinh biết nguồn tra cứu chính thống[cite: 6].</p>
+          </div>
+        </details>
+
+        <!-- Củng cố nhanh HĐ 1 -->
+        <div class="p-4 bg-teal-50/70 border border-teal-200 rounded-xl space-y-3">
+          <p class="font-bold text-xs md:text-sm text-teal-950 flex items-center gap-1.5">
+            <i class="ph-bold ph-lightning"></i> ⚡ CỦNG CỐ NHANH HOẠT ĐỘNG 1 (Mức độ: Biết)[cite: 6]
+          </p>
+          <p class="text-xs md:text-sm text-slate-800">Yếu tố nào sau đây quyết định trực tiếp đến hiệu quả của việc giải quyết vấn đề[cite: 6]?</p>
+          <div class="space-y-1.5 text-xs md:text-sm">
+            <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-teal-50 cursor-pointer">
+              <input type="radio" name="cp1" value="A"> A. Số lượng hình ảnh minh họa trên trang web.[cite: 6]
+            </label>
+            <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-teal-50 cursor-pointer">
+              <input type="radio" name="cp1" value="B"> B. Chất lượng của thông tin thu thập được.[cite: 6]
+            </label>
+            <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-teal-50 cursor-pointer">
+              <input type="radio" name="cp1" value="C"> C. Tốc độ đường truyền mạng Internet.[cite: 6]
+            </label>
+            <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-teal-50 cursor-pointer">
+              <input type="radio" name="cp1" value="D"> D. Số lượng bài viết tìm được trên Google.[cite: 6]
+            </label>
+          </div>
+          <button onclick="checkCP1()" class="px-3 py-1.5 bg-teal-600 text-white rounded-lg text-xs font-semibold hover:bg-teal-700 transition">
+            Trả lời câu hỏi
+          </button>
+          <div id="cp1-fb" class="text-xs font-medium hidden"></div>
+        </div>
+      </div>
+
+      <!-- Mục 3.2 -->
+      <div class="space-y-4 pt-4 border-t">
+        <div class="border-l-4 border-teal-600 pl-3">
+          <h3 class="text-base font-bold text-slate-900">3.2. Các tiêu chí đánh giá chất lượng thông tin (SGK Trang 10 - 11)</h3>
+          <p class="text-xs text-slate-500">Hoàn thiện bảng 4 tiêu chí khuyết từ SGK[cite: 6]</p>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs md:text-sm border border-slate-200 rounded-xl overflow-hidden">
+            <thead class="bg-slate-100 text-slate-700 border-b">
+              <tr>
+                <th class="p-3 w-1/4 font-semibold">Tiêu chí</th>
+                <th class="p-3 w-1/2 font-semibold">Nội dung khuyết (Đọc SGK chọn từ)</th>
+                <th class="p-3 font-semibold">Ví dụ & Ý nghĩa thực tế</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200">
+              <tr>
+                <td class="p-3 font-bold text-emerald-800">1. Tính mới (Cập nhật)</td>
+                <td class="p-3 leading-relaxed">
+                  Thông tin phải được cập nhật (1) 
+                  <select id="sel-cloze2-1" class="border border-slate-300 rounded px-1.5 py-0.5 bg-white font-semibold text-emerald-800 outline-none">
+                    <option value="">-- Chọn --</option>
+                    <option value="gannhat">gần nhất</option>
+                    <option value="dautien">đầu tiên</option>
+                  </select>
+                  với thời điểm hiện tại[cite: 6]. Tránh dùng thông tin đã (2) 
+                  <select id="sel-cloze2-2" class="border border-slate-300 rounded px-1.5 py-0.5 bg-white font-semibold text-emerald-800 outline-none">
+                    <option value="">-- Chọn --</option>
+                    <option value="loithoi">lỗi thời</option>
+                    <option value="chinhxac">chuẩn xác</option>
+                  </select>.[cite: 6]
+                </td>
+                <td class="p-3 text-slate-600">Nêu điểm chuẩn năm 2001 thay vì năm nay là thông tin cũ, có thể dẫn đến chọn sai trường.</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-emerald-800">2. Tính chính xác</td>
+                <td class="p-3 leading-relaxed">
+                  Nội dung phải cụ thể, đúng sự thật và có thể (3) 
+                  <select id="sel-cloze2-3" class="border border-slate-300 rounded px-1.5 py-0.5 bg-white font-semibold text-emerald-800 outline-none">
+                    <option value="">-- Chọn --</option>
+                    <option value="xacminh">xác minh / kiểm chứng</option>
+                    <option value="phongdai">phóng đại</option>
+                  </select> 
+                  qua nhiều nguồn uy tín[cite: 6].
+                </td>
+                <td class="p-3 text-slate-600">Ghi sai điểm tuyển sinh hoặc địa chỉ trường khiến học sinh bị nhầm lẫn.</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-emerald-800">3. Tính đầy đủ</td>
+                <td class="p-3 leading-relaxed">
+                  Thông tin thể hiện sự (4) 
+                  <select id="sel-cloze2-4" class="border border-slate-300 rounded px-1.5 py-0.5 bg-white font-semibold text-emerald-800 outline-none">
+                    <option value="">-- Chọn --</option>
+                    <option value="baoquat">bao quát</option>
+                    <option value="soxai">sơ sài</option>
+                  </select> 
+                  nhiều khía cạnh, giúp có cái nhìn toàn diện[cite: 6].
+                </td>
+                <td class="p-3 text-slate-600">Chỉ khen trường đẹp mà không nêu học phí hay điểm chuẩn là thông tin chưa đầy đủ.</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-emerald-800">4. Tính sử dụng được</td>
+                <td class="p-3 leading-relaxed">
+                  Thông tin phải phù hợp với (5) 
+                  <select id="sel-cloze2-5" class="border border-slate-300 rounded px-1.5 py-0.5 bg-white font-semibold text-emerald-800 outline-none">
+                    <option value="">-- Chọn --</option>
+                    <option value="mucdich">mục đích</option>
+                    <option value="nguon-tin">nguồn tin</option>
+                  </select> 
+                  hoặc câu hỏi được đặt ra[cite: 6].
+                </td>
+                <td class="p-3 text-slate-600">Đang cần tìm trường THPT công lập thì thông tin học nghề hay du học không sử dụng được.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex items-center gap-3 pt-2">
+          <button onclick="checkDropdownCloze2()" class="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold transition">
+            Kiểm tra bảng tiêu chí
+          </button>
+          <span id="dropdown-cloze2-msg" class="text-xs font-semibold"></span>
+        </div>
+
+        <!-- ACCORDION: Góc giáo viên Mục 2 -->
+        <details class="group border border-amber-300 rounded-xl bg-amber-50/50 p-3.5 transition-all">
+          <summary class="flex items-center justify-between font-bold text-xs md:text-sm text-amber-900 cursor-pointer select-none">
+            <span class="flex items-center gap-2">
+              <i class="ph-bold ph-scales text-base"></i> 📌 Góc giáo viên & Phân biệt khái niệm trọng tâm (SGV)[cite: 6]
+            </span>
+            <i class="ph-bold ph-caret-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="mt-3 text-xs md:text-sm text-slate-700 space-y-1.5 pl-2 border-t border-amber-200/80 pt-2">
+            <p>• <strong>Phân biệt 'Nguồn tin cậy' và 'Chất lượng thông tin':</strong> Nguồn tin cậy (như website chính thức của trường hay nhà mạng) chưa chắc đảm bảo chất lượng thông tin ở mọi thời điểm nếu nguồn đó quên cập nhật số điện thoại mới hay thông tin chưa đầy đủ[cite: 6].</p>
+            <p>• <strong>Phân biệt 'Tính sử dụng được' và 'Độ tin cậy':</strong> Thông tin về du học quốc tế có thể rất chính xác và tin cậy, nhưng đối với học sinh đang cần chọn trường THPT công lập gần nhà thì thông tin đó KHÔNG SỬ DỤNG ĐƯỢC (không có tính liên quan)[cite: 6].</p>
+          </div>
+        </details>
+
+        <!-- Củng cố nhanh HĐ 2 -->
+        <div class="p-4 bg-teal-50/70 border border-teal-200 rounded-xl space-y-3">
+          <p class="font-bold text-xs md:text-sm text-teal-950 flex items-center gap-1.5">
+            <i class="ph-bold ph-lightning"></i> ⚡ CỦNG CỐ NHANH HOẠT ĐỘNG 2 (Mức độ: Hiểu)[cite: 6]
+          </p>
+          <p class="text-xs md:text-sm text-slate-800">Bạn An cần tìm thông tin tuyển sinh THPT công lập nhưng lại đọc bài viết giới thiệu về trung tâm dạy nghề. Thông tin này vi phạm tiêu chí nào[cite: 6]?</p>
+          <div class="space-y-1.5 text-xs md:text-sm">
+            <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-teal-50 cursor-pointer">
+              <input type="radio" name="cp2" value="A"> A. Tính mới.[cite: 6]
+            </label>
+            <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-teal-50 cursor-pointer">
+              <input type="radio" name="cp2" value="B"> B. Tính chính xác.[cite: 6]
+            </label>
+            <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-teal-50 cursor-pointer">
+              <input type="radio" name="cp2" value="C"> C. Tính đầy đủ.[cite: 6]
+            </label>
+            <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-teal-50 cursor-pointer">
+              <input type="radio" name="cp2" value="D"> D. Tính sử dụng được (Tính liên quan).[cite: 6]
+            </label>
+          </div>
+          <button onclick="checkCP2()" class="px-3 py-1.5 bg-teal-600 text-white rounded-lg text-xs font-semibold hover:bg-teal-700 transition">
+            Trả lời câu hỏi
+          </button>
+          <div id="cp2-fb" class="text-xs font-medium hidden"></div>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-kienthuc')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. LUYỆN TẬP -->
+    <section id="sec-luyentap" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-6 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 font-bold flex items-center justify-center text-xl">
+            <i class="ph-bold ph-barbell"></i>
+          </span>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">4. Hoạt động Luyện tập (SGK Trang 11)</h2>
+            <p class="text-xs text-slate-500">Tình huống liên hệ chuyến tham quan nông trại[cite: 6]</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 items-start">
+        <div class="md:col-span-2 space-y-4 text-xs md:text-sm">
+          <div class="p-4 rounded-xl bg-purple-50/50 border border-purple-100">
+            <p class="font-semibold text-slate-800 leading-relaxed">
+              <strong>Tình huống:</strong> An gọi điện theo số trên web nông trại nhưng không liên lạc được do nông trại đổi đầu số mà chưa sửa web[cite: 6]. Minh tra bảng chuyển đổi đầu số của nhà mạng viễn thông và liên hệ thành công[cite: 6].
+            </p>
+            <p class="mt-2 text-slate-600 italic">👉 Hãy tự đánh giá chất lượng thông tin của bạn An và bạn Minh theo 4 tiêu chí trước khi mở đáp án đối chiếu.</p>
+          </div>
+
+          <!-- Nút điều khiển 2 tầng -->
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="toggleVisibility('luyentap-hint')" class="px-3 py-1.5 rounded-lg bg-teal-50 border border-teal-300 text-teal-800 text-xs font-semibold hover:bg-teal-100 transition flex items-center gap-1">
+              <i class="ph-bold ph-lightbulb"></i> 💡 Xem Gợi ý đánh giá
+            </button>
+            <button onclick="toggleVisibility('luyentap-ans')" class="px-3 py-1.5 rounded-lg bg-purple-50 border border-purple-300 text-purple-800 text-xs font-semibold hover:bg-purple-100 transition flex items-center gap-1">
+              <i class="ph-bold ph-key"></i> 🔑 Xem Đánh giá chi tiết (Theo SGV)
+            </button>
+          </div>
+
+          <!-- Hộp gợi ý -->
+          <div id="luyentap-hint" class="hidden p-3.5 bg-teal-50 border border-teal-200 rounded-xl text-teal-950 space-y-1.5">
+            <strong class="text-teal-900 block">💡 Gợi ý tư duy:</strong>
+            <p>• Số cũ trên web nông trại dù từ nguồn chính thức nhưng có còn đúng ở thời điểm này không? Có gọi được không?</p>
+            <p>• Thông tin của Minh lấy từ nhà mạng có giải quyết được mục đích gọi điện không?</p>
+          </div>
+
+          <!-- Hộp đáp án chi tiết -->
+          <div id="luyentap-ans" class="hidden p-4 bg-purple-50 border border-purple-200 rounded-xl space-y-2 text-purple-950">
+            <strong class="text-purple-900 block">🔑 Đánh giá 4 tiêu chí chất lượng thông tin (Theo SGV):[cite: 6]</strong>
+            <p>• <strong>Thông tin của An:</strong> Dù lấy từ nguồn tin cậy (web nông trại) nhưng bị vi phạm Tính mới (số cũ), kéo theo không đạt Tính chính xác, Tính đầy đủ và không có Tính sử dụng được[cite: 6].</p>
+            <p>• <strong>Thông tin của Minh:</strong> Đạt cả 4 tiêu chí (mới nhất, chính xác, đầy đủ và liên hệ thành công)[cite: 6].</p>
+          </div>
+        </div>
+
+        <div class="rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100">
+          <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=600&q=80" alt="Nông trại trải nghiệm" class="w-full h-44 object-cover">
+          <p class="p-2 text-[11px] text-center text-slate-500 italic bg-white">Tìm kiếm thông tin liên hệ chuyến tham quan</p>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-luyentap')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 5. VẬN DỤNG -->
+    <section id="sec-vandung" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-6 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-xl">
+            <i class="ph-bold ph-rocket-launch"></i>
+          </span>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">5. Hoạt động Vận dụng: Máy tính điện tử đầu tiên</h2>
+            <p class="text-xs text-slate-500">Tìm kiếm thông tin lịch sử và đánh giá chất lượng</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 items-start">
+        <div class="p-4 rounded-xl bg-emerald-50/50 border border-emerald-100 text-xs md:text-sm space-y-3">
+          <p class="font-semibold text-slate-800">
+            <strong>Đề bài SGK Trang 11:</strong> Em hãy tìm trên Internet thông tin về chiếc "máy tính điện tử kĩ thuật số đầu tiên trên thế giới" và đánh giá chất lượng thông tin tìm được.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-2 pt-1">
+            <button onclick="toggleVisibility('vandung-hint')" class="px-3 py-1.5 rounded-lg bg-teal-50 border border-teal-300 text-teal-800 text-xs font-semibold hover:bg-teal-100 transition flex items-center gap-1">
+              <i class="ph-bold ph-lightbulb"></i> 💡 Xem Gợi ý từ khóa
+            </button>
+            <button onclick="toggleVisibility('vandung-ans')" class="px-3 py-1.5 rounded-lg bg-emerald-100 border border-emerald-300 text-emerald-900 text-xs font-semibold hover:bg-emerald-200 transition flex items-center gap-1">
+              <i class="ph-bold ph-key"></i> 🔑 Xem Đáp án chuẩn SGV
+            </button>
+          </div>
+
+          <div id="vandung-hint" class="hidden p-3 bg-teal-50 border border-teal-200 rounded-lg text-teal-900 text-xs space-y-1">
+            <strong>💡 Gợi ý tìm kiếm:</strong>
+            <p>• Từ khóa: <code>máy tính điện tử kĩ thuật số đầu tiên</code> hoặc <code>ENIAC computer</code>.</p>
+            <p>• Kiểm tra xem kết quả có đầy đủ năm ra đời, nơi phát minh và tên máy hay không.</p>
+          </div>
+
+          <div id="vandung-ans" class="hidden p-3 bg-white rounded-lg border border-emerald-200 text-slate-700 space-y-2">
+            <strong class="text-emerald-800 block">🔑 Đáp án chuẩn SGV:</strong>
+            <p>• <strong>Kết quả:</strong> Máy tính <strong>ENIAC</strong> (Electronic Numerical Integrator and Computer), hoàn thành năm 1945 tại ĐH Pennsylvania (Mỹ).</p>
+            <ul class="list-disc list-inside space-y-1 pl-2 text-slate-600 text-xs">
+              <li><strong>Tính mới:</strong> Đảm bảo nếu nguồn tin dẫn chiếu các sự kiện lịch sử đã được công nhận.</li>
+              <li><strong>Tính chính xác:</strong> Đánh giá cao khi đối chiếu trên Bách khoa toàn thư Britannica hoặc Wikipedia.</li>
+              <li><strong>Tính đầy đủ:</strong> Có năm ra đời (1945), tên máy (ENIAC), nhà sáng chế (J. Presper Eckert và John Mauchly).</li>
+              <li><strong>Tính sử dụng được:</strong> Hoàn toàn đáp ứng mục đích tra cứu.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Video YouTube tư liệu chính thống (Penn University) -->
+        <div class="rounded-xl overflow-hidden border border-slate-300 shadow-sm bg-black">
+          <div class="aspect-video w-full">
+            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/k4oGI_dNaPc" title="ENIAC: The First Computer (University of Pennsylvania)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="p-2.5 bg-slate-900 text-slate-300 text-[11px] flex items-center justify-between">
+            <span>📺 Video tư liệu: Máy tính ENIAC (Đại học Pennsylvania)</span>
+            <span class="text-emerald-400">Nguồn chính thống</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-vandung')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 6. TÓM TẮT KIẾN THỨC CỐT LÕI -->
+    <section id="sec-tomtat" class="study-card bg-gradient-to-br from-teal-900 to-emerald-950 text-white rounded-2xl p-6 md:p-8 shadow-md transition-all duration-300">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-6">
+        <div class="flex items-center gap-2">
+          <i class="ph-bold ph-bookmarks text-amber-300 text-xl"></i>
+          <h2 class="text-lg md:text-xl font-bold text-teal-100">6. Tóm tắt kiến thức cốt lõi Bài 2</h2>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-950 bg-emerald-300 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 text-xs md:text-sm mb-6">
+        <div class="bg-white/10 p-4 rounded-xl border border-white/10 space-y-1.5">
+          <h3 class="font-bold text-amber-300 text-sm">Vai trò của chất lượng thông tin</h3>
+          <p class="text-slate-200">• Thông tin là cơ sở để đưa ra các quyết định.</p>
+          <p class="text-slate-200">• Cần quan tâm đến chất lượng thông tin khi tìm kiếm, tiếp nhận và trao đổi để có quyết định đúng đắn.</p>
+        </div>
+        <div class="bg-white/10 p-4 rounded-xl border border-white/10 space-y-1.5">
+          <h3 class="font-bold text-amber-300 text-sm">4 tiêu chí đánh giá chất lượng</h3>
+          <p class="text-slate-200">• <strong>Tính mới:</strong> Được cập nhật gần nhất với hiện tại.</p>
+          <p class="text-slate-200">• <strong>Tính chính xác:</strong> Đúng sự thật, có thể xác minh.</p>
+          <p class="text-slate-200">• <strong>Tính đầy đủ:</strong> Bao quát mọi khía cạnh cần thiết.</p>
+          <p class="text-slate-200">• <strong>Tính sử dụng được:</strong> Phù hợp với mục đích giải quyết vấn đề.</p>
+        </div>
+      </div>
+
+      <div class="text-right border-t border-white/10 pt-4">
+        <button onclick="toggleSectionDone('sec-tomtat')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-white/20 bg-white/10 hover:bg-emerald-500 text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 7. HỆ THỐNG CÂU HỎI ĐÁNH GIÁ 3 DẠNG -->
+    <section id="sec-danhgia" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-10 transition-all duration-300">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4">
+        <div>
+          <h2 class="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2">
+            <i class="ph-bold ph-exam text-emerald-600"></i> 7. Hệ thống câu hỏi đánh giá theo ma trận (3 Dạng)[cite: 6]
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">Trắc nghiệm nhiều lựa chọn • Đúng/Sai đa ý • Tự luận thang điểm[cite: 6]</p>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã hoàn thành đánh giá
+        </span>
+      </div>
+
+      <!-- DẠNG 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN -->
+      <div class="space-y-4">
+        <div class="border-l-4 border-emerald-600 pl-3">
+          <h3 class="text-sm md:text-base font-bold text-slate-900">DẠNG 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN (4 CÂU)[cite: 6]</h3>
+          <p class="text-xs text-slate-500">Mỗi câu chọn 1 đáp án đúng nhất</p>
+        </div>
+
+        <form id="d1-form" class="space-y-4">
+          <div id="d1-container" class="space-y-4"></div>
+          <div class="pt-2 flex items-center gap-3">
+            <button type="button" onclick="gradeD1()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl shadow transition">
+              Chấm điểm Dạng 1
+            </button>
+            <span id="d1-score-badge" class="text-xs font-bold hidden px-3 py-1.5 rounded-full"></span>
+          </div>
+        </form>
+      </div>
+
+      <!-- DẠNG 2: TRẮC NGHIỆM ĐÚNG/SAI -->
+      <div class="space-y-4 pt-4 border-t">
+        <div class="border-l-4 border-teal-600 pl-3">
+          <h3 class="text-sm md:text-base font-bold text-slate-900">DẠNG 2: TRẮC NGHIỆM ĐÚNG / SAI (2 CÂU - MỖI CÂU 4 Ý)[cite: 6]</h3>
+          <p class="text-xs text-slate-500">Chọn Đúng (Đ) hoặc Sai (S) cho từng nhận định a, b, c, d[cite: 6]</p>
+        </div>
+
+        <div class="space-y-6" id="d2-container">
+          <!-- Câu 1 Đúng/Sai -->
+          <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50 space-y-3" id="d2-c1-card">
+            <p class="font-bold text-xs md:text-sm text-slate-800">
+              <span class="text-teal-700">Câu 1 (Đánh giá chất lượng thông tin chọn trường THPT):</span> Trong hoạt động tìm hiểu thông tin để chọn trường THPT sau tốt nghiệp THCS, một nhóm học sinh thảo luận về các tiêu chí đánh giá chất lượng thông tin:[cite: 6]
+            </p>
+            <div class="space-y-2 text-xs md:text-sm">
+              <div class="flex items-center justify-between p-2.5 bg-white rounded-lg border border-slate-200">
+                <span class="pr-2">a) Thông tin càng nhiều thì chắc chắn quyết định đưa ra càng chính xác, không cần phải kiểm tra nguồn gốc. <em class="text-slate-400 text-[11px]">(Biết)</em>[cite: 6]</span>
+                <div class="flex items-center gap-2 shrink-0">
+                  <label class="cursor-pointer"><input type="radio" name="d2_1_a" value="D"> Đ</label>
+                  <label class="cursor-pointer"><input type="radio" name="d2_1_a" value="S"> S</label>
+                </div>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-white rounded-lg border border-slate-200">
+                <span class="pr-2">b) Bài viết giới thiệu trường THPT thiếu chi tiết về học phí và vị trí địa lý là vi phạm tiêu chí 'Tính đầy đủ'. <em class="text-slate-400 text-[11px]">(Hiểu)</em>[cite: 6]</span>
+                <div class="flex items-center gap-2 shrink-0">
+                  <label class="cursor-pointer"><input type="radio" name="d2_1_b" value="D"> Đ</label>
+                  <label class="cursor-pointer"><input type="radio" name="d2_1_b" value="S"> S</label>
+                </div>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-white rounded-lg border border-slate-200">
+                <span class="pr-2">c) Bạn An sử dụng bảng điểm chuẩn tuyển sinh lớp 10 từ 10 năm trước để làm căn cứ đăng ký nguyện vọng năm nay là vi phạm tiêu chí 'Tính mới (Cập nhật)'. <em class="text-slate-400 text-[11px]">(Hiểu)</em>[cite: 6]</span>
+                <div class="flex items-center gap-2 shrink-0">
+                  <label class="cursor-pointer"><input type="radio" name="d2_1_c" value="D"> Đ</label>
+                  <label class="cursor-pointer"><input type="radio" name="d2_1_c" value="S"> S</label>
+                </div>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-white rounded-lg border border-slate-200">
+                <span class="pr-2">d) Một bài viết giới thiệu rất chi tiết và chính xác về một trường THPT chuyên ở thành phố khác là thông tin 'Sử dụng được' cho bạn Nam đang muốn tìm trường gần nhà. <em class="text-slate-400 text-[11px]">(Vận dụng)</em>[cite: 6]</span>
+                <div class="flex items-center gap-2 shrink-0">
+                  <label class="cursor-pointer"><input type="radio" name="d2_1_d" value="D"> Đ</label>
+                  <label class="cursor-pointer"><input type="radio" name="d2_1_d" value="S"> S</label>
+                </div>
+              </div>
+            </div>
+            <div id="d2-c1-fb" class="text-xs font-medium hidden p-2.5 rounded-lg"></div>
+          </div>
+
+          <!-- Câu 2 Đúng/Sai -->
+          <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50 space-y-3" id="d2-c2-card">
+            <p class="font-bold text-xs md:text-sm text-slate-800">
+              <span class="text-teal-700">Câu 2 (Đánh giá chất lượng thông tin trong tình huống thực tế):</span> Xét tình huống tìm kiếm thông tin liên lạc và xử lý tin nhắn trên Internet:[cite: 6]
+            </p>
+            <div class="space-y-2 text-xs md:text-sm">
+              <div class="flex items-center justify-between p-2.5 bg-white rounded-lg border border-slate-200">
+                <span class="pr-2">a) Số điện thoại đăng trên trang web chính thức của một tổ chức luôn luôn đảm bảo tính chính xác tại mọi thời điểm mà không cần xác minh. <em class="text-slate-400 text-[11px]">(Biết)</em>[cite: 6]</span>
+                <div class="flex items-center gap-2 shrink-0">
+                  <label class="cursor-pointer"><input type="radio" name="d2_2_a" value="D"> Đ</label>
+                  <label class="cursor-pointer"><input type="radio" name="d2_2_a" value="S"> S</label>
+                </div>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-white rounded-lg border border-slate-200">
+                <span class="pr-2">b) Bạn An không gọi được điện thoại cho nông trại do trang web nông trại chưa kịp cập nhật đầu số mới, điều này cho thấy thông tin trên web vi phạm tính mới. <em class="text-slate-400 text-[11px]">(Hiểu)</em>[cite: 6]</span>
+                <div class="flex items-center gap-2 shrink-0">
+                  <label class="cursor-pointer"><input type="radio" name="d2_2_b" value="D"> Đ</label>
+                  <label class="cursor-pointer"><input type="radio" name="d2_2_b" value="S"> S</label>
+                </div>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-white rounded-lg border border-slate-200">
+                <span class="pr-2">c) Việc bạn Minh tìm kiếm bảng chuyển đổi đầu số của nhà mạng viễn thông giúp Minh thu nhận được thông tin đảm bảo tính chính xác và sử dụng được. <em class="text-slate-400 text-[11px]">(Vận dụng)</em>[cite: 6]</span>
+                <div class="flex items-center gap-2 shrink-0">
+                  <label class="cursor-pointer"><input type="radio" name="d2_2_c" value="D"> Đ</label>
+                  <label class="cursor-pointer"><input type="radio" name="d2_2_c" value="S"> S</label>
+                </div>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-white rounded-lg border border-slate-200">
+                <span class="pr-2">d) Thông tin được chia sẻ bởi người nổi tiếng (KOL) trên mạng xã hội luôn luôn là thông tin có chất lượng cao và đáng tin cậy. <em class="text-slate-400 text-[11px]">(Hiểu)</em>[cite: 6]</span>
+                <div class="flex items-center gap-2 shrink-0">
+                  <label class="cursor-pointer"><input type="radio" name="d2_2_d" value="D"> Đ</label>
+                  <label class="cursor-pointer"><input type="radio" name="d2_2_d" value="S"> S</label>
+                </div>
+              </div>
+            </div>
+            <div id="d2-c2-fb" class="text-xs font-medium hidden p-2.5 rounded-lg"></div>
+          </div>
+
+          <div class="pt-2">
+            <button type="button" onclick="gradeD2()" class="bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl shadow transition">
+              Chấm điểm Dạng 2 (Đúng/Sai)
+            </button>
+            <span id="d2-score-badge" class="text-xs font-bold hidden px-3 py-1.5 rounded-full ml-3"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DẠNG 3: TỰ LUẬN -->
+      <div class="space-y-6 pt-4 border-t">
+        <div class="border-l-4 border-cyan-600 pl-3">
+          <h3 class="text-sm md:text-base font-bold text-slate-900">DẠNG 3: TỰ LUẬN (ĐỀ KIỂM TRA ĐỊNH KỲ - CHIẾM 3.0 ĐIỂM)[cite: 6]</h3>
+          <p class="text-xs text-slate-500">Học sinh gõ câu trả lời, giáo viên sử dụng thang điểm chuẩn để chấm[cite: 6]</p>
+        </div>
+
+        <!-- Tự luận Câu 1 -->
+        <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50 space-y-3">
+          <p class="font-bold text-xs md:text-sm text-slate-800">
+            Câu 1 (1.0 điểm - Mức độ Hiểu): Nêu 4 tiêu chí đánh giá chất lượng thông tin. Tại sao tiêu chí 'Tính mới (Cập nhật)' lại đặc biệt quan trọng trong việc tìm hiểu thông tin tuyển sinh THPT?[cite: 6]
+          </p>
+          <textarea rows="3" placeholder="Nhập câu trả lời của học sinh..." class="w-full text-xs md:text-sm p-3 border border-slate-300 rounded-xl outline-none focus:border-cyan-500 bg-white"></textarea>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="toggleVisibility('tl1-hint')" class="px-3 py-1.5 rounded-lg bg-teal-50 border border-teal-300 text-teal-800 text-xs font-semibold hover:bg-teal-100 transition flex items-center gap-1">
+              <i class="ph-bold ph-lightbulb"></i> 💡 Xem Gợi ý trả lời
+            </button>
+            <button onclick="toggleVisibility('tl1-ans')" class="px-3 py-1.5 rounded-lg bg-cyan-100 border border-cyan-300 text-cyan-900 text-xs font-semibold hover:bg-cyan-200 transition flex items-center gap-1">
+              <i class="ph-bold ph-key"></i> 🔑 Xem Hướng dẫn chấm & Thang điểm (GV)
+            </button>
+          </div>
+
+          <div id="tl1-hint" class="hidden p-3 bg-teal-50 border border-teal-200 rounded-lg text-xs text-teal-900">
+            💡 <strong>Gợi ý:</strong> Liệt kê đủ tên 4 tiêu chí. Sau đó giải thích chỉ tiêu tuyển sinh và điểm chuẩn của các trường THPT có cố định hay thay đổi qua từng năm?
+          </div>
+
+          <div id="tl1-ans" class="hidden p-3 bg-white border border-cyan-200 rounded-lg text-xs space-y-1.5 text-slate-700">
+            <strong class="text-cyan-900 block">🔑 Hướng dẫn chấm & Thang điểm Câu 1:[cite: 6]</strong>
+            <p>• <strong>Nêu đúng đủ 4 tiêu chí</strong> (Tính mới, Tính chính xác, Tính đầy đủ, Tính sử dụng được): <em>0.5 điểm</em>.[cite: 6]</p>
+            <p>• <strong>Giải thích tầm quan trọng của 'Tính mới':</strong> Chỉ tiêu tuyển sinh, điểm chuẩn, quy chế thi thay đổi theo từng năm[cite: 6]. Nếu dùng thông tin cũ (lỗi thời) sẽ dẫn đến tính toán sai điểm và đăng ký sai nguyện vọng: <em>0.5 điểm</em>.[cite: 6]</p>
+          </div>
+        </div>
+
+        <!-- Tự luận Câu 2 -->
+        <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50 space-y-3">
+          <p class="font-bold text-xs md:text-sm text-slate-800 leading-relaxed">
+            Câu 2 (2.0 điểm - Mức độ Vận dụng): Tình huống: Học sinh Nam nhận được một tin nhắn từ số điện thoại lạ với nội dung: <em>"Chúc mừng bạn đã trúng thưởng 1 chiếc điện thoại iPhone 15! Hãy truy cập ngay đường link http://truongthuong-giaonhan.com và chuyển khoản 200.000đ phí vận chuyển để nhận quà"</em>[cite: 6]. Em hãy phân tích chất lượng của thông tin trên dựa trên các tiêu chí đã học và đưa ra lời khuyên cho bạn Nam[cite: 6].
+          </p>
+          <textarea rows="4" placeholder="Nhập câu trả lời của học sinh..." class="w-full text-xs md:text-sm p-3 border border-slate-300 rounded-xl outline-none focus:border-cyan-500 bg-white"></textarea>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="toggleVisibility('tl2-hint')" class="px-3 py-1.5 rounded-lg bg-teal-50 border border-teal-300 text-teal-800 text-xs font-semibold hover:bg-teal-100 transition flex items-center gap-1">
+              <i class="ph-bold ph-lightbulb"></i> 💡 Xem Gợi ý trả lời
+            </button>
+            <button onclick="toggleVisibility('tl2-ans')" class="px-3 py-1.5 rounded-lg bg-cyan-100 border border-cyan-300 text-cyan-900 text-xs font-semibold hover:bg-cyan-200 transition flex items-center gap-1">
+              <i class="ph-bold ph-key"></i> 🔑 Xem Hướng dẫn chấm & Thang điểm (GV)
+            </button>
+          </div>
+
+          <div id="tl2-hint" class="hidden p-3 bg-teal-50 border border-teal-200 rounded-lg text-xs text-teal-900">
+            💡 <strong>Gợi ý:</strong> Xem xét nguồn tin (số lạ hay cơ quan chính thống), đường link có tên miền lạ, yêu cầu chuyển tiền trước có hợp lý không; từ đó rút ra lời khuyên hành động an toàn.
+          </div>
+
+          <div id="tl2-ans" class="hidden p-3 bg-white border border-cyan-200 rounded-lg text-xs space-y-2 text-slate-700">
+            <strong class="text-cyan-900 block">🔑 Hướng dẫn chấm & Thang điểm Câu 2:[cite: 6]</strong>
+            <div>
+              <p class="font-semibold text-slate-800">1. Phân tích chất lượng thông tin (1.25 điểm):[cite: 6]</p>
+              <ul class="list-disc list-inside pl-2 space-y-0.5 text-slate-600">
+                <li><strong>Tính chính xác:</strong> Rất thấp / Sai sự thật (tin nhắn từ số lạ, tên miền trang web không chính thống, có dấu hiệu lừa đảo)[cite: 6].</li>
+                <li><strong>Tính đầy đủ:</strong> Thiếu minh bạch về đơn vị tổ chức, thể lệ chương trình trúng thưởng[cite: 6].</li>
+                <li><strong>Nguồn tin:</strong> Kém tin cậy, không có cơ sở kiểm chứng[cite: 6].</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-800">2. Đưa ra lời khuyên cho bạn Nam (0.75 điểm):[cite: 6]</p>
+              <ul class="list-disc list-inside pl-2 space-y-0.5 text-slate-600">
+                <li>Tuyệt đối không bấm vào đường link lạ, không chuyển bất kỳ khoản tiền nào[cite: 6].</li>
+                <li>Báo cáo tin nhắn rác / tin nhắn lừa đảo và chặn số điện thoại gửi đến[cite: 6].</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-300 border-t border-slate-800 mt-16 py-8">
+    <div class="max-w-5xl mx-auto px-4 space-y-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 border-b border-slate-800 pb-6 text-center md:text-left">
+        <div>
+          <h3 class="text-white font-bold text-base flex items-center justify-center md:justify-start gap-2">
+            <i class="ph-bold ph-graduation-cap text-emerald-400 text-xl"></i>
+            TÀI LIỆU BÀI GIẢNG ĐIỆN TỬ MÔN TIN HỌC 9
+          </h3>
+          <p class="text-xs text-slate-400 mt-1">Trường THCS và THPT Bác Ái</p>
+        </div>
+        <div class="text-xs bg-slate-800/80 px-3 py-2 rounded-xl border border-slate-700">
+          <span class="text-amber-400 font-bold block">Tài liệu sử dụng nội bộ</span>
+          <span class="text-slate-400">Hệ thống bài học tích hợp GDPT 2018</span>
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs text-slate-400">
+        <div class="space-y-1">
+          <p class="text-white font-semibold flex items-center gap-1.5">
+            <i class="ph-bold ph-user text-emerald-400"></i> Giáo viên phụ trách:
+          </p>
+          <p class="text-slate-200 font-medium">Lê Phúc Nhã Thịnh</p>
+        </div>
+        <div class="space-y-1">
+          <p class="text-white font-semibold flex items-center gap-1.5">
+            <i class="ph-bold ph-buildings text-teal-400"></i> Đơn vị công tác:
+          </p>
+          <p class="text-slate-200">Trường THCS và THPT Bác Ái</p>
+        </div>
+        <div class="space-y-1">
+          <p class="text-white font-semibold flex items-center gap-1.5">
+            <i class="ph-bold ph-phone-call text-cyan-400"></i> Góp ý & Hỗ trợ:
+          </p>
+          <p class="text-slate-200">SĐT / Zalo: <a href="tel:0775426999" class="text-emerald-400 font-bold hover:underline">0775426999</a></p>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-800/80 text-center">
+        <p class="text-xs text-emerald-400 font-semibold flex items-center justify-center gap-1.5">
+          <i class="ph-bold ph-sparkle text-amber-400"></i> Chúc các em học sinh học tập tốt và đạt nhiều kết quả cao!
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript xử lý tương tác -->
+  <script>
+    // Dữ liệu Dạng 1: Trắc nghiệm 4 câu
+    const d1Data = [
+      {
+        q: "Chất lượng thông tin được đánh giá thông qua mấy tiêu chí cốt lõi?",
+        options: [
+          { k: "A", text: "2 tiêu chí." },
+          { k: "B", text: "3 tiêu chí." },
+          { k: "C", text: "4 tiêu chí (Tính mới, chính xác, đầy đủ, sử dụng được)." },
+          { k: "D", text: "5 tiêu chí." }
+        ],
+        ans: "C",
+        level: "Biết",
+        exp: "Chất lượng thông tin được đánh giá qua 4 tiêu chí: tính mới, tính chính xác, tính đầy đủ, tính sử dụng được."
+      },
+      {
+        q: "Trường hợp nào sau đây vi phạm tiêu chí 'Tính mới (Cập nhật)' của thông tin?",
+        options: [
+          { k: "A", text: "Sử dụng bảng điểm chuẩn năm 2005 để đăng ký nguyện vọng lớp 10 năm nay." },
+          { k: "B", text: "Đọc bài viết có số liệu bị tính toán sai." },
+          { k: "C", text: "Đọc bài giới thiệu trường thiếu phần học phí." },
+          { k: "D", text: "Tra cứu thông tin du học khi muốn thi công lập." }
+        ],
+        ans: "A",
+        level: "Hiểu",
+        exp: "Điểm chuẩn năm 2005 đã bị lỗi thời so với kỳ tuyển sinh hiện tại."
+      },
+      {
+        q: "Phát biểu nào sau đây là ĐÚNG khi nói về mối quan hệ giữa nguồn tin cậy và chất lượng thông tin?",
+        options: [
+          { k: "A", text: "Nguồn tin cậy thì thông tin luôn luôn đạt chất lượng hoàn hảo." },
+          { k: "B", text: "Thông tin lấy từ nguồn tin cậy vẫn có thể vi phạm tính mới hoặc tính đầy đủ." },
+          { k: "C", text: "Không cần đánh giá chất lượng thông tin nếu lấy từ mạng xã hội." },
+          { k: "D", text: "Nguồn tin cậy chỉ cung cấp thông tin hình ảnh." }
+        ],
+        ans: "B",
+        level: "Hiểu",
+        exp: "Nguồn tin cậy (như website nhà trường) nếu chưa kịp cập nhật số điện thoại mới thì thông tin vẫn bị cũ (vi phạm tính mới)."
+      },
+      {
+        q: "Khi thấy một KOL trên mạng xã hội quảng cáo một sản phẩm gia dụng giá rẻ bất ngờ, học sinh cẩn trọng nên làm gì trước tiên?",
+        options: [
+          { k: "A", text: "Mua ngay vì tin tưởng KOL nổi tiếng." },
+          { k: "B", text: "Cân nhắc, xác minh thông tin từ nhiều nguồn uy tín và đánh giá chất lượng thông tin trước khi quyết định." },
+          { k: "C", text: "Chia sẻ bài viết cho tất cả bạn bè cùng mua." },
+          { k: "D", text: "Bỏ qua hoàn toàn và không bao giờ mua hàng online." }
+        ],
+        ans: "B",
+        level: "Vận dụng",
+        exp: "Cần thận trọng đánh giá chất lượng thông tin và kiểm chứng đa chiều trước khi đưa ra quyết định mua hàng."
+      }
+    ];
+
+    // Hàm ẩn/hiện chung
+    function toggleVisibility(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('hidden');
+    }
+
+    // Quản lý hoàn thành bài học
+    const allSectionIds = ['sec-muctieu', 'sec-khoidong', 'sec-kienthuc', 'sec-luyentap', 'sec-vandung', 'sec-tomtat', 'sec-danhgia'];
+    let completedSections = new Set();
+
+    function updateProgressBar() {
+      const percent = Math.round((completedSections.size / allSectionIds.length) * 100);
+      document.getElementById('progress-bar').style.width = percent + '%';
+      document.getElementById('progress-text').textContent = percent + '%';
+    }
+
+    function toggleSectionDone(secId) {
+      const section = document.getElementById(secId);
+      const badge = section.querySelector('.status-badge');
+      const btn = section.querySelector('.btn-mark');
+
+      if (completedSections.has(secId)) {
+        completedSections.delete(secId);
+        section.classList.remove('section-completed');
+        if (badge) badge.classList.add('hidden');
+        if (btn) {
+          btn.innerHTML = '<i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>';
+          btn.className = "btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-emerald-600 hover:text-white transition flex items-center gap-1.5 ml-auto";
+        }
+      } else {
+        completedSections.add(secId);
+        section.classList.add('section-completed');
+        if (badge) badge.classList.remove('hidden');
+        if (btn) {
+          btn.innerHTML = '<i class="ph-bold ph-arrow-counter-clockwise text-base"></i> <span>Hủy đánh dấu</span>';
+          btn.className = "btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-emerald-300 bg-emerald-100 text-emerald-800 hover:bg-slate-200 hover:text-slate-700 transition flex items-center gap-1.5 ml-auto";
+        }
+      }
+      updateProgressBar();
+    }
+
+    // Củng cố Khởi động
+    function checkCPKD() {
+      const val = document.querySelector('input[name="cp-kd"]:checked')?.value;
+      const fb = document.getElementById('cp-kd-fb');
+      fb.classList.remove('hidden');
+      if (val === 'C') {
+        fb.className = "text-xs font-bold text-emerald-600 block";
+        fb.innerHTML = "✅ Chính xác! Lượng thông tin nhiều nhưng nếu thiếu tính chính xác, cập nhật thì vẫn dẫn đến quyết định sai.";
+      } else {
+        fb.className = "text-xs font-bold text-rose-600 block";
+        fb.innerHTML = "❌ Chưa đúng! Đáp án chính xác là C (Chất lượng thông tin quan trọng hơn số lượng).";
+      }
+    }
+
+    // Kiểm tra Dropdown Mục 3.1
+    function checkDropdownCloze1() {
+      const v1 = document.getElementById('sel-cloze1-1').value;
+      const v2 = document.getElementById('sel-cloze1-2').value;
+      const v3 = document.getElementById('sel-cloze1-3').value;
+      const v4 = document.getElementById('sel-cloze1-4').value;
+      const msg = document.getElementById('dropdown-cloze1-msg');
+
+      if (!v1 || !v2 || !v3 || !v4) {
+        msg.className = "text-xs font-semibold text-amber-600";
+        msg.textContent = "Em vui lòng chọn đủ cả 4 chỗ trống nhé!";
+        return;
+      }
+
+      if (v1 === 'quyetdinh' && v2 === 'chatluong' && v3 === 'kiemchung' && v4 === 'sailam') {
+        msg.className = "text-xs font-bold text-emerald-600";
+        msg.textContent = "✅ Chính xác tuyệt đối theo SGK Trang 9, 10!";
+      } else {
+        msg.className = "text-xs font-bold text-rose-600";
+        msg.textContent = "❌ Có chỗ chưa đúng: (1) quyết định, (2) chất lượng, (3) kiểm chứng, (4) sai lầm.";
+      }
+    }
+
+    // Checkpoint HĐ 1
+    function checkCP1() {
+      const val = document.querySelector('input[name="cp1"]:checked')?.value;
+      const fb = document.getElementById('cp1-fb');
+      fb.classList.remove('hidden');
+      if (val === 'B') {
+        fb.className = "text-xs font-bold text-emerald-600 block";
+        fb.innerHTML = "✅ Chính xác! Chất lượng thông tin quyết định trực tiếp đến hiệu quả giải quyết vấn đề (Mức độ: Biết).";
+      } else {
+        fb.className = "text-xs font-bold text-rose-600 block";
+        fb.innerHTML = "❌ Chưa đúng! Đáp án đúng là B.";
+      }
+    }
+
+    // Kiểm tra Dropdown Mục 3.2
+    function checkDropdownCloze2() {
+      const v1 = document.getElementById('sel-cloze2-1').value;
+      const v2 = document.getElementById('sel-cloze2-2').value;
+      const v3 = document.getElementById('sel-cloze2-3').value;
+      const v4 = document.getElementById('sel-cloze2-4').value;
+      const v5 = document.getElementById('sel-cloze2-5').value;
+      const msg = document.getElementById('dropdown-cloze2-msg');
+
+      if (!v1 || !v2 || !v3 || !v4 || !v5) {
+        msg.className = "text-xs font-semibold text-amber-600";
+        msg.textContent = "Em vui lòng chọn đủ cả 5 vị trí!";
+        return;
+      }
+
+      if (v1 === 'gannhat' && v2 === 'loithoi' && v3 === 'xacminh' && v4 === 'baoquat' && v5 === 'mucdich') {
+        msg.className = "text-xs font-bold text-emerald-600";
+        msg.textContent = "✅ Rất tốt! Em đã xác định chính xác các tiêu chí theo SGK Trang 10, 11!";
+      } else {
+        msg.className = "text-xs font-bold text-rose-600";
+        msg.textContent = "❌ Hãy kiểm tra lại: (1) gần nhất, (2) lỗi thời, (3) xác minh, (4) bao quát, (5) mục đích.";
+      }
+    }
+
+    // Checkpoint HĐ 2
+    function checkCP2() {
+      const val = document.querySelector('input[name="cp2"]:checked')?.value;
+      const fb = document.getElementById('cp2-fb');
+      fb.classList.remove('hidden');
+      if (val === 'D') {
+        fb.className = "text-xs font-bold text-emerald-600 block";
+        fb.innerHTML = "✅ Đúng! Thông tin không phù hợp mục đích cần tìm nên vi phạm tiêu chí Tính sử dụng được (Mức độ: Hiểu).";
+      } else {
+        fb.className = "text-xs font-bold text-rose-600 block";
+        fb.innerHTML = "❌ Chưa đúng! Đáp án là D (Tính sử dụng được / liên quan).";
+      }
+    }
+
+    // Render Dạng 1
+    function renderD1() {
+      const container = document.getElementById('d1-container');
+      container.innerHTML = d1Data.map((item, idx) => `
+        <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50" id="d1-card-${idx}">
+          <p class="font-bold text-xs md:text-sm text-slate-800 mb-2.5">
+            <span class="text-emerald-600">Câu ${idx + 1}:</span> ${item.q} <span class="text-[11px] font-normal text-slate-400">(${item.level})</span>
+          </p>
+          <div class="space-y-1.5 text-xs md:text-sm">
+            ${item.options.map(opt => `
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-white border border-slate-200 hover:bg-emerald-50/50 cursor-pointer transition">
+                <input type="radio" name="d1_q_${idx}" value="${opt.k}" class="text-emerald-600">
+                <span><strong>${opt.k}.</strong>${opt.text}</span>
+              </label>
+            `).join('')}
+          </div>
+          <div id="d1-fb-${idx}" class="mt-2.5 p-2 rounded-lg text-xs hidden"></div>
+        </div>
+      `).join('');
+    }
+
+    // Chấm điểm Dạng 1
+    function gradeD1() {
+      let score = 0;
+      d1Data.forEach((item, idx) => {
+        const selected = document.querySelector(`input[name="d1_q_${idx}"]:checked`);
+        const fb = document.getElementById(`d1-fb-${idx}`);
+        const card = document.getElementById(`d1-card-${idx}`);
+        fb.classList.remove('hidden');
+
+        if (selected && selected.value === item.ans) {
+          score++;
+          card.classList.add('border-emerald-300', 'bg-emerald-50/40');
+          card.classList.remove('border-rose-300', 'bg-rose-50/40');
+          fb.className = "mt-2.5 p-2 rounded-lg text-xs bg-emerald-100 text-emerald-900 font-medium block";
+          fb.innerHTML = `✅ <strong>Chính xác!</strong> ${item.exp}`;
+        } else {
+          card.classList.add('border-rose-300', 'bg-rose-50/40');
+          card.classList.remove('border-emerald-300', 'bg-emerald-50/40');
+          fb.className = "mt-2.5 p-2 rounded-lg text-xs bg-rose-100 text-rose-900 font-medium block";
+          fb.innerHTML = `❌ <strong>Chưa đúng!</strong> Đáp án là <strong>${item.ans}</strong>. <em>${item.exp}</em>`;
+        }
+      });
+
+      const badge = document.getElementById('d1-score-badge');
+      badge.classList.remove('hidden');
+      badge.textContent = `Kết quả: ${score} / ${d1Data.length} điểm`;
+      badge.className = score >= 3 ? "text-xs font-bold px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800" : "text-xs font-bold px-3 py-1.5 rounded-full bg-amber-100 text-amber-800";
+    }
+
+    // Chấm điểm Dạng 2 (Đúng / Sai)
+    function gradeD2() {
+      const d2Answers = {
+        d2_1_a: 'S', d2_1_b: 'D', d2_1_c: 'D', d2_1_d: 'S',
+        d2_2_a: 'S', d2_2_b: 'D', d2_2_c: 'D', d2_2_d: 'S'
+      };
+
+      let correctCount = 0;
+      for (const [key, val] of Object.entries(d2Answers)) {
+        const sel = document.querySelector(`input[name="${key}"]:checked`);
+        if (sel && sel.value === val) correctCount++;
+      }
+
+      const fb1 = document.getElementById('d2-c1-fb');
+      fb1.classList.remove('hidden');
+      fb1.className = "text-xs font-medium p-2.5 rounded-lg bg-teal-50 border border-teal-200 text-teal-950 block";
+      fb1.innerHTML = "<strong>Đáp án đối chiếu Câu 1:</strong> a - Sai, b - Đúng, c - Đúng, d - Sai.";
+
+      const fb2 = document.getElementById('d2-c2-fb');
+      fb2.classList.remove('hidden');
+      fb2.className = "text-xs font-medium p-2.5 rounded-lg bg-teal-50 border border-teal-200 text-teal-950 block";
+      fb2.innerHTML = "<strong>Đáp án đối chiếu Câu 2:</strong> a - Sai, b - Đúng, c - Đúng, d - Sai.";
+
+      const badge = document.getElementById('d2-score-badge');
+      badge.classList.remove('hidden');
+      badge.textContent = `Đúng: ${correctCount} / 8 ý`;
+      badge.className = correctCount >= 6 ? "text-xs font-bold px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 ml-3" : "text-xs font-bold px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 ml-3";
+
+      // Đánh dấu hoàn thành toàn bộ mục Đánh giá
+      if (!completedSections.has('sec-danhgia')) {
+        completedSections.add('sec-danhgia');
+        const sec = document.getElementById('sec-danhgia');
+        sec.classList.add('section-completed');
+        sec.querySelector('.status-badge').classList.remove('hidden');
+        updateProgressBar();
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderD1();
+      updateProgressBar();
+    });
+  </script>
+</body>
+</html>

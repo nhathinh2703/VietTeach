@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Môn Tin học 9 - Bài 4: Một số vấn đề pháp lí về sử dụng dịch vụ Internet</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Phosphor Icons CDN -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <!-- Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; }
+    .section-completed {
+      border-color: #6366f1 !important;
+      background-color: #eef2ff !important;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed flex flex-col min-h-screen">
+
+  <header class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-blue-700 text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-2">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="bg-amber-400 text-slate-950 text-xs px-2.5 py-0.5 rounded-md uppercase tracking-wider font-extrabold shadow-sm">MÔN TIN HỌC 9</span>
+          <span class="bg-indigo-950/70 text-indigo-200 text-xs px-2.5 py-0.5 rounded-md uppercase tracking-wider font-semibold">Chủ đề 3 • KNTT</span>
+        </div>
+        <h1 class="text-lg md:text-xl font-bold mt-1 uppercase tracking-tight">BÀI 4: MỘT SỐ VẤN ĐỀ PHÁP LÍ VỀ SỬ DỤNG DỊCH VỤ INTERNET</h1>
+      </div>
+      <!-- Thanh tiến độ học tập -->
+      <div class="flex items-center gap-3 bg-white/10 px-3.5 py-1.5 rounded-xl border border-white/20 text-xs">
+        <span class="font-medium text-slate-200">Tiến độ bài học:</span>
+        <div class="w-24 bg-white/30 rounded-full h-2.5 overflow-hidden">
+          <div id="progress-bar" class="bg-amber-400 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+        <span id="progress-text" class="font-bold text-amber-300">0%</span>
+      </div>
+    </div>
+
+    <!-- Thanh Menu 7 mục -->
+    <nav class="bg-slate-950/85 backdrop-blur-md border-t border-white/10 overflow-x-auto">
+      <div class="max-w-5xl mx-auto px-4 flex items-center gap-1 py-1.5 text-xs whitespace-nowrap">
+        <a href="#sec-muctieu" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">1. Mục tiêu</a>
+        <a href="#sec-khoidong" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">2. Khởi động</a>
+        <a href="#sec-kienthuc" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">3. Khám phá kiến thức</a>
+        <a href="#sec-luyentap" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">4. Luyện tập</a>
+        <a href="#sec-vandung" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">5. Vận dụng</a>
+        <a href="#sec-tomtat" class="px-3 py-1.5 rounded-lg text-slate-200 hover:bg-white/10 hover:text-white transition">6. Tóm tắt cốt lõi</a>
+        <a href="#sec-danhgia" class="px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 font-bold hover:bg-amber-300 transition">7. Đánh giá 3 dạng</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 mt-8 space-y-10 flex-grow w-full">
+
+    <!-- 1. MỤC TIÊU BÀI HỌC -->
+    <section id="sec-muctieu" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300">
+      <div class="flex items-center justify-between mb-5 border-b pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-xl">
+            <i class="ph-bold ph-target"></i>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">1. Mục tiêu bài học (Yêu cầu cần đạt)</h2>
+            <p class="text-xs text-slate-500">Theo Chương trình GDPT 2018 môn Tin học 9 & SGK Kết nối tri thức</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-indigo-700 bg-indigo-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4 text-xs md:text-sm mb-6">
+        <div class="p-4 rounded-xl bg-rose-50/70 border border-rose-100 space-y-2">
+          <h3 class="font-bold text-rose-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-warning-octagon"></i> 1. Tác động tiêu cực
+          </h3>
+          <p class="text-slate-700">Trình bày được một số tác động tiêu cực của công nghệ kĩ thuật số đối với đời sống con người và xã hội; nêu được các ví dụ thực tế minh hoạ.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-indigo-50/70 border border-indigo-100 space-y-2">
+          <h3 class="font-bold text-indigo-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-scales"></i> 2. Cơ sở pháp lí
+          </h3>
+          <p class="text-slate-700">Nêu được một số nội dung cốt lõi của Luật Công nghệ thông tin (2006), Nghị định 72/2013/NĐ-CP, Luật An ninh mạng (2018) và quyền sở hữu, sử dụng thông tin.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-teal-50/70 border border-teal-100 space-y-2">
+          <h3 class="font-bold text-teal-900 flex items-center gap-1.5 text-sm">
+            <i class="ph-bold ph-shield-check"></i> 3. Ứng xử chuẩn mực
+          </h3>
+          <p class="text-slate-700">Nhận biết được một số hành vi vi phạm pháp luật, trái đạo đức, thiếu văn hoá khi hoạt động trên mạng; rèn luyện tinh thần trách nhiệm và trung thực.</p>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-muctieu')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-indigo-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 2. KHỞI ĐỘNG -->
+    <section id="sec-khoidong" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300">
+      <div class="flex items-center justify-between mb-5 border-b pb-3">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 font-bold flex items-center justify-center text-xl">
+            <i class="ph-bold ph-lightbulb"></i>
+          </span>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">2. Khởi động: Hai mặt của thế giới số (SGK Trang 15)</h2>
+            <p class="text-xs text-slate-500">Tình huống thảo luận dẫn dắt vấn đề thực tế</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-indigo-700 bg-indigo-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 items-center mb-6">
+        <div class="md:col-span-2 bg-amber-50/60 p-5 rounded-2xl border border-amber-200 space-y-4">
+          <p class="text-xs md:text-sm text-slate-700 leading-relaxed">
+            <strong>Tình huống mở đầu:</strong> Trong thời đại số, hầu hết dữ liệu đều ở dạng số hoá, giúp mọi việc từ học tập, lao động, giải trí đến kết nối bạn bè trở nên nhanh chóng, thuận tiện. Tuy nhiên, công nghệ kĩ thuật số cũng mang lại không ít mặt trái và cạm bẫy khó lường.
+          </p>
+          <div class="p-3 bg-white/90 rounded-xl border border-amber-300 text-xs md:text-sm text-amber-950 font-medium">
+            ❓ <strong>Câu hỏi gợi mở:</strong> Hãy thảo luận cùng bạn và kể ra một vài tác động tiêu cực mà em hoặc người thân từng gặp phải khi sử dụng Internet?
+          </div>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100">
+          <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=700&q=80" alt="An ninh mạng và quyền riêng tư" class="w-full h-44 object-cover">
+          <p class="p-2 text-[11px] text-center text-slate-500 italic bg-white">Mặt trái và nguy cơ tiềm ẩn trên không gian mạng</p>
+        </div>
+      </div>
+
+      <!-- Tách Gợi ý và Đáp án Khởi động -->
+      <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-3 mb-6">
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="toggleVisibility('khoidong-hint')" class="px-3 py-1.5 rounded-lg bg-teal-50 border border-teal-300 text-teal-800 text-xs font-semibold hover:bg-teal-100 transition flex items-center gap-1">
+            <i class="ph-bold ph-lightbulb"></i> 💡 Xem Gợi ý suy nghĩ
+          </button>
+          <button onclick="toggleVisibility('khoidong-ans')" class="px-3 py-1.5 rounded-lg bg-indigo-50 border border-indigo-300 text-indigo-800 text-xs font-semibold hover:bg-indigo-100 transition flex items-center gap-1">
+            <i class="ph-bold ph-key"></i> 🔑 Xem Hướng dẫn GV / SGV
+          </button>
+        </div>
+
+        <div id="khoidong-hint" class="hidden p-3 bg-teal-50 border border-teal-200 rounded-lg text-xs md:text-sm text-teal-900">
+          💡 <strong>Gợi ý:</strong> Hãy nghĩ về thời gian sử dụng điện thoại quá mức, các tin nhắn lừa đảo trúng thưởng, hay việc thông tin cá nhân (số điện thoại, địa chỉ) bị lộ cho người lạ gọi quảng cáo làm phiền.
+        </div>
+
+        <div id="khoidong-ans" class="hidden p-3 bg-indigo-50 border border-indigo-200 rounded-lg text-xs md:text-sm text-indigo-900">
+          🔑 <strong>Hướng dẫn GV/SGV:</strong> GV dẫn dắt học sinh nhận diện các tác động tiêu cực phổ biến: suy giảm sức khoẻ thể chất và tinh thần (nghiện game, mất ngủ, lười vận động), nguy cơ rò rỉ dữ liệu cá nhân, lừa đảo trực tuyến tài khoản ngân hàng và vấn nạn rác thải điện tử đối với môi trường tự nhiên.
+        </div>
+      </div>
+
+      <!-- Củng cố nhanh Khởi động -->
+      <div class="p-4 bg-amber-50/70 border border-amber-200 rounded-xl space-y-3">
+        <p class="font-bold text-xs md:text-sm text-amber-950 flex items-center gap-1.5">
+          <i class="ph-bold ph-lightning"></i> ⚡ CỦNG CỐ NHANH HOẠT ĐỘNG KHỞI ĐỘNG (Mức độ: Hiểu)
+        </p>
+        <p class="text-xs md:text-sm text-slate-800">Phương án nào sau đây nêu đúng về mối quan hệ giữa công nghệ số và đời sống?</p>
+        <div class="space-y-1.5 text-xs md:text-sm">
+          <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-amber-50 cursor-pointer">
+            <input type="radio" name="cp-kd" value="A"> A. Công nghệ số chỉ mang lại lợi ích tuyệt đối, không có bất kỳ tác hại nào.
+          </label>
+          <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-amber-50 cursor-pointer">
+            <input type="radio" name="cp-kd" value="B"> B. Công nghệ kĩ thuật số đem lại nhiều tiện ích to lớn nhưng cũng tiềm ẩn những tác động tiêu cực nếu không sử dụng đúng cách.
+          </label>
+          <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-amber-50 cursor-pointer">
+            <input type="radio" name="cp-kd" value="C"> C. Tác động tiêu cực của Internet chỉ xảy ra đối với những người không có máy tính.
+          </label>
+          <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-amber-50 cursor-pointer">
+            <input type="radio" name="cp-kd" value="D"> D. Chỉ có lập trình viên mới gặp phải các rủi ro lừa đảo qua mạng.
+          </label>
+        </div>
+        <button onclick="checkCPKD()" class="px-3 py-1.5 bg-amber-600 text-white rounded-lg text-xs font-semibold hover:bg-amber-700 transition">
+          Kiểm tra câu trả lời
+        </button>
+        <div id="cp-kd-fb" class="text-xs font-medium hidden"></div>
+      </div>
+
+      <div class="text-right border-t pt-4 mt-6">
+        <button onclick="toggleSectionDone('sec-khoidong')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-indigo-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 3. KHÁM PHÁ KIẾN THỨC -->
+    <section id="sec-kienthuc" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-8 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center text-xl">
+            <i class="ph-bold ph-book-open-text"></i>
+          </span>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">3. Khám phá kiến thức (Bắt buộc đọc SGK)</h2>
+            <p class="text-xs text-slate-500">Đọc SGK Tin học 9 Trang 15 - 19 để hoàn thành các tương tác khám phá</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-indigo-700 bg-indigo-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <!-- Mục 3.1 -->
+      <div class="space-y-4">
+        <div class="border-l-4 border-rose-500 pl-3">
+          <h3 class="text-base font-bold text-slate-900">3.1. Một số tác động tiêu cực của công nghệ kĩ thuật số (SGK Trang 15 - 16)</h3>
+          <p class="text-xs text-slate-500">Nhiệm vụ đọc SGK: Chọn từ/cụm từ còn thiếu vào vị trí tương ứng</p>
+        </div>
+
+        <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-4">
+          <div class="space-y-3 text-xs md:text-sm text-slate-800 leading-loose">
+            <p>
+              1. Đối với con người, công nghệ kĩ thuật số tác động tiêu cực đến sức khoẻ thể chất và tinh thần như: gây (1) 
+              <select id="sel-cloze1-1" class="border border-slate-300 rounded-lg px-2 py-1 bg-white font-semibold text-rose-800 outline-none">
+                <option value="">-- Chọn cụm từ --</option>
+                <option value="nghien-internet">nghiện Internet, ít giao tiếp, mất ngủ</option>
+                <option value="suy-dinh-duong">suy giảm trí nhớ ngắn hạn</option>
+                <option value="thua-can">tăng cân mất kiểm soát</option>
+              </select>.
+            </p>
+            <p>
+              2. Về quyền riêng tư, thông tin cá nhân có thể bị rò rỉ và sử dụng bất hợp pháp do dữ liệu số bị (2) 
+              <select id="sel-cloze1-2" class="border border-slate-300 rounded-lg px-2 py-1 bg-white font-semibold text-rose-800 outline-none">
+                <option value="">-- Chọn cụm từ --</option>
+                <option value="danh-cap">đánh cắp dễ dàng hơn, quy mô lớn hơn</option>
+                <option value="xoa-bo">xóa bỏ hoàn toàn</option>
+                <option value="khoa-tai-khoan">khóa tự động bởi nhà mạng</option>
+              </select>.
+            </p>
+            <p>
+              3. Đối với xã hội, tự động hoá phát triển khiến nguy cơ thất nghiệp gia tăng; các thiết bị số cũ bị thải loại tạo ra (3) 
+              <select id="sel-cloze1-3" class="border border-slate-300 rounded-lg px-2 py-1 bg-white font-semibold text-rose-800 outline-none">
+                <option value="">-- Chọn cụm từ --</option>
+                <option value="rac-thai-dien-tu">rác thải điện tử nguy hại cho môi trường</option>
+                <option value="khi-thai-nha-kinh">khí thải carbon độc hại</option>
+                <option value="o-nhiem-tieng-on">ô nhiễm tiếng ồn công nghệ</option>
+              </select>.
+            </p>
+            <p>
+              4. Học sinh phụ thuộc quá mức vào công nghệ (như nhờ trí tuệ nhân tạo làm bài tập về nhà) dẫn đến mất thói quen (4) 
+              <select id="sel-cloze1-4" class="border border-slate-300 rounded-lg px-2 py-1 bg-white font-semibold text-rose-800 outline-none">
+                <option value="">-- Chọn cụm từ --</option>
+                <option value="tu-duy-doc-lap">tự học, tư duy và giải quyết vấn đề</option>
+                <option value="doc-sach">đọc sách in truyền thống</option>
+                <option value="giao-tiep-ban-be">kết nối bạn bè trong lớp</option>
+              </select>.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3 pt-2">
+            <button onclick="checkDropdownCloze1()" class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold transition">
+              Kiểm tra đáp án Mục 3.1
+            </button>
+            <span id="dropdown-cloze1-msg" class="text-xs font-semibold"></span>
+          </div>
+        </div>
+
+        <!-- ACCORDION: Góc giáo viên Mục 1 -->
+        <details class="group border border-amber-300 rounded-xl bg-amber-50/50 p-3.5 transition-all">
+          <summary class="flex items-center justify-between font-bold text-xs md:text-sm text-amber-900 cursor-pointer select-none">
+            <span class="flex items-center gap-2">
+              <i class="ph-bold ph-chalkboard-teacher text-base"></i> 📌 Góc giáo viên & Định hướng SGV (Mục 1)
+            </span>
+            <i class="ph-bold ph-caret-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="mt-3 text-xs md:text-sm text-slate-700 space-y-1.5 pl-2 border-t border-amber-200/80 pt-2">
+            <p>• <strong>Trọng tâm phân tích:</strong> Hướng dẫn học sinh phân biệt rạch ròi 2 nhóm tác động tiêu cực: <em>Đối với cá nhân</em> (thể chất, tinh thần, lộ bí mật đời tư) và <em>Đối với xã hội</em> (thất nghiệp cơ học, rác thải công nghệ, tệ nạn lừa đảo/cờ bạc trực tuyến).</p>
+            <p>• <strong>Giáo dục thái độ:</strong> Nhấn mạnh học sinh tránh hai thái cực: sợ hãi xa lánh công nghệ hoặc quá lạm dụng, sống ảo, phụ thuộc hoàn toàn vào trí tuệ nhân tạo.</p>
+          </div>
+        </details>
+
+        <!-- Củng cố nhanh HĐ 1 -->
+        <div class="p-4 bg-rose-50/60 border border-rose-200 rounded-xl space-y-3">
+          <p class="font-bold text-xs md:text-sm text-rose-950 flex items-center gap-1.5">
+            <i class="ph-bold ph-lightning"></i> ⚡ CỦNG CỐ NHANH HOẠT ĐỘNG 1 (SGK Trang 16 - Mức độ: Biết)
+          </p>
+          <p class="text-xs md:text-sm text-slate-800">Phương án nào sau đây KHÔNG PHẢI là tác động tiêu cực của công nghệ kĩ thuật số đến đời sống con người?</p>
+          <div class="space-y-1.5 text-xs md:text-sm">
+            <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-rose-50 cursor-pointer">
+              <input type="radio" name="cp1" value="A"> A. Nhờ trí tuệ nhân tạo làm bài tập về nhà.
+            </label>
+            <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-rose-50 cursor-pointer">
+              <input type="radio" name="cp1" value="B"> B. Truy cập mạng xã hội trong nhiều giờ liên tục.
+            </label>
+            <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-rose-50 cursor-pointer">
+              <input type="radio" name="cp1" value="C"> C. Thường xuyên sử dụng phần mềm soạn thảo văn bản để làm báo cáo học tập.
+            </label>
+            <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-rose-50 cursor-pointer">
+              <input type="radio" name="cp1" value="D"> D. Vừa ăn vừa dán mắt xem video trên YouTube.
+            </label>
+          </div>
+          <button onclick="checkCP1()" class="px-3 py-1.5 bg-rose-600 text-white rounded-lg text-xs font-semibold hover:bg-rose-700 transition">
+            Kiểm tra đáp án
+          </button>
+          <div id="cp1-fb" class="text-xs font-medium hidden"></div>
+        </div>
+      </div>
+
+      <!-- Mục 3.2 -->
+      <div class="space-y-4 pt-6 border-t">
+        <div class="border-l-4 border-indigo-600 pl-3">
+          <h3 class="text-base font-bold text-slate-900">3.2. Sử dụng dịch vụ Internet đúng luật (SGK Trang 17 - 19)</h3>
+          <p class="text-xs text-slate-500">Khám phá các hành vi vi phạm & hệ thống văn bản quy phạm pháp luật</p>
+        </div>
+
+        <!-- Sơ đồ tư duy dạng thẻ: Các hành vi vi phạm (Hình 4.2 SGK Trang 18) -->
+        <div class="space-y-2">
+          <p class="font-bold text-xs md:text-sm text-slate-800">
+            📊 Các hành vi vi phạm pháp luật, trái đạo đức, thiếu văn hoá trong môi trường số (Hình 4.2 SGK):
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center text-xs">
+            <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-xl font-semibold text-indigo-900 flex flex-col items-center justify-center gap-1 shadow-sm">
+              <i class="ph-bold ph-newspaper text-lg text-indigo-600"></i>
+              <span>Viết, chia sẻ tin giả, sai sự thật</span>
+            </div>
+            <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-xl font-semibold text-indigo-900 flex flex-col items-center justify-center gap-1 shadow-sm">
+              <i class="ph-bold ph-user-focus text-lg text-indigo-600"></i>
+              <span>Làm lộ thông tin cá nhân/tổ chức</span>
+            </div>
+            <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-xl font-semibold text-indigo-900 flex flex-col items-center justify-center gap-1 shadow-sm">
+              <i class="ph-bold ph-envelope-open text-lg text-indigo-600"></i>
+              <span>Gửi thư rác, tin nhắn rác quấy nhiễu</span>
+            </div>
+            <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-xl font-semibold text-indigo-900 flex flex-col items-center justify-center gap-1 shadow-sm">
+              <i class="ph-bold ph-copyright text-lg text-indigo-600"></i>
+              <span>Dùng dữ liệu/phần mềm không bản quyền</span>
+            </div>
+            <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-xl font-semibold text-indigo-900 flex flex-col items-center justify-center gap-1 shadow-sm">
+              <i class="ph-bold ph-smiley-sad text-lg text-indigo-600"></i>
+              <span>Bắt nạt, hạ nhục qua mạng</span>
+            </div>
+            <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-xl font-semibold text-indigo-900 flex flex-col items-center justify-center gap-1 shadow-sm">
+              <i class="ph-bold ph-mask-happy text-lg text-indigo-600"></i>
+              <span>Lừa đảo, chiếm đoạt tài sản</span>
+            </div>
+            <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-xl font-semibold text-indigo-900 flex flex-col items-center justify-center gap-1 shadow-sm">
+              <i class="ph-bold ph-chats-teardrop text-lg text-indigo-600"></i>
+              <span>Ứng xử tục tĩu, thiếu văn hoá</span>
+            </div>
+            <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-xl font-semibold text-indigo-900 flex flex-col items-center justify-center gap-1 shadow-sm">
+              <i class="ph-bold ph-virus text-lg text-indigo-600"></i>
+              <span>Phát tán virus, link độc hại</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bảng 3 văn bản luật trọng tâm -->
+        <div class="overflow-x-auto pt-2">
+          <table class="w-full text-left text-xs md:text-sm border border-slate-200 rounded-xl overflow-hidden">
+            <thead class="bg-indigo-900 text-white">
+              <tr>
+                <th class="p-3 w-1/3 font-semibold">Văn bản quy phạm pháp luật</th>
+                <th class="p-3 font-semibold">Nhiệm vụ đọc SGK: Chọn nội dung quy định chính</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200">
+              <tr>
+                <td class="p-3 font-bold text-indigo-900">1. Luật Công nghệ thông tin số 67/2006/QH11 (Ban hành năm 2006)</td>
+                <td class="p-3 leading-relaxed">
+                  Quy định chi tiết về quyền và trách nhiệm của tổ chức, cá nhân tham gia (1) 
+                  <select id="sel-cloze2-1" class="border border-slate-300 rounded px-1.5 py-0.5 bg-white font-semibold text-indigo-900 outline-none">
+                    <option value="">-- Chọn --</option>
+                    <option value="ungdung-phattrien">ứng dụng và phát triển CNTT cùng các hành vi bị nghiêm cấm</option>
+                    <option value="muaban-maytinh">mua bán thiết bị linh kiện điện tử</option>
+                  </select>.
+                </td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-indigo-900">2. Nghị định số 72/2013/NĐ-CP (Ban hành năm 2013)</td>
+                <td class="p-3 leading-relaxed">
+                  Quy định việc quản lí, cung cấp, sử dụng dịch vụ (2) 
+                  <select id="sel-cloze2-2" class="border border-slate-300 rounded px-1.5 py-0.5 bg-white font-semibold text-indigo-900 outline-none">
+                    <option value="">-- Chọn --</option>
+                    <option value="internet-game">Internet, thông tin và trò chơi điện tử trên mạng; an toàn an ninh thông tin</option>
+                    <option value="truyen-hinh">phát thanh và truyền hình cáp trả tiền</option>
+                  </select>.
+                </td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-indigo-900">3. Luật An ninh mạng số 24/2018/QH14 (Ban hành năm 2018)</td>
+                <td class="p-3 leading-relaxed">
+                  Quy định các hoạt động bảo vệ (3) 
+                  <select id="sel-cloze2-3" class="border border-slate-300 rounded px-1.5 py-0.5 bg-white font-semibold text-indigo-900 outline-none">
+                    <option value="">-- Chọn --</option>
+                    <option value="anninh-quocgia">an ninh quốc gia và bảo đảm trật tự an toàn xã hội trên không gian mạng</option>
+                    <option value="banquyen-amnhac">bản quyền sản phẩm âm nhạc kĩ thuật số</option>
+                  </select>.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex items-center gap-3 pt-2">
+          <button onclick="checkDropdownCloze2()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition">
+            Kiểm tra bảng quy định pháp luật
+          </button>
+          <span id="dropdown-cloze2-msg" class="text-xs font-semibold"></span>
+        </div>
+
+        <!-- ACCORDION: Góc giáo viên Mục 2 -->
+        <details class="group border border-amber-300 rounded-xl bg-amber-50/50 p-3.5 transition-all">
+          <summary class="flex items-center justify-between font-bold text-xs md:text-sm text-amber-900 cursor-pointer select-none">
+            <span class="flex items-center gap-2">
+              <i class="ph-bold ph-gavel text-base"></i> 📌 Góc giáo viên & Trọng tâm Điều 12 Luật CNTT, Điều 5 NĐ 72 (SGV)
+            </span>
+            <i class="ph-bold ph-caret-down group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="mt-3 text-xs md:text-sm text-slate-700 space-y-1.5 pl-2 border-t border-amber-200/80 pt-2">
+            <p>• <strong>Hành vi vi phạm bản quyền:</strong> Tự ý lấy đoạn văn, mã nguồn, bài thơ, bản nhạc của người khác đưa lên mạng mà không xin phép hoặc crack bản quyền phần mềm là vi phạm pháp luật sở hữu trí tuệ.</p>
+            <p>• <strong>Thư rác / Tin nhắn rác:</strong> Gửi quảng cáo không phải xấu, nhưng nếu gửi dồn dập khi người nhận đã từ chối nhận thì đã cấu thành hành vi quấy nhiễu trái luật.</p>
+            <p>• <strong>Xâm phạm uy tín:</strong> Chụp ảnh biển số xe, nhà riêng hay công khai đời tư người khác mà không có sự đồng ý của họ cũng bị xử lý nghiêm theo quy định pháp luật.</p>
+          </div>
+        </details>
+
+        <!-- Củng cố nhanh HĐ 2 -->
+        <div class="p-4 bg-indigo-50/70 border border-indigo-200 rounded-xl space-y-3">
+          <p class="font-bold text-xs md:text-sm text-indigo-950 flex items-center gap-1.5">
+            <i class="ph-bold ph-lightning"></i> ⚡ CỦNG CỐ NHANH HOẠT ĐỘNG 2 (SGK Trang 19 - Mức độ: Biết & Hiểu)
+          </p>
+          <p class="text-xs md:text-sm text-slate-800">Hành vi nào sau đây khi hoạt động trong môi trường số KHÔNG vi phạm pháp luật, trái đạo đức, thiếu văn hoá?</p>
+          <div class="space-y-1.5 text-xs md:text-sm">
+            <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+              <input type="radio" name="cp2" value="A"> A. Đăng bài hoặc bình luận gây mâu thuẫn phân biệt vùng miền.
+            </label>
+            <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+              <input type="radio" name="cp2" value="B"> B. Quảng cáo buôn bán hàng hoá cấm như động vật hoang dã, vũ khí.
+            </label>
+            <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+              <input type="radio" name="cp2" value="C"> C. Sử dụng trái phép tài khoản mạng xã hội của người khác.
+            </label>
+            <label class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 hover:bg-indigo-50 cursor-pointer">
+              <input type="radio" name="cp2" value="D"> D. Chia sẻ thông tin về lớp học ngôn ngữ lập trình trực tuyến miễn phí của trường.
+            </label>
+          </div>
+          <button onclick="checkCP2()" class="px-3 py-1.5 bg-indigo-600 text-white rounded-lg text-xs font-semibold hover:bg-indigo-700 transition">
+            Kiểm tra đáp án
+          </button>
+          <div id="cp2-fb" class="text-xs font-medium hidden"></div>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-kienthuc')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-indigo-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. LUYỆN TẬP -->
+    <section id="sec-luyentap" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-6 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 font-bold flex items-center justify-center text-xl">
+            <i class="ph-bold ph-barbell"></i>
+          </span>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">4. Hoạt động Luyện tập (SGK Trang 19)</h2>
+            <p class="text-xs text-slate-500">Phòng tránh tác hại công nghệ và nhận biết hành vi vi phạm</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-indigo-700 bg-indigo-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 items-start">
+        <!-- Bài tập 1 Luyện tập -->
+        <div class="p-4 rounded-xl bg-purple-50/50 border border-purple-100 text-xs md:text-sm space-y-3">
+          <p class="font-semibold text-slate-800">
+            <strong>Bài 1 (SGK Trang 19):</strong> Những cách nào sau đây giúp em tránh được các tác động tiêu cực khi sử dụng công nghệ kĩ thuật số?
+          </p>
+          <ul class="space-y-1.5 text-slate-700">
+            <li>• A. Không sử dụng thiết bị số trong thời gian dài và liên tục.</li>
+            <li>• B. Không xem các video phản cảm.</li>
+            <li>• C. Giảm thời gian dùng điện thoại để nói chuyện với gia đình.</li>
+            <li>• D. Tham gia luyện tập thể dục thể thao lành mạnh.</li>
+          </ul>
+
+          <div class="flex items-center gap-2 pt-1">
+            <button onclick="toggleVisibility('lt1-ans')" class="px-3 py-1.5 rounded-lg bg-purple-100 border border-purple-300 text-purple-900 text-xs font-semibold hover:bg-purple-200 transition flex items-center gap-1">
+              <i class="ph-bold ph-key"></i> 🔑 Xem Đáp án chuẩn SGV
+            </button>
+          </div>
+
+          <div id="lt1-ans" class="hidden p-3 bg-white rounded-lg border border-purple-200 text-slate-700 space-y-1">
+            <strong class="text-purple-900 block">🔑 Đáp án chuẩn: A, B, C, D</strong>
+            <p>Cả 4 biện pháp đều rất thiết thực: Kiểm soát thời gian dùng màn hình (A); thanh lọc nội dung tiếp nhận (B); ưu tiên kết nối tình cảm gia đình ngoài đời thật (C); và rèn luyện thể chất năng động (D).</p>
+          </div>
+        </div>
+
+        <!-- Bài tập 2 Luyện tập -->
+        <div class="p-4 rounded-xl bg-purple-50/50 border border-purple-100 text-xs md:text-sm space-y-3">
+          <p class="font-semibold text-slate-800">
+            <strong>Bài 2 (SGK Trang 19):</strong> Lấy ví dụ về một hành vi vi phạm pháp luật và một hành vi trái đạo đức khi hoạt động trong môi trường số?
+          </p>
+          <div class="flex items-center gap-2 pt-1">
+            <button onclick="toggleVisibility('lt2-ans')" class="px-3 py-1.5 rounded-lg bg-purple-100 border border-purple-300 text-purple-900 text-xs font-semibold hover:bg-purple-200 transition flex items-center gap-1">
+              <i class="ph-bold ph-key"></i> 🔑 Xem Hướng dẫn gợi ý SGV
+            </button>
+          </div>
+
+          <div id="lt2-ans" class="hidden p-3 bg-white rounded-lg border border-purple-200 text-slate-700 space-y-2">
+            <strong class="text-purple-900 block">🔑 Phân tích đối chiếu mẫu:</strong>
+            <p>• <strong>Hành vi vi phạm pháp luật:</strong> Lập nick giả mạo ngân hàng gửi link đánh cắp mã OTP; bẻ khoá (crack) phần mềm thương mại chia sẻ trái phép; phát tán tin giả về dịch bệnh gây hoang mang.</p>
+            <p>• <strong>Hành vi trái đạo đức:</strong> Sao chép nguyên bài văn của bạn đăng lên blog mình mà không ghi tên tác giả; vào hùa bình luận chê bai ngoại hình bạn học; xúc phạm đối thủ sau trận game online.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-luyentap')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-indigo-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 5. VẬN DỤNG -->
+    <section id="sec-vandung" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-6 transition-all duration-300">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-xl">
+            <i class="ph-bold ph-rocket-launch"></i>
+          </span>
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-slate-900">5. Hoạt động Vận dụng: So sánh Luật CNTT & Nghị định 72</h2>
+            <p class="text-xs text-slate-500">Tra cứu và so sánh các hành vi bị cấm trong thực tiễn pháp lý</p>
+          </div>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-indigo-700 bg-indigo-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 items-start">
+        <div class="p-4 rounded-xl bg-emerald-50/50 border border-emerald-100 text-xs md:text-sm space-y-3">
+          <p class="font-semibold text-slate-800">
+            <strong>Đề bài SGK Trang 19:</strong> Em hãy tìm hiểu các hành vi bị cấm trong <em>Luật Công nghệ thông tin số 67/2006/QH11 (Điều 12)</em> và <em>Nghị định số 72/2013/NĐ-CP (Điều 5)</em>. Các hành vi bị cấm trong hai văn bản này giống và khác nhau như thế nào?
+          </p>
+
+          <div class="flex flex-wrap items-center gap-2 pt-1">
+            <button onclick="toggleVisibility('vandung-hint')" class="px-3 py-1.5 rounded-lg bg-teal-50 border border-teal-300 text-teal-800 text-xs font-semibold hover:bg-teal-100 transition flex items-center gap-1">
+              <i class="ph-bold ph-lightbulb"></i> 💡 Xem Gợi ý so sánh
+            </button>
+            <button onclick="toggleVisibility('vandung-ans')" class="px-3 py-1.5 rounded-lg bg-emerald-100 border border-emerald-300 text-emerald-900 text-xs font-semibold hover:bg-emerald-200 transition flex items-center gap-1">
+              <i class="ph-bold ph-key"></i> 🔑 Xem Phân tích chuẩn SGV
+            </button>
+          </div>
+
+          <div id="vandung-hint" class="hidden p-3 bg-teal-50 border border-teal-200 rounded-lg text-teal-900 text-xs space-y-1">
+            <strong>💡 Gợi ý so sánh:</strong>
+            <p>• <strong>Điểm chung:</strong> Đều cấm các hành vi xâm phạm an ninh quốc gia, phá hoại hệ thống mạng, tiết lộ bí mật nhà nước, vu khống làm nhục người khác và vi phạm bản quyền.</p>
+            <p>• <strong>Điểm khác biệt:</strong> Nghị định 72 ra đời sau năm 2013 nên chi tiết hoá cụ thể hơn về <em>trò chơi trực tuyến, trang thông tin điện tử, dịch vụ mạng xã hội và bảo vệ an toàn thông tin cá nhân</em>.</p>
+          </div>
+
+          <div id="vandung-ans" class="hidden p-3 bg-white rounded-lg border border-emerald-200 text-slate-700 space-y-2">
+            <strong class="text-emerald-800 block">🔑 Phân tích đối chiếu chuẩn từ SGV:</strong>
+            <p>• <strong>Giống nhau:</strong> Nghiêm cấm mọi hành vi lợi dụng không gian mạng để phá hoại an ninh quốc gia, xuyên tạc lịch sử, xâm hại danh dự nhân phẩm cá nhân, chiếm quyền điều khiển hạ tầng kỹ thuật và phát tán virus độc hại.</p>
+            <p>• <strong>Khác biệt:</strong></p>
+            <ul class="list-disc list-inside space-y-1 pl-2 text-slate-600 text-xs">
+              <li><strong>Luật CNTT 2006:</strong> Đưa ra các quy định khung mang tính bao quát cho toàn bộ hoạt động ứng dụng, phát triển phần mềm và xây dựng cơ sở hạ tầng CNTT.</li>
+              <li><strong>Nghị định 72/2013/NĐ-CP:</strong> Quy định chi tiết các điều kiện cung cấp dịch vụ Internet, tên miền quốc gia ".vn", trách nhiệm quản lí thông tin công cộng, diễn đàn và trò chơi điện tử trực tuyến (game online).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Video YouTube bổ trợ văn hoá mạng -->
+        <div class="rounded-xl overflow-hidden border border-slate-300 shadow-sm bg-black">
+          <div class="aspect-video w-full">
+            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/n4hK_p8X_z4" title="Quy tắc ứng xử trên mạng xã hội - VTV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="p-2.5 bg-slate-900 text-slate-300 text-[11px] flex items-center justify-between">
+            <span>📺 Video tư liệu: Bộ quy tắc ứng xử trên mạng xã hội</span>
+            <span class="text-emerald-400">Tư liệu an toàn</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-right border-t pt-4">
+        <button onclick="toggleSectionDone('sec-vandung')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-indigo-600 hover:text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 6. TÓM TẮT KIẾN THỨC CỐT LÕI -->
+    <section id="sec-tomtat" class="study-card bg-gradient-to-br from-indigo-950 via-slate-900 to-blue-950 text-white rounded-2xl p-6 md:p-8 shadow-md transition-all duration-300">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-6">
+        <div class="flex items-center gap-2">
+          <i class="ph-bold ph-bookmarks text-amber-300 text-xl"></i>
+          <h2 class="text-lg md:text-xl font-bold text-indigo-100">6. Tóm tắt kiến thức cốt lõi Bài 4</h2>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-slate-950 bg-amber-400 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã xem
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 text-xs md:text-sm mb-6">
+        <div class="bg-white/10 p-4 rounded-xl border border-white/10 space-y-2">
+          <h3 class="font-bold text-amber-300 text-sm flex items-center gap-1.5">
+            <i class="ph-bold ph-warning"></i> Mặt trái cần cảnh giác
+          </h3>
+          <p class="text-slate-200">• Nghiện thiết bị số gây tổn hại thể chất, tinh thần và quan hệ gia đình.</p>
+          <p class="text-slate-200">• Nguy cơ mất an toàn thông tin, lộ thông tin cá nhân, bị lừa đảo trực tuyến.</p>
+          <p class="text-slate-200">• Lệ thuộc công nghệ (nhờ AI làm bài hộ) làm thui chột khả năng tư duy.</p>
+        </div>
+        <div class="bg-white/10 p-4 rounded-xl border border-white/10 space-y-2">
+          <h3 class="font-bold text-amber-300 text-sm flex items-center gap-1.5">
+            <i class="ph-bold ph-shield-check"></i> Tuân thủ pháp luật & Văn hoá
+          </h3>
+          <p class="text-slate-200">• Tuân thủ Luật Công nghệ thông tin (2006), Nghị định 72/2013 và Luật An ninh mạng (2018).</p>
+          <p class="text-slate-200">• Tôn trọng bản quyền tác giả; không dùng phần mềm lậu, không sao chép dữ liệu trái phép.</p>
+          <p class="text-slate-200">• Ứng xử lịch sự, tôn trọng người khác, không chia sẻ tin chưa kiểm chứng, không bắt nạt qua mạng.</p>
+        </div>
+      </div>
+
+      <div class="text-right border-t border-white/10 pt-4">
+        <button onclick="toggleSectionDone('sec-tomtat')" class="btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-white/20 bg-white/10 hover:bg-indigo-600 text-white transition flex items-center gap-1.5 ml-auto">
+          <i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 7. HỆ THỐNG CÂU HỎI ĐÁNH GIÁ 3 DẠNG -->
+    <section id="sec-danhgia" class="study-card bg-white border-2 border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-10 transition-all duration-300">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4">
+        <div>
+          <h2 class="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2">
+            <i class="ph-bold ph-exam text-indigo-600"></i> 7. Hệ thống câu hỏi đánh giá theo ma trận (3 Dạng)
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">Trắc nghiệm nhiều lựa chọn • Đúng/Sai đa ý • Tự luận kèm thang điểm chấm</p>
+        </div>
+        <span class="status-badge hidden text-xs font-bold text-indigo-700 bg-indigo-100 px-3 py-1 rounded-full flex items-center gap-1">
+          <i class="ph-bold ph-check"></i> Đã hoàn thành đánh giá
+        </span>
+      </div>
+
+      <!-- DẠNG 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN -->
+      <div class="space-y-4">
+        <div class="border-l-4 border-indigo-600 pl-3">
+          <h3 class="text-sm md:text-base font-bold text-slate-900">DẠNG 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN (4 CÂU ĐẠI DIỆN 4 MỨC ĐỘ)</h3>
+          <p class="text-xs text-slate-500">Mỗi câu chọn 1 đáp án chính xác nhất</p>
+        </div>
+
+        <form id="d1-form" class="space-y-4">
+          <div id="d1-container" class="space-y-4"></div>
+          <div class="pt-2 flex items-center gap-3">
+            <button type="button" onclick="gradeD1()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl shadow transition">
+              Chấm điểm Dạng 1
+            </button>
+            <span id="d1-score-badge" class="text-xs font-bold hidden px-3 py-1.5 rounded-full"></span>
+          </div>
+        </form>
+      </div>
+
+      <!-- DẠNG 2: TRẮC NGHIỆM ĐÚNG/SAI -->
+      <div class="space-y-4 pt-4 border-t">
+        <div class="border-l-4 border-blue-600 pl-3">
+          <h3 class="text-sm md:text-base font-bold text-slate-900">DẠNG 2: TRẮC NGHIỆM ĐÚNG / SAI (2 CÂU - MỖI CÂU 4 Ý a, b, c, d)</h3>
+          <p class="text-xs text-slate-500">Chọn Đúng (Đ) hoặc Sai (S) cho từng ý theo chuẩn đề thi trắc nghiệm mới</p>
+        </div>
+
+        <div class="space-y-6" id="d2-container">
+          <!-- Câu 1 Đúng/Sai -->
+          <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50 space-y-3" id="d2-c1-card">
+            <p class="font-bold text-xs md:text-sm text-slate-800">
+              <span class="text-indigo-700">Câu 1 (Quy định pháp lý và bản quyền số):</span> Trong giờ thảo luận môn Tin học 9 về quyền tác giả và các hành vi vi phạm pháp luật trên Internet:
+            </p>
+            <div class="space-y-2 text-xs md:text-sm">
+              <div class="flex items-center justify-between p-2.5 bg-white rounded-lg border border-slate-200">
+                <span class="pr-2">a) Mọi hình ảnh và bài viết được tải tự do trên Internet thì đều có thể sử dụng làm sản phẩm của riêng mình mà không cần xin phép tác giả. <em class="text-slate-400 text-[11px]">(Biết)</em></span>
+                <div class="flex items-center gap-2 shrink-0">
+                  <label class="cursor-pointer"><input type="radio" name="d2_1_a" value="D"> Đ</label>
+                  <label class="cursor-pointer"><input type="radio" name="d2_1_a" value="S"> S</label>
+                </div>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-white rounded-lg border border-slate-200">
+                <span class="pr-2">b) Việc tải phần mềm bẻ khoá (crack) và chia sẻ link tải cho bạn bè là hành vi vi phạm Luật Sở hữu trí tuệ và Luật CNTT. <em class="text-slate-400 text-[11px]">(Hiểu)</em></span>
+                <div class="flex items-center gap-2 shrink-0">
+                  <label class="cursor-pointer"><input type="radio" name="d2_1_b" value="D"> Đ</label>
+                  <label class="cursor-pointer"><input type="radio" name="d2_1_b" value="S"> S</label>
+                </div>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-white rounded-lg border border-slate-200">
+                <span class="pr-2">c) Quảng cáo bán hàng qua tin nhắn là hoàn toàn hợp pháp kể cả khi người nhận đã yêu cầu từ chối nhận tin nhắn nhiều lần. <em class="text-slate-400 text-[11px]">(Hiểu)</em></span>
+                <div class="flex items-center gap-2 shrink-0">
+                  <label class="cursor-pointer"><input type="radio" name="d2_1_c" value="D"> Đ</label>
+                  <label class="cursor-pointer"><input type="radio" name="d2_1_c" value="S"> S</label>
+                </div>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-white rounded-lg border border-slate-200">
+                <span class="pr-2">d) Chụp ảnh góc học tập của bạn cùng lớp rồi đăng công khai lên mạng kèm địa chỉ nhà của bạn khi chưa được bạn đồng ý là vi phạm quyền riêng tư cá nhân. <em class="text-slate-400 text-[11px]">(Vận dụng)</em></span>
+                <div class="flex items-center gap-2 shrink-0">
+                  <label class="cursor-pointer"><input type="radio" name="d2_1_d" value="D"> Đ</label>
+                  <label class="cursor-pointer"><input type="radio" name="d2_1_d" value="S"> S</label>
+                </div>
+              </div>
+            </div>
+            <div id="d2-c1-fb" class="text-xs font-medium hidden p-2.5 rounded-lg"></div>
+          </div>
+
+          <!-- Câu 2 Đúng/Sai -->
+          <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50 space-y-3" id="d2-c2-card">
+            <p class="font-bold text-xs md:text-sm text-slate-800">
+              <span class="text-indigo-700">Câu 2 (Ứng xử văn hoá và an toàn không gian mạng):</span> Xét các tình huống ứng xử khi tham gia môi trường mạng xã hội:
+            </p>
+            <div class="space-y-2 text-xs md:text-sm">
+              <div class="flex items-center justify-between p-2.5 bg-white rounded-lg border border-slate-200">
+                <span class="pr-2">a) Người dùng Internet có quyền tự do ngôn luận tuyệt đối nên có thể thoải mái dùng từ ngữ đả kích, châm chọc trên trang cá nhân của người khác. <em class="text-slate-400 text-[11px]">(Biết)</em></span>
+                <div class="flex items-center gap-2 shrink-0">
+                  <label class="cursor-pointer"><input type="radio" name="d2_2_a" value="D"> Đ</label>
+                  <label class="cursor-pointer"><input type="radio" name="d2_2_a" value="S"> S</label>
+                </div>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-white rounded-lg border border-slate-200">
+                <span class="pr-2">b) Bạn Minh nhận được một đường link trúng thưởng điện thoại và yêu cầu chia sẻ cho 5 nhóm chat; Minh cảnh giác không làm theo là hành vi ứng xử đúng đắn. <em class="text-slate-400 text-[11px]">(Vận dụng)</em></span>
+                <div class="flex items-center gap-2 shrink-0">
+                  <label class="cursor-pointer"><input type="radio" name="d2_2_b" value="D"> Đ</label>
+                  <label class="cursor-pointer"><input type="radio" name="d2_2_b" value="S"> S</label>
+                </div>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-white rounded-lg border border-slate-200">
+                <span class="pr-2">c) Vô tình chia sẻ bài viết sai sự thật về tình hình thiên tai, bão lũ mà chưa kiểm chứng thì người chia sẻ không phải chịu bất kỳ trách nhiệm pháp lý nào. <em class="text-slate-400 text-[11px]">(Hiểu)</em></span>
+                <div class="flex items-center gap-2 shrink-0">
+                  <label class="cursor-pointer"><input type="radio" name="d2_2_c" value="D"> Đ</label>
+                  <label class="cursor-pointer"><input type="radio" name="d2_2_c" value="S"> S</label>
+                </div>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-white rounded-lg border border-slate-200">
+                <span class="pr-2">d) Tham gia phong trào tập thể dục, đạp xe thể thao thay vì chơi điện tử liên tục 5 tiếng mỗi ngày là biện pháp hữu hiệu phòng tránh tác động tiêu cực của thiết bị số. <em class="text-slate-400 text-[11px]">(Vận dụng cao)</em></span>
+                <div class="flex items-center gap-2 shrink-0">
+                  <label class="cursor-pointer"><input type="radio" name="d2_2_d" value="D"> Đ</label>
+                  <label class="cursor-pointer"><input type="radio" name="d2_2_d" value="S"> S</label>
+                </div>
+              </div>
+            </div>
+            <div id="d2-c2-fb" class="text-xs font-medium hidden p-2.5 rounded-lg"></div>
+          </div>
+
+          <div class="pt-2">
+            <button type="button" onclick="gradeD2()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-xl shadow transition">
+              Chấm điểm Dạng 2 (Đúng/Sai)
+            </button>
+            <span id="d2-score-badge" class="text-xs font-bold hidden px-3 py-1.5 rounded-full ml-3"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DẠNG 3: TỰ LUẬN -->
+      <div class="space-y-6 pt-4 border-t">
+        <div class="border-l-4 border-teal-600 pl-3">
+          <h3 class="text-sm md:text-base font-bold text-slate-900">DẠNG 3: TỰ LUẬN ĐỊNH KỲ (CHIẾM 3.0 ĐIỂM)</h3>
+          <p class="text-xs text-slate-500">Học sinh hoàn thành bài tự luận, giáo viên sử dụng thang điểm chuẩn để chấm</p>
+        </div>
+
+        <!-- Tự luận Câu 1 -->
+        <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50 space-y-3">
+          <p class="font-bold text-xs md:text-sm text-slate-800">
+            Câu 1 (1.0 điểm - Mức độ Hiểu): Em hãy nêu 3 tác động tiêu cực của công nghệ kĩ thuật số đối với đời sống con người và 2 tác động tiêu cực đối với xã hội. Học sinh THCS cần làm gì để hạn chế tác động tiêu cực về mặt thể chất và tinh thần?
+          </p>
+          <textarea rows="3" placeholder="Nhập câu trả lời của học sinh..." class="w-full text-xs md:text-sm p-3 border border-slate-300 rounded-xl outline-none focus:border-indigo-500 bg-white"></textarea>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="toggleVisibility('tl1-hint')" class="px-3 py-1.5 rounded-lg bg-teal-50 border border-teal-300 text-teal-800 text-xs font-semibold hover:bg-teal-100 transition flex items-center gap-1">
+              <i class="ph-bold ph-lightbulb"></i> 💡 Xem Gợi ý trả lời
+            </button>
+            <button onclick="toggleVisibility('tl1-ans')" class="px-3 py-1.5 rounded-lg bg-indigo-100 border border-indigo-300 text-indigo-900 text-xs font-semibold hover:bg-indigo-200 transition flex items-center gap-1">
+              <i class="ph-bold ph-key"></i> 🔑 Xem Hướng dẫn chấm & Thang điểm (GV)
+            </button>
+          </div>
+
+          <div id="tl1-hint" class="hidden p-3 bg-teal-50 border border-teal-200 rounded-lg text-xs text-teal-900">
+            💡 <strong>Gợi ý:</strong> Chia rõ 2 phần: Cá nhân (sức khoẻ thể chất/mắt, giấc ngủ, nghiện game, lệ thuộc AI) và Xã hội (rác thải điện tử, thất nghiệp tự động hoá, lừa đảo). Biện pháp: quản lí thời gian, thể thao, không dùng điện thoại khi ăn/ngủ.
+          </div>
+
+          <div id="tl1-ans" class="hidden p-3 bg-white border border-indigo-200 rounded-lg text-xs space-y-1.5 text-slate-700">
+            <strong class="text-indigo-900 block">🔑 Hướng dẫn chấm & Thang điểm Câu 1:</strong>
+            <p>• <strong>Nêu đúng tác động tiêu cực đối với con người</strong> (ảnh hưởng thị lực, mất ngủ/nghiện game, lệ thuộc AI làm giảm tư duy): <em>0.35 điểm</em>.</p>
+            <p>• <strong>Nêu đúng tác động đối với xã hội</strong> (gia tăng rác thải điện tử, nguy cơ thất nghiệp tăng, tệ nạn lừa đảo/cờ bạc trực tuyến): <em>0.35 điểm</em>.</p>
+            <p>• <strong>Nêu được giải pháp thiết thực của học sinh</strong> (không dùng thiết bị liên tục quá 45 phút, tăng cường thể thao, không vừa ăn vừa xem điện thoại): <em>0.3 điểm</em>.</p>
+          </div>
+        </div>
+
+        <!-- Tự luận Câu 2 -->
+        <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50 space-y-3">
+          <p class="font-bold text-xs md:text-sm text-slate-800 leading-relaxed">
+            Câu 2 (2.0 điểm - Mức độ Vận dụng cao): Tình huống: Bạn Khoa tham gia một nhóm chat và thấy một thành viên tải về một bài thơ và bức tranh vẽ của một hoạ sĩ nổi tiếng, sau đó thay tên mình vào rồi đăng lên diễn đàn trường để tham gia cuộc thi sáng tác có giải thưởng. Khi bị bạn bè nhắc nhở, bạn đó cho rằng: <em>"Ảnh và thơ trên mạng là của chung, ai tìm thấy trước thì có quyền sử dụng"</em>.
+            <br>a) Lời giải thích của bạn đó có đúng không? Căn cứ vào quy định pháp luật nào?
+            <br>b) Nếu là Khoa, em sẽ phân tích cho bạn hiểu hành vi trên vi phạm những điều gì và hướng dẫn bạn xử sự văn minh như thế nào?
+          </p>
+          <textarea rows="4" placeholder="Nhập câu trả lời của học sinh..." class="w-full text-xs md:text-sm p-3 border border-slate-300 rounded-xl outline-none focus:border-indigo-500 bg-white"></textarea>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="toggleVisibility('tl2-hint')" class="px-3 py-1.5 rounded-lg bg-teal-50 border border-teal-300 text-teal-800 text-xs font-semibold hover:bg-teal-100 transition flex items-center gap-1">
+              <i class="ph-bold ph-lightbulb"></i> 💡 Xem Gợi ý trả lời
+            </button>
+            <button onclick="toggleVisibility('tl2-ans')" class="px-3 py-1.5 rounded-lg bg-indigo-100 border border-indigo-300 text-indigo-900 text-xs font-semibold hover:bg-indigo-200 transition flex items-center gap-1">
+              <i class="ph-bold ph-key"></i> 🔑 Xem Hướng dẫn chấm & Thang điểm (GV)
+            </button>
+          </div>
+
+          <div id="tl2-hint" class="hidden p-3 bg-teal-50 border border-teal-200 rounded-lg text-xs text-teal-900">
+            💡 <strong>Gợi ý:</strong> Tác phẩm nghệ thuật số được bảo hộ bản quyền tự động. Việc mạo danh tác giả vừa vi phạm Luật Sở hữu trí tuệ, Luật CNTT 2006, vừa vi phạm đạo đức trung thực trong học đường.
+          </div>
+
+          <div id="tl2-ans" class="hidden p-3 bg-white border border-indigo-200 rounded-lg text-xs space-y-2 text-slate-700">
+            <strong class="text-indigo-900 block">🔑 Hướng dẫn chấm & Thang điểm Câu 2:</strong>
+            <div>
+              <p class="font-semibold text-slate-800">1. Nhận định và căn cứ pháp lý (0.75 điểm):</p>
+              <ul class="list-disc list-inside pl-2 space-y-0.5 text-slate-600">
+                <li>Khẳng định lời giải thích hoàn toàn <strong>SAI</strong> (tác phẩm trên Internet vẫn thuộc quyền sở hữu trí tuệ của tác giả): <em>0.25 điểm</em>.</li>
+                <li>Căn cứ pháp lý: Vi phạm <strong>Luật Công nghệ thông tin số 67/2006/QH11 (Điều 12)</strong> và <strong>Luật Sở hữu trí tuệ</strong> về hành vi sử dụng dữ liệu của người khác không xin phép, giả mạo quyền tác giả: <em>0.5 điểm</em>.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-800">2. Phân tích tác hại và hướng giải quyết văn minh (1.25 điểm):</p>
+              <ul class="list-disc list-inside pl-2 space-y-0.5 text-slate-600">
+                <li><strong>Mặt đạo đức & pháp luật:</strong> Đây là hành vi gian lận dự thi, xâm phạm uy tín tác giả thực sự, có thể bị ban tổ chức loại bỏ và bị kỷ luật: <em>0.5 điểm</em>.</li>
+                <li><strong>Cách xử sự đúng:</strong> Khuyên bạn lập tức gỡ bài dự thi, xin lỗi tác giả; nếu muốn sử dụng tư liệu minh hoạ phải trích dẫn rõ tên tác giả và nguồn gốc, đồng thời tự sáng tác tác phẩm bằng chính năng lực của mình: <em>0.75 điểm</em>.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 text-slate-300 border-t border-slate-800 mt-16 py-8">
+    <div class="max-w-5xl mx-auto px-4 space-y-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 border-b border-slate-800 pb-6 text-center md:text-left">
+        <div>
+          <h3 class="text-white font-bold text-base flex items-center justify-center md:justify-start gap-2">
+            <i class="ph-bold ph-graduation-cap text-indigo-400 text-xl"></i>
+            TÀI LIỆU BÀI GIẢNG ĐIỆN TỬ MÔN TIN HỌC 9
+          </h3>
+          <p class="text-xs text-slate-400 mt-1">Trường THCS và THPT Bác Ái</p>
+        </div>
+        <div class="text-xs bg-slate-900 px-3 py-2 rounded-xl border border-slate-800">
+          <span class="text-amber-400 font-bold block">Tài liệu sử dụng nội bộ</span>
+          <span class="text-slate-400">Hệ thống bài học tích hợp GDPT 2018</span>
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs text-slate-400">
+        <div class="space-y-1">
+          <p class="text-white font-semibold flex items-center gap-1.5">
+            <i class="ph-bold ph-user text-indigo-400"></i> Giáo viên phụ trách:
+          </p>
+          <p class="text-slate-200 font-medium">Lê Phúc Nhã Thịnh</p>
+        </div>
+        <div class="space-y-1">
+          <p class="text-white font-semibold flex items-center gap-1.5">
+            <i class="ph-bold ph-buildings text-blue-400"></i> Đơn vị công tác:
+          </p>
+          <p class="text-slate-200">Trường THCS và THPT Bác Ái</p>
+        </div>
+        <div class="space-y-1">
+          <p class="text-white font-semibold flex items-center gap-1.5">
+            <i class="ph-bold ph-phone-call text-cyan-400"></i> Góp ý & Hỗ trợ:
+          </p>
+          <p class="text-slate-200">SĐT / Zalo: <a href="tel:0775426999" class="text-indigo-400 font-bold hover:underline">0775426999</a></p>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-900 text-center">
+        <p class="text-xs text-indigo-400 font-semibold flex items-center justify-center gap-1.5">
+          <i class="ph-bold ph-shield-check text-amber-400"></i> Hãy là người sử dụng không gian mạng văn minh, an toàn và đúng luật!
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Dữ liệu Dạng 1: Trắc nghiệm 4 câu
+    const d1Data = [
+      {
+        q: "Văn bản pháp luật nào của Việt Nam quy định cụ thể về hoạt động bảo vệ an ninh quốc gia và trật tự an toàn xã hội trên không gian mạng?",
+        options: [
+          { k: "A", text: "Luật Giáo dục." },
+          { k: "B", text: "Luật Giao dịch điện tử." },
+          { k: "C", text: "Luật An ninh mạng năm 2018." },
+          { k: "D", text: "Luật Doanh nghiệp." }
+        ],
+        ans: "C",
+        level: "Biết",
+        exp: "Luật An ninh mạng (2018) quy định về bảo vệ an ninh quốc gia, trật tự an toàn xã hội trên không gian mạng và các hành vi bị cấm."
+      },
+      {
+        q: "Hành vi nào sau đây vi phạm quyền nhân thân và uy tín của cá nhân theo quy định pháp luật khi hoạt động trong môi trường số?",
+        options: [
+          { k: "A", text: "Gửi email chúc mừng sinh nhật cho bạn thân." },
+          { k: "B", text: "Tự ý chia sẻ hình ảnh, địa chỉ nhà riêng và số điện thoại của người khác lên mạng khi chưa được họ đồng ý." },
+          { k: "C", text: "Tìm kiếm tài liệu học tập trên Cổng thông tin của Bộ Giáo dục và Đào tạo." },
+          { k: "D", text: "Tham gia khoá học lập trình trực tuyến." }
+        ],
+        ans: "B",
+        level: "Hiểu",
+        exp: "Tự tiện phát tán thông tin riêng tư (địa chỉ, số điện thoại, biển số xe, hình ảnh) của người khác là xâm phạm quyền riêng tư và uy tín cá nhân."
+      },
+      {
+        q: "Khi bạn nhận được một tin nhắn từ tài khoản lạ mời tham gia trang web đặt cược bóng đá với lời hứa kiếm tiền siêu nhanh, hành vi đúng đắn và an toàn nhất là:",
+        options: [
+          { k: "A", text: "Nạp thử một số tiền nhỏ để kiểm tra xem có trúng không." },
+          { k: "B", text: "Chia sẻ liên kết đó cho các bạn trong lớp cùng tham gia." },
+          { k: "C", text: "Không tham gia, không nhấp vào liên kết, chặn tài khoản và cảnh báo mọi người về hành vi cờ bạc/lừa đảo trực tuyến vi phạm pháp luật." },
+          { k: "D", text: "Lưu lại đường link để sau này rảnh thì chơi." }
+        ],
+        ans: "C",
+        level: "Vận dụng",
+        exp: "Tham gia và quảng cáo trang web đánh bạc, lừa đảo trực tuyến là hành vi bị nghiêm cấm theo Điều 12 Luật CNTT và Điều 5 Nghị định 72."
+      },
+      {
+        q: "Một bạn học sinh muốn lập trang web giới thiệu câu lạc bộ trường, bạn đã tải các đoạn mã nguồn và toàn bộ hình ảnh thiết kế từ một trang web thương mại có bản quyền về dùng mà không xin phép. Nhận xét nào sau đây là ĐÚNG?",
+        options: [
+          { k: "A", text: "Hợp pháp vì học sinh làm phi lợi nhuận nên không cần bản quyền." },
+          { k: "B", text: "Vi phạm pháp luật về sở hữu trí tuệ vì sản phẩm số hoá của người khác không được tự ý sao chép, sử dụng khi chưa được phép." },
+          { k: "C", text: "Hợp pháp vì mọi thứ trên Internet đều là tài nguyên công cộng miễn phí." },
+          { k: "D", text: "Chỉ vi phạm nếu trang web đó bị nhà trường phát hiện." }
+        ],
+        ans: "B",
+        level: "Vận dụng cao",
+        exp: "Theo Luật CNTT 2006 và Luật Sở hữu trí tuệ, việc tự ý sao chép đoạn mã, hình ảnh, văn bản hay phần mềm không xin phép chủ sở hữu đều là vi phạm pháp luật."
+      }
+    ];
+
+    // Hàm ẩn/hiện chung
+    function toggleVisibility(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('hidden');
+    }
+
+    // Quản lý hoàn thành các mục
+    const allSectionIds = ['sec-muctieu', 'sec-khoidong', 'sec-kienthuc', 'sec-luyentap', 'sec-vandung', 'sec-tomtat', 'sec-danhgia'];
+    let completedSections = new Set();
+
+    function updateProgressBar() {
+      const percent = Math.round((completedSections.size / allSectionIds.length) * 100);
+      document.getElementById('progress-bar').style.width = percent + '%';
+      document.getElementById('progress-text').textContent = percent + '%';
+    }
+
+    function toggleSectionDone(secId) {
+      const section = document.getElementById(secId);
+      const badge = section.querySelector('.status-badge');
+      const btn = section.querySelector('.btn-mark');
+
+      if (completedSections.has(secId)) {
+        completedSections.delete(secId);
+        section.classList.remove('section-completed');
+        if (badge) badge.classList.add('hidden');
+        if (btn) {
+          btn.innerHTML = '<i class="ph-bold ph-check-circle text-base"></i> <span>Đánh dấu đã xem</span>';
+          btn.className = "btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-100 hover:bg-indigo-600 hover:text-white transition flex items-center gap-1.5 ml-auto";
+        }
+      } else {
+        completedSections.add(secId);
+        section.classList.add('section-completed');
+        if (badge) badge.classList.remove('hidden');
+        if (btn) {
+          btn.innerHTML = '<i class="ph-bold ph-arrow-counter-clockwise text-base"></i> <span>Hủy đánh dấu</span>';
+          btn.className = "btn-mark px-4 py-2 rounded-xl text-xs font-bold border border-indigo-300 bg-indigo-100 text-indigo-800 hover:bg-slate-200 hover:text-slate-700 transition flex items-center gap-1.5 ml-auto";
+        }
+      }
+      updateProgressBar();
+    }
+
+    // Củng cố Khởi động
+    function checkCPKD() {
+      const val = document.querySelector('input[name="cp-kd"]:checked')?.value;
+      const fb = document.getElementById('cp-kd-fb');
+      fb.classList.remove('hidden');
+      if (val === 'B') {
+        fb.className = "text-xs font-bold text-emerald-600 block";
+        fb.innerHTML = "✅ Chính xác! Công nghệ số luôn mang tính hai mặt: vừa có ích to lớn, vừa có nguy cơ nếu sử dụng thiếu trách nhiệm.";
+      } else {
+        fb.className = "text-xs font-bold text-rose-600 block";
+        fb.innerHTML = "❌ Chưa đúng! Đáp án đúng là B.";
+      }
+    }
+
+    // Kiểm tra Cloze Mục 3.1
+    function checkDropdownCloze1() {
+      const v1 = document.getElementById('sel-cloze1-1').value;
+      const v2 = document.getElementById('sel-cloze1-2').value;
+      const v3 = document.getElementById('sel-cloze1-3').value;
+      const v4 = document.getElementById('sel-cloze1-4').value;
+      const msg = document.getElementById('dropdown-cloze1-msg');
+
+      if (!v1 || !v2 || !v3 || !v4) {
+        msg.className = "text-xs font-semibold text-amber-600";
+        msg.textContent = "Em vui lòng chọn đủ cả 4 chỗ trống nhé!";
+        return;
+      }
+
+      if (v1 === 'nghien-internet' && v2 === 'danh-cap' && v3 === 'rac-thai-dien-tu' && v4 === 'tu-duy-doc-lap') {
+        msg.className = "text-xs font-bold text-emerald-600";
+        msg.textContent = "✅ Chính xác tuyệt đối theo SGK Trang 15 - 16!";
+      } else {
+        msg.className = "text-xs font-bold text-rose-600";
+        msg.textContent = "❌ Có chỗ chưa đúng: (1) nghiện Internet, (2) đánh cắp dễ dàng, (3) rác thải điện tử, (4) tự học, tư duy.";
+      }
+    }
+
+    // Checkpoint Mục 3.1
+    function checkCP1() {
+      const val = document.querySelector('input[name="cp1"]:checked')?.value;
+      const fb = document.getElementById('cp1-fb');
+      fb.classList.remove('hidden');
+      if (val === 'C') {
+        fb.className = "text-xs font-bold text-emerald-600 block";
+        fb.innerHTML = "✅ Chính xác! Sử dụng phần mềm soạn thảo để làm báo cáo là ứng dụng tích cực hỗ trợ học tập (SGK Trang 16).";
+      } else {
+        fb.className = "text-xs font-bold text-rose-600 block";
+        fb.innerHTML = "❌ Chưa đúng! Đáp án đúng là C.";
+      }
+    }
+
+    // Kiểm tra Cloze Mục 3.2
+    function checkDropdownCloze2() {
+      const v1 = document.getElementById('sel-cloze2-1').value;
+      const v2 = document.getElementById('sel-cloze2-2').value;
+      const v3 = document.getElementById('sel-cloze2-3').value;
+      const msg = document.getElementById('dropdown-cloze2-msg');
+
+      if (!v1 || !v2 || !v3) {
+        msg.className = "text-xs font-semibold text-amber-600";
+        msg.textContent = "Em vui lòng chọn đủ cả 3 văn bản luật!";
+        return;
+      }
+
+      if (v1 === 'ungdung-phattrien' && v2 === 'internet-game' && v3 === 'anninh-quocgia') {
+        msg.className = "text-xs font-bold text-emerald-600";
+        msg.textContent = "✅ Rất tốt! Em đã nắm vững các văn bản quy phạm pháp luật theo SGK Trang 18!";
+      } else {
+        msg.className = "text-xs font-bold text-rose-600";
+        msg.textContent = "❌ Hãy kiểm tra lại: (1) ứng dụng và phát triển CNTT, (2) Internet, thông tin và trò chơi điện tử, (3) an ninh quốc gia.";
+      }
+    }
+
+    // Checkpoint Mục 3.2
+    function checkCP2() {
+      const val = document.querySelector('input[name="cp2"]:checked')?.value;
+      const fb = document.getElementById('cp2-fb');
+      fb.classList.remove('hidden');
+      if (val === 'D') {
+        fb.className = "text-xs font-bold text-emerald-600 block";
+        fb.innerHTML = "✅ Chính xác! Chia sẻ thông tin khoá học trực tuyến của trường là hành vi văn minh, hữu ích và hợp pháp (SGK Trang 19).";
+      } else {
+        fb.className = "text-xs font-bold text-rose-600 block";
+        fb.innerHTML = "❌ Chưa đúng! Đáp án đúng là D (Các phương án A, B, C đều vi phạm pháp luật).";
+      }
+    }
+
+    // Render Dạng 1
+    function renderD1() {
+      const container = document.getElementById('d1-container');
+      container.innerHTML = d1Data.map((item, idx) => `
+        <div class="border border-slate-200 rounded-xl p-4 bg-slate-50/50" id="d1-card-${idx}">
+          <p class="font-bold text-xs md:text-sm text-slate-800 mb-2.5">
+            <span class="text-indigo-600">Câu ${idx + 1}:</span> ${item.q} <span class="text-[11px] font-normal text-slate-400">(${item.level})</span>
+          </p>
+          <div class="space-y-1.5 text-xs md:text-sm">
+            ${item.options.map(opt => `
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-white border border-slate-200 hover:bg-indigo-50/50 cursor-pointer transition">
+                <input type="radio" name="d1_q_${idx}" value="${opt.k}" class="text-indigo-600">
+                <span><strong>${opt.k}.</strong> ${opt.text}</span>
+              </label>
+            `).join('')}
+          </div>
+          <div id="d1-fb-${idx}" class="mt-2.5 p-2 rounded-lg text-xs hidden"></div>
+        </div>
+      `).join('');
+    }
+
+    // Chấm điểm Dạng 1
+    function gradeD1() {
+      let score = 0;
+      d1Data.forEach((item, idx) => {
+        const selected = document.querySelector(`input[name="d1_q_${idx}"]:checked`);
+        const fb = document.getElementById(`d1-fb-${idx}`);
+        const card = document.getElementById(`d1-card-${idx}`);
+        fb.classList.remove('hidden');
+
+        if (selected && selected.value === item.ans) {
+          score++;
+          card.classList.add('border-emerald-300', 'bg-emerald-50/40');
+          card.classList.remove('border-rose-300', 'bg-rose-50/40');
+          fb.className = "mt-2.5 p-2 rounded-lg text-xs bg-emerald-100 text-emerald-900 font-medium block";
+          fb.innerHTML = `✅ <strong>Chính xác!</strong> ${item.exp}`;
+        } else {
+          card.classList.add('border-rose-300', 'bg-rose-50/40');
+          card.classList.remove('border-emerald-300', 'bg-emerald-50/40');
+          fb.className = "mt-2.5 p-2 rounded-lg text-xs bg-rose-100 text-rose-900 font-medium block";
+          fb.innerHTML = `❌ <strong>Chưa đúng!</strong> Đáp án là <strong>${item.ans}</strong>. <em>${item.exp}</em>`;
+        }
+      });
+
+      const badge = document.getElementById('d1-score-badge');
+      badge.classList.remove('hidden');
+      badge.textContent = `Kết quả: ${score} / ${d1Data.length} điểm`;
+      badge.className = score >= 3 ? "text-xs font-bold px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800" : "text-xs font-bold px-3 py-1.5 rounded-full bg-amber-100 text-amber-800";
+    }
+
+    // Chấm điểm Dạng 2 (Đúng / Sai)
+    function gradeD2() {
+      const d2Answers = {
+        d2_1_a: 'S', d2_1_b: 'D', d2_1_c: 'S', d2_1_d: 'D',
+        d2_2_a: 'S', d2_2_b: 'D', d2_2_c: 'S', d2_2_d: 'D'
+      };
+
+      let correctCount = 0;
+      for (const [key, val] of Object.entries(d2Answers)) {
+        const sel = document.querySelector(`input[name="${key}"]:checked`);
+        if (sel && sel.value === val) correctCount++;
+      }
+
+      const fb1 = document.getElementById('d2-c1-fb');
+      fb1.classList.remove('hidden');
+      fb1.className = "text-xs font-medium p-2.5 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-950 block";
+      fb1.innerHTML = "<strong>Đáp án đối chiếu Câu 1:</strong> a - Sai, b - Đúng, c - Sai, d - Đúng.";
+
+      const fb2 = document.getElementById('d2-c2-fb');
+      fb2.classList.remove('hidden');
+      fb2.className = "text-xs font-medium p-2.5 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-950 block";
+      fb2.innerHTML = "<strong>Đáp án đối chiếu Câu 2:</strong> a - Sai, b - Đúng, c - Sai, d - Đúng.";
+
+      const badge = document.getElementById('d2-score-badge');
+      badge.classList.remove('hidden');
+      badge.textContent = `Đúng: ${correctCount} / 8 ý`;
+      badge.className = correctCount >= 6 ? "text-xs font-bold px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 ml-3" : "text-xs font-bold px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 ml-3";
+
+      // Đánh dấu hoàn thành toàn bộ mục Đánh giá
+      if (!completedSections.has('sec-danhgia')) {
+        completedSections.add('sec-danhgia');
+        const sec = document.getElementById('sec-danhgia');
+        sec.classList.add('section-completed');
+        sec.querySelector('.status-badge').classList.remove('hidden');
+        updateProgressBar();
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderD1();
+      updateProgressBar();
+    });
+  </script>
+</body>
+</html>

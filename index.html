@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VietTeach - Cổng Học Liệu & Bài Học Tương Tác Tin Học</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Phosphor Icons CDN -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <!-- Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .grade-btn.active {
+      background-color: #2563eb !important;
+      color: #ffffff !important;
+      border-color: #2563eb !important;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+  <!-- TOP HEADER -->
+  <header class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white shadow-xl sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 bg-blue-500 rounded-2xl flex items-center justify-center text-white text-2xl shadow-md font-black">
+          VT
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-extrabold tracking-tight">VietTeach</span>
+            <span class="bg-emerald-500 text-slate-950 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">GDPT 2018</span>
+          </div>
+          <p class="text-xs text-blue-200">Nền tảng Quản lý Học liệu & Bài học Tương tác môn Tin học (Khối 6 - 12)</p>
+        </div>
+      </div>
+
+      <!-- Quick Nav -->
+      <div class="flex items-center gap-2 text-xs">
+        <a href="#danh-sach-bai-hoc" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 transition flex items-center gap-1.5 font-medium">
+          <i class="ph-bold ph-book-open"></i> Bài học
+        </a>
+        <a href="#mindmaps-section" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 transition flex items-center gap-1.5 font-medium">
+          <i class="ph-bold ph-tree-structure"></i> Sơ đồ tư duy
+        </a>
+        <a href="https://github.com" target="_blank" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 transition flex items-center gap-1.5 font-bold">
+          <i class="ph-bold ph-github-logo"></i> GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="bg-gradient-to-b from-blue-950 to-slate-900 text-white py-12 px-4 border-b border-slate-800">
+    <div class="max-w-4xl mx-auto text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs font-semibold">
+        <i class="ph-bold ph-sparkle"></i> Tương tác trực tuyến • Tự học dễ nhớ • Ôn tập theo chuẩn ma trận
+      </div>
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">
+        Học Liệu & Sơ Đồ Tư Duy <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Tin Học 6 - 12</span>
+      </h1>
+      <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+        Hệ thống bài học trực tuyến tương tác 7 bước chuẩn sư phạm: Mục tiêu, Khởi động, Khám phá kiến thức, Luyện tập, Vận dụng, Tóm tắt cốt lõi và Đánh giá trắc nghiệm 3 dạng.
+      </p>
+
+      <!-- STATS -->
+      <div class="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto text-left">
+        <div class="bg-white/5 border border-white/10 rounded-xl p-3.5">
+          <div class="text-xl font-extrabold text-blue-400">7 Khối</div>
+          <div class="text-[11px] text-slate-400">Khối 6 đến 12</div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-xl p-3.5">
+          <div class="text-xl font-extrabold text-emerald-400">7 Bước</div>
+          <div class="text-[11px] text-slate-400">Cấu trúc bài tương tác</div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-xl p-3.5">
+          <div class="text-xl font-extrabold text-amber-400">3 Dạng</div>
+          <div class="text-[11px] text-slate-400">Đánh giá ma trận mới</div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-xl p-3.5">
+          <div class="text-xl font-extrabold text-purple-400">100% Free</div>
+          <div class="text-[11px] text-slate-400">GitHub Pages</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-6xl mx-auto px-4 py-10 flex-grow w-full space-y-12">
+
+    <!-- GRADE SELECTOR -->
+    <section id="danh-sach-bai-hoc" class="space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+            <i class="ph-bold ph-graduation-cap text-blue-600"></i> Danh Sách Bài Học Theo Khối Lớp
+          </h2>
+          <p class="text-xs text-slate-500 mt-1">Chọn khối lớp để xem các bài học trực tuyến và sơ đồ tư duy tương ứng</p>
+        </div>
+
+        <!-- Khối lớp buttons -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0">
+          <button onclick="filterGrade('all')" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Tất cả</button>
+          <button onclick="filterGrade('6')" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 6</button>
+          <button onclick="filterGrade('7')" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 7</button>
+          <button onclick="filterGrade('8')" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 8</button>
+          <button onclick="filterGrade('9')" class="grade-btn active px-3 py-1.5 rounded-xl border border-blue-600 bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700 transition whitespace-nowrap">Lớp 9 (Có sẵn)</button>
+          <button onclick="filterGrade('10')" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 10</button>
+          <button onclick="filterGrade('11')" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 11</button>
+          <button onclick="filterGrade('12')" class="grade-btn px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition whitespace-nowrap">Lớp 12</button>
+        </div>
+      </div>
+
+      <!-- CARDS GRID -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="lesson-cards">
+
+        <!-- LỚP 9 - BÀI 2 -->
+        <div class="lesson-card grade-9 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-emerald-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 9 • Chủ đề 2
+              </span>
+              <span class="text-emerald-600 text-xs font-bold flex items-center gap-1">
+                <i class="ph-fill ph-check-circle"></i> Sẵn sàng
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-700 leading-snug">
+              Bài 2: Thông tin trong giải quyết vấn đề
+            </h3>
+            <p class="text-xs text-slate-600 mt-2 line-clamp-3">
+              Tìm hiểu vai trò của chất lượng thông tin, 4 tiêu chí đánh giá chất lượng (Mới, Chính xác, Đầy đủ, Sử dụng được) và thực hành ra quyết định.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mt-3 text-[10px]">
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Tương tác 7 mục</span>
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Trắc nghiệm 3 dạng</span>
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">KNTT</span>
+            </div>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="lessons/lop-09/bai-02-thong-tin-trong-giai-quyet-van-de.html" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-play"></i> Học ngay
+            </a>
+            <a href="mindmaps/lop-09/bai-02.md" title="Xem sơ đồ tư duy" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold p-2.5 rounded-xl text-center transition">
+              <i class="ph-bold ph-tree-structure text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- LỚP 9 - BÀI 4 -->
+        <div class="lesson-card grade-9 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-indigo-400 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-indigo-100 text-indigo-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 9 • Chủ đề 3
+              </span>
+              <span class="text-indigo-600 text-xs font-bold flex items-center gap-1">
+                <i class="ph-fill ph-check-circle"></i> Sẵn sàng
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 leading-snug">
+              Bài 4: Một số vấn đề pháp lí về sử dụng dịch vụ Internet
+            </h3>
+            <p class="text-xs text-slate-600 mt-2 line-clamp-3">
+              Quy định pháp luật, bản quyền số, tác hại của vi phạm bản quyền và quy tắc ứng xử an toàn, văn minh trên không gian mạng.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mt-3 text-[10px]">
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Tương tác 7 mục</span>
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Tình huống thực tế</span>
+              <span class="bg-slate-100 text-slate-600 px-2 py-0.5 rounded">KNTT</span>
+            </div>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 flex items-center gap-2">
+            <a href="lessons/lop-09/bai-04-mot-so-van-de-phap-li-ve-su-dung-dich-vu-internet.html" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold py-2.5 px-3 rounded-xl text-center shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-play"></i> Học ngay
+            </a>
+            <a href="mindmaps/lop-09/bai-04.md" title="Xem sơ đồ tư duy" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold p-2.5 rounded-xl text-center transition">
+              <i class="ph-bold ph-tree-structure text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- LỚP 10 PLACEHOLDER -->
+        <div class="lesson-card grade-10 bg-slate-50/70 border border-dashed border-slate-300 rounded-2xl p-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-slate-200 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Lớp 10 • Chủ đề 1
+              </span>
+              <span class="text-amber-600 text-xs font-semibold flex items-center gap-1">
+                <i class="ph-bold ph-clock"></i> Đang biên soạn
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-700 leading-snug">
+              Tin học 10 (Sách KNTT & Chuyên đề)
+            </h3>
+            <p class="text-xs text-slate-500 mt-2">
+              Đã số hóa SGK Tin học 10 trong kho học liệu. Đang xây dựng sơ đồ tư duy và các trang bài học tương tác theo chuẩn mới.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-200">
+            <button disabled class="w-full bg-slate-200 text-slate-400 text-xs font-bold py-2.5 px-3 rounded-xl cursor-not-allowed">
+              Sắp ra mắt
+            </button>
+          </div>
+        </div>
+
+        <!-- LỚP 6-8 & 11-12 PLACEHOLDER -->
+        <div class="lesson-card grade-6 grade-7 grade-8 grade-11 grade-12 bg-slate-50/70 border border-dashed border-slate-300 rounded-2xl p-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="bg-slate-200 text-slate-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                Khối 6, 7, 8, 11, 12
+              </span>
+              <span class="text-slate-500 text-xs font-semibold flex items-center gap-1">
+                <i class="ph-bold ph-folder-notch-open"></i> Khung thư mục sẵn sàng
+              </span>
+            </div>
+            <h3 class="text-base font-bold text-slate-700 leading-snug">
+              Cập nhật kế hoạch dạy học
+            </h3>
+            <p class="text-xs text-slate-500 mt-2">
+              Khung thư mục đã được phân loại theo khối lớp, sẵn sàng để bổ sung tài liệu SGK, SGV, SBT và phát hành các bài học tiếp theo.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-200">
+            <a href="docs/HUONG_DAN_DONG_BOI.md" class="block w-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-2.5 px-3 rounded-xl text-center transition">
+              Xem quy chuẩn biên soạn bài mới
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MINDMAPS SHOWCASE -->
+    <section id="mindmaps-section" class="bg-gradient-to-br from-indigo-900 to-slate-900 rounded-3xl p-6 md:p-8 text-white space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <span class="bg-amber-400 text-slate-950 text-xs font-extrabold px-2.5 py-0.5 rounded-full uppercase">
+            Mục tiêu 1
+          </span>
+          <h2 class="text-2xl font-bold mt-2 flex items-center gap-2">
+            <i class="ph-bold ph-tree-structure text-amber-300"></i> Sơ Đồ Tư Duy Các Khối Lớp
+          </h2>
+          <p class="text-xs text-indigo-200 mt-1">
+            Mỗi khối có các bài, mỗi bài tái hiện kiến thức tuần tự, logic để học sinh xem nhanh và ghi nhớ lâu dài.
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="mindmaps/" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold transition flex items-center gap-1.5">
+            <i class="ph-bold ph-folder"></i> Khám phá kho Mindmap
+          </a>
+        </div>
+      </div>
+
+      <!-- Mindmap Grid Cards -->
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="bg-white/10 border border-white/10 rounded-2xl p-4 hover:bg-white/15 transition">
+          <div class="text-xs font-bold text-amber-300">Khối 9 • Bài 2</div>
+          <div class="font-bold text-sm mt-1 text-white">Chất lượng thông tin & 4 tiêu chí</div>
+          <p class="text-[11px] text-slate-300 mt-2">Dạng nhánh cây: Vai trò -> 4 tiêu chí (Mới, Xác thực, Đầy đủ, Dùng được) -> Vận dụng.</p>
+          <a href="mindmaps/lop-09/bai-02.md" class="mt-3 inline-flex items-center gap-1 text-xs text-cyan-300 hover:underline font-semibold">
+            Xem sơ đồ Mermaid/Markmap <i class="ph-bold ph-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="bg-white/10 border border-white/10 rounded-2xl p-4 hover:bg-white/15 transition">
+          <div class="text-xs font-bold text-amber-300">Khối 9 • Bài 4</div>
+          <div class="font-bold text-sm mt-1 text-white">Vấn đề pháp lí trên Internet</div>
+          <p class="text-[11px] text-slate-300 mt-2">Pháp luật -> Bản quyền & Sở hữu trí tuệ -> Hành vi vi phạm -> Ứng xử văn hóa.</p>
+          <a href="mindmaps/lop-09/bai-04.md" class="mt-3 inline-flex items-center gap-1 text-xs text-cyan-300 hover:underline font-semibold">
+            Xem sơ đồ Mermaid/Markmap <i class="ph-bold ph-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="bg-white/10 border border-white/10 rounded-2xl p-4 hover:bg-white/15 transition">
+          <div class="text-xs font-bold text-amber-300">Khối 10 • Thuật toán</div>
+          <div class="font-bold text-sm mt-1 text-white">Cấu trúc dữ liệu & Lập trình Python</div>
+          <p class="text-[11px] text-slate-300 mt-2">Biến, kiểu dữ liệu, rẽ nhánh, vòng lặp, mảng/list và độ phức tạp thuật toán O(n).</p>
+          <a href="practice/" class="mt-3 inline-flex items-center gap-1 text-xs text-cyan-300 hover:underline font-semibold">
+            Xem kho bài tập thực hành <i class="ph-bold ph-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 py-6 mt-12">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+      <div>
+        <span class="font-bold text-slate-700">VietTeach</span> © 2026. Dự án quản lý nội dung dạy học Tin học 6 - 12.
+      </div>
+      <div class="flex items-center gap-4">
+        <span>Sách giáo khoa GDPT 2018</span>
+        <span>•</span>
+        <a href="docs/HUONG_DAN_DONG_BOI.md" class="hover:text-blue-600 transition">Hướng dẫn biên soạn</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Filter Script -->
+  <script>
+    function filterGrade(grade) {
+      // Update active button
+      document.querySelectorAll('.grade-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-blue-600', 'text-white', 'border-blue-600');
+        btn.classList.add('border-slate-300', 'text-slate-700');
+      });
+      event.target.classList.add('active', 'bg-blue-600', 'text-white', 'border-blue-600');
+
+      // Filter cards
+      const cards = document.querySelectorAll('.lesson-card');
+      cards.forEach(card => {
+        if (grade === 'all') {
+          card.style.display = 'flex';
+        } else if (card.classList.contains('grade-' + grade)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
